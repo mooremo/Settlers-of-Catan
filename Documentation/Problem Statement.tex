@@ -30,9 +30,9 @@
 \begin{center}
 \includegraphics[width=0.15\textwidth]{Images/logo}\\[1cm]
 \textsc{\LARGE Rose-Hulman Institute of Technology}\\[1.5cm]
-\textsc{\Large Settlers of Catan}\\[1.0cm]
+\textsc{\Large Settlers of C\#tan}\\[1.0cm]
 \textsc{\Large Problem Statement}\\[1.0cm]
-\Large Liz Hines \hspace{0.2cm}  Matt Moore \hspace{0.2cm} Sam	Kim
+\Large Liz Hines \hspace{0.2cm}*\hspace{0.2cm}  Matt Moore \hspace{0.2cm}*\hspace{0.2cm} Sam	Kim
 \vfill
 \large \today
 \end{center}
@@ -42,55 +42,71 @@
 {\small \tableofcontents}
 \newpage
 
-\section*{High Level Problem Summary}
+\section{High Level Problem Summary}
+Player of the popular board game \emph{The Settlers of Catan} have long been plagued by the limitations of a physical game. The existing digital solutions are lackluster and difficult to use. We plan to develop a new PC port of the game that will be intuitive, robust, and aesthetically pleasing. Our solution will allow Catan players to play in previously unheard of environments and with increased ease.
 
-\subsection*{Summary of Primary Success Criteria}
+\subsection{Scope}
+Our game, The Settlers of \verb!C#!tan, will use a point-and-click interface to accurately reproduce the style of play that is characteristic of the original game. We will not be developing any AI (artificial intelligence) gameplay elements. The rules of play will be automatically enforced by the game. It will also include support for between 2-4 players. 
 
-\subsection*{Scope}
+\subsection{Function}
+The key function of our game is to provide entertainment value to its users. This is difficult to measure quantitatively but the following list of functions identify the testable components of a successful solution.
 
-\section*{Detailed Problem Statement}
+\begin{enumerate}
 
-\subsection*{Function}
+\item Point-and-Click interface
+\item Multi-player support (2-4)
+\item Follows the rules of \emph{The Settlers of Catan}
+\item Allows for trading of resources between players and a NPC bank
+\item Randomly generated boards
+\item User created boards
+\item Save and Load Game
+\item Includes a complete set of game rules
 
-\subsubsection*{Key Business Features}
+\end{enumerate}
 
-\subsubsection*{Key Enabling Features}
+\section{Form}
+The Settlers of \verb!C#!tan will be a desktop application.
 
-\subsubsection*{Key Concurrency Issues}
+\subsection{Key Attributes}
 
-\section*{Form}
+\subsection{Hardware \& Software Constraints}
+ The Settlers of \verb!C#!tan will be built on the \verb!.NET! framework using \verb!C#!. We will only offer support on Windows 7.
 
-\subsection*{Key Attributes}
+\section{Economy}
 
-\subsection*{Hardware \& Software Constraints}
+\subsection{Business Context}
+Our customers are the most adventurous sort of board game players. So we are building this software solution to be played in environments normally not conducive to board game play such as when traveling. 
 
-\subsection*{Key Interfaces}
+\subsection{Customer Organization Constraints}
+This solution can be played in a diverse range of environments, limited only by the physical requirements of the machine the game is running on. Although not required to play, customers do benefit from prior knowledge of game rules and strategies.
 
-\subsection*{Required Standards}
+\subsection{Development Organization Constraints}
+We have limited experience developing games. Also as all three developers are students there are restrictions on time and scheduling. The budget of this project is currently \$0, the current expected cost is \$0.
 
-\subsection*{Domain}
+\subsection{Key Risks and Uncertainty}
+Most of the uncertainty in this project stems from our teams inexperience with game engines. We could also potentially be hampered by the difficulty of writing tests for a script-like environment that only maintains a global state. 
 
-\section*{Economy}
+\section{Time}
 
-\subsection*{Business Context}
+\subsection{Historical Context}
+Historically \emph{The Settlers of Catan} has been confined to the realm of the board game. It was one of the first German-style board games to achieve popularity outside of Europe. It has been translated into over 30 languages and has been called "the board game of our time" by the Washington Post.
 
-\subsection*{Customer Organization Constraints}
+\subsection{Current Context}
+There are many software implementations of the game available on the marketplace today, but most of them are of poor quality and have many usability problems.
 
-\subsection*{Development Organization Constraints}
+\subsection{Future Context}
+Our game is a success and provides players with a fun, viable software alternative to \emph{The Settlers of Catan}.
 
-\subsection*{Key Risks and Uncertainty}
-
-\section*{Time}
-
-\subsection*{Historical Context}
-
-\subsection*{Current Context}
-
-\subsection*{Future Context}
-
-\section*{Key Stakeholders}
-
+\section{Key Stakeholders}
+\begin{itemize}
+\item Elizabeth Hines
+\item Sam Kim
+\item Matt Moore
+\item Sriram Mohan
+\item Catan players everywhere.
+\end{itemize}
 \newpage
-\section*{Revision History}
+\section{Revision History}
+Created 3/28/12 by Elizabeth Hines, Sam Kim, Matt Moore
 
 \end{document}
