@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -62,6 +63,15 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
+        public void TestDrawEmptyResource()
+        {
+            _controller.resourceDeck[TileType.Hills] = 0;
+            var card = _controller.DrawResource(TileType.Hills);
+
+            //What should happen here?
+        }
+
+        [Test]
         public void TestDrawDevelopmentCard()
         {
             var card = _controller.DrawDevelopment();
@@ -70,6 +80,15 @@ namespace SettlersOfCatanTest
             Assert.AreNotEqual(CardType.Lumber,card);
             Assert.AreNotEqual(CardType.Grain,card);
             Assert.AreNotEqual(CardType.Ore,card);
+        }
+
+        [Test]
+        public void TestDrawEmptyDevelopmentCardDeck()
+        {
+            _controller.developmentDeck = new ArrayList();
+            var card = _controller.DrawDevelopment();
+
+            // Again...
         }
     }
 }
