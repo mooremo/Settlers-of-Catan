@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SettlersOfCatanTest
+namespace SettlersOfCatan
 {
-    public class Class1
+    public class Dice
     {
+        public Dice()
+        {
+
+        }
     }
 }
