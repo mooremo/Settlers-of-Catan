@@ -20,5 +20,15 @@ namespace SettlersOfCatan
         { 
 
         }
+
+        public CardType DrawResource(TileType tile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CardType DrawDevelopment()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
