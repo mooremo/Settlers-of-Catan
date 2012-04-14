@@ -7,8 +7,8 @@ namespace SettlersOfCatan
 {
     public class Board
     {
-        public Graph<Tile> tiles { get; set; }
-        public Graph<Vertex> vertices { get; set; }
+        public Map<Tile> tiles { get; set; }
+        public Map<Vertex> vertices { get; set; }
 
         public Board()
         {
