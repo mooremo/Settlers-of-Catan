@@ -85,7 +85,7 @@ namespace SettlersOfCatanTest
         }
 
         [Test()]
-        public void TestThatCityIsPlacedAtCorrectVertexWhenIsWhenSettingUp()
+        public void TestThatCityIsPlacedAtCorrectVertexWhenSettingUp()
         {
             testBoard.placePieceSetup(city, 0);
             Vertex targetVertex = (Vertex)testBoard.vertices[0];
@@ -93,7 +93,7 @@ namespace SettlersOfCatanTest
         }
 
         [Test()]
-        public void TestThatRoadIsPlacedCorrectlyWhenIsWhenSettingUp()
+        public void TestThatRoadIsPlacedCorrectlyWhenSettingUp()
         {
             testBoard.placePieceSetup(road, 0 , 0);
             Vertex targetVertex = (Vertex)testBoard.vertices[0];
@@ -139,7 +139,7 @@ namespace SettlersOfCatanTest
 
         [Test()]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestThatPlacePieceSetupThrowsWhenVertexAlreadyBuiltOnWithCity()
+        public void TestThatPlacePieceSetupThrowsWhenVertexAlreadyBuiltOnVertexWithCity()
         {
             testBoard.placePieceSetup(city, 0);
         }
@@ -181,6 +181,13 @@ namespace SettlersOfCatanTest
         public void TestThatPlacePieceThrowsWhenPlacingCityAndHasNoRoadToVertex()
         {
             testBoard.placePieceSetup(city, 21);
+        }
+
+        [Test()]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestThatPlacePieceThrowsWhenPlacingVillageAndHasNoRoadToVertex()
+        {
+            testBoard.placePieceSetup(village, 21);
         }
 
     }
