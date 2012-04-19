@@ -66,21 +66,21 @@ namespace SettlersOfCatanTest
         [ExpectedException(typeof(EmptyDeckException))]
         public void TestDrawEmptyResource()
         {
-            _controller.resourceDeck[TileType.Hills] = 0;
+            _controller.ResourceDeck[TileType.Hills] = 0;
             var card = _controller.DrawResource(TileType.Hills);
         }
 
         [Test]
         public void TestDevelopmentDeckInitializesWithCorrectSize()
         {
-            Assert.AreEqual(25, _controller.developmentDeck.Count);
+            Assert.AreEqual(25, _controller.DevelopmentDeck.Count);
         }
 
         [Test]
         public void TestDevelopmentDeckInitializesWithCorrectNumberOfKnights()
         {
             int knightCount = 0;
-            foreach (CardType card in _controller.developmentDeck)
+            foreach (CardType card in _controller.DevelopmentDeck)
             {
                 if (card == CardType.Solider)
                 {
@@ -95,7 +95,7 @@ namespace SettlersOfCatanTest
         public void TestDevelopmentDeckInitializesWithCorrectNumberOfMonopoly()
         {
             int monopolyCount = 0;
-            foreach (CardType card in _controller.developmentDeck)
+            foreach (CardType card in _controller.DevelopmentDeck)
             {
                 if (card == CardType.Monopoly)
                 {
@@ -110,7 +110,7 @@ namespace SettlersOfCatanTest
         public void TestDevelopmentDeckInitializesWithCorrectNumberOfRoadBuilding()
         {
             int roadBuildingCount = 0;
-            foreach (CardType card in _controller.developmentDeck)
+            foreach (CardType card in _controller.DevelopmentDeck)
             {
                 if (card == CardType.RoadBuilding)
                 {
@@ -125,7 +125,7 @@ namespace SettlersOfCatanTest
         public void TestDevelopmentDeckInitializesWithCorrectNumberOfYearsOfPlenty()
         {
             int yearsOfPlentyCount = 0;
-            foreach (CardType card in _controller.developmentDeck)
+            foreach (CardType card in _controller.DevelopmentDeck)
             {
                 if (card == CardType.YearOfPlenty)
                 {
@@ -140,7 +140,7 @@ namespace SettlersOfCatanTest
         public void TestDevelopmentDeckInitializesWithCorrectNumberOfVictoryPoints()
         {
             int victoryPointCount = 0;
-            foreach (CardType card in _controller.developmentDeck)
+            foreach (CardType card in _controller.DevelopmentDeck)
             {
                 if (card == CardType.VictoryPoint)
                 {
@@ -166,7 +166,7 @@ namespace SettlersOfCatanTest
         [ExpectedException(typeof(EmptyDeckException))]
         public void TestDrawEmptyDevelopmentCardDeck()
         {
-            _controller.developmentDeck = new ArrayList();
+            _controller.DevelopmentDeck = new ArrayList();
             var card = _controller.DrawDevelopment();
         }
     }
