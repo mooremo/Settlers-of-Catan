@@ -10,6 +10,7 @@ namespace SettlersOfCatan
         {
             InitializeResourceLookup();
             InitializeResourceDeck();
+            InitializeDevelopmentDeck();
         }
 
         public Board board { get; set; }
@@ -23,22 +24,49 @@ namespace SettlersOfCatan
 
         private void InitializeResourceLookup()
         {
-            resourceLookup = new Dictionary<TileType, CardType>();
-            resourceLookup.Add(TileType.Fields, CardType.Grain);
-            resourceLookup.Add(TileType.Woods, CardType.Lumber);
-            resourceLookup.Add(TileType.Hills, CardType.Brick);
-            resourceLookup.Add(TileType.Mountains, CardType.Ore);
-            resourceLookup.Add(TileType.Pasture, CardType.Wool);
+            resourceLookup = new Dictionary<TileType, CardType>
+                                 {
+                                     {TileType.Fields, CardType.Grain},
+                                     {TileType.Woods, CardType.Lumber},
+                                     {TileType.Hills, CardType.Brick},
+                                     {TileType.Mountains, CardType.Ore},
+                                     {TileType.Pasture, CardType.Wool}
+                                 };
         }
 
         private void InitializeResourceDeck()
         {
-            resourceDeck = new Dictionary<TileType, int>();
-            resourceDeck.Add(TileType.Fields, 19);
-            resourceDeck.Add(TileType.Woods, 19);
-            resourceDeck.Add(TileType.Hills, 19);
-            resourceDeck.Add(TileType.Mountains, 19);
-            resourceDeck.Add(TileType.Pasture, 19);
+            resourceDeck = new Dictionary<TileType, int>
+                               {
+                                   {TileType.Fields, 19},
+                                   {TileType.Woods, 19},
+                                   {TileType.Hills, 19},
+                                   {TileType.Mountains, 19},
+                                   {TileType.Pasture, 19}
+                               };
+        }
+
+        private void InitializeDevelopmentDeck()
+        {
+            var developmentCount = new Dictionary<CardType, int>
+                                       {
+                                           {CardType.Solider, 14},
+                                           {CardType.Monopoly, 2},
+                                           {CardType.RoadBuilding, 2},
+                                           {CardType.YearOfPlenty, 2},
+                                           {CardType.VictoryPoint, 5}
+                                       };
+            
+            developmentDeck = new ArrayList();
+            foreach (CardType card in developmentCount.Keys)
+            {
+                for (int i=0; i<developmentCount[card]; i++)
+                {
+                    developmentDeck.Add(card);
+                }
+            }
+
+            Shuffler.Shuffle(developmentDeck);
         }
 
         public CardType DrawResource(TileType tile)
@@ -54,7 +82,14 @@ namespace SettlersOfCatan
 
         public CardType DrawDevelopment()
         {
-            throw new NotImplementedException();
+            if (developmentDeck.Count == 0)
+            {
+                throw new EmptyDeckException();
+            }
+
+            var ret = (CardType)developmentDeck[0];
+            developmentDeck.RemoveAt(0);
+            return ret;
         }
     }
 

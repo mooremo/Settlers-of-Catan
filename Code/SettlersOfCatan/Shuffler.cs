@@ -10,7 +10,7 @@ namespace SettlersOfCatan
     {
         public static void Shuffle(ArrayList source)
         {
-            Random rnd = new Random();
+            var rnd = new Random();
             for (int inx = source.Count - 1; inx > 0; --inx)
             {
                 int position = rnd.Next(inx);

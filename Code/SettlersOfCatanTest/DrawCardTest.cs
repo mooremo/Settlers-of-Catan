@@ -163,12 +163,11 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
+        [ExpectedException(typeof(EmptyDeckException))]
         public void TestDrawEmptyDevelopmentCardDeck()
         {
             _controller.developmentDeck = new ArrayList();
             var card = _controller.DrawDevelopment();
-
-            // Again...
         }
     }
 }
