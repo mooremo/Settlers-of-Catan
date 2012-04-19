@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoardTest.cs" />
+    <Compile Include="DrawCardTest.cs" />
     <Compile Include="PiecePlacementTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
