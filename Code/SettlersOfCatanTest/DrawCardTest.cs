@@ -63,12 +63,11 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
+        [ExpectedException(typeof(EmptyDeckException))]
         public void TestDrawEmptyResource()
         {
             _controller.resourceDeck[TileType.Hills] = 0;
             var card = _controller.DrawResource(TileType.Hills);
-
-            //What should happen here?
         }
 
         [Test]
