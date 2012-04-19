@@ -28,7 +28,7 @@ namespace SettlersOfCatanTest
         [Ignore("The method count has not been implemented")]
         public void TestThatTilesIsFull()
         {
-            Assert.AreEqual(21, testBoard.tiles.Count());
+            Assert.AreEqual(21, testBoard.tiles.Count);
         }
 
         [Test()]
@@ -90,7 +90,7 @@ namespace SettlersOfCatanTest
         [Test()]
         public void TestThatBoardHasThreeHillTiles()
         {
-            int count = 0;
+             int count = 0;
             foreach (Tile t in testBoard.tiles)
             {
                 if (t.type == 5)
