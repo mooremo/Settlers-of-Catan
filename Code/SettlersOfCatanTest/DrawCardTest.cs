@@ -56,7 +56,7 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [ExpectedException(typeof(KeyNotFoundException))]
         public void TestDrawInvalidTile()
         {
             var card = _controller.DrawResource(TileType.Port2);
