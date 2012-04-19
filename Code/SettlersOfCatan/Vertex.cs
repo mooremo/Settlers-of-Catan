@@ -20,7 +20,7 @@ namespace SettlersOfCatan
 
         public bool playerCanBuildSettlement(Player player)
         {
-            if (settlement != null)
+            if (settlement != null  && settlement.player != player && settlement.type != SettlementType.Village)
             {
                 return false;
             }
