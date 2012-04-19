@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 
 namespace SettlersOfCatan
 {
@@ -17,10 +13,5 @@ namespace SettlersOfCatan
         public int villagesRemaining { get; set; }
         public int citiesRemaining { get; set; }
         public int score { get; set; }
-
-        public Player()
-        {
-
-        }
     }
 }

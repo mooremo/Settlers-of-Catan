@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SettlersOfCatan
 {
-    class Shuffler
+    internal class Shuffler
     {
         public static void Shuffle(ArrayList source)
         {
@@ -18,7 +15,6 @@ namespace SettlersOfCatan
                 source[inx] = source[position];
                 source[position] = temp;
             }
-
         }
     }
 }
