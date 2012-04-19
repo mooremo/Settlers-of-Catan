@@ -71,6 +71,87 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
+        public void TestDevelopmentDeckInitializesWithCorrectSize()
+        {
+            Assert.AreEqual(25, _controller.developmentDeck.Count);
+        }
+
+        [Test]
+        public void TestDevelopmentDeckInitializesWithCorrectNumberOfKnights()
+        {
+            int knightCount = 0;
+            foreach (CardType card in _controller.developmentDeck)
+            {
+                if (card == CardType.Solider)
+                {
+                    knightCount++;
+                }
+            }
+
+            Assert.AreEqual(14, knightCount);
+        }
+
+        [Test]
+        public void TestDevelopmentDeckInitializesWithCorrectNumberOfMonopoly()
+        {
+            int monopolyCount = 0;
+            foreach (CardType card in _controller.developmentDeck)
+            {
+                if (card == CardType.Monopoly)
+                {
+                    monopolyCount++;
+                }
+            }
+
+            Assert.AreEqual(2, monopolyCount);
+        }
+
+        [Test]
+        public void TestDevelopmentDeckInitializesWithCorrectNumberOfRoadBuilding()
+        {
+            int roadBuildingCount = 0;
+            foreach (CardType card in _controller.developmentDeck)
+            {
+                if (card == CardType.RoadBuilding)
+                {
+                    roadBuildingCount++;
+                }
+            }
+
+            Assert.AreEqual(2, roadBuildingCount);
+        }
+
+        [Test]
+        public void TestDevelopmentDeckInitializesWithCorrectNumberOfYearsOfPlenty()
+        {
+            int yearsOfPlentyCount = 0;
+            foreach (CardType card in _controller.developmentDeck)
+            {
+                if (card == CardType.YearOfPlenty)
+                {
+                    yearsOfPlentyCount++;
+                }
+            }
+
+            Assert.AreEqual(2, yearsOfPlentyCount);
+        }
+
+        [Test]
+        public void TestDevelopmentDeckInitializesWithCorrectNumberOfVictoryPoints()
+        {
+            int victoryPointCount = 0;
+            foreach (CardType card in _controller.developmentDeck)
+            {
+                if (card == CardType.VictoryPoint)
+                {
+                    victoryPointCount++;
+                }
+            }
+
+            Assert.AreEqual(5, victoryPointCount);
+        }
+
+        [Test]
         public void TestDrawDevelopmentCard()
         {
             var card = _controller.DrawDevelopment();
