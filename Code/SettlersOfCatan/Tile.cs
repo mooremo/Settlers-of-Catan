@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 
 namespace SettlersOfCatan
 {
@@ -12,10 +8,5 @@ namespace SettlersOfCatan
         public int type { get; set; }
         public int number { get; set; }
         public ArrayList neighbors { get; set; }
-
-        public Tile()
-        {
-
-        }
     }
 }

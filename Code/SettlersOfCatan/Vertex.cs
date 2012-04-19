@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 
 namespace SettlersOfCatan
 {
@@ -13,14 +9,9 @@ namespace SettlersOfCatan
         public ArrayList roads { get; set; }
         public Settlement settlement { get; set; }
 
-        public Vertex()
-        {
-
-        }
-
         public bool playerCanBuildSettlement(Player player)
         {
-            if (settlement != null  && settlement.player != player && settlement.type != SettlementType.Village)
+            if (settlement != null && settlement.player != player && settlement.type != SettlementType.Village)
             {
                 return false;
             }
@@ -53,7 +44,7 @@ namespace SettlersOfCatan
                 {
                     continue;
                 }
-                checkRoad = (Road)roads[i];
+                checkRoad = (Road) roads[i];
                 if (checkRoad.player == player)
                 {
                     flag = true;

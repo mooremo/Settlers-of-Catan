@@ -1,28 +1,25 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SettlersOfCatan
 {
     public class Board
     {
-        public ArrayList Tiles { get; set; }
-        public ArrayList Vertices { get; set; }
-
-        //All tiles know their neighbors and all vertices know neighbors
         public Board()
         {
             Tiles = new ArrayList(21);
             Vertices = new ArrayList(54);
 
-            this.GenerateBoard();
+            GenerateBoard();
         }
+
+        public ArrayList Tiles { get; set; }
+        public ArrayList Vertices { get; set; }
+
+        //All tiles know their neighbors and all vertices know neighbors
 
         public void GenerateBoard()
         {
-
         }
 
         public void PlacePieceSetup(Settlement piece, int location)
@@ -32,11 +29,11 @@ namespace SettlersOfCatan
             if (location < Vertices.Capacity && location >= 0)
             {
                 // Get the vertex at the location specifed.
-                targetVertex = (Vertex)Vertices[location];
+                targetVertex = (Vertex) Vertices[location];
             }
             else
             {
-                throw new System.ArgumentException("This vertex doesn't exist.", "Bad Vertex");
+                throw new ArgumentException("This vertex doesn't exist.", "Bad Vertex");
             }
             //place the settlement at the vertex
             targetVertex.settlement = piece;
@@ -54,11 +51,11 @@ namespace SettlersOfCatan
             if (location < Vertices.Capacity && location >= 0)
             {
                 // Get the vertex at the location specifed.
-                targetVertex = (Vertex)Vertices[location];
+                targetVertex = (Vertex) Vertices[location];
             }
             else
             {
-                throw new System.ArgumentException("This vertex doesn't exist.", "Bad Vertex");
+                throw new ArgumentException("This vertex doesn't exist.", "Bad Vertex");
             }
             if (targetVertex.playerCanBuildSettlement(piece.player))
             {
@@ -67,7 +64,8 @@ namespace SettlersOfCatan
             }
             else
             {
-                throw new System.Exception("A settlement already exists at this vertex or the player doesn't have a road to this vertex");
+                throw new Exception(
+                    "A settlement already exists at this vertex or the player doesn't have a road to this vertex");
             }
         }
 
@@ -78,16 +76,16 @@ namespace SettlersOfCatan
             if (location < Vertices.Capacity && location >= 0)
             {
                 // Get the vertex at the location specifed.
-                targetVertex = (Vertex)Vertices[location];
+                targetVertex = (Vertex) Vertices[location];
             }
             else
             {
-                throw new System.ArgumentException("This vertex doesn't exist.", "Bad Vertex");
+                throw new ArgumentException("This vertex doesn't exist.", "Bad Vertex");
             }
             //Check direction valid
             if (direction < 0 || direction > 2)
             {
-                throw new System.ArgumentException("This direction is invalid.", "Bad Direction");
+                throw new ArgumentException("This direction is invalid.", "Bad Direction");
             }
             // If this is a valid place to lay a road (has a neighboring node in this direction).
             if (targetVertex.playerCanBuildSettlement(piece.player) && targetVertex.neighbors[direction] != null)
@@ -95,7 +93,7 @@ namespace SettlersOfCatan
                 //Place the road at the vertex in the specified direction
                 targetVertex.roads[direction] = piece;
                 //Get the neighboring vertex
-                Vertex temp2 = (Vertex)targetVertex.neighbors[direction];
+                var temp2 = (Vertex) targetVertex.neighbors[direction];
                 //get the index of the neighboring vertex
                 int index = Vertices.IndexOf(temp2);
                 // use the difference between the vertices to determine which direction the road should go from the other vertex.
@@ -108,7 +106,7 @@ namespace SettlersOfCatan
                 else
                 {
                     //the neighbor node is in the same or next row
-                    if (location % 2 == 0)
+                    if (location%2 == 0)
                     {
                         //and to the right of its neighbor node
                         temp2.roads[2] = piece;
@@ -122,7 +120,9 @@ namespace SettlersOfCatan
             }
             else
             {
-                throw new System.ArgumentException("This vertex has no neighbor vertex in the specified direction, all road spots at this vertex are taken, or player does not have a road touching this vertex.", "Neighbor Vertex");
+                throw new ArgumentException(
+                    "This vertex has no neighbor vertex in the specified direction, all road spots at this vertex are taken, or player does not have a road touching this vertex.",
+                    "Neighbor Vertex");
             }
         }
     }

@@ -31,7 +31,7 @@
         YearOfPlenty,
         Monopoly,
         VictoryPoint,
-        LongestRoad,    // These aren't really cards...
+        LongestRoad, // These aren't really cards...
         LargestArmy,
     }
 
