@@ -17,12 +17,12 @@ namespace SettlersOfCatan
             tiles = new ArrayList(21);
             vertices = new ArrayList();
 
-            return this;
+            this.GenerateBoard();
         }
 
-        public Board generateBoard()
+        public void GenerateBoard()
         {
-            return board;
+
         }
     }
 }
