@@ -28,14 +28,14 @@ namespace SettlersOfCatanTest
         [Ignore("The method count has not been implemented")]
         public void TestThatTilesIsFull()
         {
-            Assert.AreEqual(21, testBoard.tiles.Count);
+            Assert.AreEqual(21, testBoard.Tiles.Count);
         }
 
         [Test()]
         public void TestThatBoardHasFourFieldTiles()
         {
             int count = 0;
-            foreach (Tile t in testBoard.tiles)
+            foreach (Tile t in testBoard.Tiles)
             {
                 if (t.type == 1)
                 {
@@ -49,7 +49,7 @@ namespace SettlersOfCatanTest
         public void TestThatBoardHasFourForestTiles()
         {
             int count = 0;
-            foreach (Tile t in testBoard.tiles)
+            foreach (Tile t in testBoard.Tiles)
             {
                 if (t.type == 2)
                 {
@@ -63,7 +63,7 @@ namespace SettlersOfCatanTest
         public void TestThatBoardHasFourPastureTiles()
         {
             int count = 0;
-            foreach (Tile t in testBoard.tiles)
+            foreach (Tile t in testBoard.Tiles)
             {
                 if (t.type == 3)
                 {
@@ -77,7 +77,7 @@ namespace SettlersOfCatanTest
         public void TestThatBoardHasThreeMountainTiles()
         {
             int count = 0;
-            foreach (Tile t in testBoard.tiles)
+            foreach (Tile t in testBoard.Tiles)
             {
                 if (t.type == 4)
                 {
@@ -91,7 +91,7 @@ namespace SettlersOfCatanTest
         public void TestThatBoardHasThreeHillTiles()
         {
              int count = 0;
-            foreach (Tile t in testBoard.tiles)
+            foreach (Tile t in testBoard.Tiles)
             {
                 if (t.type == 5)
                 {
@@ -105,7 +105,7 @@ namespace SettlersOfCatanTest
         public void TestThatBoardHasOneDesertTile()
         {
             int count = 0;
-            foreach (Tile t in testBoard.tiles)
+            foreach (Tile t in testBoard.Tiles)
             {
                 if (t.type == 6)
                 {

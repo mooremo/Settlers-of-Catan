@@ -8,14 +8,14 @@ namespace SettlersOfCatan
 {
     public class Board
     {
-        public ArrayList tiles { get; set; }
-        public ArrayList vertices { get; set; }
+        public ArrayList Tiles { get; set; }
+        public ArrayList Vertices { get; set; }
 
         //All tiles know their neighbors and all vertices know neighbors
         public Board()
         {
-            tiles = new ArrayList(21);
-            vertices = new ArrayList();
+            Tiles = new ArrayList(21);
+            Vertices = new ArrayList(54);
 
             this.GenerateBoard();
         }
@@ -25,14 +25,14 @@ namespace SettlersOfCatan
 
         }
 
-        public void placePieceSetup(Settlement piece, int location)
+        public void PlacePieceSetup(Settlement piece, int location)
         {
             Vertex targetVertex;
             // Check that vertex exists
-            if (location < vertices.Count && location >= 0)
+            if (location < Vertices.Capacity && location >= 0)
             {
                 // Get the vertex at the location specifed.
-                targetVertex = (Vertex)vertices[location];
+                targetVertex = (Vertex)Vertices[location];
             }
             else
             {
@@ -42,19 +42,19 @@ namespace SettlersOfCatan
             targetVertex.settlement = piece;
         }
 
-        public void placePieceSetup(Road piece, int location, int direction)
+        public void PlacePieceSetup(Road piece, int location, int direction)
         {
-            placePiece(piece, location, direction);
+            PlacePiece(piece, location, direction);
         }
 
-        public void placePiece(Settlement piece, int location)
+        public void PlacePiece(Settlement piece, int location)
         {
             Vertex targetVertex;
             // Check that vertex exists
-            if (location < vertices.Count && location >= 0)
+            if (location < Vertices.Capacity && location >= 0)
             {
                 // Get the vertex at the location specifed.
-                targetVertex = (Vertex)vertices[location];
+                targetVertex = (Vertex)Vertices[location];
             }
             else
             {
@@ -71,14 +71,14 @@ namespace SettlersOfCatan
             }
         }
 
-        public void placePiece(Road piece, int location, int direction)
+        public void PlacePiece(Road piece, int location, int direction)
         {
             Vertex targetVertex;
             // Check that vertex exists
-            if (location < vertices.Count && location >= 0)
+            if (location < Vertices.Capacity && location >= 0)
             {
                 // Get the vertex at the location specifed.
-                targetVertex = (Vertex)vertices[location];
+                targetVertex = (Vertex)Vertices[location];
             }
             else
             {
@@ -97,7 +97,7 @@ namespace SettlersOfCatan
                 //Get the neighboring vertex
                 Vertex temp2 = (Vertex)targetVertex.neighbors[direction];
                 //get the index of the neighboring vertex
-                int index = vertices.IndexOf(temp2);
+                int index = Vertices.IndexOf(temp2);
                 // use the difference between the vertices to determine which direction the road should go from the other vertex.
                 int difference = location - index;
                 if (difference > 1)
