@@ -22,6 +22,7 @@ namespace SettlersOfCatanTest
         public void SetUp()
         {
             testBoard = new Board();
+            testPlayer = new Player();
             village = new Settlement(testPlayer,SettlementType.Village);
             city = new Settlement(testPlayer,SettlementType.City);
             road = new Road(testPlayer);
@@ -73,6 +74,22 @@ namespace SettlersOfCatanTest
         public void TestThatRoadHasCorrectPlayerAfterConstruction()
         {
             Assert.AreSame(testPlayer, road.player);
+        }
+
+        [Test()]
+        public void TestThatVillageIsPlacedAtCorrectVertex()
+        {
+            testBoard.placeFirstPiece(village, 1);
+            Vertex targetVertex = (Vertex)testBoard.vertices[1];
+            Assert.AreEqual(village, targetVertex.settlement);
+        }
+
+        [Test()]
+        public void TestThatCityIsPlacedAtCorrectVertex()
+        {
+            testBoard.placeFirstPiece(city, 0);
+            Vertex targetVertex = (Vertex)testBoard.vertices[0];
+            Assert.AreEqual(city, targetVertex.settlement);
         }
     }
 }
