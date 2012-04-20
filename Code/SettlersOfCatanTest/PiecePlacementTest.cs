@@ -1,78 +1,193 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
-
 using SettlersOfCatan;
 
 namespace SettlersOfCatanTest
 {
-    [TestFixture()]
+    [TestFixture]
     public class PiecePlacementTest
     {
-        private Board testBoard;
-        private Player testPlayer;
-        private Settlement village;
-        private Settlement city;
-        private Road road;
+        #region Setup/Teardown
 
-
-        [SetUp()]
+        [SetUp]
         public void SetUp()
         {
-            testBoard = new Board();
-            village = new Settlement(testPlayer,SettlementType.Village);
-            city = new Settlement(testPlayer,SettlementType.City);
-            road = new Road(testPlayer);
+            _testBoard = new Board();
+            _testPlayer = new Player();
+            _village = new Settlement(_testPlayer, SettlementType.Village);
+            _city = new Settlement(_testPlayer, SettlementType.City);
+            _road = new Road(_testPlayer);
         }
 
-        [Test()]
-        public void TestThatVillageInitializes()
-        {
-            Assert.IsNotNull(village);
-        }
+        #endregion
 
-        [Test()]
-        public void TestThatCityInitializes()
-        {
-            Assert.IsNotNull(city);
-        }
+        private Board _testBoard;
+        private Player _testPlayer;
+        private Settlement _village;
+        private Settlement _city;
+        private Road _road;
 
-        [Test()]
-        public void TestThatRoadInitializes()
-        {
-            Assert.IsNotNull(road);
-        }
 
-        [Test()]
-        public void TestThatVillageHasCorrectTypeAfterConstruction()
-        {
-            Assert.AreEqual(SettlementType.Village, village.type);
-        }
-
-        [Test()]
-        public void TestThatCityHasCorrectTypeAfterConstruction()
-        {
-            Assert.AreEqual(SettlementType.City, city.type);
-        }
-
-        [Test()]
-        public void TestThatVillageHasCorrectPlayerAfterConstruction()
-        {
-            Assert.AreSame(testPlayer, village.player);
-        }
-
-        [Test()]
+        [Test]
         public void TestThatCityHasCorrectPlayerAfterConstruction()
         {
-            Assert.AreSame(testPlayer, city.player);
+            Assert.AreSame(_testPlayer, _city.player);
         }
 
-        [Test()]
+        [Test]
+        public void TestThatCityHasCorrectTypeAfterConstruction()
+        {
+            Assert.AreEqual(SettlementType.City, _city.type);
+        }
+
+        [Test]
+        public void TestThatCityInitializes()
+        {
+            Assert.IsNotNull(_city);
+        }
+
+        [Test]
+        public void TestThatCityIsPlacedAtCorrectVertexWhenSettingUp()
+        {
+            _testBoard.PlacePieceSetup(_city, 0);
+            var targetVertex = (Vertex) _testBoard.Vertices[0];
+            Assert.AreEqual(_city, targetVertex.settlement);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void TestThatPlacePieceBuildsOverVillage()
+        {
+            _testBoard.PlacePieceSetup(_city, 1);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void TestThatPlacePieceSetupThrowsOnBadDirectionWhenPlacingRoad()
+        {
+            _testBoard.PlacePieceSetup(_road, 4, 3);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void TestThatPlacePieceSetupThrowsOnBadVertexWhenPlacingRoad()
+        {
+            _testBoard.PlacePieceSetup(_road, 99, 3);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void TestThatPlacePieceSetupThrowsOnBadVertexWhenPlacingSettlement()
+        {
+            _testBoard.PlacePieceSetup(_city, 99);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void TestThatPlacePieceSetupThrowsWhenVertexAlreadyBuiltOnVertexWithCity()
+        {
+            _testBoard.PlacePieceSetup(_city, 0);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void TestThatPlacePieceThrowsOnBadVertex()
+        {
+            _testBoard.PlacePiece(_city, 99);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void TestThatPlacePieceThrowsWhenPlacingCityAndHasNoRoadToVertex()
+        {
+            _testBoard.PlacePieceSetup(_city, 21);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void TestThatPlacePieceThrowsWhenPlacingRoadAndAllRoadSpotsAtVertexAreTaken()
+        {
+            _testBoard.PlacePieceSetup(_city, 8);
+            _testBoard.PlacePieceSetup(_road, 8, 0);
+            _testBoard.PlacePieceSetup(_road, 8, 1);
+            _testBoard.PlacePieceSetup(_road, 8, 2);
+            _testBoard.PlacePieceSetup(_road, 8, 0);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void TestThatPlacePieceThrowsWhenPlacingRoadAndHasNoRoadToVertex()
+        {
+            _testBoard.PlacePieceSetup(_road, 21, 0);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void TestThatPlacePieceThrowsWhenPlacingRoadAndVertexHasNoNeighborInSpecifiedDirection()
+        {
+            _testBoard.PlacePieceSetup(_road, 0, 2);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void TestThatPlacePieceThrowsWhenPlacingVillageAndHasNoRoadToVertex()
+        {
+            _testBoard.PlacePieceSetup(_village, 21);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentException))]
+        public void TestThatPlacePieceThrowsWhenPlayerHasNoRoadToVertex()
+        {
+            _testBoard.PlacePieceSetup(_city, 8);
+        }
+
+        [Test]
         public void TestThatRoadHasCorrectPlayerAfterConstruction()
         {
-            Assert.AreSame(testPlayer, road.player);
+            Assert.AreSame(_testPlayer, _road.player);
+        }
+
+        [Test]
+        public void TestThatRoadInitializes()
+        {
+            Assert.IsNotNull(_road);
+        }
+
+        [Test]
+        public void TestThatRoadIsPlacedCorrectlyWhenSettingUp()
+        {
+            _testBoard.PlacePieceSetup(_road, 0, 0);
+            var targetVertex = (Vertex) _testBoard.Vertices[0];
+            Assert.AreEqual(_road, targetVertex.roads[0]);
+            var neighborVertex = (Vertex) targetVertex.neighbors[0];
+            Assert.AreEqual(_road, neighborVertex.roads[2]);
+        }
+
+        [Test]
+        public void TestThatVillageHasCorrectPlayerAfterConstruction()
+        {
+            Assert.AreSame(_testPlayer, _village.player);
+        }
+
+        [Test]
+        public void TestThatVillageHasCorrectTypeAfterConstruction()
+        {
+            Assert.AreEqual(SettlementType.Village, _village.type);
+        }
+
+        [Test]
+        public void TestThatVillageInitializes()
+        {
+            Assert.IsNotNull(_village);
+        }
+
+        [Test]
+        public void TestThatVillageIsPlacedAtCorrectVertexWhenSettingUp()
+        {
+            _testBoard.PlacePieceSetup(_village, 1);
+            var targetVertex = (Vertex) _testBoard.Vertices[1];
+            Assert.AreEqual(_village, targetVertex.settlement);
         }
     }
 }

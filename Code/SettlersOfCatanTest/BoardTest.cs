@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using SettlersOfCatan;
 
 namespace SettlersOfCatanTest
 {
-    [TestFixture()]
+    [TestFixture]
     public class BoardTest
     {
-        private Board testBoard;
+        #region Setup/Teardown
 
         [SetUp]
         public void SetUp()
@@ -18,11 +14,7 @@ namespace SettlersOfCatanTest
             testBoard = new Board();
         }
 
-        [Test()]
-        public void TestThatBoardInitializes()
-        {
-            Assert.IsNotNull(testBoard);
-        }
+        #endregion
 
         [Test()]
         public void TestThatTilesIsFull()
@@ -30,7 +22,7 @@ namespace SettlersOfCatanTest
             Assert.AreEqual(19, testBoard.TerrainTiles.Count);
         }
 
-        [Test()]
+        [Test]
         public void TestThatBoardHasFourFieldTiles()
         {
             int count = 0;
@@ -44,7 +36,7 @@ namespace SettlersOfCatanTest
             Assert.AreEqual(4, count);
         }
 
-        [Test()]
+        [Test]
         public void TestThatBoardHasFourForestTiles()
         {
             int count = 0;
@@ -58,7 +50,7 @@ namespace SettlersOfCatanTest
             Assert.AreEqual(4, count);
         }
 
-        [Test()]
+        [Test]
         public void TestThatBoardHasFourPastureTiles()
         {
             int count = 0;
@@ -72,8 +64,8 @@ namespace SettlersOfCatanTest
             Assert.AreEqual(4, count);
         }
 
-        [Test()]
-        public void TestThatBoardHasThreeMountainTiles()
+        [Test]
+        public void TestThatBoardHasOneDesertTile()
         {
             int count = 0;
             foreach (Tile t in testBoard.TerrainTiles)
@@ -83,10 +75,10 @@ namespace SettlersOfCatanTest
                     count++;
                 }
             }
-            Assert.AreEqual(3, count);
+            Assert.AreEqual(1, count);
         }
 
-        [Test()]
+        [Test]
         public void TestThatBoardHasThreeHillTiles()
         {
              int count = 0;
@@ -100,8 +92,8 @@ namespace SettlersOfCatanTest
             Assert.AreEqual(3, count);
         }
 
-        [Test()]
-        public void TestThatBoardHasOneDesertTile()
+        [Test]
+        public void TestThatBoardHasThreeMountainTiles()
         {
             int count = 0;
             foreach (Tile t in testBoard.TerrainTiles)
@@ -111,7 +103,7 @@ namespace SettlersOfCatanTest
                     count++;
                 }
             }
-            Assert.AreEqual(1, count);
+            Assert.AreEqual(3, count);
         }
         [Test()]
         public void TestThatTilesNeighborsInitializes()

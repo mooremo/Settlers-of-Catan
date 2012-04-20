@@ -1,38 +1,24 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using SettlersOfCatan;
 
 namespace SettlersOfCatanTest
 {
     [TestFixture]
-    class DrawCardTest
+    internal class DrawCardTest
     {
-        private GameController _controller;
+        #region Setup/Teardown
 
         [SetUp]
         public void SetUp()
         {
-            _controller = new GameController();    
+            _controller = new GameController();
         }
 
-        [Test]
-        public void TestDrawBrick()
-        {
-            var card = _controller.DrawResource(TileType.Hills);
-            Assert.AreEqual(CardType.Brick, card);
-        }
+        #endregion
 
-        [Test]
-        public void TestDrawWool()
-        {
-            var card = _controller.DrawResource(TileType.Pasture);
-            Assert.AreEqual(CardType.Wool, card);
-        }
+        private GameController _controller;
 
         [Test]
         public void TestDrawLumber()
@@ -80,7 +66,7 @@ namespace SettlersOfCatanTest
         public void TestDevelopmentDeckInitializesWithCorrectNumberOfKnights()
         {
             int knightCount = 0;
-            foreach (CardType card in _controller.developmentDeck)
+            foreach (CardType card in _controller.DevelopmentDeck)
             {
                 if (card == CardType.Solider)
                 {
@@ -95,7 +81,7 @@ namespace SettlersOfCatanTest
         public void TestDevelopmentDeckInitializesWithCorrectNumberOfMonopoly()
         {
             int monopolyCount = 0;
-            foreach (CardType card in _controller.developmentDeck)
+            foreach (CardType card in _controller.DevelopmentDeck)
             {
                 if (card == CardType.Monopoly)
                 {
@@ -110,7 +96,7 @@ namespace SettlersOfCatanTest
         public void TestDevelopmentDeckInitializesWithCorrectNumberOfRoadBuilding()
         {
             int roadBuildingCount = 0;
-            foreach (CardType card in _controller.developmentDeck)
+            foreach (CardType card in _controller.DevelopmentDeck)
             {
                 if (card == CardType.RoadBuilding)
                 {
@@ -122,25 +108,10 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        public void TestDevelopmentDeckInitializesWithCorrectNumberOfYearsOfPlenty()
-        {
-            int yearsOfPlentyCount = 0;
-            foreach (CardType card in _controller.developmentDeck)
-            {
-                if (card == CardType.YearOfPlenty)
-                {
-                    yearsOfPlentyCount++;
-                }
-            }
-
-            Assert.AreEqual(2, yearsOfPlentyCount);
-        }
-
-        [Test]
         public void TestDevelopmentDeckInitializesWithCorrectNumberOfVictoryPoints()
         {
             int victoryPointCount = 0;
-            foreach (CardType card in _controller.developmentDeck)
+            foreach (CardType card in _controller.DevelopmentDeck)
             {
                 if (card == CardType.VictoryPoint)
                 {
@@ -152,22 +123,93 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        public void TestDrawDevelopmentCard()
+        public void TestDevelopmentDeckInitializesWithCorrectNumberOfYearsOfPlenty()
         {
-            var card = _controller.DrawDevelopment();
-            Assert.AreNotEqual(CardType.Brick, card);
-            Assert.AreNotEqual(CardType.Wool,card);
-            Assert.AreNotEqual(CardType.Lumber,card);
-            Assert.AreNotEqual(CardType.Grain,card);
-            Assert.AreNotEqual(CardType.Ore,card);
+            int yearsOfPlentyCount = 0;
+            foreach (CardType card in _controller.DevelopmentDeck)
+            {
+                if (card == CardType.YearOfPlenty)
+                {
+                    yearsOfPlentyCount++;
+                }
+            }
+
+            Assert.AreEqual(2, yearsOfPlentyCount);
         }
 
         [Test]
-        [ExpectedException(typeof(EmptyDeckException))]
+        public void TestDevelopmentDeckInitializesWithCorrectSize()
+        {
+            Assert.AreEqual(25, _controller.DevelopmentDeck.Count);
+        }
+
+        [Test]
+        public void TestDrawBrick()
+        {
+            CardType card = _controller.DrawResource(TileType.Hills);
+            Assert.AreEqual(CardType.Brick, card);
+        }
+
+        [Test]
+        public void TestDrawDevelopmentCard()
+        {
+            CardType card = _controller.DrawDevelopment();
+            Assert.AreNotEqual(CardType.Brick, card);
+            Assert.AreNotEqual(CardType.Wool, card);
+            Assert.AreNotEqual(CardType.Lumber, card);
+            Assert.AreNotEqual(CardType.Grain, card);
+            Assert.AreNotEqual(CardType.Ore, card);
+        }
+
+        [Test]
+        [ExpectedException(typeof (EmptyDeckException))]
         public void TestDrawEmptyDevelopmentCardDeck()
         {
-            _controller.developmentDeck = new ArrayList();
-            var card = _controller.DrawDevelopment();
+            _controller.DevelopmentDeck = new ArrayList();
+            CardType card = _controller.DrawDevelopment();
+        }
+
+        [Test]
+        [ExpectedException(typeof (EmptyDeckException))]
+        public void TestDrawEmptyResource()
+        {
+            _controller.ResourceDeck[TileType.Hills] = 0;
+            CardType card = _controller.DrawResource(TileType.Hills);
+        }
+
+        [Test]
+        public void TestDrawGrain()
+        {
+            CardType card = _controller.DrawResource(TileType.Fields);
+            Assert.AreEqual(CardType.Grain, card);
+        }
+
+        [Test]
+        [ExpectedException(typeof (KeyNotFoundException))]
+        public void TestDrawInvalidTile()
+        {
+            CardType card = _controller.DrawResource(TileType.Port2);
+        }
+
+        [Test]
+        public void TestDrawLumber()
+        {
+            CardType card = _controller.DrawResource(TileType.Woods);
+            Assert.AreEqual(CardType.Lumber, card);
+        }
+
+        [Test]
+        public void TestDrawOre()
+        {
+            CardType card = _controller.DrawResource(TileType.Mountains);
+            Assert.AreEqual(CardType.Ore, card);
+        }
+
+        [Test]
+        public void TestDrawWool()
+        {
+            CardType card = _controller.DrawResource(TileType.Pasture);
+            Assert.AreEqual(CardType.Wool, card);
         }
     }
 }

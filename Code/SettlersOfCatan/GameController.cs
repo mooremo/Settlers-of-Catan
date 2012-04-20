@@ -13,18 +13,18 @@ namespace SettlersOfCatan
             InitializeDevelopmentDeck();
         }
 
-        public Board board { get; set; }
-        public Dice dice { get; set; }
+        public Board Board { get; set; }
+        public Dice Dice { get; set; }
         public ArrayList Players { get; set; }
-        public Dictionary<TileType, int> resourceDeck { get; set; }
-        public Dictionary<TileType, CardType> resourceLookup { get; set; }
-        public ArrayList developmentDeck { get; set; }
-        public Player longestRoad { get; set; }
-        public Player largestArmy { get; set; }
+        public Dictionary<TileType, int> ResourceDeck { get; set; }
+        public Dictionary<TileType, CardType> ResourceLookup { get; set; }
+        public ArrayList DevelopmentDeck { get; set; }
+        public Player LongestRoad { get; set; }
+        public Player LargestArmy { get; set; }
 
         private void InitializeResourceLookup()
         {
-            resourceLookup = new Dictionary<TileType, CardType>
+            ResourceLookup = new Dictionary<TileType, CardType>
                                  {
                                      {TileType.Fields, CardType.Grain},
                                      {TileType.Woods, CardType.Lumber},
@@ -36,7 +36,7 @@ namespace SettlersOfCatan
 
         private void InitializeResourceDeck()
         {
-            resourceDeck = new Dictionary<TileType, int>
+            ResourceDeck = new Dictionary<TileType, int>
                                {
                                    {TileType.Fields, 19},
                                    {TileType.Woods, 19},
@@ -56,39 +56,39 @@ namespace SettlersOfCatan
                                            {CardType.YearOfPlenty, 2},
                                            {CardType.VictoryPoint, 5}
                                        };
-            
-            developmentDeck = new ArrayList();
+
+            DevelopmentDeck = new ArrayList();
             foreach (CardType card in developmentCount.Keys)
             {
-                for (int i=0; i<developmentCount[card]; i++)
+                for (int i = 0; i < developmentCount[card]; i++)
                 {
-                    developmentDeck.Add(card);
+                    DevelopmentDeck.Add(card);
                 }
             }
 
-            Shuffler.Shuffle(developmentDeck);
+            Shuffler.Shuffle(DevelopmentDeck);
         }
 
         public CardType DrawResource(TileType tile)
         {
-            if (resourceDeck[tile] <= 0)
+            if (ResourceDeck[tile] <= 0)
             {
                 throw new EmptyDeckException();
             }
 
-            resourceDeck[tile] -= 1;
-            return resourceLookup[tile];
+            ResourceDeck[tile] -= 1;
+            return ResourceLookup[tile];
         }
 
         public CardType DrawDevelopment()
         {
-            if (developmentDeck.Count == 0)
+            if (DevelopmentDeck.Count == 0)
             {
                 throw new EmptyDeckException();
             }
 
-            var ret = (CardType)developmentDeck[0];
-            developmentDeck.RemoveAt(0);
+            var ret = (CardType) DevelopmentDeck[0];
+            DevelopmentDeck.RemoveAt(0);
             return ret;
         }
     }
