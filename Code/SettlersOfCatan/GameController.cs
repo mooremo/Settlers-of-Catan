@@ -102,6 +102,18 @@ namespace SettlersOfCatan
             DevelopmentDeck.RemoveAt(0);
             return ret;
         }
+
+        // Iterates through players and calculates score for each
+        public void ScorePlayers()
+        {
+            
+        }
+
+        // Scores a single player
+        public void ScorePlayer(Player player)
+        {
+            
+        }
     }
 
     public class EmptyDeckException : Exception
