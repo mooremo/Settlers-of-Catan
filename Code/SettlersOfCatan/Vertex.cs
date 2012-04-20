@@ -5,25 +5,31 @@ namespace SettlersOfCatan
     public class Vertex
     {
         //Neighbors are indexed in a clockwise fashion
-        public ArrayList neighbors { get; set; }
-        public ArrayList roads { get; set; }
-        public Settlement settlement { get; set; }
+        public ArrayList Neighbors { get; set; }
+        public ArrayList Roads { get; set; }
+        public Settlement Settlement { get; set; }
 
-        public bool playerCanBuildSettlement(Player player)
+        public Vertex()
         {
-            if (settlement != null && settlement.player != player && settlement.type != SettlementType.Village)
+            Neighbors = new ArrayList();
+            Roads = new ArrayList();
+        }
+
+        public bool PlayerCanBuildSettlement(Player player)
+        {
+            if (Settlement != null && Settlement.player != player && Settlement.type != SettlementType.Village)
             {
                 return false;
             }
-            int size = roads.Count;
+            int size = Roads.Count;
             Road checkRoad;
             for (int i = 0; i < size; i++)
             {
-                if (roads[i] == null)
+                if (Roads[i] == null)
                 {
                     continue;
                 }
-                checkRoad = (Road) roads[i];
+                checkRoad = (Road) Roads[i];
                 if (checkRoad.player == player)
                 {
                     return true;
@@ -32,19 +38,19 @@ namespace SettlersOfCatan
             return false;
         }
 
-        public bool playerCanBuildRoad(Player player)
+        public bool PlayerCanBuildRoad(Player player)
         {
-            int size = roads.Count;
+            int size = Roads.Count;
             Road checkRoad;
             int roadCount = 0;
             bool flag = false;
             for (int i = 0; i < size; i++)
             {
-                if (roads[i] == null)
+                if (Roads[i] == null)
                 {
                     continue;
                 }
-                checkRoad = (Road) roads[i];
+                checkRoad = (Road) Roads[i];
                 if (checkRoad.player == player)
                 {
                     flag = true;
