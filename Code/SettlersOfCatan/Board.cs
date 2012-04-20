@@ -13,7 +13,9 @@ namespace SettlersOfCatan
         public ArrayList TerrainTiles { get; set; }
         public ArrayList PortTiles { get; set; }
         public ArrayList Vertices { get; set; }
-        public ArrayList AllTerrainTiles = new ArrayList(new int[] {6, 6, 6, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 11});
+        #region TerrainTiles
+        public ArrayList AllTerrainTiles = new ArrayList(new int[] { (int)TileType.Fields, (int)TileType.Pasture, (int)TileType.Hills, (int)TileType.Mountains, (int)TileType.Woods, (int)TileType.Fields, (int)TileType.Pasture, (int)TileType.Hills, (int)TileType.Mountains, (int)TileType.Woods, (int)TileType.Fields, (int)TileType.Pasture, (int)TileType.Hills, (int)TileType.Mountains, (int)TileType.Woods, (int)TileType.Fields, (int)TileType.Pasture, (int)TileType.Woods, (int)TileType.Desert});
+        #endregion
         public ArrayList AllPortTiles = new ArrayList(new int[] {0, 1, 2, 3, 4, 5, 5, 5, 5});
         //The numbers for the tiles in spiral order
         private ArrayList _tileNumberOrder = new ArrayList(new int[] {5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11});
@@ -52,9 +54,6 @@ namespace SettlersOfCatan
             GenerateBoard();
         }
 
-        public ArrayList Tiles { get; set; }
-        public ArrayList Vertices { get; set; }
-
         //All tiles know their neighbors and all vertices know neighbors
 
         public void GenerateBoard()
@@ -66,11 +65,11 @@ namespace SettlersOfCatan
             int tempType;
             int tempNum;
             Tile tempTile;
-            while(tileCount < 19)
+            while (tileCount < 19)
             {
-                tempType = (int)AllTerrainTiles[tileCount];
+                tempType = (int) AllTerrainTiles[tileCount];
                 tempNum = (int) _tileNumberOrder[numCount];
-                if(tempType != (int)TileType.Desert)
+                if (tempType != (int) TileType.Desert)
                 {
                     tempTile = new Tile(tempType, tempNum);
                     numCount++;
@@ -79,7 +78,7 @@ namespace SettlersOfCatan
                 {
                     tempTile = new Tile(tempType);
                 }
-                TerrainTiles[(int)(_tileOrder[tileCount])] = tempTile;
+                TerrainTiles[(int) (_tileOrder[tileCount])] = tempTile;
                 tileCount++;
             }
 
@@ -99,27 +98,27 @@ namespace SettlersOfCatan
             int tempNeighbor;
             tileCount = 0;
             ArrayList tempNeighbors;
-            while(tileCount < 19)
+            while (tileCount < 19)
             {
                 tempNeighbors = _neighborDictionary[tileCount];
-                while(neighborCount < 6)
+                while (neighborCount < 6)
                 {
-                    tempNeighbor = (int)tempNeighbors[neighborCount];
-                    if(tempNeighbor < 0)
+                    tempNeighbor = (int) tempNeighbors[neighborCount];
+                    if (tempNeighbor < 0)
                     {
                         tempNeighbors[neighborCount] = PortTiles[Math.Abs(tempNeighbor) - 1];
                     }
-                    else if(tempNeighbor > 0)
+                    else if (tempNeighbor > 0)
                     {
                         tempNeighbors[neighborCount] = TerrainTiles[tempNeighbor - 1];
                     }
                     else
                     {
-                        tempNeighbors[neighborCount] = new Tile((int)TileType.Sea);
+                        tempNeighbors[neighborCount] = new Tile((int) TileType.Sea);
                     }
                     neighborCount++;
                 }
-                tempTile = (Tile)TerrainTiles[tileCount];
+                tempTile = (Tile) TerrainTiles[tileCount];
                 tempTile.Neighbors = tempNeighbors;
                 TerrainTiles[tileCount] = tempTile;
                 tileCount++;
@@ -141,7 +140,7 @@ namespace SettlersOfCatan
             for (int i = 0; i < 19; i++)
             {
                 j = 0;
-                while((int)category[j] < i)
+                while ((int) category[j] < i)
                 {
                     j++;
                 }
@@ -149,14 +148,16 @@ namespace SettlersOfCatan
                 tempTile = (Tile) TerrainTiles[i];
                 tempList = new ArrayList();
                 tempList.Insert(0, Vertices[(2*i) + 1]);
-                tempList.Insert(1, Vertices[(2*1) + (int)offset1[j] + 1]);
-                tempList.Insert(2, Vertices[(2 * 1) + (int)offset2[j] + 1]);
-                tempList.Insert(3, Vertices[(2 * 1) + (int)offset2[j]]);
-                tempList.Insert(4, Vertices[(2 * 1) + (int)offset1[j]]);
-                tempList.Insert(5, Vertices[(2 * i)]);
+                tempList.Insert(1, Vertices[(2*1) + (int) offset1[j] + 1]);
+                tempList.Insert(2, Vertices[(2*1) + (int) offset2[j] + 1]);
+                tempList.Insert(3, Vertices[(2*1) + (int) offset2[j]]);
+                tempList.Insert(4, Vertices[(2*1) + (int) offset1[j]]);
+                tempList.Insert(5, Vertices[(2*i)]);
                 tempTile.Vertices = tempList;
                 TerrainTiles[i] = tempTile;
             }
+        }
+
         public void PlacePieceSetup(Settlement piece, int location)
         {
             Vertex targetVertex;

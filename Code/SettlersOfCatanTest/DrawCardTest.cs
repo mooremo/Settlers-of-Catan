@@ -21,48 +21,6 @@ namespace SettlersOfCatanTest
         private GameController _controller;
 
         [Test]
-        public void TestDrawLumber()
-        {
-            var card = _controller.DrawResource(TileType.Woods);
-            Assert.AreEqual(CardType.Lumber, card);
-        }
-
-        [Test]
-        public void TestDrawGrain()
-        {
-            var card = _controller.DrawResource(TileType.Fields);
-            Assert.AreEqual(CardType.Grain, card);
-        }
-
-        [Test]
-        public void TestDrawOre()
-        {
-            var card = _controller.DrawResource(TileType.Mountains);
-            Assert.AreEqual(CardType.Ore, card);
-        }
-
-        [Test]
-        [ExpectedException(typeof(KeyNotFoundException))]
-        public void TestDrawInvalidTile()
-        {
-            var card = _controller.DrawResource(TileType.Port3);
-        }
-
-        [Test]
-        [ExpectedException(typeof(EmptyDeckException))]
-        public void TestDrawEmptyResource()
-        {
-            _controller.resourceDeck[TileType.Hills] = 0;
-            var card = _controller.DrawResource(TileType.Hills);
-        }
-
-        [Test]
-        public void TestDevelopmentDeckInitializesWithCorrectSize()
-        {
-            Assert.AreEqual(25, _controller.developmentDeck.Count);
-        }
-
-        [Test]
         public void TestDevelopmentDeckInitializesWithCorrectNumberOfKnights()
         {
             int knightCount = 0;
@@ -188,7 +146,7 @@ namespace SettlersOfCatanTest
         [ExpectedException(typeof (KeyNotFoundException))]
         public void TestDrawInvalidTile()
         {
-            CardType card = _controller.DrawResource(TileType.Port2);
+            CardType card = _controller.DrawResource(TileType.Port3);
         }
 
         [Test]

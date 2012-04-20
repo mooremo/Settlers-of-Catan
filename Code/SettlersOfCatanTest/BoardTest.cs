@@ -6,12 +6,15 @@ namespace SettlersOfCatanTest
     [TestFixture]
     public class BoardTest
     {
+
+        public Board TestBoard;
+
         #region Setup/Teardown
 
         [SetUp]
         public void SetUp()
         {
-            testBoard = new Board();
+            TestBoard = new Board();
         }
 
         #endregion
@@ -19,14 +22,14 @@ namespace SettlersOfCatanTest
         [Test()]
         public void TestThatTilesIsFull()
         {
-            Assert.AreEqual(19, testBoard.TerrainTiles.Count);
+            Assert.AreEqual(19, TestBoard.TerrainTiles.Count);
         }
 
         [Test]
         public void TestThatBoardHasFourFieldTiles()
         {
             int count = 0;
-            foreach (Tile t in testBoard.TerrainTiles)
+            foreach (Tile t in TestBoard.TerrainTiles)
             {
                 if (t.Type == (int)TileType.Fields)
                 {
@@ -40,7 +43,7 @@ namespace SettlersOfCatanTest
         public void TestThatBoardHasFourForestTiles()
         {
             int count = 0;
-            foreach (Tile t in testBoard.TerrainTiles)
+            foreach (Tile t in TestBoard.TerrainTiles)
             {
                 if (t.Type == (int)TileType.Woods)
                 {
@@ -54,7 +57,7 @@ namespace SettlersOfCatanTest
         public void TestThatBoardHasFourPastureTiles()
         {
             int count = 0;
-            foreach (Tile t in testBoard.TerrainTiles)
+            foreach (Tile t in TestBoard.TerrainTiles)
             {
                 if (t.Type == (int)TileType.Pasture)
                 {
@@ -68,9 +71,9 @@ namespace SettlersOfCatanTest
         public void TestThatBoardHasOneDesertTile()
         {
             int count = 0;
-            foreach (Tile t in testBoard.TerrainTiles)
+            foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int)TileType.Mountains)
+                if (t.Type == (int)TileType.Desert)
                 {
                     count++;
                 }
@@ -82,7 +85,7 @@ namespace SettlersOfCatanTest
         public void TestThatBoardHasThreeHillTiles()
         {
              int count = 0;
-            foreach (Tile t in testBoard.TerrainTiles)
+            foreach (Tile t in TestBoard.TerrainTiles)
             {
                 if (t.Type == (int)TileType.Hills)
                 {
@@ -96,9 +99,9 @@ namespace SettlersOfCatanTest
         public void TestThatBoardHasThreeMountainTiles()
         {
             int count = 0;
-            foreach (Tile t in testBoard.TerrainTiles)
+            foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int)TileType.Desert)
+                if (t.Type == (int)TileType.Mountains)
                 {
                     count++;
                 }
@@ -109,7 +112,7 @@ namespace SettlersOfCatanTest
         public void TestThatTilesNeighborsInitializes()
         {
             int flag = 0;
-            foreach (Tile t in testBoard.TerrainTiles)
+            foreach (Tile t in TestBoard.TerrainTiles)
             {
                 if (t.Neighbors.Count == 0)
                 {
@@ -123,7 +126,7 @@ namespace SettlersOfCatanTest
         public void TestThatTilesHaveSixNeighbors()
         {
             int flag = 0;
-            foreach (Tile t in testBoard.TerrainTiles)
+            foreach (Tile t in TestBoard.TerrainTiles)
             {
                 if(t.Neighbors.Count != 6)
                 {
@@ -136,14 +139,13 @@ namespace SettlersOfCatanTest
         [Test()]
         public void TestThatVerticesInitializes()
         {
-            Assert.NotNull(testBoard.Vertices);
+            Assert.NotNull(TestBoard.Vertices);
         }
 
         [Test()]
         public void TestThatTilesVerticesInitialize()
         {
-            int flag = 0;
-            foreach (Tile t in testBoard.TerrainTiles)
+            foreach (Tile t in TestBoard.TerrainTiles)
             {
                 Assert.AreEqual(6, t.Vertices.Count);
             }
