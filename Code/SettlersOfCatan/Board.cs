@@ -589,7 +589,7 @@ namespace SettlersOfCatan
         {
             Vertex targetVertex;
             // Check that vertex exists
-            if (location < Vertices.Capacity && location >= 0)
+            if (location < Vertices.Count && location >= 0)
             {
                 // Get the vertex at the location specifed.
                 targetVertex = (Vertex) Vertices[location];
@@ -599,7 +599,7 @@ namespace SettlersOfCatan
                 throw new ArgumentException("This vertex doesn't exist.", "Bad Vertex");
             }
             //place the settlement at the vertex
-            targetVertex.settlement = piece;
+            targetVertex.Settlement = piece;
         }
 
         public void PlacePieceSetup(Road piece, int location, int direction)
@@ -611,7 +611,7 @@ namespace SettlersOfCatan
         {
             Vertex targetVertex;
             // Check that vertex exists
-            if (location < Vertices.Capacity && location >= 0)
+            if (location < Vertices.Count && location >= 0)
             {
                 // Get the vertex at the location specifed.
                 targetVertex = (Vertex) Vertices[location];
@@ -620,10 +620,10 @@ namespace SettlersOfCatan
             {
                 throw new ArgumentException("This vertex doesn't exist.", "Bad Vertex");
             }
-            if (targetVertex.playerCanBuildSettlement(piece.player))
+            if (targetVertex.PlayerCanBuildSettlement(piece.player))
             {
                 //place the settlement at the vertex
-                targetVertex.settlement = piece;
+                targetVertex.Settlement = piece;
             }
             else
             {
@@ -636,7 +636,7 @@ namespace SettlersOfCatan
         {
             Vertex targetVertex;
             // Check that vertex exists
-            if (location < Vertices.Capacity && location >= 0)
+            if (location < Vertices.Count && location >= 0)
             {
                 // Get the vertex at the location specifed.
                 targetVertex = (Vertex) Vertices[location];
@@ -651,12 +651,12 @@ namespace SettlersOfCatan
                 throw new ArgumentException("This direction is invalid.", "Bad Direction");
             }
             // If this is a valid place to lay a road (has a neighboring node in this direction).
-            if (targetVertex.playerCanBuildSettlement(piece.player) && targetVertex.neighbors[direction] != null)
+            if (targetVertex.PlayerCanBuildSettlement(piece.player) && targetVertex.Neighbors[direction] != null)
             {
                 //Place the road at the vertex in the specified direction
-                targetVertex.roads[direction] = piece;
+                targetVertex.Roads[direction] = piece;
                 //Get the neighboring vertex
-                var temp2 = (Vertex) targetVertex.neighbors[direction];
+                var temp2 = (Vertex) targetVertex.Neighbors[direction];
                 //get the index of the neighboring vertex
                 int index = Vertices.IndexOf(temp2);
                 // use the difference between the vertices to determine which direction the road should go from the other vertex.
@@ -664,7 +664,7 @@ namespace SettlersOfCatan
                 if (difference > 1)
                 {
                     // The neighbor node is in the preceding row
-                    temp2.roads[1] = piece;
+                    temp2.Roads[1] = piece;
                 }
                 else
                 {
@@ -672,12 +672,12 @@ namespace SettlersOfCatan
                     if (location%2 == 0)
                     {
                         //and to the right of its neighbor node
-                        temp2.roads[2] = piece;
+                        temp2.Roads[2] = piece;
                     }
                     else
                     {
                         //and to the left of its neighbor node
-                        temp2.roads[0] = piece;
+                        temp2.Roads[0] = piece;
                     }
                 }
             }

@@ -51,14 +51,14 @@ namespace SettlersOfCatanTest
         {
             _testBoard.PlacePieceSetup(_city, 0);
             var targetVertex = (Vertex) _testBoard.Vertices[0];
-            Assert.AreEqual(_city, targetVertex.settlement);
+            Assert.AreEqual(_city, targetVertex.Settlement);
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof (Exception))]
         public void TestThatPlacePieceBuildsOverVillage()
         {
-            _testBoard.PlacePieceSetup(_city, 1);
+            _testBoard.PlacePiece(_city, 1);
         }
 
         [Test]
@@ -83,7 +83,7 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof (Exception))]
         public void TestThatPlacePieceSetupThrowsWhenVertexAlreadyBuiltOnVertexWithCity()
         {
             _testBoard.PlacePieceSetup(_city, 0);
@@ -97,7 +97,7 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof (Exception))]
         public void TestThatPlacePieceThrowsWhenPlacingCityAndHasNoRoadToVertex()
         {
             _testBoard.PlacePieceSetup(_city, 21);
@@ -129,17 +129,10 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentException))]
+        [ExpectedException(typeof (Exception))]
         public void TestThatPlacePieceThrowsWhenPlacingVillageAndHasNoRoadToVertex()
         {
             _testBoard.PlacePieceSetup(_village, 21);
-        }
-
-        [Test]
-        [ExpectedException(typeof (ArgumentException))]
-        public void TestThatPlacePieceThrowsWhenPlayerHasNoRoadToVertex()
-        {
-            _testBoard.PlacePieceSetup(_city, 8);
         }
 
         [Test]
@@ -159,9 +152,9 @@ namespace SettlersOfCatanTest
         {
             _testBoard.PlacePieceSetup(_road, 0, 0);
             var targetVertex = (Vertex) _testBoard.Vertices[0];
-            Assert.AreEqual(_road, targetVertex.roads[0]);
-            var neighborVertex = (Vertex) targetVertex.neighbors[0];
-            Assert.AreEqual(_road, neighborVertex.roads[2]);
+            Assert.AreEqual(_road, targetVertex.Roads[0]);
+            var neighborVertex = (Vertex) targetVertex.Neighbors[0];
+            Assert.AreEqual(_road, neighborVertex.Roads[2]);
         }
 
         [Test]
@@ -187,7 +180,7 @@ namespace SettlersOfCatanTest
         {
             _testBoard.PlacePieceSetup(_village, 1);
             var targetVertex = (Vertex) _testBoard.Vertices[1];
-            Assert.AreEqual(_village, targetVertex.settlement);
+            Assert.AreEqual(_village, targetVertex.Settlement);
         }
     }
 }
