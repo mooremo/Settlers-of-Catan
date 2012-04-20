@@ -599,7 +599,15 @@ namespace SettlersOfCatan
                 throw new ArgumentException("This vertex doesn't exist.", "Bad Vertex");
             }
             //place the settlement at the vertex
-            targetVertex.Settlement = piece;
+            if(targetVertex.Settlement == null)
+            {
+                targetVertex.Settlement = piece;
+            }
+            else
+            {
+                throw new Exception("Settlement Already Exists Here");
+            }
+
         }
 
         public void PlacePieceSetup(Road piece, int location, int direction)
@@ -651,7 +659,7 @@ namespace SettlersOfCatan
                 throw new ArgumentException("This direction is invalid.", "Bad Direction");
             }
             // If this is a valid place to lay a road (has a neighboring node in this direction).
-            if (targetVertex.PlayerCanBuildSettlement(piece.player) && targetVertex.Neighbors[direction] != null)
+            if (targetVertex.PlayerCanBuildRoad(piece.player) && targetVertex.Neighbors[direction] != null)
             {
                 //Place the road at the vertex in the specified direction
                 targetVertex.Roads[direction] = piece;

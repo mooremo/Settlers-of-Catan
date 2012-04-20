@@ -84,8 +84,9 @@ namespace SettlersOfCatanTest
 
         [Test]
         [ExpectedException(typeof (Exception))]
-        public void TestThatPlacePieceSetupThrowsWhenVertexAlreadyBuiltOnVertexWithCity()
+        public void TestThatPlacePieceSetupThrowsWhenCityBuildOnVertexWithCityAlready()
         {
+            _testBoard.PlacePieceSetup(_city, 0);
             _testBoard.PlacePieceSetup(_city, 0);
         }
 
