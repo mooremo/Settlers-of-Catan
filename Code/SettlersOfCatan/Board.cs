@@ -580,7 +580,7 @@ namespace SettlersOfCatan
             for (int i = 0; i < 54; i++)
             {
                 tempVertex = (Vertex)Vertices[i];
-                tempVertex.neighbors = _verticeDictionary[i];
+                tempVertex.Neighbors = _verticeDictionary[i];
                 Vertices[i] = tempVertex;
             }
         }

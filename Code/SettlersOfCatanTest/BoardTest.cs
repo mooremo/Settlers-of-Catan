@@ -157,7 +157,7 @@ namespace SettlersOfCatanTest
             int flag = 0;
             foreach (Vertex v in TestBoard.Vertices)
             {
-                if (v.neighbors.Count == 0)
+                if (v.Neighbors.Count == 0)
                 {
                     flag++;
                 }
@@ -171,7 +171,7 @@ namespace SettlersOfCatanTest
             int flag = 0;
             foreach (Vertex v in TestBoard.Vertices)
             {
-                if (v.neighbors.Count != 3)
+                if (v.Neighbors.Count != 3)
                 {
                     flag++;
                 }
