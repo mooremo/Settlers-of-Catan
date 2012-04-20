@@ -1,28 +1,157 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+
 
 namespace SettlersOfCatan
 {
     public class Board
     {
-        public ArrayList tiles { get; set; }
-        public ArrayList vertices { get; set; }
+        public ArrayList TerrainTiles { get; set; }
+        public ArrayList PortTiles { get; set; }
+        public ArrayList Vertices { get; set; }
+        public ArrayList AllTerrainTiles = new ArrayList(new int[] {6, 6, 6, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 11});
+        public ArrayList AllPortTiles = new ArrayList(new int[] {0, 1, 2, 3, 4, 5, 5, 5, 5});
+        //The numbers for the tiles in spiral order
+        private ArrayList _tileNumberOrder = new ArrayList(new int[] {5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11});
+        //The index of TerrainTiles to insert the tile
+        private ArrayList _tileOrder = new ArrayList(new int[] {18, 17, 15, 10, 5, 2, 0, 1, 3, 8, 13, 16, 14, 12, 7, 4, 6, 11, 9});
+        private Dictionary<int, ArrayList> _neighborDictionary = new Dictionary<int, ArrayList>
+                                                                     {
+                                                                        {0, new ArrayList(new int[]{-1, 0, 3, 5, 2, 0})},
+                                                                        {1, new ArrayList(new int[]{0, 1, 5, 7, 4, -9})},
+                                                                        {2, new ArrayList(new int[]{0, -2, 6, 8, 5, 1})},
+                                                                        {3, new ArrayList(new int[]{-9, 2, 7, 9, -8, 0})},
+                                                                        {4, new ArrayList(new int[]{1, 3, 8, 10, 7, 2})},
+                                                                        {5, new ArrayList(new int[]{-2, 0, -3, 11, 8, 3})},
+                                                                        {6, new ArrayList(new int[]{2, 5, 10, 12, 9, 4})},
+                                                                        {7, new ArrayList(new int[]{3, 6, 11, 13, 10, 5})},
+                                                                        {8, new ArrayList(new int[]{4, 7, 12, 14, 0, -8})},
+                                                                        {9, new ArrayList(new int[]{5, 8, 13, 15, 12, 7})},
+                                                                        {10, new ArrayList(new int[]{6, -3, 0, 16, 13, 8})},
+                                                                        {11, new ArrayList(new int[]{7, 10, 15, 17, 14, 9})},
+                                                                        {12, new ArrayList(new int[]{8, 11, 16, 18, 15, 10})},
+                                                                        {13, new ArrayList(new int[]{9, 12, 17, 0, -7, 0})},
+                                                                        {14, new ArrayList(new int[]{10, 13, 18, 19, 17, 12})},
+                                                                        {15, new ArrayList(new int[]{11, 0, -4, 0, 18, 13})},
+                                                                        {16, new ArrayList(new int[]{12, 15, 19, -6, 0, 14})},
+                                                                        {17, new ArrayList(new int[]{13, 16, 0, -5, 19, 15})},
+                                                                        {18, new ArrayList(new int[]{15, 18, -5, 0, -6, 17})}
+                                                                     };
 
         //All tiles know their neighbors and all vertices know neighbors
         public Board()
         {
-            tiles = new ArrayList(21);
-            vertices = new ArrayList();
+            TerrainTiles = new ArrayList(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+            PortTiles = new ArrayList(new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0,});
+            Vertices = new ArrayList();
 
             this.GenerateBoard();
         }
 
         public void GenerateBoard()
         {
+            //Generate the terrain tiles
+            Shuffler.Shuffle(AllTerrainTiles);
+            int tileCount = 0;
+            int numCount = 0;
+            int tempType;
+            int tempNum;
+            Tile tempTile;
+            while(tileCount < 19)
+            {
+                tempType = (int)AllTerrainTiles[tileCount];
+                tempNum = (int) _tileNumberOrder[numCount];
+                if(tempType != (int)TileType.Desert)
+                {
+                    tempTile = new Tile(tempType, tempNum);
+                    numCount++;
+                }
+                else
+                {
+                    tempTile = new Tile(tempType);
+                }
+                TerrainTiles[(int)(_tileOrder[tileCount])] = tempTile;
+                tileCount++;
+            }
 
+            //Generate the port tiles
+            Shuffler.Shuffle(AllPortTiles);
+            tileCount = 0;
+            while (tileCount < 9)
+            {
+                tempType = (int) AllPortTiles[tileCount];
+                tempTile = new Tile(tempType);
+                PortTiles[tileCount] = tempTile;
+                tileCount++;
+            }
+
+            //Generate the tile's neighbors
+            int neighborCount = 0;
+            int tempNeighbor;
+            tileCount = 0;
+            ArrayList tempNeighbors;
+            while(tileCount < 19)
+            {
+                tempNeighbors = _neighborDictionary[tileCount];
+                while(neighborCount < 6)
+                {
+                    tempNeighbor = (int)tempNeighbors[neighborCount];
+                    if(tempNeighbor < 0)
+                    {
+                        tempNeighbors[neighborCount] = PortTiles[Math.Abs(tempNeighbor) - 1];
+                    }
+                    else if(tempNeighbor > 0)
+                    {
+                        tempNeighbors[neighborCount] = TerrainTiles[tempNeighbor - 1];
+                    }
+                    else
+                    {
+                        tempNeighbors[neighborCount] = new Tile((int)TileType.Sea);
+                    }
+                    neighborCount++;
+                }
+                tempTile = (Tile)TerrainTiles[tileCount];
+                tempTile.Neighbors = tempNeighbors;
+                TerrainTiles[tileCount] = tempTile;
+                tileCount++;
+            }
+
+            //Generate the vertices
+            for (int i = 0; i < 54; i++)
+            {
+                Vertices.Insert(i, new Vertex());
+            }
+
+            //Fill tile's vertices
+            ArrayList category = new ArrayList(new int[] {0, 2, 15, 17, 18});
+            ArrayList offset1 = new ArrayList(new int[] {3, 5, 6, 6, 5});
+            ArrayList offset2 = new ArrayList(new int[] {8, 11, 12, 11, 8});
+
+            ArrayList tempList;
+            int j;
+            for (int i = 0; i < 19; i++)
+            {
+                j = 0;
+                while((int)category[j] < i)
+                {
+                    j++;
+                }
+
+                tempTile = (Tile) TerrainTiles[i];
+                tempList = new ArrayList();
+                tempList.Insert(0, Vertices[(2*i) + 1]);
+                tempList.Insert(1, Vertices[(2*1) + (int)offset1[j] + 1]);
+                tempList.Insert(2, Vertices[(2 * 1) + (int)offset2[j] + 1]);
+                tempList.Insert(3, Vertices[(2 * 1) + (int)offset2[j]]);
+                tempList.Insert(4, Vertices[(2 * 1) + (int)offset1[j]]);
+                tempList.Insert(5, Vertices[(2 * i)]);
+                tempTile.Vertices = tempList;
+                TerrainTiles[i] = tempTile;
+            }
         }
     }
 }

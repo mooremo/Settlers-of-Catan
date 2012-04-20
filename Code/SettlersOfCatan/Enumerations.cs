@@ -8,8 +8,11 @@
 
     public enum TileType
     {
-        Sea,
-        Port2,
+        Port2Wool,
+        Port2Brick,
+        Port2Lumber,
+        Port2Grain,
+        Port2Ore,
         Port3,
         Hills,
         Mountains,
@@ -17,6 +20,7 @@
         Woods,
         Pasture,
         Desert,
+        Sea
     }
 
     public enum CardType
