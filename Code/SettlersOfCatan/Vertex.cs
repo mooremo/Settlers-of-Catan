@@ -5,15 +5,15 @@ namespace SettlersOfCatan
     public class Vertex
     {
         //Neighbors are indexed in a clockwise fashion
-        public ArrayList Neighbors { get; set; }
-        public ArrayList Roads { get; set; }
-        public Settlement Settlement { get; set; }
-
         public Vertex()
         {
             Neighbors = new ArrayList();
-            Roads = new ArrayList(new Road[] {null,null,null});
+            Roads = new ArrayList(new Road[] {null, null, null});
         }
+
+        public ArrayList Neighbors { get; set; }
+        public ArrayList Roads { get; set; }
+        public Settlement Settlement { get; set; }
 
         public bool PlayerCanBuildSettlement(Player player)
         {
@@ -56,7 +56,7 @@ namespace SettlersOfCatan
                     roadCount++;
                 }
             }
-            return ((roadCount < 3) && (flag || (this.Settlement != null && this.Settlement.player == player)));
+            return ((roadCount < 3) && (flag || (Settlement != null && Settlement.player == player)));
         }
     }
 }

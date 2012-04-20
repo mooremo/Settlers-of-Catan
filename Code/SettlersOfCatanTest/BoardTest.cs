@@ -146,6 +146,20 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
+        public void TestThatVerticesHaveThreeNeighbors()
+        {
+            int flag = 0;
+            foreach (Vertex v in TestBoard.Vertices)
+            {
+                if (v.Neighbors.Count != 3)
+                {
+                    flag++;
+                }
+            }
+            Assert.AreEqual(0, flag);
+        }
+
+        [Test]
         public void TestThatVerticesInitializes()
         {
             Assert.NotNull(TestBoard.Vertices);
@@ -158,20 +172,6 @@ namespace SettlersOfCatanTest
             foreach (Vertex v in TestBoard.Vertices)
             {
                 if (v.Neighbors.Count == 0)
-                {
-                    flag++;
-                }
-            }
-            Assert.AreEqual(0, flag);
-        }
-
-        [Test]
-        public void TestThatVerticesHaveThreeNeighbors()
-        {
-            int flag = 0;
-            foreach (Vertex v in TestBoard.Vertices)
-            {
-                if (v.Neighbors.Count != 3)
                 {
                     flag++;
                 }

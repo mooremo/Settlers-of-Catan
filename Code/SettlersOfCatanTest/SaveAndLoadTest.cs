@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using SettlersOfCatan;
 
 namespace SettlersOfCatanTest
 {
     [TestFixture]
-    class SaveAndLoadTest
+    internal class SaveAndLoadTest
     {
+        #region Setup/Teardown
+
         [SetUp]
         public void SetUp()
         {
@@ -17,18 +15,20 @@ namespace SettlersOfCatanTest
             _testGameController2 = new GameController();
         }
 
-        [Test]
-        public void TestThatGameControllerInitializes()
-        {
-            Assert.IsNotNull(_testGameController);
-        }
+        #endregion
 
         [Test]
         public void TestSaveAndLoad()
         {
             _testGameController.Save();
             _testGameController2.Load();
-            Assert.AreEqual(_testGameController,_testGameController2);
+            Assert.AreEqual(_testGameController, _testGameController2);
+        }
+
+        [Test]
+        public void TestThatGameControllerInitializes()
+        {
+            Assert.IsNotNull(_testGameController);
         }
     }
 }

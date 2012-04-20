@@ -6,6 +6,8 @@ namespace SettlersOfCatan
 {
     public class GameController
     {
+        public Player CurrentPlayer;
+
         public GameController()
         {
             InitializeResourceLookup();
@@ -16,7 +18,7 @@ namespace SettlersOfCatan
         public GameController(ArrayList players)
         {
             Players = players;
-            CurrentPlayer = (Player)Players[0];
+            CurrentPlayer = (Player) Players[0];
             InitializeResourceLookup();
             InitializeResourceDeck();
             InitializeDevelopmentDeck();
@@ -30,7 +32,6 @@ namespace SettlersOfCatan
         public ArrayList DevelopmentDeck { get; set; }
         public Player LongestRoad { get; set; }
         public Player LargestArmy { get; set; }
-        public Player CurrentPlayer;
 
         private void InitializeResourceLookup()
         {

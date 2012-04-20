@@ -49,6 +49,7 @@
     <Compile Include="DrawCardTest.cs" />
     <Compile Include="PiecePlacementTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveAndLoadTest.cs" />
     <Compile Include="ScoringTest.cs" />
     <Compile Include="TurnTest.cs" />
   </ItemGroup>
