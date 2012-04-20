@@ -575,12 +575,26 @@ namespace SettlersOfCatan
                 TerrainTiles[i] = tempTile;
             }
 
-            //File Vertice's neighbors
+            //Fill Vertice's neighbors
             Vertex tempVertex;
+            tempNeighbors = new ArrayList();
             for (int i = 0; i < 54; i++)
             {
                 tempVertex = (Vertex)Vertices[i];
-                tempVertex.Neighbors = _verticeDictionary[i];
+                tempNeighbors = _verticeDictionary[i];
+                for (int k = 0; k < 3; k++)
+                {
+                    tempNum = (int) tempNeighbors[k];
+                    if(tempNum > -1)
+                    {
+                        tempNeighbors[k] = Vertices[tempNum];
+                    }
+                    else
+                    {
+                        tempNeighbors[k] = null;
+                    }
+                }
+                tempVertex.Neighbors = tempNeighbors;
                 Vertices[i] = tempVertex;
             }
         }
