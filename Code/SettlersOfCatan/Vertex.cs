@@ -12,7 +12,7 @@ namespace SettlersOfCatan
         public Vertex()
         {
             Neighbors = new ArrayList();
-            Roads = new ArrayList();
+            Roads = new ArrayList(new Road[] {null,null,null});
         }
 
         public bool PlayerCanBuildSettlement(Player player)
@@ -46,18 +46,17 @@ namespace SettlersOfCatan
             bool flag = false;
             for (int i = 0; i < size; i++)
             {
-                if (Roads[i] == null)
+                if (Roads[i] != null)
                 {
-                    continue;
-                }
-                checkRoad = (Road) Roads[i];
-                if (checkRoad.player == player)
-                {
-                    flag = true;
+                    checkRoad = (Road) Roads[i];
+                    if (checkRoad.player == player)
+                    {
+                        flag = true;
+                    }
                     roadCount++;
                 }
             }
-            return ((roadCount < 3) && flag);
+            return ((roadCount < 3) && (flag || (this.Settlement != null && this.Settlement.player == player)));
         }
     }
 }

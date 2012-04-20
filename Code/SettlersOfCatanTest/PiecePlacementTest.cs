@@ -101,7 +101,7 @@ namespace SettlersOfCatanTest
         [ExpectedException(typeof (Exception))]
         public void TestThatPlacePieceThrowsWhenPlacingCityAndHasNoRoadToVertex()
         {
-            _testBoard.PlacePieceSetup(_city, 21);
+            _testBoard.PlacePiece(_city, 21);
         }
 
         [Test]
@@ -133,7 +133,7 @@ namespace SettlersOfCatanTest
         [ExpectedException(typeof (Exception))]
         public void TestThatPlacePieceThrowsWhenPlacingVillageAndHasNoRoadToVertex()
         {
-            _testBoard.PlacePieceSetup(_village, 21);
+            _testBoard.PlacePiece(_village, 21);
         }
 
         [Test]
@@ -151,6 +151,7 @@ namespace SettlersOfCatanTest
         [Test]
         public void TestThatRoadIsPlacedCorrectlyWhenSettingUp()
         {
+            _testBoard.PlacePieceSetup(_city, 0);
             _testBoard.PlacePieceSetup(_road, 0, 0);
             var targetVertex = (Vertex) _testBoard.Vertices[0];
             Assert.AreEqual(_road, targetVertex.Roads[0]);
