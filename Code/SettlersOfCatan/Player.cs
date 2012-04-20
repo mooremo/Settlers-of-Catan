@@ -5,13 +5,28 @@ namespace SettlersOfCatan
 {
     public class Player
     {
-        public String name { get; set; }
-        public int color { get; set; }
-        public ArrayList resourceHand { get; set; }
-        public ArrayList developmentHand { get; set; }
-        public int roadsRemaining { get; set; }
-        public int villagesRemaining { get; set; }
-        public int citiesRemaining { get; set; }
-        public int score { get; set; }
+        public String Name { get; set; }
+        public int Color { get; set; }
+        public ArrayList ResourceHand { get; set; }
+        public ArrayList DevelopmentHand { get; set; }
+        public int RoadsRemaining { get; set; }
+        public int VillagesRemaining { get; set; }
+        public int CitiesRemaining { get; set; }
+        public int Score { get; set; }
+
+        public Player()
+        {
+            
+        }
+
+        public Player(String name)
+        {
+            Name = name;
+        }
+
+        public void EndTurn()
+        {
+            
+        }
     }
 }

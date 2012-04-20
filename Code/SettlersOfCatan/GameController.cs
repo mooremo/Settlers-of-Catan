@@ -13,6 +13,15 @@ namespace SettlersOfCatan
             InitializeDevelopmentDeck();
         }
 
+        public GameController(ArrayList players)
+        {
+            Players = players;
+            CurrentPlayer = (Player)Players[0];
+            InitializeResourceLookup();
+            InitializeResourceDeck();
+            InitializeDevelopmentDeck();
+        }
+
         public Board Board { get; set; }
         public Dice Dice { get; set; }
         public ArrayList Players { get; set; }
@@ -21,6 +30,7 @@ namespace SettlersOfCatan
         public ArrayList DevelopmentDeck { get; set; }
         public Player LongestRoad { get; set; }
         public Player LargestArmy { get; set; }
+        public Player CurrentPlayer;
 
         private void InitializeResourceLookup()
         {

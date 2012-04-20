@@ -6,7 +6,7 @@ namespace SettlersOfCatan
 {
     public class Board
     {
-        //The numbers for the tiles in spiral order
+        #region TileNeighborDictionary
         private readonly Dictionary<int, ArrayList> _neighborDictionary = new Dictionary<int, ArrayList>
                                                                               {
                                                                                   {
@@ -162,7 +162,278 @@ namespace SettlersOfCatan
                                                                                                         })
                                                                                       }
                                                                               };
+        #endregion
 
+        #region VerticeNeighborDictionary
+
+        private readonly Dictionary<int, ArrayList> _verticeDictionary = new Dictionary<int, ArrayList>
+                                                                              {
+                                                                                  {
+                                                                                      0,
+                                                                                      new ArrayList(new int[] {1, 3, -1})
+                                                                                      },
+                                                                                  {
+                                                                                      1,
+                                                                                      new ArrayList(new int[] {-1, 4, 0})
+                                                                                      },
+                                                                                  {
+                                                                                      2,
+                                                                                      new ArrayList(new int[] {3, 7, -1})
+                                                                                      },
+                                                                                  {
+                                                                                      3, new ArrayList(new int[] {0, 8, 2})
+                                                                                      },
+                                                                                  {
+                                                                                      4, new ArrayList(new int[] {5, 9, 1})
+                                                                                      },
+                                                                                  {
+                                                                                      5,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {-1, 10, 4})
+                                                                                      },
+                                                                                  {
+                                                                                      6,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {7, 12, -1})
+                                                                                      },
+                                                                                  {
+                                                                                      7,
+                                                                                      new ArrayList(new int[] {2, 13, 6})
+                                                                                      },
+                                                                                  {
+                                                                                      8,
+                                                                                      new ArrayList(new int[] {9, 14, 3})
+                                                                                      },
+                                                                                  {
+                                                                                      9,
+                                                                                      new ArrayList(new int[] {4, 15, 8})
+                                                                                      },
+                                                                                  {
+                                                                                      10,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {11, 16, 5})
+                                                                                      },
+                                                                                  {
+                                                                                      11,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {-1, 17, 10})
+                                                                                      },
+                                                                                  {
+                                                                                      12,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {6, 18, -1})
+                                                                                      },
+                                                                                  {
+                                                                                      13,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {14, 19, 7})
+                                                                                      },
+                                                                                  {
+                                                                                      14,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {8, 20, 13})
+                                                                                      },
+                                                                                  {
+                                                                                      15,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {16, 21, 9})
+                                                                                      },
+                                                                                  {
+                                                                                      16,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {10, 22, 15})
+                                                                                      },
+                                                                                  {
+                                                                                      17,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {-1, 22, 11})
+                                                                                      },
+                                                                                  {
+                                                                                      18,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {19, 24, 12})
+                                                                                      },
+                                                                                  {
+                                                                                      19,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {13, 25, 18})
+                                                                                      },
+                                                                                  {
+                                                                                      20,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {21, 26, 14})
+                                                                                      },
+                                                                                  {
+                                                                                      21,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {15, 27, 20})
+                                                                                      },
+                                                                                  {
+                                                                                      22,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {23, 28, 16})
+                                                                                      },
+                                                                                  {
+                                                                                      23,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {17, 29, 22})
+                                                                                      },
+                                                                                  {
+                                                                                      24,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {18, 30, -1})
+                                                                                      },
+                                                                                  {
+                                                                                      25,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {26, 31, 19})
+                                                                                      },
+                                                                                  {
+                                                                                      26,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {20, 32, 25})
+                                                                                      },
+                                                                                  {
+                                                                                      27,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {28, 33, 21})
+                                                                                      },
+                                                                                  {
+                                                                                      28,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {22, 34, 27})
+                                                                                      },
+                                                                                  {
+                                                                                      29,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {-1, 35, 23})
+                                                                                      },
+                                                                                  {
+                                                                                      30,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {31, 36, 24})
+                                                                                      },
+                                                                                  {
+                                                                                      31,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {25, 37, 30})
+                                                                                      },
+                                                                                  {
+                                                                                      32,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {33, 38, 26})
+                                                                                      },
+                                                                                  {
+                                                                                      33,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {27, 39, 32})
+                                                                                      },
+                                                                                  {
+                                                                                      34,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {35, 40, 28})
+                                                                                      },
+                                                                                  {
+                                                                                      35,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {29, 41, 34})
+                                                                                      },
+                                                                                  {
+                                                                                      36,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {30, 42, -1})
+                                                                                      },
+                                                                                  {
+                                                                                      37,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {38, 43, 31})
+                                                                                      },
+                                                                                  {
+                                                                                      38,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {32, 44, 37})
+                                                                                      },
+                                                                                  {
+                                                                                      39,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {40, 45, 33})
+                                                                                      },
+                                                                                  {
+                                                                                      40,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {34, 46, 39})
+                                                                                      },
+                                                                                  {
+                                                                                      41,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {-1, 47, 35})
+                                                                                      },
+                                                                                  {
+                                                                                      42,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {43, -1, 36})
+                                                                                      },
+                                                                                  {
+                                                                                      43,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {37, 48, 42})
+                                                                                      },
+                                                                                  {
+                                                                                      44,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {45, 49, 38})
+                                                                                      },
+                                                                                  {
+                                                                                      45,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {39, 50, 44})
+                                                                                      },
+                                                                                  {
+                                                                                      46,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {47, 51, 40})
+                                                                                      },
+                                                                                  {
+                                                                                      47,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {41, -1, 46})
+                                                                                      },
+                                                                                  {
+                                                                                      48,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {49, -1, 43})
+                                                                                      },
+                                                                                  {
+                                                                                      49,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {44, 52, 48})
+                                                                                      },
+                                                                                  {
+                                                                                      50,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {51, 53, 45})
+                                                                                      },
+                                                                                  {
+                                                                                      51,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {46, -1, 50})
+                                                                                      },
+                                                                                  {
+                                                                                      52,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {53, -1, 49})
+                                                                                      },
+                                                                                  {
+                                                                                      53,
+                                                                                      new ArrayList(new int[]
+                                                                                                        {50, -1, 52})
+                                                                                      },
+
+                                                                              };
+
+        #endregion
+
+        //The numbers for the tiles in spiral order
         private readonly ArrayList _tileNumberOrder =
             new ArrayList(new[] {5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11});
 
@@ -302,6 +573,15 @@ namespace SettlersOfCatan
                 tempList.Insert(5, Vertices[(2*i)]);
                 tempTile.Vertices = tempList;
                 TerrainTiles[i] = tempTile;
+            }
+
+            //File Vertice's neighbors
+            Vertex tempVertex;
+            for (int i = 0; i < 54; i++)
+            {
+                tempVertex = (Vertex)Vertices[i];
+                tempVertex.neighbors = _verticeDictionary[i];
+                Vertices[i] = tempVertex;
             }
         }
 
