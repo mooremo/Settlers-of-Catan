@@ -6,9 +6,6 @@ namespace SettlersOfCatanTest
     [TestFixture]
     public class BoardTest
     {
-
-        public Board TestBoard;
-
         #region Setup/Teardown
 
         [SetUp]
@@ -19,11 +16,7 @@ namespace SettlersOfCatanTest
 
         #endregion
 
-        [Test()]
-        public void TestThatTilesIsFull()
-        {
-            Assert.AreEqual(19, TestBoard.TerrainTiles.Count);
-        }
+        public Board TestBoard;
 
         [Test]
         public void TestThatBoardHasFourFieldTiles()
@@ -31,7 +24,7 @@ namespace SettlersOfCatanTest
             int count = 0;
             foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int)TileType.Fields)
+                if (t.Type == (int) TileType.Fields)
                 {
                     count++;
                 }
@@ -45,7 +38,7 @@ namespace SettlersOfCatanTest
             int count = 0;
             foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int)TileType.Woods)
+                if (t.Type == (int) TileType.Woods)
                 {
                     count++;
                 }
@@ -59,7 +52,7 @@ namespace SettlersOfCatanTest
             int count = 0;
             foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int)TileType.Pasture)
+                if (t.Type == (int) TileType.Pasture)
                 {
                     count++;
                 }
@@ -73,7 +66,7 @@ namespace SettlersOfCatanTest
             int count = 0;
             foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int)TileType.Desert)
+                if (t.Type == (int) TileType.Desert)
                 {
                     count++;
                 }
@@ -84,10 +77,10 @@ namespace SettlersOfCatanTest
         [Test]
         public void TestThatBoardHasThreeHillTiles()
         {
-             int count = 0;
+            int count = 0;
             foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int)TileType.Hills)
+                if (t.Type == (int) TileType.Hills)
                 {
                     count++;
                 }
@@ -101,14 +94,35 @@ namespace SettlersOfCatanTest
             int count = 0;
             foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int)TileType.Mountains)
+                if (t.Type == (int) TileType.Mountains)
                 {
                     count++;
                 }
             }
             Assert.AreEqual(3, count);
         }
-        [Test()]
+
+        [Test]
+        public void TestThatTilesHaveSixNeighbors()
+        {
+            int flag = 0;
+            foreach (Tile t in TestBoard.TerrainTiles)
+            {
+                if (t.Neighbors.Count != 6)
+                {
+                    flag++;
+                }
+            }
+            Assert.AreEqual(0, flag);
+        }
+
+        [Test]
+        public void TestThatTilesIsFull()
+        {
+            Assert.AreEqual(19, TestBoard.TerrainTiles.Count);
+        }
+
+        [Test]
         public void TestThatTilesNeighborsInitializes()
         {
             int flag = 0;
@@ -122,33 +136,19 @@ namespace SettlersOfCatanTest
             Assert.AreEqual(0, flag);
         }
 
-        [Test()]
-        public void TestThatTilesHaveSixNeighbors()
-        {
-            int flag = 0;
-            foreach (Tile t in TestBoard.TerrainTiles)
-            {
-                if(t.Neighbors.Count != 6)
-                {
-                    flag++;
-                }
-            }
-            Assert.AreEqual(0, flag);
-        }
-
-        [Test()]
-        public void TestThatVerticesInitializes()
-        {
-            Assert.NotNull(TestBoard.Vertices);
-        }
-
-        [Test()]
+        [Test]
         public void TestThatTilesVerticesInitialize()
         {
             foreach (Tile t in TestBoard.TerrainTiles)
             {
                 Assert.AreEqual(6, t.Vertices.Count);
             }
+        }
+
+        [Test]
+        public void TestThatVerticesInitializes()
+        {
+            Assert.NotNull(TestBoard.Vertices);
         }
     }
 }
