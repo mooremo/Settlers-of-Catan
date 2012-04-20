@@ -146,7 +146,7 @@ namespace SettlersOfCatanTest
         [ExpectedException(typeof (KeyNotFoundException))]
         public void TestDrawInvalidTile()
         {
-            CardType card = _controller.DrawResource(TileType.Port2);
+            CardType card = _controller.DrawResource(TileType.Port3);
         }
 
         [Test]
