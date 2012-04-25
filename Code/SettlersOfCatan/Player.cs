@@ -24,8 +24,10 @@ namespace SettlersOfCatan
         public int CitiesRemaining { get; set; }
         public int Score { get; set; }
 
+        //Player calls this to end thier turn
         public void EndTurn()
         {
+
         }
     }
 }

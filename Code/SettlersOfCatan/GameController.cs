@@ -114,6 +114,20 @@ namespace SettlersOfCatan
         {
             
         }
+
+        // Changes the current player to the next player in Players
+        public void ChangeCurrentPlayer()
+        {
+            int index = Players.IndexOf(CurrentPlayer);
+            if (index + 1 < Players.Count)
+            {
+                CurrentPlayer = (Player) Players[index + 1];
+            }
+            else
+            {
+                CurrentPlayer = (Player) Players[0];
+            }
+        }
     }
 
     public class EmptyDeckException : Exception

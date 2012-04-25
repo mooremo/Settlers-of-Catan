@@ -6,8 +6,8 @@ namespace SettlersOfCatan
 {
     public class Board
     {
+        #region Properties
         #region TileNeighborDictionary
-
         private readonly Dictionary<int, ArrayList> _neighborDictionary = new Dictionary<int, ArrayList>
                                                                               {
                                                                                   {
@@ -186,7 +186,6 @@ namespace SettlersOfCatan
         #endregion
 
         #region VerticeNeighborDictionary
-
         private readonly Dictionary<int, ArrayList> _verticeDictionary = new Dictionary<int, ArrayList>
                                                                              {
                                                                                  {
@@ -453,32 +452,7 @@ namespace SettlersOfCatan
 
         #endregion
 
-        //The numbers for the tiles in spiral order
-        private readonly ArrayList _tileNumberOrder =
-            new ArrayList(new[] {5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11});
-
-        //The index of TerrainTiles to insert the tile
-        private readonly ArrayList _tileOrder =
-            new ArrayList(new[] {18, 17, 15, 10, 5, 2, 0, 1, 3, 8, 13, 16, 14, 12, 7, 4, 6, 11, 9});
-
-        public ArrayList AllPortTiles = new ArrayList(new[] {0, 1, 2, 3, 4, 5, 5, 5, 5});
-
-        //All tiles know their neighbors and all vertices know neighbors
-        public Board()
-        {
-            TerrainTiles = new ArrayList(new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
-            PortTiles = new ArrayList(new[] {0, 0, 0, 0, 0, 0, 0, 0, 0,});
-            Vertices = new ArrayList();
-
-            GenerateBoard();
-        }
-
-        public ArrayList TerrainTiles { get; set; }
-        public ArrayList PortTiles { get; set; }
-        public ArrayList Vertices { get; set; }
-
         #region TerrainTiles
-
         public ArrayList AllTerrainTiles =
             new ArrayList(new[]
                               {
@@ -493,8 +467,31 @@ namespace SettlersOfCatan
 
         #endregion
 
-        //All tiles know their neighbors and all vertices know neighbors
+        public ArrayList AllPortTiles = new ArrayList(new[] { 0, 1, 2, 3, 4, 5, 5, 5, 5 });
+        public ArrayList TerrainTiles { get; set; }
+        public ArrayList PortTiles { get; set; }
+        public ArrayList Vertices { get; set; }
 
+        //The numbers for the tiles in spiral order
+        private readonly ArrayList _tileNumberOrder =
+            new ArrayList(new[] {5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11});
+
+        //The index of TerrainTiles to insert the tile
+        private readonly ArrayList _tileOrder =
+            new ArrayList(new[] {18, 17, 15, 10, 5, 2, 0, 1, 3, 8, 13, 16, 14, 12, 7, 4, 6, 11, 9});
+        #endregion
+
+        //Constructor for the Board class
+        public Board()
+        {
+            TerrainTiles = new ArrayList(new[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+            PortTiles = new ArrayList(new[] {0, 0, 0, 0, 0, 0, 0, 0, 0,});
+            Vertices = new ArrayList();
+
+            GenerateBoard();
+        }
+
+        //Generates a board for game play
         public void GenerateBoard()
         {
             //Generate the terrain tiles
@@ -532,7 +529,7 @@ namespace SettlersOfCatan
                 tileCount++;
             }
 
-            //Generate the tile's neighbors
+            //Fill tile's neighbors
             int neighborCount = 0;
             int tempNeighbor;
             tileCount = 0;

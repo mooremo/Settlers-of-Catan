@@ -22,7 +22,7 @@ namespace SettlersOfCatanTest
         public GameController GameController;
 
         [Test]
-        //When a player ends a turn that the next player gets control
+        //When a player ends a turn the next player gets control
         public void TestThatCurrentPlayerUpdatesAtEndOfTurn()
         {
             GameController.CurrentPlayer = (Player) GameController.Players[0];
@@ -31,7 +31,7 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        //When a the last player, clockwise, ends a turn that the first player gets control
+        //When the last player, clockwise, ends a turn the first player gets control
         public void TestThatCurrentPlayerUpdatesAtEndOfTurnWhenPlayerIsLastInArray()
         {
             GameController.CurrentPlayer = (Player) GameController.Players[GameController.Players.Count - 1];
