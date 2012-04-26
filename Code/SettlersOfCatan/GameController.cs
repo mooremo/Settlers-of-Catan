@@ -10,6 +10,7 @@ namespace SettlersOfCatan
 
         public GameController()
         {
+            Players = new ArrayList();
             InitializeResourceLookup();
             InitializeResourceDeck();
             InitializeDevelopmentDeck();
@@ -61,7 +62,7 @@ namespace SettlersOfCatan
         {
             var developmentCount = new Dictionary<CardType, int>
                                        {
-                                           {CardType.Solider, 14},
+                                           {CardType.Soldier, 14},
                                            {CardType.Monopoly, 2},
                                            {CardType.RoadBuilding, 2},
                                            {CardType.YearOfPlenty, 2},
@@ -106,13 +107,99 @@ namespace SettlersOfCatan
         // Iterates through players and calculates score for each
         public void ScorePlayers()
         {
-            
+            ClearScores();
+            ScoreSettlements();
+            ScoreVictoryPointCards();
+            AwardLongestRoad();
+            AwardLargestArmy();
         }
 
-        // Scores a single player
-        public void ScorePlayer(Player player)
+        private void AwardLargestArmy()
         {
-            
+            var armies = CountArmies();
+            var armyToBeat = 2;
+            if (LargestArmy != null)
+            {
+                armyToBeat = armies[LargestArmy];
+            }
+
+            foreach(Player player in Players)
+            {
+                if (armies[player] > armyToBeat)
+                {
+                    LargestArmy = player;
+                    armyToBeat = armies[player];
+                }
+            }
+
+            if (LargestArmy != null)
+            {
+                LargestArmy.Score += 2;
+            }
+        }
+
+        private Dictionary<Player, int> CountArmies()
+        {
+            var result = new Dictionary<Player, int>();
+            foreach (Player player in Players)
+            {
+                int count = 0;
+                foreach (CardType card in player.PlayedDevelopmentCards)
+                {
+                    if (card == CardType.Soldier)
+                    {
+                        count++;
+                    }
+                }
+                result.Add(player, count);
+            }
+
+            return result;
+        }
+
+        private void AwardLongestRoad()
+        {
+        }
+
+        private void ScoreVictoryPointCards()
+        {
+            foreach (Player player in Players)
+            {
+                foreach (CardType card in player.PlayedDevelopmentCards)
+                {
+                    if (card == CardType.VictoryPoint)
+                    {
+                        player.Score++;
+                    }
+                }
+            }
+        }
+
+        private void ClearScores()
+        {
+            foreach (Player player in Players)
+            {
+                player.Score = 0;
+            }
+        }
+
+        // Grants a point for each village and two for cities
+        public void ScoreSettlements()
+        {
+            foreach (Vertex vertex in Board.Vertices)
+            {
+                if (vertex.Settlement != null)
+                {
+                    if (vertex.Settlement.type == SettlementType.Village)
+                    {
+                        vertex.Settlement.player.Score++;
+                    }
+                    else if (vertex.Settlement.type == SettlementType.City)
+                    {
+                        vertex.Settlement.player.Score += 2;
+                    }
+                }
+            }
         }
 
         // Changes the current player to the next player in Players

@@ -26,7 +26,7 @@ namespace SettlersOfCatanTest
             int knightCount = 0;
             foreach (CardType card in _controller.DevelopmentDeck)
             {
-                if (card == CardType.Solider)
+                if (card == CardType.Soldier)
                 {
                     knightCount++;
                 }

@@ -7,6 +7,7 @@ namespace SettlersOfCatan
     {
         public Player()
         {
+            PlayedDevelopmentCards = new ArrayList();
         }
 
         public Player(String name)
