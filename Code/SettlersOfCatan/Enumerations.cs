@@ -30,7 +30,7 @@
         Lumber,
         Grain,
         Ore,
-        Solider,
+        Soldier,
         RoadBuilding,
         YearOfPlenty,
         Monopoly,

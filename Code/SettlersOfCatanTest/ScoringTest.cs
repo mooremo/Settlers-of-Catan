@@ -28,6 +28,7 @@ namespace SettlersOfCatanTest
             _player3 = new Player();
             _player4 = new Player();
 
+            _controller = new GameController();
             _controller.Board = _board;
 
             _controller.Players.Add(_player1);
@@ -128,7 +129,6 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        [Ignore]
         // Each victory card awards 1 point
         public void TestVictoryCardHasOnePoint()
         {
@@ -237,7 +237,7 @@ namespace SettlersOfCatanTest
         [Test]
         // Longest road only gets awarded when all 5 pieces are owned by the
         // same player
-        public void TestConnectedRoadWithMultiplePlayersDoesNotAwardLongestRoad()
+        public void TestConnectedRoadInterlacedWithMultiplePlayersDoesNotAwardLongestRoad()
         {
             var road1 = new Road(_player1);
             var road2 = new Road(_player2);
@@ -354,12 +354,12 @@ namespace SettlersOfCatanTest
             var road9 = new Road(_player2);
             var road10 = new Road(_player2);
             var road11 = new Road(_player2);
-            ((Vertex)_board.Vertices[0]).Roads[0] = road6e;
-            ((Vertex)_board.Vertices[1]).Roads[1] = road7e;
-            ((Vertex)_board.Vertices[4]).Roads[1] = road8e;
-            ((Vertex)_board.Vertices[9]).Roads[2] = road9e;
-            ((Vertex)_board.Vertices[8]).Roads[1] = road10e;
-            ((Vertex)_board.Vertices[8]).Roads[1] = road11e;
+            ((Vertex)_board.Vertices[52]).Roads[0] = road6;
+            ((Vertex)_board.Vertices[53]).Roads[1] = road7;
+            ((Vertex)_board.Vertices[50]).Roads[2] = road8;
+            ((Vertex)_board.Vertices[45]).Roads[0] = road9;
+            ((Vertex)_board.Vertices[39]).Roads[2] = road10;
+            ((Vertex)_board.Vertices[33]).Roads[1] = road11;
 
             _controller.ScorePlayers();
 
@@ -370,6 +370,7 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
+        [Ignore]
         // Another player must _exceed_ the current longest road to get the points
         public void TestLongestRoadDoesNotTransferWhenEqualled()
         {
@@ -377,6 +378,7 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
+        [Ignore]
         // Sees that the points get transferred to the new longest road
         public void TestLongestRoadTransfersWhenExceeded()
         {
@@ -387,7 +389,7 @@ namespace SettlersOfCatanTest
         // Player must have at least 3 knights to be awarded points
         public void TestOneKnightDoesNotAwardLargestArmy()
         {
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
 
             _controller.ScorePlayers();
 
@@ -400,8 +402,8 @@ namespace SettlersOfCatanTest
         [Test]
         public void TestTwoKnightsDoNotAwardLargestArmy()
         {
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
 
             _controller.ScorePlayers();
 
@@ -415,9 +417,9 @@ namespace SettlersOfCatanTest
         // First to 3 knights gets awarded 2 points
         public void TestThreeKnightsAwardsLargestArmy()
         {
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
 
             _controller.ScorePlayers();
 
@@ -434,14 +436,14 @@ namespace SettlersOfCatanTest
         // player with the most knights played
         public void TestLargestArmyAwardedToLargestArmy()
         {
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
 
-            _player2.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player2.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player2.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player2.PlayedDevelopmentCards.Add(CardType.Solider);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
 
             _controller.ScorePlayers();
 
@@ -457,9 +459,9 @@ namespace SettlersOfCatanTest
         // A player must _exceed_ the current largest army to get the points
         public void TestLargestArmyDoesNotTransferWhenEqualled()
         {
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
 
             _controller.ScorePlayers();
 
@@ -470,9 +472,9 @@ namespace SettlersOfCatanTest
             Assert.AreEqual(0, _player3.Score);
             Assert.AreEqual(0, _player4.Score);
 
-            _player2.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player2.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player2.PlayedDevelopmentCards.Add(CardType.Solider);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
 
             _controller.ScorePlayers();
 
@@ -488,9 +490,9 @@ namespace SettlersOfCatanTest
         // Check that points get transferred properly
         public void TestLargestArmyTransfersWhenExceeded()
         {
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player1.PlayedDevelopmentCards.Add(CardType.Solider);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
 
             _controller.ScorePlayers();
 
@@ -501,10 +503,10 @@ namespace SettlersOfCatanTest
             Assert.AreEqual(0, _player3.Score);
             Assert.AreEqual(0, _player4.Score);
 
-            _player2.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player2.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player2.PlayedDevelopmentCards.Add(CardType.Solider);
-            _player2.PlayedDevelopmentCards.Add(CardType.Solider);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
 
             _controller.ScorePlayers();
 
@@ -517,6 +519,7 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
+        [Ignore]
         // Ensures that some preset configuration of the game state awards
         // the correct number of points for one player
         public void TestMixConfigurationOnePlayer()
@@ -525,6 +528,7 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
+        [Ignore]
         // Same as above, but each player must get the correct score
         public void TestMixConfigurationTwoPlayer()
         {
@@ -532,12 +536,14 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
+        [Ignore]
         public void TestMixConfigurationThreePlayer()
         {
             
         }
 
         [Test]
+        [Ignore]
         public void TestMixConfigurationFourPlayer()
         {
             
