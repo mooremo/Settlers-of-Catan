@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{tabularx} %tabular with stretch columns
+\usepackage{enumerate}
+\usepackage{pdfpages}
+\usepackage{pdflscape}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Index
+\usepackage{makeidx}
+\makeindex
+
+\begin{document}
+
+
+
+% Fancy custom title page from Jimmy Theis
+\begin{titlepage}
+\begin{center}
+\includegraphics[width=0.15\textwidth]{Images/logo}\\[1cm]
+\textsc{\LARGE Rose-Hulman Institute of Technology}\\[1.5cm]
+\textsc{\Large Settlers of C\#tan}\\[1.0cm]
+\textsc{\Large Milestone 3}\\[1.0cm]
+\Large Liz Hines \hspace{0.2cm}*\hspace{0.2cm}  Matt Moore \hspace{0.2cm}*\hspace{0.2cm} Sam	Kim
+\vfill
+\large \today
+\end{center}
+\end{titlepage}
+
+\newpage
+{\small \tableofcontents}
+\newpage
+
+\section{Metrics}
+For the remainder of the project we will track the following metrics:
+
+\begin{itemize}
+\item Maintainability Index
+\item Cyclomatic Complexity
+\item Depth of Inheritance Hierarchy
+\item Class Coupling
+\item Source Lines of Code
+\end{itemize}
+
+The definition, process for measuring, how each metric will be used, and why we plan to track it are detailed in each metrics respective section below.
+
+\subsection{Maintainability Index}
+\subsubsection{Definition}
+The maintainability index is an index value between 0 and 100 that represents the relative ease of maintaining the code.
+
+\subsubsection{Measurement Process}
+This metric is automatically calculated using the built in code analytics suite in Visual Studio 2010 Ultimate Edition. The formula for this indirect measure is:\\
+\\
+ \footnotesize{$MAX(0,(171 - 5.2 * ln(Halstead Volume) - 0.23 * (Cyclomatic Complexity) - 16.2 * ln(SLOC))*100 / 171)$}
+\\
+\subsubsection{Analysis Plan}
+We intend to track this metric so that we can make sure that our code base is acceptably maintainable. If the analysis shows that a section of code has become unmaintainable we will refactor.
+
+\subsection{Cyclomatic Complexity}
+\subsubsection{Definition}
+Cyclomatic complexity is a software metric that directly measures the number of linearly independent paths through a program's source code.
+
+\subsubsection{Measurement Process}
+This metric is automatically calculated using the built in code analytics suite in Visual Studio 2010 Ultimate Edition.
+
+\subsubsection{Analysis Plan}
+We intend to track this metric so that we can make sure that our code base has an acceptable level of test coverage. If the analysis shows that the cyclomatic complexity is high enough that there is insufficient code coverage we will refactor.
+
+\subsection{Depth of Inheritance Hierarchy}
+\subsubsection{Definition}
+ Indicates the number of class definitions that extend to the root of the class hierarchy. 
+
+\subsubsection{Measurement Process}
+This metric is automatically calculated using the built in code analytics suite in Visual Studio 2010 Ultimate Edition.
+
+\subsubsection{Analysis Plan}
+We intend to track this metric so that we can make sure that it is clear where methods and fields are defined or/and redefined. If the analysis shows that the depth of inheritance hierarchy has reached a point where it is difficult to determine where methods and fields are defined or/and redefined we will refactor.
+
+\subsection{Class Coupling}
+\subsubsection{Definition}
+Measures the coupling to unique classes through parameters, local variables, return types, method calls, generic or template instantiations, base classes, interface implementations, fields defined on external types, and attribute decoration. 
+
+\subsubsection{Measurement Process}
+This metric is automatically calculated using the built in code analytics suite in Visual Studio 2010 Ultimate Edition.
+
+\subsubsection{Analysis Plan}
+We intend to track this metric so that we can make sure that we are designing software with high cohesion and low coupling.  If the class coupling metric indicates that that our classes have either low cohesion or high coupling we will refactor.
+
+\subsection{Source Lines of Code}
+\subsubsection{Definition}
+ Indicates the approximate number of lines in the code. A line is counted if it is an executable line or a data definition.
+
+\subsubsection{Measurement Process}
+This metric is automatically calculated using the built in code analytics suite in Visual Studio 2010 Ultimate Edition.
+
+\subsubsection{Analysis Plan}
+We intend to track this metric so that we can make sure that we are designing methods and classes that do not attempt to do to much. If the number of source lines for a class or method is particularly high we will investigate to see if the functionality can be abstracted better and if so we will refactor.
+
+\newpage
+\section{Revision History}
+Created 4/25/12 by Elizabeth Hines, Sam Kim, Matt Moore
+
+\end{document}
