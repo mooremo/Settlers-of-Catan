@@ -7,6 +7,7 @@ using NUnit.Framework;
 namespace SettlersOfCatanTest
 {
     [TestFixture]
+    [Ignore]
     class PlayCardsTest
     {
         [Test]
