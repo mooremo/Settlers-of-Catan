@@ -10,7 +10,9 @@ namespace SettlersOfCatan
 
         public GameController()
         {
+            Dice = new Dice();
             Players = new ArrayList();
+            Board = new Board();
             InitializeResourceLookup();
             InitializeResourceDeck();
             InitializeDevelopmentDeck();
@@ -18,8 +20,10 @@ namespace SettlersOfCatan
 
         public GameController(ArrayList players)
         {
+            Dice = new Dice();
             Players = players;
             CurrentPlayer = (Player) Players[0];
+            Board = new Board();
             InitializeResourceLookup();
             InitializeResourceDeck();
             InitializeDevelopmentDeck();
@@ -225,6 +229,70 @@ namespace SettlersOfCatan
             else
             {
                 CurrentPlayer = (Player) Players[0];
+            }
+        }
+
+        //Grants a resource for each settlement adjacent
+        //to the hex with the number rolled
+        public void AwardResourceForSettlementAdjacentToRolledHex()
+        {
+            foreach (Tile tile in Board.TerrainTiles)
+            {
+                if (tile.Number == Dice.Value)
+                {
+                    foreach (Vertex vertex in tile.Vertices)
+                    {
+                        if (vertex.Settlement != null)
+                        {
+                            if (vertex.Settlement.type == SettlementType.Village)
+                            {
+                                vertex.Settlement.player.ResourceHand.Add(
+                                    DrawResource((SettlersOfCatan.TileType) tile.Type));
+                            }
+                            else if (vertex.Settlement.type == SettlementType.City)
+                            {
+                                vertex.Settlement.player.ResourceHand.Add(
+                                    DrawResource((SettlersOfCatan.TileType)tile.Type));
+                                vertex.Settlement.player.ResourceHand.Add(
+                                    DrawResource((SettlersOfCatan.TileType)tile.Type));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        //Removes half the resource hand of each player
+        //with over 7 resource cards
+        public void DiscardForMoreThanSeven()
+        {
+            foreach (Player player in Players)
+            {
+                if (player.ResourceHand.Count > 6)
+                {
+                    int count = player.ResourceHand.Count;
+                    int numberToRemove = (count % 2 == 0) ? count / 2 : (count - 1) / 2;
+                    while (numberToRemove > 0)
+                    {
+                        player.Discard(0);
+                        numberToRemove--;
+                    }
+                }
+            }
+        }
+
+        //Rolls the dice and does checks
+        public void RollDice()
+        {
+            Dice.Roll();
+            if (Dice.Value == 7)
+            {
+                DiscardForMoreThanSeven();
+            }
+            else
+            {
+                AwardResourceForSettlementAdjacentToRolledHex();
+
             }
         }
     }

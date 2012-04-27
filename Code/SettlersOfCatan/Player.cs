@@ -8,6 +8,7 @@ namespace SettlersOfCatan
         public Player()
         {
             PlayedDevelopmentCards = new ArrayList();
+            ResourceHand = new ArrayList();
         }
 
         public Player(String name)
@@ -25,10 +26,10 @@ namespace SettlersOfCatan
         public int CitiesRemaining { get; set; }
         public int Score { get; set; }
 
-        //Player calls this to end thier turn
-        public void EndTurn()
+        public void Discard(int index)
         {
-
+            Shuffler.Shuffle(ResourceHand);
+            ResourceHand.RemoveAt(index);
         }
     }
 }
