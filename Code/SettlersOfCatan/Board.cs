@@ -719,6 +719,8 @@ namespace SettlersOfCatan
                 int firstIndex = temp2.Neighbors.IndexOf(targetVertex);
                 temp2.Roads[firstIndex] = piece;
 
+                piece.SetIndices(targetVertex.Index, temp2.Index);
+
                 // use the difference between the vertices to determine which direction the road should go from the other vertex.
 //                int difference = location - index;
 //                if (difference > 1)

@@ -9,6 +9,16 @@ namespace SettlersOfCatan
     [Serializable]
     public class Player : ISerializable
     {
+        public Player()
+        {
+            PlayedDevelopmentCards = new ArrayList();
+            ResourceHand = new ArrayList();
+        }
+
+        public Player(String name)
+        {
+            Name = name;
+        }
 
         public String Name { get; set; }
         public int Color { get; set; }
@@ -47,20 +57,15 @@ namespace SettlersOfCatan
             info.AddValue("Score", this.Score);
         }
 
-        public Player()
-        {
-            PlayedDevelopmentCards = new ArrayList();
-        }
-
-        public Player(String name)
-        {
-            Name = name;
-        }
-
         //Player calls this to end thier turn
         public void EndTurn()
         {
-
+            
+        }
+        public void Discard(int index)
+        {
+            Shuffler.Shuffle(ResourceHand);
+            ResourceHand.RemoveAt(index);
         }
     }
 }

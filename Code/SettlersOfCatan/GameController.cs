@@ -56,7 +56,9 @@ namespace SettlersOfCatan
 
         public GameController()
         {
+            Dice = new Dice();
             Players = new ArrayList();
+            Board = new Board();
             InitializeResourceLookup();
             InitializeResourceDeck();
             InitializeDevelopmentDeck();
@@ -64,8 +66,10 @@ namespace SettlersOfCatan
 
         public GameController(ArrayList players)
         {
+            Dice = new Dice();
             Players = players;
             CurrentPlayer = (Player) Players[0];
+            Board = new Board();
             InitializeResourceLookup();
             InitializeResourceDeck();
             InitializeDevelopmentDeck();
@@ -196,17 +200,180 @@ namespace SettlersOfCatan
 
         private void AwardLongestRoad()
         {
-            foreach (Vertex vertex in Board.Vertices)
+            if (LongestRoad == null)
             {
-                for (int i=0; i<3; i++)
+                LongestRoadLength = 4;
+            }
+
+            var longestRoadPerPlayer = new Dictionary<Player, int>();
+            foreach (Player player in Players)
+            {
+                ResetRoadMarks();
+                var sets = PartitionRoads(player);
+                longestRoadPerPlayer.Add(player, FindLongestRoadInSet(sets));
+            }
+            
+            foreach (Player player in Players)
+            {
+                if (longestRoadPerPlayer[player] > LongestRoadLength)
                 {
-                    var road = vertex.Roads[i];
-                    if (road != null)
+                    LongestRoad = player;
+                    LongestRoadLength = longestRoadPerPlayer[player];
+                }
+            }
+
+            if (LongestRoad != null)
+            {
+                LongestRoad.Score += 2;
+            }
+        }
+
+        private int FindLongestRoadInSet(List<List<Road>> sets)
+        {
+            var longest = 0;
+
+            foreach (List<Road> road in sets)
+            {
+                var endPoints = FindEndPoints(road);
+                foreach (Road endPoint in endPoints)
+                {
+                    ResetRoadMarks();
+                    var curRoad = MeasureRoad(endPoint, 0);
+                    if (curRoad > longest)
                     {
-                       
+                        longest = curRoad;
                     }
                 }
             }
+
+            return longest;
+        }
+
+        private int MeasureRoad(Road curRoad, int length)
+        {
+            curRoad.Marked = true;
+
+            var bestSoFar = 0;
+            foreach (int index in curRoad.Indices)
+            {
+                var vertex = (Vertex) Board.Vertices[index];
+                foreach (Road nextRoad in vertex.Roads)
+                {
+                    if (nextRoad != null && !nextRoad.Marked && nextRoad.player == curRoad.player)
+                    {
+                        var thisPath = MeasureRoad(nextRoad, length + 1);
+                        if (thisPath > bestSoFar)
+                        {
+                            bestSoFar = thisPath;
+                        }
+                    }
+                }
+            }
+
+            return bestSoFar + 1;
+        }
+
+        private List<Road> FindEndPoints(List<Road> road)
+        {
+            var endPoints = new List<Road>();
+
+            foreach (Road roadPiece in road)
+            {
+                var vertex1 = (Vertex) Board.Vertices[roadPiece.Indices[0]];
+                var vertex2 = (Vertex) Board.Vertices[roadPiece.Indices[1]];
+
+                var endFlag = true;
+                for (int i = 0; i < 3; i++)
+                {
+                    if (vertex1.Roads[i] != null && vertex1.Roads[i] != roadPiece)
+                    {
+                        if (((Road) vertex1.Roads[i]).player == roadPiece.player)
+                        {
+                            endFlag = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (endFlag)
+                {
+                    endPoints.Add(roadPiece);
+                    break;
+                }
+
+                endFlag = true;
+                for (int i = 0; i < 3; i++)
+                {
+                    if (vertex2.Roads[i] != null && vertex2.Roads[i] != roadPiece)
+                    {
+                        if (((Road) vertex2.Roads[i]).player == roadPiece.player)
+                        {
+                            endFlag = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (endFlag)
+                {
+                    endPoints.Add(roadPiece);
+                }
+            }
+
+            return new List<Road>(new[] {road[0]});
+        }
+
+        private void ResetRoadMarks()
+        {
+            foreach (Vertex vertex in Board.Vertices)
+            {
+                foreach (Road road in vertex.Roads)
+                {
+                    if (road != null)
+                    {
+                        road.Marked = false;
+                    }
+                }
+            }
+        }
+
+        private List<List<Road>> PartitionRoads(Player player)
+        {
+            var sets = new List<List<Road>>();
+
+            foreach (Vertex vertex in Board.Vertices)
+            {
+                foreach (Road road in vertex.Roads)
+                {
+                    if (road != null && road.player == player && !road.Marked)
+                    {
+                        sets.Add(TraverseRoad(road, player, new List<Road>()));
+                    }
+                }
+            }
+
+            return sets;
+        }
+
+        private List<Road> TraverseRoad(Road road, Player player, List<Road> list)
+        {
+            list.Add(road);
+            road.Marked = true;
+
+            foreach (int i in road.Indices)
+            {
+                var vertex = (Vertex)Board.Vertices[i];
+                for (int j=0; j<3; j++)
+                {
+                    var nextRoad = (Road)vertex.Roads[j];
+                    if (nextRoad != null && !nextRoad.Marked && nextRoad.player == player && (vertex.Settlement == null || vertex.Settlement.player == player))
+                    {
+                        list = TraverseRoad(nextRoad, player, list);
+                    }
+                }
+            }
+
+            return list;
         }
 
         private void ScoreVictoryPointCards()
@@ -261,6 +428,70 @@ namespace SettlersOfCatan
             else
             {
                 CurrentPlayer = (Player) Players[0];
+            }
+        }
+
+        //Grants a resource for each settlement adjacent
+        //to the hex with the number rolled
+        public void AwardResourceForSettlementAdjacentToRolledHex()
+        {
+            foreach (Tile tile in Board.TerrainTiles)
+            {
+                if (tile.Number == Dice.Value)
+                {
+                    foreach (Vertex vertex in tile.Vertices)
+                    {
+                        if (vertex.Settlement != null)
+                        {
+                            if (vertex.Settlement.type == SettlementType.Village)
+                            {
+                                vertex.Settlement.player.ResourceHand.Add(
+                                    DrawResource((SettlersOfCatan.TileType) tile.Type));
+                            }
+                            else if (vertex.Settlement.type == SettlementType.City)
+                            {
+                                vertex.Settlement.player.ResourceHand.Add(
+                                    DrawResource((SettlersOfCatan.TileType)tile.Type));
+                                vertex.Settlement.player.ResourceHand.Add(
+                                    DrawResource((SettlersOfCatan.TileType)tile.Type));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        //Removes half the resource hand of each player
+        //with over 7 resource cards
+        public void DiscardForMoreThanSeven()
+        {
+            foreach (Player player in Players)
+            {
+                if (player.ResourceHand.Count > 6)
+                {
+                    int count = player.ResourceHand.Count;
+                    int numberToRemove = (count % 2 == 0) ? count / 2 : (count - 1) / 2;
+                    while (numberToRemove > 0)
+                    {
+                        player.Discard(0);
+                        numberToRemove--;
+                    }
+                }
+            }
+        }
+
+        //Rolls the dice and does checks
+        public void RollDice()
+        {
+            Dice.Roll();
+            if (Dice.Value == 7)
+            {
+                DiscardForMoreThanSeven();
+            }
+            else
+            {
+                AwardResourceForSettlementAdjacentToRolledHex();
+
             }
         }
     }
