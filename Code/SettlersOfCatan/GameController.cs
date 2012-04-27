@@ -32,6 +32,7 @@ namespace SettlersOfCatan
         public Dictionary<TileType, CardType> ResourceLookup { get; set; }
         public ArrayList DevelopmentDeck { get; set; }
         public Player LongestRoad { get; set; }
+        public int LongestRoadLength { get; set; }
         public Player LargestArmy { get; set; }
 
         private void InitializeResourceLookup()
@@ -166,7 +167,7 @@ namespace SettlersOfCatan
                     var road = vertex.Roads[i];
                     if (road != null)
                     {
-                        Console.Out.WriteLine("Found a road from {0} to {1}", vertex.Index, ((Vertex)vertex.Neighbors[i]).Index);
+                       
                     }
                 }
             }

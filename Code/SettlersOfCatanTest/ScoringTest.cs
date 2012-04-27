@@ -228,12 +228,12 @@ namespace SettlersOfCatanTest
             var road3 = new Road(_player1);
             var road4 = new Road(_player1);
             var road5 = new Road(_player1);
-            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 4);
-            //_controller.Board.PlacePieceSetup(road1, 0, 0);
-            //_controller.Board.PlacePieceSetup(road2, 1, 1);
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 0);
+            _controller.Board.PlacePieceSetup(road1, 0, 0);
+            _controller.Board.PlacePieceSetup(road2, 1, 1);
             _controller.Board.PlacePieceSetup(road3, 4, 1);
-            //_controller.Board.PlacePieceSetup(road4, 9, 2);
-            //_controller.Board.PlacePieceSetup(road5, 8, 1);
+            _controller.Board.PlacePieceSetup(road4, 9, 2);
+            _controller.Board.PlacePieceSetup(road5, 8, 1);
 
             ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();

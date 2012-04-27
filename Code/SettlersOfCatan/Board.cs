@@ -697,28 +697,32 @@ namespace SettlersOfCatan
                 //Get the neighboring vertex
                 var temp2 = (Vertex) targetVertex.Neighbors[direction];
                 //get the index of the neighboring vertex
-                int index = Vertices.IndexOf(temp2);
+                int secondIndex = Vertices.IndexOf(temp2);
+
+                int firstIndex = temp2.Neighbors.IndexOf(targetVertex);
+                temp2.Roads[firstIndex] = piece;
+
                 // use the difference between the vertices to determine which direction the road should go from the other vertex.
-                int difference = location - index;
-                if (difference > 1)
-                {
-                    // The neighbor node is in the preceding row
-                    temp2.Roads[1] = piece;
-                }
-                else
-                {
-                    //the neighbor node is in the same or next row
-                    if (location%2 == 0)
-                    {
-                        //and to the right of its neighbor node
-                        temp2.Roads[2] = piece;
-                    }
-                    else
-                    {
-                        //and to the left of its neighbor node
-                        temp2.Roads[0] = piece;
-                    }
-                }
+//                int difference = location - index;
+//                if (difference > 1)
+//                {
+//                    // The neighbor node is in the preceding row
+//                    temp2.Roads[1] = piece;
+//                }
+//                else
+//                {
+//                    //the neighbor node is in the same or next row
+//                    if (location%2 == 0)
+//                    {
+//                        //and to the right of its neighbor node
+//                        temp2.Roads[2] = piece;
+//                    }
+//                    else
+//                    {
+//                        //and to the left of its neighbor node
+//                        temp2.Roads[0] = piece;
+//                    }
+//                }
             }
             else
             {
