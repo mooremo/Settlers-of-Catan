@@ -500,6 +500,21 @@ namespace SettlersOfCatan
                 AwardResourceForSettlementAdjacentToRolledHex();
             }
         }
+
+        public bool TradeWithBank(int cardTypeToTrade, int cardTypeToGet)
+        {
+            return false;
+        }
+
+        public bool TradeAtPort(int portNumber, int cardTypeToTrade, int cardTypeToGet)
+        {
+            return false;
+        }
+
+        public bool TradeWithAnotherPlayer(int playerNumber, int cardTypeToTrade, int numberToTrade, int cardeTypeToGet, int numberToGet)
+        {
+            return false;
+        }
     }
 
     public class EmptyDeckException : Exception
