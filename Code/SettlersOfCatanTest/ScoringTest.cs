@@ -346,7 +346,8 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road5, 8, 1);
             _controller.Board.PlacePieceSetup(road6, 14, 1);
 
-            road4 = null;
+            ((Vertex) _controller.Board.Vertices[9]).Roads[2] = null;
+            ((Vertex)_controller.Board.Vertices[8]).Roads[0] = null;
 
             ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
@@ -383,11 +384,11 @@ namespace SettlersOfCatanTest
             var road11 = new Road(_player2);
             _controller.Board.PlacePieceSetup(new Settlement(_player2, SettlementType.Village), 52);
             _controller.Board.PlacePieceSetup(road6, 52, 0);
-            _controller.Board.PlacePieceSetup(road7, 53, 1);
+            _controller.Board.PlacePieceSetup(road7, 53, 0);
             _controller.Board.PlacePieceSetup(road8, 50, 2);
             _controller.Board.PlacePieceSetup(road9, 45, 0);
             _controller.Board.PlacePieceSetup(road10, 39, 2);
-            _controller.Board.PlacePieceSetup(road11, 33, 1);
+            _controller.Board.PlacePieceSetup(road11, 33, 2);
 
             ((Vertex)_controller.Board.Vertices[52]).Settlement = null;
             _controller.ScorePlayers();
@@ -399,19 +400,97 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        [Ignore]
         // Another player must _exceed_ the current longest road to get the points
         public void TestLongestRoadDoesNotTransferWhenEqualled()
         {
-            
+            var road1 = new Road(_player2);
+            var road2 = new Road(_player2);
+            var road3 = new Road(_player2);
+            var road4 = new Road(_player2);
+            var road5 = new Road(_player2);
+            _controller.Board.PlacePieceSetup(new Settlement(_player2, SettlementType.Village), 0);
+            _controller.Board.PlacePieceSetup(road1, 0, 0);
+            _controller.Board.PlacePieceSetup(road2, 1, 1);
+            _controller.Board.PlacePieceSetup(road3, 4, 1);
+            _controller.Board.PlacePieceSetup(road4, 9, 2);
+            _controller.Board.PlacePieceSetup(road5, 8, 1);
+
+            ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
+            _controller.ScorePlayers();
+
+            Assert.AreEqual(0, _player1.Score);
+            Assert.AreEqual(2, _player2.Score);
+            Assert.AreEqual(0, _player3.Score);
+            Assert.AreEqual(0, _player4.Score);
+
+
+            var road6 = new Road(_player1);
+            var road7 = new Road(_player1);
+            var road8 = new Road(_player1);
+            var road9 = new Road(_player1);
+            var road10 = new Road(_player1);
+            var road11 = new Road(_player1);
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 52);
+            _controller.Board.PlacePieceSetup(road6, 52, 0);
+            _controller.Board.PlacePieceSetup(road7, 53, 0);
+            _controller.Board.PlacePieceSetup(road8, 50, 2);
+            _controller.Board.PlacePieceSetup(road9, 45, 0);
+            _controller.Board.PlacePieceSetup(road10, 39, 2);
+
+            ((Vertex)_controller.Board.Vertices[52]).Settlement = null;
+            _controller.ScorePlayers();
+
+            Assert.AreEqual(0, _player1.Score);
+            Assert.AreEqual(2, _player2.Score);
+            Assert.AreEqual(0, _player3.Score);
+            Assert.AreEqual(0, _player4.Score);
         }
 
         [Test]
-        [Ignore]
         // Sees that the points get transferred to the new longest road
         public void TestLongestRoadTransfersWhenExceeded()
         {
-            
+            var road1 = new Road(_player2);
+            var road2 = new Road(_player2);
+            var road3 = new Road(_player2);
+            var road4 = new Road(_player2);
+            var road5 = new Road(_player2);
+            _controller.Board.PlacePieceSetup(new Settlement(_player2, SettlementType.Village), 0);
+            _controller.Board.PlacePieceSetup(road1, 0, 0);
+            _controller.Board.PlacePieceSetup(road2, 1, 1);
+            _controller.Board.PlacePieceSetup(road3, 4, 1);
+            _controller.Board.PlacePieceSetup(road4, 9, 2);
+            _controller.Board.PlacePieceSetup(road5, 8, 1);
+
+            ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
+            _controller.ScorePlayers();
+
+            Assert.AreEqual(0, _player1.Score);
+            Assert.AreEqual(2, _player2.Score);
+            Assert.AreEqual(0, _player3.Score);
+            Assert.AreEqual(0, _player4.Score);
+
+            var road6 = new Road(_player1);
+            var road7 = new Road(_player1);
+            var road8 = new Road(_player1);
+            var road9 = new Road(_player1);
+            var road10 = new Road(_player1);
+            var road11 = new Road(_player1);
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 52);
+            _controller.Board.PlacePieceSetup(road6, 52, 0);
+            _controller.Board.PlacePieceSetup(road7, 53, 0);
+            _controller.Board.PlacePieceSetup(road8, 50, 2);
+            _controller.Board.PlacePieceSetup(road9, 45, 0);
+            _controller.Board.PlacePieceSetup(road10, 39, 2);
+            _controller.Board.PlacePieceSetup(road11, 33, 2);
+
+            ((Vertex)_controller.Board.Vertices[52]).Settlement = null;
+            _controller.ScorePlayers();
+
+            Assert.AreEqual(2, _player1.Score);
+            Assert.AreEqual(0, _player2.Score);
+            Assert.AreEqual(0, _player3.Score);
+            Assert.AreEqual(0, _player4.Score);
         }
 
         [Test]
@@ -545,37 +624,6 @@ namespace SettlersOfCatanTest
             Assert.AreEqual(2, _player2.Score);
             Assert.AreEqual(0, _player3.Score);
             Assert.AreEqual(0, _player4.Score);
-        }
-
-        [Test]
-        [Ignore]
-        // Ensures that some preset configuration of the game state awards
-        // the correct number of points for one player
-        public void TestMixConfigurationOnePlayer()
-        {
-            
-        }
-
-        [Test]
-        [Ignore]
-        // Same as above, but each player must get the correct score
-        public void TestMixConfigurationTwoPlayer()
-        {
-            
-        }
-
-        [Test]
-        [Ignore]
-        public void TestMixConfigurationThreePlayer()
-        {
-            
-        }
-
-        [Test]
-        [Ignore]
-        public void TestMixConfigurationFourPlayer()
-        {
-            
         }
     }
 }
