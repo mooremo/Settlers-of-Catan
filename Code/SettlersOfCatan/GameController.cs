@@ -159,6 +159,17 @@ namespace SettlersOfCatan
 
         private void AwardLongestRoad()
         {
+            foreach (Vertex vertex in Board.Vertices)
+            {
+                for (int i=0; i<3; i++)
+                {
+                    var road = vertex.Roads[i];
+                    if (road != null)
+                    {
+                        Console.Out.WriteLine("Found a road from {0} to {1}", vertex.Index, ((Vertex)vertex.Neighbors[i]).Index);
+                    }
+                }
+            }
         }
 
         private void ScoreVictoryPointCards()

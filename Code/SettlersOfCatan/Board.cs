@@ -563,7 +563,7 @@ namespace SettlersOfCatan
             //Generate the vertices
             for (int i = 0; i < 54; i++)
             {
-                Vertices.Insert(i, new Vertex());
+                Vertices.Insert(i, new Vertex(i));
             }
 
             //Fill tile's vertices

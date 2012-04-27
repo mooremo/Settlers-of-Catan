@@ -5,12 +5,14 @@ namespace SettlersOfCatan
     public class Vertex
     {
         //Neighbors are indexed in a clockwise fashion
-        public Vertex()
+        public Vertex(int i)
         {
+            Index = i;
             Neighbors = new ArrayList();
             Roads = new ArrayList(new Road[] {null, null, null});
         }
 
+        public int Index { get; set; }
         public ArrayList Neighbors { get; set; }
         public ArrayList Roads { get; set; }
         public Settlement Settlement { get; set; }

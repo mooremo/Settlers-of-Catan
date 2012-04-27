@@ -147,8 +147,10 @@ namespace SettlersOfCatanTest
         public void TestOneRoadDoesNotGiveLongestRoad()
         {
             var road = new Road(_player1);
-            ((Vertex) _board.Vertices[0]).Roads[0] = road;
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 0);
+            _controller.Board.PlacePieceSetup(road, 0, 0);
 
+            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -162,9 +164,11 @@ namespace SettlersOfCatanTest
         {
             var road1 = new Road(_player1);
             var road2 = new Road(_player1);
-            ((Vertex) _board.Vertices[0]).Roads[0] = road1;
-            ((Vertex) _board.Vertices[1]).Roads[1] = road2;
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 0);
+            _controller.Board.PlacePieceSetup(road1, 0, 0);
+            _controller.Board.PlacePieceSetup(road2, 1, 1);
 
+            ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -179,10 +183,12 @@ namespace SettlersOfCatanTest
             var road1 = new Road(_player1);
             var road2 = new Road(_player1);
             var road3 = new Road(_player1);
-            ((Vertex)_board.Vertices[0]).Roads[0] = road1;
-            ((Vertex)_board.Vertices[1]).Roads[1] = road2;
-            ((Vertex)_board.Vertices[4]).Roads[1] = road3;
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 0);
+            _controller.Board.PlacePieceSetup(road1, 0, 0);
+            _controller.Board.PlacePieceSetup(road2, 1, 1);
+            _controller.Board.PlacePieceSetup(road3, 4, 1);
 
+            ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -198,11 +204,13 @@ namespace SettlersOfCatanTest
             var road2 = new Road(_player1);
             var road3 = new Road(_player1);
             var road4 = new Road(_player1);
-            ((Vertex)_board.Vertices[0]).Roads[0] = road1;
-            ((Vertex)_board.Vertices[1]).Roads[1] = road2;
-            ((Vertex)_board.Vertices[4]).Roads[1] = road3;
-            ((Vertex)_board.Vertices[9]).Roads[2] = road4;
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 0);
+            _controller.Board.PlacePieceSetup(road1, 0, 0);
+            _controller.Board.PlacePieceSetup(road2, 1, 1);
+            _controller.Board.PlacePieceSetup(road3, 4, 1);
+            _controller.Board.PlacePieceSetup(road4, 9, 2);
 
+            ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -220,12 +228,14 @@ namespace SettlersOfCatanTest
             var road3 = new Road(_player1);
             var road4 = new Road(_player1);
             var road5 = new Road(_player1);
-            ((Vertex)_board.Vertices[0]).Roads[0] = road1;
-            ((Vertex)_board.Vertices[1]).Roads[1] = road2;
-            ((Vertex)_board.Vertices[4]).Roads[1] = road3;
-            ((Vertex)_board.Vertices[9]).Roads[2] = road4;
-            ((Vertex)_board.Vertices[8]).Roads[1] = road5;
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 4);
+            //_controller.Board.PlacePieceSetup(road1, 0, 0);
+            //_controller.Board.PlacePieceSetup(road2, 1, 1);
+            _controller.Board.PlacePieceSetup(road3, 4, 1);
+            //_controller.Board.PlacePieceSetup(road4, 9, 2);
+            //_controller.Board.PlacePieceSetup(road5, 8, 1);
 
+            ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(2, _player1.Score);
@@ -240,16 +250,22 @@ namespace SettlersOfCatanTest
         public void TestConnectedRoadInterlacedWithMultiplePlayersDoesNotAwardLongestRoad()
         {
             var road1 = new Road(_player1);
-            var road2 = new Road(_player2);
-            var road3 = new Road(_player3);
-            var road4 = new Road(_player4);
+            var road2 = new Road(_player1);
+            var road3 = new Road(_player1);
+            var road4 = new Road(_player1);
             var road5 = new Road(_player1);
-            ((Vertex)_board.Vertices[0]).Roads[0] = road1;
-            ((Vertex)_board.Vertices[1]).Roads[1] = road2;
-            ((Vertex)_board.Vertices[4]).Roads[1] = road3;
-            ((Vertex)_board.Vertices[9]).Roads[2] = road4;
-            ((Vertex)_board.Vertices[8]).Roads[1] = road5;
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 0);
+            _controller.Board.PlacePieceSetup(road1, 0, 0);
+            _controller.Board.PlacePieceSetup(road2, 1, 1);
+            _controller.Board.PlacePieceSetup(road3, 4, 1);
+            _controller.Board.PlacePieceSetup(road4, 9, 2);
+            _controller.Board.PlacePieceSetup(road5, 8, 1);
 
+            road2.player = _player2;
+            road3.player = _player3;
+            road4.player = _player4;
+
+            ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -268,13 +284,15 @@ namespace SettlersOfCatanTest
             var road4 = new Road(_player1);
             var road5 = new Road(_player1);
             var road6 = new Road(_player1);
-            ((Vertex)_board.Vertices[0]).Roads[0] = road1;
-            ((Vertex)_board.Vertices[1]).Roads[1] = road2;
-            ((Vertex)_board.Vertices[4]).Roads[1] = road3;
-            ((Vertex)_board.Vertices[9]).Roads[2] = road4;
-            ((Vertex)_board.Vertices[8]).Roads[1] = road5;
-            ((Vertex)_board.Vertices[14]).Roads[1] = road6;
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 0);
+            _controller.Board.PlacePieceSetup(road1, 0, 0);
+            _controller.Board.PlacePieceSetup(road2, 1, 1);
+            _controller.Board.PlacePieceSetup(road3, 4, 1);
+            _controller.Board.PlacePieceSetup(road4, 9, 2);
+            _controller.Board.PlacePieceSetup(road5, 8, 1);
+            _controller.Board.PlacePieceSetup(road6, 14, 1);
 
+            ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(2, _player1.Score);
@@ -293,13 +311,15 @@ namespace SettlersOfCatanTest
             var road4 = new Road(_player1);
             var road5 = new Road(_player1);
             var road6 = new Road(_player1);
-            ((Vertex)_board.Vertices[0]).Roads[0] = road1;
-            ((Vertex)_board.Vertices[1]).Roads[1] = road2;
-            ((Vertex)_board.Vertices[4]).Roads[1] = road3;
-            ((Vertex)_board.Vertices[9]).Roads[2] = road4;
-            ((Vertex)_board.Vertices[8]).Roads[1] = road5;
-            ((Vertex)_board.Vertices[8]).Roads[2] = road6;
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 0);
+            _controller.Board.PlacePieceSetup(road1, 0, 0);
+            _controller.Board.PlacePieceSetup(road2, 1, 1);
+            _controller.Board.PlacePieceSetup(road3, 4, 1);
+            _controller.Board.PlacePieceSetup(road4, 9, 2);
+            _controller.Board.PlacePieceSetup(road5, 8, 1);
+            _controller.Board.PlacePieceSetup(road6, 8, 2);
 
+            ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(2, _player1.Score);
@@ -317,13 +337,18 @@ namespace SettlersOfCatanTest
             var road3 = new Road(_player1);
             var road4 = new Road(_player1);
             var road5 = new Road(_player1);
-            ((Vertex)_board.Vertices[0]).Roads[0] = road1;
-            ((Vertex)_board.Vertices[1]).Roads[1] = road2;
-            ((Vertex)_board.Vertices[4]).Roads[1] = road3;
-            
-            ((Vertex)_board.Vertices[8]).Roads[1] = road4;
-            ((Vertex)_board.Vertices[8]).Roads[2] = road5;
+            var road6 = new Road(_player1);
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 0);
+            _controller.Board.PlacePieceSetup(road1, 0, 0);
+            _controller.Board.PlacePieceSetup(road2, 1, 1);
+            _controller.Board.PlacePieceSetup(road3, 4, 1);
+            _controller.Board.PlacePieceSetup(road4, 9, 2);
+            _controller.Board.PlacePieceSetup(road5, 8, 1);
+            _controller.Board.PlacePieceSetup(road6, 14, 1);
 
+            road4 = null;
+
+            ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -342,25 +367,29 @@ namespace SettlersOfCatanTest
             var road3 = new Road(_player1);
             var road4 = new Road(_player1);
             var road5 = new Road(_player1);
-            ((Vertex)_board.Vertices[0]).Roads[0] = road1;
-            ((Vertex)_board.Vertices[1]).Roads[1] = road2;
-            ((Vertex)_board.Vertices[4]).Roads[1] = road3;
-            ((Vertex)_board.Vertices[9]).Roads[2] = road4;
-            ((Vertex)_board.Vertices[8]).Roads[1] = road5;
+            _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 0);
+            _controller.Board.PlacePieceSetup(road1, 0, 0);
+            _controller.Board.PlacePieceSetup(road2, 1, 1);
+            _controller.Board.PlacePieceSetup(road3, 4, 1);
+            _controller.Board.PlacePieceSetup(road4, 9, 2);
+            _controller.Board.PlacePieceSetup(road5, 8, 1);
 
+            ((Vertex)_controller.Board.Vertices[0]).Settlement = null;
             var road6 = new Road(_player2);
             var road7 = new Road(_player2);
             var road8 = new Road(_player2);
             var road9 = new Road(_player2);
             var road10 = new Road(_player2);
             var road11 = new Road(_player2);
-            ((Vertex)_board.Vertices[52]).Roads[0] = road6;
-            ((Vertex)_board.Vertices[53]).Roads[1] = road7;
-            ((Vertex)_board.Vertices[50]).Roads[2] = road8;
-            ((Vertex)_board.Vertices[45]).Roads[0] = road9;
-            ((Vertex)_board.Vertices[39]).Roads[2] = road10;
-            ((Vertex)_board.Vertices[33]).Roads[1] = road11;
+            _controller.Board.PlacePieceSetup(new Settlement(_player2, SettlementType.Village), 52);
+            _controller.Board.PlacePieceSetup(road6, 52, 0);
+            _controller.Board.PlacePieceSetup(road7, 53, 1);
+            _controller.Board.PlacePieceSetup(road8, 50, 2);
+            _controller.Board.PlacePieceSetup(road9, 45, 0);
+            _controller.Board.PlacePieceSetup(road10, 39, 2);
+            _controller.Board.PlacePieceSetup(road11, 33, 1);
 
+            ((Vertex)_controller.Board.Vertices[52]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -459,29 +488,29 @@ namespace SettlersOfCatanTest
         // A player must _exceed_ the current largest army to get the points
         public void TestLargestArmyDoesNotTransferWhenEqualled()
         {
-            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
-            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
-            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
 
             _controller.ScorePlayers();
 
-            Assert.AreSame(_player1, _controller.LargestArmy);
+            Assert.AreSame(_player2, _controller.LargestArmy);
 
-            Assert.AreEqual(2, _player1.Score);
-            Assert.AreEqual(0, _player2.Score);
+            Assert.AreEqual(0, _player1.Score);
+            Assert.AreEqual(2, _player2.Score);
             Assert.AreEqual(0, _player3.Score);
             Assert.AreEqual(0, _player4.Score);
 
-            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
-            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
-            _player2.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
+            _player1.PlayedDevelopmentCards.Add(CardType.Soldier);
 
             _controller.ScorePlayers();
 
-            Assert.AreSame(_player1, _controller.LargestArmy);
+            Assert.AreSame(_player2, _controller.LargestArmy);
 
-            Assert.AreEqual(2, _player1.Score);
-            Assert.AreEqual(0, _player2.Score);
+            Assert.AreEqual(0, _player1.Score);
+            Assert.AreEqual(2, _player2.Score);
             Assert.AreEqual(0, _player3.Score);
             Assert.AreEqual(0, _player4.Score);
         }
