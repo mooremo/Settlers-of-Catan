@@ -1,12 +1,30 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace SettlersOfCatan
 {
-    public class GameController
+    [Serializable]
+    public class GameController : ISerializable
     {
         public Player CurrentPlayer;
+
+        public GameController(SerializationInfo info, StreamingContext ctxt)
+        {
+            CurrentPlayer = (Player) info.GetValue("CurrentPlayer", typeof (Player));
+            Board = (Board) info.GetValue("Board", typeof (Board));
+            Dice = (Dice) info.GetValue("Dice", typeof (Dice));
+            Players = (ArrayList) info.GetValue("Players", typeof (ArrayList));
+            ResourceDeck = (Dictionary<TileType, int>) info.GetValue("ResourceDeck", typeof (Dictionary<TileType, int>));
+            ResourceLookup =
+                (Dictionary<TileType, CardType>)
+                info.GetValue("ResourceLookup", typeof (Dictionary<TileType, CardType>));
+            DevelopmentDeck = (ArrayList) info.GetValue("DevelopmentDeck", typeof (ArrayList));
+            LongestRoad = (Player) info.GetValue("LongestRoad", typeof (Player));
+            LargestArmy = (Player) info.GetValue("LargestArmy", typeof (Player));
+            LongestRoadLength = (int) info.GetValue("LongestRoadLength", typeof (int));
+        }
 
         public GameController()
         {
@@ -38,6 +56,30 @@ namespace SettlersOfCatan
         public Player LongestRoad { get; set; }
         public int LongestRoadLength { get; set; }
         public Player LargestArmy { get; set; }
+
+        #region ISerializable Members
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("CurrentPlayer", CurrentPlayer);
+            info.AddValue("Board", Board);
+            info.AddValue("Dice", Dice);
+            info.AddValue("Players", Players);
+            info.AddValue("ResourceDeck", ResourceDeck);
+            info.AddValue("ResourceLookup", ResourceLookup);
+            info.AddValue("DevelopmentDeck", DevelopmentDeck);
+            info.AddValue("LongestRoad", LongestRoad);
+            info.AddValue("LargestArmy", LargestArmy);
+            info.AddValue("LongestRoadLength", LongestRoadLength);
+        }
+
+        #endregion
+
+        public void Save(string fileName)
+        {
+            var temp = new Serializer();
+            temp.Save(this, fileName);
+        }
 
         private void InitializeResourceLookup()
         {
@@ -121,14 +163,14 @@ namespace SettlersOfCatan
 
         private void AwardLargestArmy()
         {
-            var armies = CountArmies();
-            var armyToBeat = 2;
+            Dictionary<Player, int> armies = CountArmies();
+            int armyToBeat = 2;
             if (LargestArmy != null)
             {
                 armyToBeat = armies[LargestArmy];
             }
 
-            foreach(Player player in Players)
+            foreach (Player player in Players)
             {
                 if (armies[player] > armyToBeat)
                 {
@@ -173,10 +215,10 @@ namespace SettlersOfCatan
             foreach (Player player in Players)
             {
                 ResetRoadMarks();
-                var sets = PartitionRoads(player);
+                List<List<Road>> sets = PartitionRoads(player);
                 longestRoadPerPlayer.Add(player, FindLongestRoadInSet(sets));
             }
-            
+
             foreach (Player player in Players)
             {
                 if (longestRoadPerPlayer[player] > LongestRoadLength)
@@ -194,15 +236,15 @@ namespace SettlersOfCatan
 
         private int FindLongestRoadInSet(List<List<Road>> sets)
         {
-            var longest = 0;
+            int longest = 0;
 
-            foreach (List<Road> road in sets)
+            foreach (var road in sets)
             {
-                var endPoints = FindEndPoints(road);
+                List<Road> endPoints = FindEndPoints(road);
                 foreach (Road endPoint in endPoints)
                 {
                     ResetRoadMarks();
-                    var curRoad = MeasureRoad(endPoint, 0);
+                    int curRoad = MeasureRoad(endPoint, 0);
                     if (curRoad > longest)
                     {
                         longest = curRoad;
@@ -217,7 +259,7 @@ namespace SettlersOfCatan
         {
             curRoad.Marked = true;
 
-            var bestSoFar = 0;
+            int bestSoFar = 0;
             foreach (int index in curRoad.Indices)
             {
                 var vertex = (Vertex) Board.Vertices[index];
@@ -225,7 +267,7 @@ namespace SettlersOfCatan
                 {
                     if (nextRoad != null && !nextRoad.Marked && nextRoad.player == curRoad.player)
                     {
-                        var thisPath = MeasureRoad(nextRoad, length + 1);
+                        int thisPath = MeasureRoad(nextRoad, length + 1);
                         if (thisPath > bestSoFar)
                         {
                             bestSoFar = thisPath;
@@ -246,7 +288,7 @@ namespace SettlersOfCatan
                 var vertex1 = (Vertex) Board.Vertices[roadPiece.Indices[0]];
                 var vertex2 = (Vertex) Board.Vertices[roadPiece.Indices[1]];
 
-                var endFlag = true;
+                bool endFlag = true;
                 for (int i = 0; i < 3; i++)
                 {
                     if (vertex1.Roads[i] != null && vertex1.Roads[i] != roadPiece)
@@ -326,11 +368,12 @@ namespace SettlersOfCatan
 
             foreach (int i in road.Indices)
             {
-                var vertex = (Vertex)Board.Vertices[i];
-                for (int j=0; j<3; j++)
+                var vertex = (Vertex) Board.Vertices[i];
+                for (int j = 0; j < 3; j++)
                 {
-                    var nextRoad = (Road)vertex.Roads[j];
-                    if (nextRoad != null && !nextRoad.Marked && nextRoad.player == player && (vertex.Settlement == null || vertex.Settlement.player == player))
+                    var nextRoad = (Road) vertex.Roads[j];
+                    if (nextRoad != null && !nextRoad.Marked && nextRoad.player == player &&
+                        (vertex.Settlement == null || vertex.Settlement.player == player))
                     {
                         list = TraverseRoad(nextRoad, player, list);
                     }
@@ -410,14 +453,14 @@ namespace SettlersOfCatan
                             if (vertex.Settlement.type == SettlementType.Village)
                             {
                                 vertex.Settlement.player.ResourceHand.Add(
-                                    DrawResource((SettlersOfCatan.TileType) tile.Type));
+                                    DrawResource((TileType) tile.Type));
                             }
                             else if (vertex.Settlement.type == SettlementType.City)
                             {
                                 vertex.Settlement.player.ResourceHand.Add(
-                                    DrawResource((SettlersOfCatan.TileType)tile.Type));
+                                    DrawResource((TileType) tile.Type));
                                 vertex.Settlement.player.ResourceHand.Add(
-                                    DrawResource((SettlersOfCatan.TileType)tile.Type));
+                                    DrawResource((TileType) tile.Type));
                             }
                         }
                     }
@@ -434,7 +477,7 @@ namespace SettlersOfCatan
                 if (player.ResourceHand.Count > 6)
                 {
                     int count = player.ResourceHand.Count;
-                    int numberToRemove = (count % 2 == 0) ? count / 2 : (count - 1) / 2;
+                    int numberToRemove = (count%2 == 0) ? count/2 : (count - 1)/2;
                     while (numberToRemove > 0)
                     {
                         player.Discard(0);
@@ -455,7 +498,6 @@ namespace SettlersOfCatan
             else
             {
                 AwardResourceForSettlementAdjacentToRolledHex();
-
             }
         }
     }

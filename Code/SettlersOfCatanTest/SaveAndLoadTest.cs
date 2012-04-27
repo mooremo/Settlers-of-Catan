@@ -8,23 +8,32 @@ namespace SettlersOfCatanTest
     {
         #region Setup/Teardown
 
-        private GameController _testGameController, _testGameController2;
-
         [SetUp]
         public void SetUp()
         {
             _testGameController = new GameController();
             _testGameController2 = new GameController();
+            _mySerializer = new Serializer();
+            p1 = new Player();
+            p1.Color = 1;
         }
 
         #endregion
 
+        private GameController _testGameController, _testGameController2;
+        private Serializer _mySerializer;
+        private Player p1;
+        private Board b1;
+
         [Test]
         public void TestSaveAndLoad()
         {
-           // _testGameController.Save();
-           // _testGameController2.Load();
-            Assert.AreEqual(_testGameController, _testGameController2);
+            _testGameController.LongestRoadLength = 5;
+            _testGameController.CurrentPlayer = p1;
+            _testGameController.Save("C:\\Users\\Matthew\\Desktop\\test.dat");
+            _testGameController2 = _mySerializer.Load("C:\\Users\\Matthew\\Desktop\\test.dat");
+            Assert.AreEqual(_testGameController2.LongestRoadLength, 5);
+            Assert.AreEqual(_testGameController2.CurrentPlayer.Color, 1);
         }
 
         [Test]

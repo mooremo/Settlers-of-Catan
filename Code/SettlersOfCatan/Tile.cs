@@ -20,5 +20,6 @@ namespace SettlersOfCatan
         public int Number { get; set; }
         public ArrayList Neighbors { get; set; }
         public ArrayList Vertices { get; set; }
+        public bool Robber { get; set; }
     }
 }

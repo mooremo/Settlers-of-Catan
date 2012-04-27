@@ -7,12 +7,7 @@ namespace SettlersOfCatanTest
     [TestFixture]
     internal class TurnTest
     {
-        private GameController _controller;
-        private Board _board;
-        private Player _player1;
-        private Player _player2;
-        private Player _player3;
-        private Player _player4;
+        #region Setup/Teardown
 
         [SetUp]
         public void SetUp()
@@ -31,6 +26,101 @@ namespace SettlersOfCatanTest
             _controller.Players.Add(_player2);
             _controller.Players.Add(_player3);
             _controller.Players.Add(_player4);
+        }
+
+        #endregion
+
+        private GameController _controller;
+        private Board _board;
+        private Player _player1;
+        private Player _player2;
+        private Player _player3;
+        private Player _player4;
+
+        [Test]
+        //When a city is adjacent to a hex without the number rolled
+        //the player receives 0 resource cards
+        public void TestThatAPlayerDoesNotReceiveAResourceForACityNextToHexWithoutNumberRolled()
+        {
+            var tempTile = (Tile) _board.TerrainTiles[0];
+            _controller.Dice.Value = (tempTile.Number < 12) ? tempTile.Number + 1 : tempTile.Number - 1;
+            ((Vertex) tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.City);
+            int countBefore = ((Player) _controller.Players[0]).ResourceHand.Count;
+            _controller.AwardResourceForSettlementAdjacentToRolledHex();
+            int countAfter = ((Player) _controller.Players[0]).ResourceHand.Count;
+            Assert.AreEqual(countBefore, countAfter);
+        }
+
+        [Test]
+        //When a village is adjacent to a hex without the number rolled
+        //the player receives 0 resource cards
+        public void TestThatAPlayerDoesNotReceiveAResourceForAVillageNextToHexWithoutNumberRolled()
+        {
+            var tempTile = (Tile) _board.TerrainTiles[0];
+            _controller.Dice.Value = (tempTile.Number < 12) ? tempTile.Number + 1 : tempTile.Number - 1;
+            ((Vertex) tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.Village);
+            int countBefore = ((Player) _controller.Players[0]).ResourceHand.Count;
+            _controller.AwardResourceForSettlementAdjacentToRolledHex();
+            int countAfter = ((Player) _controller.Players[0]).ResourceHand.Count;
+            Assert.AreEqual(countBefore, countAfter);
+        }
+
+        [Test]
+        //When a village is adjacent to a hex with the number rolled
+        //the player receives 1 resource card
+        public void TestThatAPlayerReceivesOneResourceForAVillageNextToHexWithNumberRolled()
+        {
+            var tempTile = (Tile) _board.TerrainTiles[0];
+            _controller.Dice.Value = tempTile.Number;
+            ((Vertex) tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.Village);
+            int countBefore = ((Player) _controller.Players[0]).ResourceHand.Count;
+            _controller.AwardResourceForSettlementAdjacentToRolledHex();
+            int countAfter = ((Player) _controller.Players[0]).ResourceHand.Count;
+            Assert.AreEqual(countBefore + 1, countAfter);
+        }
+
+        [Test]
+        //When a city is adjacent to a hex with the number rolled
+        //the player receives 2 resource card
+        public void TestThatAPlayerReceivesTwoResourceForACityNextToHexWithNumberRolled()
+        {
+            var tempTile = (Tile) _board.TerrainTiles[0];
+            _controller.Dice.Value = tempTile.Number;
+            ((Vertex) tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.City);
+            int countBefore = ((Player) _controller.Players[0]).ResourceHand.Count;
+            _controller.AwardResourceForSettlementAdjacentToRolledHex();
+            int countAfter = ((Player) _controller.Players[0]).ResourceHand.Count;
+            Assert.AreEqual(countBefore + 2, countAfter);
+        }
+
+        [Test]
+        //When two cities are adjacent to a hex with the number rolled
+        //the player receives 4 resource card
+        public void TestThatAPlayerReceivesFourResourcesForTwoCitiesNextToHexWithNumberRolled()
+        {
+            var tempTile = (Tile) _board.TerrainTiles[0];
+            _controller.Dice.Value = tempTile.Number;
+            ((Vertex) tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.City);
+            ((Vertex) tempTile.Vertices[2]).Settlement = new Settlement(_player1, SettlementType.City);
+            int countBefore = ((Player) _controller.Players[0]).ResourceHand.Count;
+            _controller.AwardResourceForSettlementAdjacentToRolledHex();
+            int countAfter = ((Player) _controller.Players[0]).ResourceHand.Count;
+            Assert.AreEqual(countBefore + 4, countAfter);
+        }
+
+        [Test]
+        //When 2 villages is adjacent to a hex with the number rolled
+        //the player receives 2 resource card
+        public void TestThatAPlayerReceivesTwoResourcesForVillagesNextToHexWithNumberRolled()
+        {
+            var tempTile = (Tile) _board.TerrainTiles[0];
+            _controller.Dice.Value = tempTile.Number;
+            ((Vertex) tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.Village);
+            ((Vertex) tempTile.Vertices[2]).Settlement = new Settlement(_player1, SettlementType.Village);
+            int countBefore = ((Player) _controller.Players[0]).ResourceHand.Count;
+            _controller.AwardResourceForSettlementAdjacentToRolledHex();
+            int countAfter = ((Player) _controller.Players[0]).ResourceHand.Count;
+            Assert.AreEqual(countBefore + 2, countAfter);
         }
 
         [Test]
@@ -68,24 +158,13 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        //When a 7 is rolled a player with 7 cards loses 3
-        public void TestThatWhenA7IsRolledAPlayerWith7CardsLoses3()
-        {
-            ArrayList resources = new ArrayList(new int[] {0, 0, 1, 2, 3, 4, 4});
-            ((SettlersOfCatan.Player) _controller.Players[0]).ResourceHand = resources;
-            _controller.DiscardForMoreThanSeven();
-            int count = ((SettlersOfCatan.Player) _controller.Players[0]).ResourceHand.Count;
-            Assert.AreEqual(4, count);
-        }
-
-        [Test]
         //When a 7 is rolled a player with 10 cards loses 5
         public void TestThatWhenA7IsRolledAPlayerWith10CardsLoses5()
         {
-            ArrayList resources = new ArrayList(new int[] { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4});
-            ((SettlersOfCatan.Player)_controller.Players[0]).ResourceHand = resources;
+            var resources = new ArrayList(new[] {0, 0, 1, 1, 2, 2, 3, 3, 4, 4});
+            ((Player) _controller.Players[0]).ResourceHand = resources;
             _controller.DiscardForMoreThanSeven();
-            int count = ((SettlersOfCatan.Player)_controller.Players[0]).ResourceHand.Count;
+            int count = ((Player) _controller.Players[0]).ResourceHand.Count;
             Assert.AreEqual(5, count);
         }
 
@@ -93,34 +172,39 @@ namespace SettlersOfCatanTest
         //When a 7 is rolled a player with 6 cards loses 0
         public void TestThatWhenA7IsRolledAPlayerWith6CardsLoses0()
         {
-            ArrayList resources = new ArrayList(new int[] { 0, 0, 1, 2, 3, 4});
-            ((SettlersOfCatan.Player)_controller.Players[0]).ResourceHand = resources;
+            var resources = new ArrayList(new[] {0, 0, 1, 2, 3, 4});
+            ((Player) _controller.Players[0]).ResourceHand = resources;
             _controller.DiscardForMoreThanSeven();
-            int count = ((SettlersOfCatan.Player)_controller.Players[0]).ResourceHand.Count;
+            int count = ((Player) _controller.Players[0]).ResourceHand.Count;
             Assert.AreEqual(6, count);
         }
 
         [Test]
-        //When a village is adjacent to a hex with the number rolled
-        //the player receives 1 resource card
-        public void TestThatAPlayerReceivesOneResourceForAVillageNextToHexWithNumberRolled()
+        //When a 7 is rolled a player with 7 cards loses 3
+        public void TestThatWhenA7IsRolledAPlayerWith7CardsLoses3()
         {
-            Tile tempTile = (Tile) _board.TerrainTiles[0];
-            _controller.Dice.Value = tempTile.Number;
-            ((Vertex)tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.Village);
-            int countBefore = ((Player) _controller.Players[0]).ResourceHand.Count;
-            _controller.AwardResourceForSettlementAdjacentToRolledHex();
-            int countAfter = ((Player)_controller.Players[0]).ResourceHand.Count;
-            Assert.AreEqual(countBefore + 1, countAfter);
+            var resources = new ArrayList(new[] {0, 0, 1, 2, 3, 4, 4});
+            ((Player) _controller.Players[0]).ResourceHand = resources;
+            _controller.DiscardForMoreThanSeven();
+            int count = ((Player) _controller.Players[0]).ResourceHand.Count;
+            Assert.AreEqual(4, count);
         }
 
+
+
+
+
+
+
+
         [Test]
-        //When a village is adjacent to a hex without the number rolled
+        //When a village is adjacent to a hex with the number rolled but the robber is there
         //the player receives 0 resource cards
-        public void TestThatAPlayerDoesNotReceiveAResourceForAVillageNextToHexWithoutNumberRolled()
+        public void TestThatAPlayerReceivesZeroResourceForAVillageNextToHexWithNumberRolledAndRobberPresent()
         {
-            Tile tempTile = (Tile)_board.TerrainTiles[0];
-            _controller.Dice.Value = (tempTile.Number < 12)? tempTile.Number + 1: tempTile.Number - 1;
+            var tempTile = (Tile)_board.TerrainTiles[0];
+            tempTile.Robber = true;
+            _controller.Dice.Value = tempTile.Number;
             ((Vertex)tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.Village);
             int countBefore = ((Player)_controller.Players[0]).ResourceHand.Count;
             _controller.AwardResourceForSettlementAdjacentToRolledHex();
@@ -129,41 +213,13 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        //When 2 villages is adjacent to a hex with the number rolled
-        //the player receives 2 resource card
-        public void TestThatAPlayerReceivesTwoResourcesForVillagesNextToHexWithNumberRolled()
-        {
-            Tile tempTile = (Tile)_board.TerrainTiles[0];
-            _controller.Dice.Value = tempTile.Number;
-            ((Vertex)tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.Village);
-            ((Vertex)tempTile.Vertices[2]).Settlement = new Settlement(_player1, SettlementType.Village);
-            int countBefore = ((Player)_controller.Players[0]).ResourceHand.Count;
-            _controller.AwardResourceForSettlementAdjacentToRolledHex();
-            int countAfter = ((Player)_controller.Players[0]).ResourceHand.Count;
-            Assert.AreEqual(countBefore + 2, countAfter);
-        }
-
-        [Test]
-        //When a city is adjacent to a hex with the number rolled
-        //the player receives 2 resource card
-        public void TestThatAPlayerReceivesTwoResourceForACityNextToHexWithNumberRolled()
-        {
-            Tile tempTile = (Tile)_board.TerrainTiles[0];
-            _controller.Dice.Value = tempTile.Number;
-            ((Vertex)tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.City);
-            int countBefore = ((Player)_controller.Players[0]).ResourceHand.Count;
-            _controller.AwardResourceForSettlementAdjacentToRolledHex();
-            int countAfter = ((Player)_controller.Players[0]).ResourceHand.Count;
-            Assert.AreEqual(countBefore + 2, countAfter);
-        }
-
-        [Test]
-        //When a city is adjacent to a hex without the number rolled
+        //When a city is adjacent to a hex with the number rolled but the robber is there
         //the player receives 0 resource cards
-        public void TestThatAPlayerDoesNotReceiveAResourceForACityNextToHexWithoutNumberRolled()
+        public void TestThatAPlayerReceivesZeroResourceForACityNextToHexWithNumberRolledAndRobberPresent()
         {
-            Tile tempTile = (Tile)_board.TerrainTiles[0];
-            _controller.Dice.Value = (tempTile.Number < 12) ? tempTile.Number + 1 : tempTile.Number - 1;
+            var tempTile = (Tile)_board.TerrainTiles[0];
+            tempTile.Robber = true;
+            _controller.Dice.Value = tempTile.Number;
             ((Vertex)tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.City);
             int countBefore = ((Player)_controller.Players[0]).ResourceHand.Count;
             _controller.AwardResourceForSettlementAdjacentToRolledHex();
@@ -172,18 +228,36 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        //When two cities are adjacent to a hex with the number rolled
-        //the player receives 4 resource card
-        public void TestThatAPlayerReceivesTwoResourcesForTwoCitiesNextToHexWithNumberRolled()
+        //When two cities are adjacent to a hex with the number rolled but the robber is there
+        //the player receives 0 resource card
+        public void TestThatAPlayerReceivesZeroResourcesForTwoCitiesNextToHexWithNumberRolledAndRobberPresent()
         {
-            Tile tempTile = (Tile)_board.TerrainTiles[0];
+            var tempTile = (Tile)_board.TerrainTiles[0];
+            tempTile.Robber = true;
             _controller.Dice.Value = tempTile.Number;
             ((Vertex)tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.City);
             ((Vertex)tempTile.Vertices[2]).Settlement = new Settlement(_player1, SettlementType.City);
             int countBefore = ((Player)_controller.Players[0]).ResourceHand.Count;
             _controller.AwardResourceForSettlementAdjacentToRolledHex();
             int countAfter = ((Player)_controller.Players[0]).ResourceHand.Count;
-            Assert.AreEqual(countBefore + 4, countAfter);
+            Assert.AreEqual(countBefore, countAfter);
         }
+
+        [Test]
+        //When 2 villages is adjacent to a hex with the number rolled but the robber is there
+        //the player receives 0 resource card
+        public void TestThatAPlayerReceivesZeroResourcesForVillagesNextToHexWithNumberRolledAndRobberPresent()
+        {
+            var tempTile = (Tile)_board.TerrainTiles[0];
+            tempTile.Robber = true;
+            _controller.Dice.Value = tempTile.Number;
+            ((Vertex)tempTile.Vertices[0]).Settlement = new Settlement(_player1, SettlementType.Village);
+            ((Vertex)tempTile.Vertices[2]).Settlement = new Settlement(_player1, SettlementType.Village);
+            int countBefore = ((Player)_controller.Players[0]).ResourceHand.Count;
+            _controller.AwardResourceForSettlementAdjacentToRolledHex();
+            int countAfter = ((Player)_controller.Players[0]).ResourceHand.Count;
+            Assert.AreEqual(countBefore, countAfter);
+        }
+
     }
 }
