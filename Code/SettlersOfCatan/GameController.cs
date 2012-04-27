@@ -234,6 +234,10 @@ namespace SettlersOfCatan
             }
         }
 
+        /*
+         * Given a player and his/her connected road groups,
+         * finds the longest one
+         */
         private int FindLongestRoadInSet(List<List<Road>> sets)
         {
             int longest = 0;
@@ -255,6 +259,10 @@ namespace SettlersOfCatan
             return longest;
         }
 
+        /*
+         * Finds the length of a connected road by traversing depth-first
+         * from an end point
+         */
         private int MeasureRoad(Road curRoad, int length)
         {
             curRoad.Marked = true;
@@ -279,56 +287,53 @@ namespace SettlersOfCatan
             return bestSoFar + 1;
         }
 
+        /*
+         * Finds all of the road segments that do not have additional
+         * roads on either end. If there are none, it selects the first
+         * segment in the array
+         */
         private List<Road> FindEndPoints(List<Road> road)
         {
             var endPoints = new List<Road>();
 
             foreach (Road roadPiece in road)
             {
-                var vertex1 = (Vertex) Board.Vertices[roadPiece.Indices[0]];
-                var vertex2 = (Vertex) Board.Vertices[roadPiece.Indices[1]];
-
-                bool endFlag = true;
-                for (int i = 0; i < 3; i++)
+                // Look at either end of the piece
+                foreach(int index in roadPiece.Indices)
                 {
-                    if (vertex1.Roads[i] != null && vertex1.Roads[i] != roadPiece)
+                    var vertex = (Vertex) Board.Vertices[index];
+
+                    bool endFlag = true;
+                    for (int i = 0; i < 3; i++)
                     {
-                        if (((Road) vertex1.Roads[i]).player == roadPiece.player)
+                        if (vertex.Roads[i] != null && vertex.Roads[i] != roadPiece)
                         {
-                            endFlag = false;
-                            break;
+                            // If there are other roads connecting, they shouldn't
+                            // belong to the current player
+                            if (((Road)vertex.Roads[i]).player == roadPiece.player)
+                            {
+                                endFlag = false;
+                                break;
+                            }
                         }
                     }
-                }
 
-                if (endFlag)
-                {
-                    endPoints.Add(roadPiece);
-                    break;
-                }
-
-                endFlag = true;
-                for (int i = 0; i < 3; i++)
-                {
-                    if (vertex2.Roads[i] != null && vertex2.Roads[i] != roadPiece)
+                    if (endFlag)
                     {
-                        if (((Road) vertex2.Roads[i]).player == roadPiece.player)
-                        {
-                            endFlag = false;
-                            break;
-                        }
+                        endPoints.Add(roadPiece);
+                        break;
                     }
-                }
-
-                if (endFlag)
-                {
-                    endPoints.Add(roadPiece);
                 }
             }
 
-            return new List<Road>(new[] {road[0]});
+            if (endPoints.Count == 0)
+                return new List<Road>(new[] {road[0]});
+            return endPoints;
         }
 
+        /*
+         * Unmarks all road segments
+         */
         private void ResetRoadMarks()
         {
             foreach (Vertex vertex in Board.Vertices)
@@ -343,6 +348,10 @@ namespace SettlersOfCatan
             }
         }
 
+        /*
+         * For a particular player, groups his/her road pieces into connected
+         * partitions. 
+         */
         private List<List<Road>> PartitionRoads(Player player)
         {
             var sets = new List<List<Road>>();
@@ -361,6 +370,10 @@ namespace SettlersOfCatan
             return sets;
         }
 
+        /*
+         * Traverses all connected road segments depth-first and adds them to
+         * a list
+         */
         private List<Road> TraverseRoad(Road road, Player player, List<Road> list)
         {
             list.Add(road);
