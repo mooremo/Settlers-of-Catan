@@ -1,12 +1,58 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SettlersOfCatan
 {
-    public class GameController
+    [Serializable]
+    public class GameController : ISerializable
     {
         public Player CurrentPlayer;
+        public Board Board { get; set; }
+        public Dice Dice { get; set; }
+        public ArrayList Players { get; set; }
+        public Dictionary<TileType, int> ResourceDeck { get; set; }
+        public Dictionary<TileType, CardType> ResourceLookup { get; set; }
+        public ArrayList DevelopmentDeck { get; set; }
+        public Player LongestRoad { get; set; }
+        public int LongestRoadLength { get; set; }
+        public Player LargestArmy { get; set; }
+
+        public GameController(SerializationInfo info, StreamingContext ctxt)
+       {
+            this.CurrentPlayer = (Player)info.GetValue("CurrentPlayer", typeof(Player));
+            this.Board = (Board)info.GetValue("Board", typeof(Board));
+            this.Dice = (Dice)info.GetValue("Dice", typeof(Dice));
+            this.Players = (ArrayList)info.GetValue("Players", typeof(ArrayList));
+            this.ResourceDeck = (Dictionary<TileType, int>)info.GetValue("ResourceDeck", typeof(Dictionary<TileType, int>));
+            this.ResourceLookup = (Dictionary<TileType, CardType>)info.GetValue("ResourceLookup", typeof(Dictionary<TileType, CardType>));
+            this.DevelopmentDeck = (ArrayList)info.GetValue("DevelopmentDeck", typeof(ArrayList));
+            this.LongestRoad = (Player)info.GetValue("LongestRoad", typeof(Player));
+            this.LargestArmy = (Player)info.GetValue("LargestArmy", typeof(Player));
+            this.LongestRoadLength = (int)info.GetValue("LongestRoadLength", typeof(int));
+       }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("CurrentPlayer", this.CurrentPlayer);
+            info.AddValue("Board", this.Board);
+            info.AddValue("Dice", this.Dice);
+            info.AddValue("Players", this.Players);
+            info.AddValue("ResourceDeck", this.ResourceDeck);
+            info.AddValue("ResourceLookup", this.ResourceLookup);
+            info.AddValue("DevelopmentDeck", this.DevelopmentDeck);
+            info.AddValue("LongestRoad", this.LongestRoad);
+            info.AddValue("LargestArmy", this.LargestArmy);
+            info.AddValue("LongestRoadLength", this.LongestRoadLength);
+        }
+
+        public void Save(string fileName)
+        {
+            Serializer temp = new Serializer();
+            temp.Save(this, fileName);
+        }
 
         public GameController()
         {
@@ -24,16 +70,6 @@ namespace SettlersOfCatan
             InitializeResourceDeck();
             InitializeDevelopmentDeck();
         }
-
-        public Board Board { get; set; }
-        public Dice Dice { get; set; }
-        public ArrayList Players { get; set; }
-        public Dictionary<TileType, int> ResourceDeck { get; set; }
-        public Dictionary<TileType, CardType> ResourceLookup { get; set; }
-        public ArrayList DevelopmentDeck { get; set; }
-        public Player LongestRoad { get; set; }
-        public int LongestRoadLength { get; set; }
-        public Player LargestArmy { get; set; }
 
         private void InitializeResourceLookup()
         {

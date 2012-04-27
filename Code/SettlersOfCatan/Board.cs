@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SettlersOfCatan
 {
-    public class Board
+    [Serializable]
+    public class Board : ISerializable
     {
         #region Properties
         #region TileNeighborDictionary
@@ -489,6 +492,20 @@ namespace SettlersOfCatan
             Vertices = new ArrayList();
 
             GenerateBoard();
+        }
+
+        public Board(SerializationInfo info, StreamingContext ctxt)
+       {
+            this.TerrainTiles = (ArrayList)info.GetValue("TerrainTiles", typeof(ArrayList));
+            this.PortTiles = (ArrayList)info.GetValue("PortTiles", typeof(ArrayList));
+            this.Vertices = (ArrayList)info.GetValue("Vertices", typeof(ArrayList));
+       }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("TerrainTiles", this.TerrainTiles);
+            info.AddValue("PortTiles", this.PortTiles);
+            info.AddValue("Vertices", this.Vertices);
         }
 
         //Generates a board for game play
