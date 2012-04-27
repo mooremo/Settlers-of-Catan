@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SettlersOfCatan
 {
@@ -10,7 +9,9 @@ namespace SettlersOfCatan
     public class Board : ISerializable
     {
         #region Properties
+
         #region TileNeighborDictionary
+
         private readonly Dictionary<int, ArrayList> _neighborDictionary = new Dictionary<int, ArrayList>
                                                                               {
                                                                                   {
@@ -189,6 +190,7 @@ namespace SettlersOfCatan
         #endregion
 
         #region VerticeNeighborDictionary
+
         private readonly Dictionary<int, ArrayList> _verticeDictionary = new Dictionary<int, ArrayList>
                                                                              {
                                                                                  {
@@ -456,6 +458,7 @@ namespace SettlersOfCatan
         #endregion
 
         #region TerrainTiles
+
         public ArrayList AllTerrainTiles =
             new ArrayList(new[]
                               {
@@ -470,18 +473,20 @@ namespace SettlersOfCatan
 
         #endregion
 
-        public ArrayList AllPortTiles = new ArrayList(new[] { 0, 1, 2, 3, 4, 5, 5, 5, 5 });
-        public ArrayList TerrainTiles { get; set; }
-        public ArrayList PortTiles { get; set; }
-        public ArrayList Vertices { get; set; }
-
-        //The numbers for the tiles in spiral order
         private readonly ArrayList _tileNumberOrder =
             new ArrayList(new[] {5, 2, 6, 3, 8, 10, 9, 12, 11, 4, 8, 10, 9, 4, 5, 6, 3, 11});
 
         //The index of TerrainTiles to insert the tile
         private readonly ArrayList _tileOrder =
             new ArrayList(new[] {18, 17, 15, 10, 5, 2, 0, 1, 3, 8, 13, 16, 14, 12, 7, 4, 6, 11, 9});
+
+        public ArrayList AllPortTiles = new ArrayList(new[] {0, 1, 2, 3, 4, 5, 5, 5, 5});
+        public ArrayList TerrainTiles { get; set; }
+        public ArrayList PortTiles { get; set; }
+        public ArrayList Vertices { get; set; }
+
+        //The numbers for the tiles in spiral order
+
         #endregion
 
         //Constructor for the Board class
@@ -495,18 +500,22 @@ namespace SettlersOfCatan
         }
 
         public Board(SerializationInfo info, StreamingContext ctxt)
-       {
-            this.TerrainTiles = (ArrayList)info.GetValue("TerrainTiles", typeof(ArrayList));
-            this.PortTiles = (ArrayList)info.GetValue("PortTiles", typeof(ArrayList));
-            this.Vertices = (ArrayList)info.GetValue("Vertices", typeof(ArrayList));
-       }
+        {
+            TerrainTiles = (ArrayList) info.GetValue("TerrainTiles", typeof (ArrayList));
+            PortTiles = (ArrayList) info.GetValue("PortTiles", typeof (ArrayList));
+            Vertices = (ArrayList) info.GetValue("Vertices", typeof (ArrayList));
+        }
+
+        #region ISerializable Members
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
-            info.AddValue("TerrainTiles", this.TerrainTiles);
-            info.AddValue("PortTiles", this.PortTiles);
-            info.AddValue("Vertices", this.Vertices);
+            info.AddValue("TerrainTiles", TerrainTiles);
+            info.AddValue("PortTiles", PortTiles);
+            info.AddValue("Vertices", Vertices);
         }
+
+        #endregion
 
         //Generates a board for game play
         public void GenerateBoard()

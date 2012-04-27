@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Runtime.Serialization;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SettlersOfCatan
 {
     public class Serializer
     {
-        public Serializer()
-        {
-        }
-
         /// <summary>
         /// Function to save object to external file
         /// </summary>
@@ -25,11 +18,11 @@ namespace SettlersOfCatan
             try
             {
                 // create new memory stream
-                System.IO.MemoryStream _MemoryStream = new System.IO.MemoryStream();
+                var _MemoryStream = new MemoryStream();
 
                 // create new BinaryFormatter
-                System.Runtime.Serialization.Formatters.Binary.BinaryFormatter _BinaryFormatter
-                            = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                var _BinaryFormatter
+                    = new BinaryFormatter();
 
                 // Serializes an object, or graph of connected objects, to the given stream.
                 _BinaryFormatter.Serialize(_MemoryStream, _Object);
@@ -38,7 +31,7 @@ namespace SettlersOfCatan
                 byte[] _ByteArray = _MemoryStream.ToArray();
 
                 // Open file for writing
-                System.IO.FileStream _FileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Create, System.IO.FileAccess.Write);
+                var _FileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
 
                 // Writes a block of bytes to this stream using data from a byte array.
                 _FileStream.Write(_ByteArray.ToArray(), 0, _ByteArray.Length);
@@ -57,7 +50,7 @@ namespace SettlersOfCatan
             catch (Exception _Exception)
             {
                 // Error
-                Console.WriteLine("Exception caught in process: {0}", _Exception.ToString());
+                Console.WriteLine("Exception caught in process: {0}", _Exception);
             }
 
             // Error occured, return null
@@ -74,16 +67,16 @@ namespace SettlersOfCatan
             try
             {
                 // Open file for reading
-                System.IO.FileStream _FileStream = new System.IO.FileStream(fileName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                var _FileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
 
                 // attach filestream to binary reader
-                System.IO.BinaryReader _BinaryReader = new System.IO.BinaryReader(_FileStream);
+                var _BinaryReader = new BinaryReader(_FileStream);
 
                 // get total byte length of the file
-                long _TotalBytes = new System.IO.FileInfo(fileName).Length;
+                long _TotalBytes = new FileInfo(fileName).Length;
 
                 // read entire file into buffer
-                byte[] _ByteArray = _BinaryReader.ReadBytes((Int32)_TotalBytes);
+                byte[] _ByteArray = _BinaryReader.ReadBytes((Int32) _TotalBytes);
 
                 // close file reader and do some cleanup
                 _FileStream.Close();
@@ -92,11 +85,11 @@ namespace SettlersOfCatan
                 _BinaryReader.Close();
 
                 // convert byte array to memory stream
-                System.IO.MemoryStream _MemoryStream = new System.IO.MemoryStream(_ByteArray);
+                var _MemoryStream = new MemoryStream(_ByteArray);
 
                 // create new BinaryFormatter
-                System.Runtime.Serialization.Formatters.Binary.BinaryFormatter _BinaryFormatter
-                            = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                var _BinaryFormatter
+                    = new BinaryFormatter();
 
                 // set memory stream position to starting point
                 _MemoryStream.Position = 0;
@@ -107,7 +100,7 @@ namespace SettlersOfCatan
             catch (Exception _Exception)
             {
                 // Error
-                Console.WriteLine("Exception caught in process: {0}", _Exception.ToString());
+                Console.WriteLine("Exception caught in process: {0}", _Exception);
             }
 
             // Error occured, return null
@@ -116,7 +109,7 @@ namespace SettlersOfCatan
 
         public GameController Load(string fileName)
         {
-            return (GameController)FileToObject(fileName);
+            return (GameController) FileToObject(fileName);
         }
 
         public bool Save(object _Object, string fileName)

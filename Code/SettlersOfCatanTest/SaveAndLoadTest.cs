@@ -8,11 +8,6 @@ namespace SettlersOfCatanTest
     {
         #region Setup/Teardown
 
-        private GameController _testGameController, _testGameController2;
-        private Serializer _mySerializer;
-        private Player p1;
-        private Board b1;
-
         [SetUp]
         public void SetUp()
         {
@@ -24,6 +19,11 @@ namespace SettlersOfCatanTest
         }
 
         #endregion
+
+        private GameController _testGameController, _testGameController2;
+        private Serializer _mySerializer;
+        private Player p1;
+        private Board b1;
 
         [Test]
         public void TestSaveAndLoad()
