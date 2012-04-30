@@ -420,7 +420,7 @@ namespace SettlersOfCatanTest
         }
 
         [Test]
-        // Player must have at least 3 knights to be awarded points
+        // player must have at least 3 knights to be awarded points
         public void TestOneKnightDoesNotAwardLargestArmy()
         {
             _player1.PlayedDevelopmentCards.Add(CardType.Soldier);

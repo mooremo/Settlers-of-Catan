@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace SettlersOfCatan
@@ -7,8 +8,8 @@ namespace SettlersOfCatan
     [Serializable]
     public class Dice : ISerializable
     {
-        public ArrayList Two6Sided =
-            new ArrayList(new[]
+        public List<int> Two6Sided =
+            new List<int>(new int[]
                               {
                                   2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9,
                                   10, 10, 10, 11, 11, 12
@@ -18,7 +19,7 @@ namespace SettlersOfCatan
 
         public Dice(SerializationInfo info, StreamingContext ctxt)
         {
-            Two6Sided = (ArrayList) info.GetValue("Two6Sided", typeof (ArrayList));
+            Two6Sided = (List<int>) info.GetValue("Two6Sided", typeof (List<int>));
             Value = (int) info.GetValue("Value", typeof (int));
         }
 

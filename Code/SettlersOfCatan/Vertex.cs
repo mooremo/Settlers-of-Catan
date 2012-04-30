@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace SettlersOfCatan
 {
@@ -8,14 +10,35 @@ namespace SettlersOfCatan
         public Vertex(int i)
         {
             Index = i;
-            Neighbors = new ArrayList();
-            Roads = new ArrayList(new Road[] {null, null, null});
+            Neighbors = new List<Vertex>();
+            Roads = new List<Road>(3);
         }
 
         public int Index { get; set; }
-        public ArrayList Neighbors { get; set; }
-        public ArrayList Roads { get; set; }
+        public List<Vertex> Neighbors { get; set; }
+        public List<Road> Roads { get; set; }
         public Settlement Settlement { get; set; }
+
+        
+        #region ISerializable Members
+
+        public Vertex(SerializationInfo info, StreamingContext ctxt)
+        {
+            Index = (int) info.GetValue("Index", typeof (int));
+            Neighbors = (List<Vertex>) info.GetValue("Neighbors", typeof (List<Vertex>));
+            Roads = (List<Road>)info.GetValue("Roads", typeof(List<Road>));
+            Settlement = (Settlement) info.GetValue("Robber", typeof (Settlement));
+        }
+
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("Index", Index);
+            info.AddValue("Roads", Roads);
+            info.AddValue("Neighbors", Neighbors);
+            info.AddValue("Settlement", Settlement);        }
+
+        #endregion
 
         public bool PlayerCanBuildSettlement(Player player)
         {

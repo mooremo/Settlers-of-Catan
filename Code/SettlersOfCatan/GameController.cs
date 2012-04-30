@@ -15,12 +15,12 @@ namespace SettlersOfCatan
             CurrentPlayer = (Player) info.GetValue("CurrentPlayer", typeof (Player));
             Board = (Board) info.GetValue("Board", typeof (Board));
             Dice = (Dice) info.GetValue("Dice", typeof (Dice));
-            Players = (ArrayList) info.GetValue("Players", typeof (ArrayList));
+            Players = (List<Player>) info.GetValue("Players", typeof (ArrayList));
             ResourceDeck = (Dictionary<TileType, int>) info.GetValue("ResourceDeck", typeof (Dictionary<TileType, int>));
             ResourceLookup =
                 (Dictionary<TileType, CardType>)
                 info.GetValue("ResourceLookup", typeof (Dictionary<TileType, CardType>));
-            DevelopmentDeck = (ArrayList) info.GetValue("DevelopmentDeck", typeof (ArrayList));
+            DevelopmentDeck = (List<CardType>) info.GetValue("DevelopmentDeck", typeof (ArrayList));
             LongestRoad = (Player) info.GetValue("LongestRoad", typeof (Player));
             LargestArmy = (Player) info.GetValue("LargestArmy", typeof (Player));
             LongestRoadLength = (int) info.GetValue("LongestRoadLength", typeof (int));
@@ -29,14 +29,14 @@ namespace SettlersOfCatan
         public GameController()
         {
             Dice = new Dice();
-            Players = new ArrayList();
+            Players = new List<Player>();
             Board = new Board();
             InitializeResourceLookup();
             InitializeResourceDeck();
             InitializeDevelopmentDeck();
         }
 
-        public GameController(ArrayList players)
+        public GameController(List<Player> players)
         {
             Dice = new Dice();
             Players = players;
@@ -49,10 +49,10 @@ namespace SettlersOfCatan
 
         public Board Board { get; set; }
         public Dice Dice { get; set; }
-        public ArrayList Players { get; set; }
+        public List<Player> Players { get; set; }
         public Dictionary<TileType, int> ResourceDeck { get; set; }
         public Dictionary<TileType, CardType> ResourceLookup { get; set; }
-        public ArrayList DevelopmentDeck { get; set; }
+        public List<CardType> DevelopmentDeck { get; set; }
         public Player LongestRoad { get; set; }
         public int LongestRoadLength { get; set; }
         public Player LargestArmy { get; set; }
@@ -116,7 +116,7 @@ namespace SettlersOfCatan
                                            {CardType.VictoryPoint, 5}
                                        };
 
-            DevelopmentDeck = new ArrayList();
+            DevelopmentDeck = new List<CardType>();
             foreach (CardType card in developmentCount.Keys)
             {
                 for (int i = 0; i < developmentCount[card]; i++)

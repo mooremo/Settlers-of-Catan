@@ -123,7 +123,7 @@ namespace SettlersOfCatanTest
         [ExpectedException(typeof (EmptyDeckException))]
         public void TestDrawEmptyDevelopmentCardDeck()
         {
-            _controller.DevelopmentDeck = new ArrayList();
+            _controller.DevelopmentDeck = new List<CardType>();
             CardType card = _controller.DrawDevelopment();
         }
 

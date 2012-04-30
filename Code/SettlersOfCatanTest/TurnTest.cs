@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using NUnit.Framework;
 using SettlersOfCatan;
 
@@ -161,7 +162,7 @@ namespace SettlersOfCatanTest
         //When a 7 is rolled a player with 10 cards loses 5
         public void TestThatWhenA7IsRolledAPlayerWith10CardsLoses5()
         {
-            var resources = new ArrayList(new[] {0, 0, 1, 1, 2, 2, 3, 3, 4, 4});
+            var resources = new List<CardType>(new CardType[] { CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore });
             ((Player) _controller.Players[0]).ResourceHand = resources;
             _controller.DiscardForMoreThanSeven();
             int count = ((Player) _controller.Players[0]).ResourceHand.Count;
@@ -172,7 +173,7 @@ namespace SettlersOfCatanTest
         //When a 7 is rolled a player with 6 cards loses 0
         public void TestThatWhenA7IsRolledAPlayerWith6CardsLoses0()
         {
-            var resources = new ArrayList(new[] {0, 0, 1, 2, 3, 4});
+            var resources = new List<CardType>(new CardType[] { CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore });
             ((Player) _controller.Players[0]).ResourceHand = resources;
             _controller.DiscardForMoreThanSeven();
             int count = ((Player) _controller.Players[0]).ResourceHand.Count;
@@ -183,7 +184,7 @@ namespace SettlersOfCatanTest
         //When a 7 is rolled a player with 7 cards loses 3
         public void TestThatWhenA7IsRolledAPlayerWith7CardsLoses3()
         {
-            var resources = new ArrayList(new[] {0, 0, 1, 2, 3, 4, 4});
+            var resources = new List<CardType>(new CardType[] { CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore, CardType.Ore });
             ((Player) _controller.Players[0]).ResourceHand = resources;
             _controller.DiscardForMoreThanSeven();
             int count = ((Player) _controller.Players[0]).ResourceHand.Count;

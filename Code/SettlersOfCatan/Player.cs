@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace SettlersOfCatan
@@ -9,8 +10,8 @@ namespace SettlersOfCatan
     {
         public Player()
         {
-            PlayedDevelopmentCards = new ArrayList();
-            ResourceHand = new ArrayList();
+            PlayedDevelopmentCards = new List<CardType>();
+            ResourceHand = new List<CardType>();
         }
 
         public Player(String name)
@@ -22,9 +23,9 @@ namespace SettlersOfCatan
         {
             Name = (String) info.GetValue("Name", typeof (String));
             Color = (int) info.GetValue("Color", typeof (int));
-            ResourceHand = (ArrayList) info.GetValue("ResourceHand", typeof (ArrayList));
-            DevelopmentHand = (ArrayList) info.GetValue("DevelopmentHand", typeof (ArrayList));
-            PlayedDevelopmentCards = (ArrayList) info.GetValue("PlayedDevelopmentCards", typeof (ArrayList));
+            ResourceHand = (List<CardType>)info.GetValue("ResourceHand", typeof(List<CardType>));
+            DevelopmentHand = (List<CardType>) info.GetValue("DevelopmentHand", typeof (List<CardType>));
+            PlayedDevelopmentCards = (List<CardType>) info.GetValue("PlayedDevelopmentCards", typeof (List<CardType>));
             RoadsRemaining = (int) info.GetValue("RoadsRemaining", typeof (int));
             VillagesRemaining = (int) info.GetValue("VillagesRemaining", typeof (int));
             CitiesRemaining = (int) info.GetValue("CitiesRemaining", typeof (int));
@@ -33,9 +34,9 @@ namespace SettlersOfCatan
 
         public String Name { get; set; }
         public int Color { get; set; }
-        public ArrayList ResourceHand { get; set; }
-        public ArrayList DevelopmentHand { get; set; }
-        public ArrayList PlayedDevelopmentCards { get; set; }
+        public List<CardType> ResourceHand { get; set; }
+        public List<CardType> DevelopmentHand { get; set; }
+        public List<CardType> PlayedDevelopmentCards { get; set; }
         public int RoadsRemaining { get; set; }
         public int VillagesRemaining { get; set; }
         public int CitiesRemaining { get; set; }
@@ -58,7 +59,7 @@ namespace SettlersOfCatan
 
         #endregion
 
-        //Player calls this to end thier turn
+        //player calls this to end thier turn
         public void EndTurn()
         {
         }

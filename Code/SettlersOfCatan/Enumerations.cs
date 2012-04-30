@@ -35,8 +35,6 @@
         YearOfPlenty,
         Monopoly,
         VictoryPoint,
-        LongestRoad, // These aren't really cards...
-        LargestArmy,
     }
 
     public enum Colors

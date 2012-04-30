@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace SettlersOfCatan
 {
@@ -15,6 +16,25 @@ namespace SettlersOfCatan
         public Player player { get; set; }
         public int[] Indices { get; set; }
         public bool Marked { get; set; }
+
+         #region ISerializable Members
+
+        public Road(SerializationInfo info, StreamingContext ctxt)
+        {
+            player = (Player) info.GetValue("TerrainTiles", typeof (Player));
+            Indices = (int[]) info.GetValue("PortTiles", typeof (int[]));
+            Marked = (bool) info.GetValue("Vertices", typeof (bool));
+        }
+
+
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("player", player);
+            info.AddValue("Indices", Indices);
+            info.AddValue("Marked", Marked);
+        }
+
+        #endregion
 
         public void SetIndices(int x, int y)
         {
