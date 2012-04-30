@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.IO;
+using NUnit.Framework;
 using SettlersOfCatan;
 
 namespace SettlersOfCatanTest
@@ -28,10 +29,11 @@ namespace SettlersOfCatanTest
         [Test]
         public void TestSaveAndLoad()
         {
+            string path = Directory.GetCurrentDirectory() + "\\mySave.dat";
             _testGameController.LongestRoadLength = 5;
             _testGameController.CurrentPlayer = p1;
-            _testGameController.Save("C:\\Users\\Matthew\\Desktop\\test.dat");
-            _testGameController2 = _mySerializer.Load("C:\\Users\\Matthew\\Desktop\\test.dat");
+            _testGameController.Save(path);
+            _testGameController2 = _mySerializer.Load(path);
             Assert.AreEqual(_testGameController2.LongestRoadLength, 5);
             Assert.AreEqual(_testGameController2.CurrentPlayer.Color, 1);
         }
