@@ -11,35 +11,21 @@ namespace SettlersOfCatan
 {
     public partial class OptionsDialog : Form
     {
-        private frm_Start _mainForm;
+        public Language SelectedLanguage = Language.English;
 
         public OptionsDialog()
         {
             InitializeComponent();
         }
 
-        public OptionsDialog(frm_Start start)
+        private void rbtn_English_CheckedChanged(object sender, EventArgs e)
         {
-            _mainForm = start;
-            InitializeComponent();
+            SelectedLanguage = Language.English;
         }
 
-        private void btn_Ok_Click(object sender, EventArgs e)
+        private void rbtn_Deutsch_CheckedChanged(object sender, EventArgs e)
         {
-            if(rbtn_Deutsch.Checked)
-            {
-                _mainForm.SelectedLanguage = Language.Deutsch;
-            }
-            else
-            {
-                _mainForm.SelectedLanguage = Language.English;
-            }
-            this.Close();
-        }
-
-        private void btn_Cancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            SelectedLanguage = Language.Deutsch;
         }
     }
 }

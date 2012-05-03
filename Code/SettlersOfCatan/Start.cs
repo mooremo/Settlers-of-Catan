@@ -21,13 +21,23 @@ namespace SettlersOfCatan
 
         private void btn_Options_Click(object sender, System.EventArgs e)
         {
-            OptionsDialog options = new OptionsDialog(this);
-            options.Show();
+            OptionsDialog options = new OptionsDialog();
+            options.ShowDialog();
+            if(options.DialogResult == DialogResult.OK)
+            {
+                SelectedLanguage = options.SelectedLanguage;
+            }
         }
 
         private void btn_Exit_Click(object sender, System.EventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_NewGame_Click(object sender, System.EventArgs e)
+        {
+            PlayersAndColorsDialog players = new PlayersAndColorsDialog();
+            players.ShowDialog();
         }
     }
 }
