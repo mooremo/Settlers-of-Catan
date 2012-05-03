@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SettlersOfCatan
@@ -17,6 +18,9 @@ namespace SettlersOfCatan
             btn_LoadGame.Location = new Point(this.Width / 2 - btn_NewGame.Width / 2, (this.Height / 10) * 4);
             btn_Options.Location = new Point(this.Width / 2 - btn_NewGame.Width / 2, (this.Height / 10) * 5);
             btn_Exit.Location = new Point(this.Width / 2 - btn_NewGame.Width / 2, (this.Height / 10) * 6);
+            ofd_LoadGame.InitialDirectory = Directory.GetCurrentDirectory();
+            ofd_LoadGame.Filter = "Saved Games (.dat)|*.dat|All Files (*.*)|*.*";
+            ofd_LoadGame.FilterIndex = 1;
         }
 
         private void btn_Options_Click(object sender, System.EventArgs e)
@@ -38,6 +42,11 @@ namespace SettlersOfCatan
         {
             PlayersAndColorsDialog players = new PlayersAndColorsDialog();
             players.ShowDialog();
+        }
+
+        private void btn_LoadGame_Click(object sender, System.EventArgs e)
+        {
+            ofd_LoadGame.ShowDialog();
         }
     }
 }

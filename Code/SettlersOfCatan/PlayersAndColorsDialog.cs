@@ -46,16 +46,40 @@ namespace SettlersOfCatan
 
         private void btn_Ok_Click(object sender, EventArgs e)
         {
-            Player1Name = txt_Name1.Text;
-            Player1Color = (Colors) Enum.Parse(typeof(Colors), cbox_Color1.SelectedItem.ToString());
-            Player2Name = txt_Name2.Text;
-            Player2Color = (Colors)Enum.Parse(typeof(Colors), cbox_Color2.SelectedItem.ToString());
-            Player3Name = txt_Name3.Text;
-            Player3Color = (Colors)Enum.Parse(typeof(Colors), cbox_Color3.SelectedItem.ToString());
-            if (NumPlayers > 3)
+            if (
+                txt_Name1.Text == ""
+                || txt_Name2.Text == ""
+                || txt_Name3.Text == ""
+                || (txt_Name4.Text == "" && NumPlayers > 3)
+                || cbox_Color1.SelectedItem == null
+                || cbox_Color2.SelectedItem == null
+                || cbox_Color3.SelectedItem == null
+                || (cbox_Color1.SelectedItem == null && NumPlayers > 3)
+                )
             {
-                Player4Name = txt_Name4.Text;
-                Player4Color = (Colors) Enum.Parse(typeof (Colors), cbox_Color4.SelectedItem.ToString());
+                MessageBox.Show(
+                    "You have not completed all of the required fields.",
+                    "Incomplete Field",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+                return;
+            }
+            else
+            {
+                Player1Name = txt_Name1.Text;
+                Player1Color = (Colors) Enum.Parse(typeof (Colors), cbox_Color1.SelectedItem.ToString());
+                Player2Name = txt_Name2.Text;
+                Player2Color = (Colors) Enum.Parse(typeof (Colors), cbox_Color2.SelectedItem.ToString());
+                Player3Name = txt_Name3.Text;
+                Player3Color = (Colors) Enum.Parse(typeof (Colors), cbox_Color3.SelectedItem.ToString());
+                if (NumPlayers > 3)
+                {
+                    Player4Name = txt_Name4.Text;
+                    Player4Color = (Colors) Enum.Parse(typeof (Colors), cbox_Color4.SelectedItem.ToString());
+                }
+                btn_Ok.DialogResult = DialogResult.OK;
+                return;
             }
 
         }
