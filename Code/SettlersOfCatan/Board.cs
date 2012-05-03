@@ -573,30 +573,33 @@ namespace SettlersOfCatan
             int tempNeighbor;
             tileCount = 0;
             ArrayList tempNeighbors;
+            ArrayList tempTileNeighbors;
             while (tileCount < 19)
             {
                 tempNeighbors = _neighborDictionary[tileCount];
+                tempTileNeighbors = new ArrayList( new Tile[] {null, null, null, null, null, null});
                 while (neighborCount < 6)
                 {
                     tempNeighbor = (int) tempNeighbors[neighborCount];
                     if (tempNeighbor < 0)
                     {
-                        tempNeighbors[neighborCount] = PortTiles[Math.Abs(tempNeighbor) - 1];
+                        tempTileNeighbors[neighborCount] = PortTiles[Math.Abs(tempNeighbor) - 1];
                     }
                     else if (tempNeighbor > 0)
                     {
-                        tempNeighbors[neighborCount] = TerrainTiles[tempNeighbor - 1];
+                        tempTileNeighbors[neighborCount] = TerrainTiles[tempNeighbor - 1];
                     }
                     else
                     {
-                        tempNeighbors[neighborCount] = new Tile((int) TileType.Sea);
+                        tempTileNeighbors[neighborCount] = new Tile((int) TileType.Sea);
                     }
                     neighborCount++;
                 }
                 tempTile = TerrainTiles[tileCount];
-                //tempTile.Neighbors = ToList<int>(tempNeighbors);
+                tempTile.Neighbors = ToList<Tile>(tempTileNeighbors);
                 TerrainTiles[tileCount] = tempTile;
                 tileCount++;
+                neighborCount = 0;
             }
 
             //Generate the vertices
