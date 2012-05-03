@@ -44,4 +44,10 @@
         White,
         Orange,
     }
+
+    public enum Language
+    {
+        English,
+        Deutsch,
+    }
 }
