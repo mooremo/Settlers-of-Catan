@@ -492,12 +492,14 @@ namespace SettlersOfCatan
         //Constructor for the Board class
         public Board()
         {
-            TerrainTiles = new List<Tile>(19);
-            PortTiles = new List<Tile>(9);
+            TerrainTiles = new List<Tile>(new Tile[] { new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), });
+            PortTiles = new List<Tile>(new Tile[] { new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1),});
             Vertices = new List<Vertex>();
 
             GenerateBoard();
         }
+
+        #region ISerializable Members
 
         public Board(SerializationInfo info, StreamingContext ctxt)
         {
@@ -505,8 +507,6 @@ namespace SettlersOfCatan
             PortTiles = (List<Tile>)info.GetValue("PortTiles", typeof(List<Tile>));
             Vertices = (List<Vertex>)info.GetValue("Vertices", typeof(List<Vertex>));
         }
-
-        #region ISerializable Members
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
@@ -540,7 +540,8 @@ namespace SettlersOfCatan
                 {
                     tempTile = new Tile(tempType);
                 }
-                TerrainTiles[(int) (_tileOrder[tileCount])] = tempTile;
+                TerrainTiles.Insert(0,tempTile);
+                TerrainTiles.Insert((int) (_tileOrder[tileCount]), tempTile);
                 tileCount++;
             }
 
@@ -581,7 +582,7 @@ namespace SettlersOfCatan
                     neighborCount++;
                 }
                 tempTile = (Tile) TerrainTiles[tileCount];
-                tempTile.Neighbors = new List<Tile>((Tile[])tempNeighbors.ToArray());
+                //tempTile.Neighbors = ToList<int>(tempNeighbors);
                 TerrainTiles[tileCount] = tempTile;
                 tileCount++;
             }
@@ -615,7 +616,7 @@ namespace SettlersOfCatan
                 tempList.Insert(3, Vertices[(2*1) + (int) offset2[j]]);
                 tempList.Insert(4, Vertices[(2*1) + (int) offset1[j]]);
                 tempList.Insert(5, Vertices[(2*i)]);
-                tempTile.Vertices = new List<Vertex>((Vertex[])tempList.ToArray());
+                tempTile.Vertices = ToList<Vertex>(tempList);
                 TerrainTiles[i] = tempTile;
             }
 
@@ -638,9 +639,19 @@ namespace SettlersOfCatan
                         tempNeighbors[k] = null;
                     }
                 }
-                tempVertex.Neighbors = new List<Vertex>((Vertex[])tempNeighbors.ToArray());
+                tempVertex.Neighbors = ToList<Vertex>(tempNeighbors);
                 Vertices[i] = tempVertex;
             }
+        }
+
+        public static List<T> ToList<T>(ArrayList arrayList)
+        {
+            List<T> list = new List<T>(arrayList.Count);
+            foreach (T instance in arrayList)
+            {
+                list.Add(instance);
+            }
+            return list;
         }
 
         public void PlacePieceSetup(Settlement piece, int location)
