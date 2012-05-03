@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using SettlersOfCatan;
-using System.Collections;
 
 namespace SettlersOfCatanTest
 {
-    class TradeCardTest
+    internal class TradeCardTest
     {
-        private GameController _controller;
         private Board _board;
+        private GameController _controller;
         private Player _player1;
         private Player _player2;
         private Player _player3;
@@ -39,9 +38,10 @@ namespace SettlersOfCatanTest
         //The current player can trade with the bank
         public void TestThatTheCurrentPlayerCanTradeWithBank()
         {
-            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new CardType[] { CardType.Grain, CardType.Grain, CardType.Grain });
-            int cardTypeToTrade = (int) CardType.Grain;
-            int cardTypeToGet = (int) CardType.Brick;
+            _controller.CurrentPlayer.ResourceHand =
+                new List<CardType>(new[] {CardType.Grain, CardType.Grain, CardType.Grain});
+            var cardTypeToTrade = (int) CardType.Grain;
+            var cardTypeToGet = (int) CardType.Brick;
             bool result = _controller.TradeWithBank(cardTypeToTrade, cardTypeToGet);
             Assert.IsTrue(result);
         }
@@ -51,11 +51,12 @@ namespace SettlersOfCatanTest
         //the player does not have a settlement at the port
         public void TestThatTheCurrentPlayerCanNotTradeAtAPortIfNoSettlement()
         {
-            Tile tempTile = new Tile((int)TileType.Port3);
+            var tempTile = new Tile((int) TileType.Port3);
             int portNumber = _board.PortTiles.IndexOf(tempTile);
-            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new CardType[] { CardType.Grain, CardType.Grain, CardType.Grain });
-            int cardTypeToTrade = (int)CardType.Grain;
-            int cardTypeToGet = (int)CardType.Brick;
+            _controller.CurrentPlayer.ResourceHand =
+                new List<CardType>(new[] {CardType.Grain, CardType.Grain, CardType.Grain});
+            var cardTypeToTrade = (int) CardType.Grain;
+            var cardTypeToGet = (int) CardType.Brick;
             bool result = _controller.TradeAtPort(portNumber, cardTypeToTrade, cardTypeToGet);
             Assert.IsFalse(result);
         }
@@ -65,11 +66,12 @@ namespace SettlersOfCatanTest
         //the player has a settlement adjacent to a 3 To 1 port
         public void TestThatTheCurrentPlayerCanTradeAtPort3To1()
         {
-            Tile tempTile = new Tile((int)TileType.Port3);
+            var tempTile = new Tile((int) TileType.Port3);
             int portNumber = _board.PortTiles.IndexOf(tempTile);
-            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new CardType[] { CardType.Grain, CardType.Grain, CardType.Grain });
-            int cardTypeToTrade = (int)CardType.Grain;
-            int cardTypeToGet = (int)CardType.Brick;
+            _controller.CurrentPlayer.ResourceHand =
+                new List<CardType>(new[] {CardType.Grain, CardType.Grain, CardType.Grain});
+            var cardTypeToTrade = (int) CardType.Grain;
+            var cardTypeToGet = (int) CardType.Brick;
             bool result = _controller.TradeAtPort(portNumber, cardTypeToTrade, cardTypeToGet);
             Assert.IsTrue(result);
         }
@@ -79,11 +81,11 @@ namespace SettlersOfCatanTest
         //the player has a settlement adjacent to a 2 wool port
         public void TestThatTheCurrentPlayerCanTradeAtPort2Wool()
         {
-            Tile tempTile = new Tile((int)TileType.Port2Wool);
+            var tempTile = new Tile((int) TileType.Port2Wool);
             int portNumber = _board.PortTiles.IndexOf(tempTile);
-            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new CardType[] { CardType.Grain, CardType.Grain});
-            int cardTypeToTrade = (int)CardType.Grain;
-            int cardTypeToGet = (int)CardType.Wool;
+            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new[] {CardType.Grain, CardType.Grain});
+            var cardTypeToTrade = (int) CardType.Grain;
+            var cardTypeToGet = (int) CardType.Wool;
             bool result = _controller.TradeAtPort(portNumber, cardTypeToTrade, cardTypeToGet);
             Assert.IsTrue(result);
         }
@@ -93,11 +95,11 @@ namespace SettlersOfCatanTest
         //the player has a settlement adjacent to a 2 lumber port
         public void TestThatTheCurrentPlayerCanTradeAtPort2Lumber()
         {
-            Tile tempTile = new Tile((int)TileType.Port2Lumber);
+            var tempTile = new Tile((int) TileType.Port2Lumber);
             int portNumber = _board.PortTiles.IndexOf(tempTile);
-            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new CardType[] { CardType.Grain, CardType.Grain });
-            int cardTypeToTrade = (int)CardType.Grain;
-            int cardTypeToGet = (int)CardType.Lumber;
+            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new[] {CardType.Grain, CardType.Grain});
+            var cardTypeToTrade = (int) CardType.Grain;
+            var cardTypeToGet = (int) CardType.Lumber;
             bool result = _controller.TradeAtPort(portNumber, cardTypeToTrade, cardTypeToGet);
             Assert.IsTrue(result);
         }
@@ -107,11 +109,11 @@ namespace SettlersOfCatanTest
         //the player has a settlement adjacent to a 2 brick port
         public void TestThatTheCurrentPlayerCanTradeAtPort2Brick()
         {
-            Tile tempTile = new Tile((int)TileType.Port2Brick);
+            var tempTile = new Tile((int) TileType.Port2Brick);
             int portNumber = _board.PortTiles.IndexOf(tempTile);
-            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new CardType[] { CardType.Grain, CardType.Grain });
-            int cardTypeToTrade = (int)CardType.Grain;
-            int cardTypeToGet = (int)CardType.Brick;
+            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new[] {CardType.Grain, CardType.Grain});
+            var cardTypeToTrade = (int) CardType.Grain;
+            var cardTypeToGet = (int) CardType.Brick;
             bool result = _controller.TradeAtPort(portNumber, cardTypeToTrade, cardTypeToGet);
             Assert.IsTrue(result);
         }
@@ -121,11 +123,11 @@ namespace SettlersOfCatanTest
         //the player has a settlement adjacent to a 2 grain port
         public void TestThatTheCurrentPlayerCanTradeAtPort2Grain()
         {
-            Tile tempTile = new Tile((int)TileType.Port2Grain);
+            var tempTile = new Tile((int) TileType.Port2Grain);
             int portNumber = _board.PortTiles.IndexOf(tempTile);
-            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new CardType[] { CardType.Wool, CardType.Wool });
-            int cardTypeToTrade = (int)CardType.Wool;
-            int cardTypeToGet = (int)CardType.Grain;
+            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new[] {CardType.Wool, CardType.Wool});
+            var cardTypeToTrade = (int) CardType.Wool;
+            var cardTypeToGet = (int) CardType.Grain;
             bool result = _controller.TradeAtPort(portNumber, cardTypeToTrade, cardTypeToGet);
             Assert.IsTrue(result);
         }
@@ -135,11 +137,11 @@ namespace SettlersOfCatanTest
         //the player has a settlement adjacent to a 2 ore port
         public void TestThatTheCurrentPlayerCanTradeAtPort2Ore()
         {
-            Tile tempTile = new Tile((int)TileType.Port2Ore);
+            var tempTile = new Tile((int) TileType.Port2Ore);
             int portNumber = _board.PortTiles.IndexOf(tempTile);
-            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new CardType[] { CardType.Grain, CardType.Grain });
-            int cardTypeToTrade = (int)CardType.Grain;
-            int cardTypeToGet = (int)CardType.Ore;
+            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new[] {CardType.Grain, CardType.Grain});
+            var cardTypeToTrade = (int) CardType.Grain;
+            var cardTypeToGet = (int) CardType.Ore;
             bool result = _controller.TradeAtPort(portNumber, cardTypeToTrade, cardTypeToGet);
             Assert.IsTrue(result);
         }
@@ -149,12 +151,13 @@ namespace SettlersOfCatanTest
         //if they have the resource
         public void TestThatTheCurrentPlayerCanTradeWithAnotherPlayer()
         {
-            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new CardType[] { CardType.Grain, CardType.Grain });
-            int cardTypeToTrade = (int)CardType.Grain;
-            int cardTypeToGet = (int)CardType.Wool;
+            _controller.CurrentPlayer.ResourceHand = new List<CardType>(new[] {CardType.Grain, CardType.Grain});
+            var cardTypeToTrade = (int) CardType.Grain;
+            var cardTypeToGet = (int) CardType.Wool;
             int numberToTrade = 2;
             int numberToGet = 2;
-            bool result = _controller.TradeWithAnotherPlayer(1, cardTypeToTrade, numberToTrade, cardTypeToGet, numberToGet);
+            bool result = _controller.TradeWithAnotherPlayer(1, cardTypeToTrade, numberToTrade, cardTypeToGet,
+                                                             numberToGet);
             Assert.IsTrue(result);
         }
     }

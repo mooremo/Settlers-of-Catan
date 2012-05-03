@@ -41,7 +41,7 @@ namespace SettlersOfCatanTest
         public void TestCityHasTwoPoints()
         {
             var city = new Settlement(_player1, SettlementType.City);
-            ((Vertex) _board.Vertices[0]).Settlement = city;
+            (_board.Vertices[0]).Settlement = city;
 
             _controller.ScorePlayers();
 
@@ -72,7 +72,7 @@ namespace SettlersOfCatanTest
             road3.player = _player3;
             road4.player = _player4;
 
-            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
+            (_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -109,7 +109,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road4, 9, 2);
             _controller.Board.PlacePieceSetup(road5, 8, 1);
 
-            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
+            (_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(2, _player1.Score);
@@ -136,10 +136,10 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road5, 8, 1);
             _controller.Board.PlacePieceSetup(road6, 14, 1);
 
-            ((Vertex) _controller.Board.Vertices[9]).Roads[2] = null;
-            ((Vertex) _controller.Board.Vertices[8]).Roads[0] = null;
+            (_controller.Board.Vertices[9]).Roads[2] = null;
+            (_controller.Board.Vertices[8]).Roads[0] = null;
 
-            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
+            (_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -166,7 +166,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road5, 8, 1);
             _controller.Board.PlacePieceSetup(road6, 8, 2);
 
-            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
+            (_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(2, _player1.Score);
@@ -188,7 +188,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road3, 4, 1);
             _controller.Board.PlacePieceSetup(road4, 9, 2);
 
-            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
+            (_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -301,7 +301,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road4, 9, 2);
             _controller.Board.PlacePieceSetup(road5, 8, 1);
 
-            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
+            (_controller.Board.Vertices[0]).Settlement = null;
             var road6 = new Road(_player2);
             var road7 = new Road(_player2);
             var road8 = new Road(_player2);
@@ -316,7 +316,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road10, 39, 2);
             _controller.Board.PlacePieceSetup(road11, 33, 2);
 
-            ((Vertex) _controller.Board.Vertices[52]).Settlement = null;
+            (_controller.Board.Vertices[52]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -341,7 +341,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road4, 9, 2);
             _controller.Board.PlacePieceSetup(road5, 8, 1);
 
-            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
+            (_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -363,7 +363,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road9, 45, 0);
             _controller.Board.PlacePieceSetup(road10, 39, 2);
 
-            ((Vertex) _controller.Board.Vertices[52]).Settlement = null;
+            (_controller.Board.Vertices[52]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -388,7 +388,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road4, 9, 2);
             _controller.Board.PlacePieceSetup(road5, 8, 1);
 
-            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
+            (_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -410,7 +410,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road10, 39, 2);
             _controller.Board.PlacePieceSetup(road11, 33, 2);
 
-            ((Vertex) _controller.Board.Vertices[52]).Settlement = null;
+            (_controller.Board.Vertices[52]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(2, _player1.Score);
@@ -441,7 +441,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(new Settlement(_player1, SettlementType.Village), 0);
             _controller.Board.PlacePieceSetup(road, 0, 0);
 
-            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
+            (_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -468,7 +468,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road5, 8, 1);
             _controller.Board.PlacePieceSetup(road6, 14, 1);
 
-            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
+            (_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(2, _player1.Score);
@@ -506,7 +506,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road2, 1, 1);
             _controller.Board.PlacePieceSetup(road3, 4, 1);
 
-            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
+            (_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -520,8 +520,8 @@ namespace SettlersOfCatanTest
         public void TestTwoCitiesHasFourPoints()
         {
             var city = new Settlement(_player1, SettlementType.City);
-            ((Vertex) _board.Vertices[0]).Settlement = city;
-            ((Vertex) _board.Vertices[1]).Settlement = city;
+            (_board.Vertices[0]).Settlement = city;
+            (_board.Vertices[1]).Settlement = city;
 
             _controller.ScorePlayers();
 
@@ -554,7 +554,7 @@ namespace SettlersOfCatanTest
             _controller.Board.PlacePieceSetup(road1, 0, 0);
             _controller.Board.PlacePieceSetup(road2, 1, 1);
 
-            ((Vertex) _controller.Board.Vertices[0]).Settlement = null;
+            (_controller.Board.Vertices[0]).Settlement = null;
             _controller.ScorePlayers();
 
             Assert.AreEqual(0, _player1.Score);
@@ -568,8 +568,8 @@ namespace SettlersOfCatanTest
         public void TestTwoVillagesHasTwoPoints()
         {
             var village = new Settlement(_player1, SettlementType.Village);
-            ((Vertex) _board.Vertices[0]).Settlement = village;
-            ((Vertex) _board.Vertices[1]).Settlement = village;
+            (_board.Vertices[0]).Settlement = village;
+            (_board.Vertices[1]).Settlement = village;
 
             _controller.ScorePlayers();
 
@@ -599,8 +599,8 @@ namespace SettlersOfCatanTest
         {
             var village = new Settlement(_player1, SettlementType.Village);
             var city = new Settlement(_player1, SettlementType.City);
-            ((Vertex) _board.Vertices[0]).Settlement = village;
-            ((Vertex) _board.Vertices[1]).Settlement = city;
+            (_board.Vertices[0]).Settlement = village;
+            (_board.Vertices[1]).Settlement = city;
 
             _controller.ScorePlayers();
 
@@ -615,7 +615,7 @@ namespace SettlersOfCatanTest
         public void TestVillageHasOnePoint()
         {
             var village = new Settlement(_player1, SettlementType.Village);
-            ((Vertex) _board.Vertices[0]).Settlement = village;
+            (_board.Vertices[0]).Settlement = village;
 
             _controller.ScorePlayers();
 

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace SettlersOfCatan
@@ -13,15 +7,14 @@ namespace SettlersOfCatan
     {
         public int NumPlayers = 3;
 
-        public string Player1Name;
-        public string Player2Name;
-        public string Player3Name;
-        public string Player4Name;
-
         public Colors Player1Color;
+        public string Player1Name;
         public Colors Player2Color;
+        public string Player2Name;
         public Colors Player3Color;
+        public string Player3Name;
         public Colors Player4Color;
+        public string Player4Name;
 
 
         public PlayersAndColorsDialog()
@@ -33,7 +26,7 @@ namespace SettlersOfCatan
         private void cbox_NumPlayers_SelectedIndexChanged(object sender, EventArgs e)
         {
             NumPlayers = int.Parse(cbox_NumPlayers.SelectedItem.ToString());
-            switch(NumPlayers)
+            switch (NumPlayers)
             {
                 case 3:
                     grp_Player4.Enabled = false;
@@ -81,7 +74,6 @@ namespace SettlersOfCatan
                 btn_Ok.DialogResult = DialogResult.OK;
                 return;
             }
-
         }
     }
 }

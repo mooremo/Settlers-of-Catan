@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -12,39 +13,39 @@ namespace SettlersOfCatan
         {
             InitializeComponent();
 
-            lbl_Title.Location = new Point(this.Width/2 - lbl_Title.Width/2, this.Height/10);
+            lbl_Title.Location = new Point(Width/2 - lbl_Title.Width/2, Height/10);
 
-            btn_NewGame.Location = new Point(this.Width / 2 - btn_NewGame.Width / 2, (this.Height / 10)*3);
-            btn_LoadGame.Location = new Point(this.Width / 2 - btn_NewGame.Width / 2, (this.Height / 10) * 4);
-            btn_Options.Location = new Point(this.Width / 2 - btn_NewGame.Width / 2, (this.Height / 10) * 5);
-            btn_Exit.Location = new Point(this.Width / 2 - btn_NewGame.Width / 2, (this.Height / 10) * 6);
+            btn_NewGame.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*3);
+            btn_LoadGame.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*4);
+            btn_Options.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*5);
+            btn_Exit.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*6);
             ofd_LoadGame.InitialDirectory = Directory.GetCurrentDirectory();
             ofd_LoadGame.Filter = "Saved Games (.dat)|*.dat|All Files (*.*)|*.*";
             ofd_LoadGame.FilterIndex = 1;
         }
 
-        private void btn_Options_Click(object sender, System.EventArgs e)
+        private void btn_Options_Click(object sender, EventArgs e)
         {
-            OptionsDialog options = new OptionsDialog();
+            var options = new OptionsDialog();
             options.ShowDialog();
-            if(options.DialogResult == DialogResult.OK)
+            if (options.DialogResult == DialogResult.OK)
             {
                 SelectedLanguage = options.SelectedLanguage;
             }
         }
 
-        private void btn_Exit_Click(object sender, System.EventArgs e)
+        private void btn_Exit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
-        private void btn_NewGame_Click(object sender, System.EventArgs e)
+        private void btn_NewGame_Click(object sender, EventArgs e)
         {
-            PlayersAndColorsDialog players = new PlayersAndColorsDialog();
+            var players = new PlayersAndColorsDialog();
             players.ShowDialog();
         }
 
-        private void btn_LoadGame_Click(object sender, System.EventArgs e)
+        private void btn_LoadGame_Click(object sender, EventArgs e)
         {
             ofd_LoadGame.ShowDialog();
         }

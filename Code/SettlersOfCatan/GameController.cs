@@ -40,7 +40,7 @@ namespace SettlersOfCatan
         {
             Dice = new Dice();
             Players = players;
-            CurrentPlayer = (Player) Players[0];
+            CurrentPlayer = Players[0];
             Board = new Board();
             InitializeResourceLookup();
             InitializeResourceDeck();
@@ -146,7 +146,7 @@ namespace SettlersOfCatan
                 throw new EmptyDeckException();
             }
 
-            var ret = (CardType) DevelopmentDeck[0];
+            CardType ret = DevelopmentDeck[0];
             DevelopmentDeck.RemoveAt(0);
             return ret;
         }
@@ -238,6 +238,7 @@ namespace SettlersOfCatan
          * Given a player and his/her connected road groups,
          * finds the longest one
          */
+
         private int FindLongestRoadInSet(List<List<Road>> sets)
         {
             int longest = 0;
@@ -263,6 +264,7 @@ namespace SettlersOfCatan
          * Finds the length of a connected road by traversing depth-first
          * from an end point
          */
+
         private int MeasureRoad(Road curRoad, int length)
         {
             curRoad.Marked = true;
@@ -270,7 +272,7 @@ namespace SettlersOfCatan
             int bestSoFar = 0;
             foreach (int index in curRoad.Indices)
             {
-                var vertex = (Vertex) Board.Vertices[index];
+                Vertex vertex = Board.Vertices[index];
                 foreach (Road nextRoad in vertex.Roads)
                 {
                     if (nextRoad != null && !nextRoad.Marked && nextRoad.player == curRoad.player)
@@ -292,6 +294,7 @@ namespace SettlersOfCatan
          * roads on either end. If there are none, it selects the first
          * segment in the array
          */
+
         private List<Road> FindEndPoints(List<Road> road)
         {
             var endPoints = new List<Road>();
@@ -299,9 +302,9 @@ namespace SettlersOfCatan
             foreach (Road roadPiece in road)
             {
                 // Look at either end of the piece
-                foreach(int index in roadPiece.Indices)
+                foreach (int index in roadPiece.Indices)
                 {
-                    var vertex = (Vertex) Board.Vertices[index];
+                    Vertex vertex = Board.Vertices[index];
 
                     bool endFlag = true;
                     for (int i = 0; i < 3; i++)
@@ -310,7 +313,7 @@ namespace SettlersOfCatan
                         {
                             // If there are other roads connecting, they shouldn't
                             // belong to the current player
-                            if (((Road)vertex.Roads[i]).player == roadPiece.player)
+                            if ((vertex.Roads[i]).player == roadPiece.player)
                             {
                                 endFlag = false;
                                 break;
@@ -334,6 +337,7 @@ namespace SettlersOfCatan
         /*
          * Unmarks all road segments
          */
+
         private void ResetRoadMarks()
         {
             foreach (Vertex vertex in Board.Vertices)
@@ -352,6 +356,7 @@ namespace SettlersOfCatan
          * For a particular player, groups his/her road pieces into connected
          * partitions. 
          */
+
         private List<List<Road>> PartitionRoads(Player player)
         {
             var sets = new List<List<Road>>();
@@ -374,6 +379,7 @@ namespace SettlersOfCatan
          * Traverses all connected road segments depth-first and adds them to
          * a list
          */
+
         private List<Road> TraverseRoad(Road road, Player player, List<Road> list)
         {
             list.Add(road);
@@ -381,10 +387,10 @@ namespace SettlersOfCatan
 
             foreach (int i in road.Indices)
             {
-                var vertex = (Vertex) Board.Vertices[i];
+                Vertex vertex = Board.Vertices[i];
                 for (int j = 0; j < 3; j++)
                 {
-                    var nextRoad = (Road) vertex.Roads[j];
+                    Road nextRoad = vertex.Roads[j];
                     if (nextRoad != null && !nextRoad.Marked && nextRoad.player == player &&
                         (vertex.Settlement == null || vertex.Settlement.player == player))
                     {
@@ -443,11 +449,11 @@ namespace SettlersOfCatan
             int index = Players.IndexOf(CurrentPlayer);
             if (index + 1 < Players.Count)
             {
-                CurrentPlayer = (Player) Players[index + 1];
+                CurrentPlayer = Players[index + 1];
             }
             else
             {
-                CurrentPlayer = (Player) Players[0];
+                CurrentPlayer = Players[0];
             }
         }
 
@@ -524,7 +530,8 @@ namespace SettlersOfCatan
             return false;
         }
 
-        public bool TradeWithAnotherPlayer(int playerNumber, int cardTypeToTrade, int numberToTrade, int cardeTypeToGet, int numberToGet)
+        public bool TradeWithAnotherPlayer(int playerNumber, int cardTypeToTrade, int numberToTrade, int cardeTypeToGet,
+                                           int numberToGet)
         {
             return false;
         }

@@ -492,21 +492,33 @@ namespace SettlersOfCatan
         //Constructor for the Board class
         public Board()
         {
-            TerrainTiles = new List<Tile>(new Tile[] { new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), });
-            PortTiles = new List<Tile>(new Tile[] { new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1),});
+            TerrainTiles =
+                new List<Tile>(new[]
+                                   {
+                                       new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1),
+                                       new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1),
+                                       new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1),
+                                       new Tile(1),
+                                   });
+            PortTiles =
+                new List<Tile>(new[]
+                                   {
+                                       new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1), new Tile(1),
+                                       new Tile(1), new Tile(1), new Tile(1),
+                                   });
             Vertices = new List<Vertex>();
 
             GenerateBoard();
         }
 
-        #region ISerializable Members
-
         public Board(SerializationInfo info, StreamingContext ctxt)
         {
-            TerrainTiles = (List<Tile>)info.GetValue("TerrainTiles", typeof(List<Tile>));
-            PortTiles = (List<Tile>)info.GetValue("PortTiles", typeof(List<Tile>));
-            Vertices = (List<Vertex>)info.GetValue("Vertices", typeof(List<Vertex>));
+            TerrainTiles = (List<Tile>) info.GetValue("TerrainTiles", typeof (List<Tile>));
+            PortTiles = (List<Tile>) info.GetValue("PortTiles", typeof (List<Tile>));
+            Vertices = (List<Vertex>) info.GetValue("Vertices", typeof (List<Vertex>));
         }
+
+        #region ISerializable Members
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
@@ -540,7 +552,7 @@ namespace SettlersOfCatan
                 {
                     tempTile = new Tile(tempType);
                 }
-                TerrainTiles.Insert(0,tempTile);
+                TerrainTiles.Insert(0, tempTile);
                 TerrainTiles.Insert((int) (_tileOrder[tileCount]), tempTile);
                 tileCount++;
             }
@@ -581,7 +593,7 @@ namespace SettlersOfCatan
                     }
                     neighborCount++;
                 }
-                tempTile = (Tile) TerrainTiles[tileCount];
+                tempTile = TerrainTiles[tileCount];
                 //tempTile.Neighbors = ToList<int>(tempNeighbors);
                 TerrainTiles[tileCount] = tempTile;
                 tileCount++;
@@ -608,7 +620,7 @@ namespace SettlersOfCatan
                     j++;
                 }
 
-                tempTile = (Tile) TerrainTiles[i];
+                tempTile = TerrainTiles[i];
                 tempList = new ArrayList();
                 tempList.Insert(0, Vertices[(2*i) + 1]);
                 tempList.Insert(1, Vertices[(2*1) + (int) offset1[j] + 1]);
@@ -625,7 +637,7 @@ namespace SettlersOfCatan
             tempNeighbors = new ArrayList();
             for (int i = 0; i < 54; i++)
             {
-                tempVertex = (Vertex) Vertices[i];
+                tempVertex = Vertices[i];
                 tempNeighbors = _verticeDictionary[i];
                 for (int k = 0; k < 3; k++)
                 {
@@ -646,7 +658,7 @@ namespace SettlersOfCatan
 
         public static List<T> ToList<T>(ArrayList arrayList)
         {
-            List<T> list = new List<T>(arrayList.Count);
+            var list = new List<T>(arrayList.Count);
             foreach (T instance in arrayList)
             {
                 list.Add(instance);
@@ -661,7 +673,7 @@ namespace SettlersOfCatan
             if (location < Vertices.Count && location >= 0)
             {
                 // Get the vertex at the location specifed.
-                targetVertex = (Vertex) Vertices[location];
+                targetVertex = Vertices[location];
             }
             else
             {
@@ -690,7 +702,7 @@ namespace SettlersOfCatan
             if (location < Vertices.Count && location >= 0)
             {
                 // Get the vertex at the location specifed.
-                targetVertex = (Vertex) Vertices[location];
+                targetVertex = Vertices[location];
             }
             else
             {
@@ -715,7 +727,7 @@ namespace SettlersOfCatan
             if (location < Vertices.Count && location >= 0)
             {
                 // Get the vertex at the location specifed.
-                targetVertex = (Vertex) Vertices[location];
+                targetVertex = Vertices[location];
             }
             else
             {
@@ -732,7 +744,7 @@ namespace SettlersOfCatan
                 //Place the road at the vertex in the specified direction
                 targetVertex.Roads[direction] = piece;
                 //Get the neighboring vertex
-                var temp2 = (Vertex) targetVertex.Neighbors[direction];
+                Vertex temp2 = targetVertex.Neighbors[direction];
                 //get the index of the neighboring vertex
                 int secondIndex = Vertices.IndexOf(temp2);
 

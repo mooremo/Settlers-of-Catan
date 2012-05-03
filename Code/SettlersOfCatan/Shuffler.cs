@@ -24,7 +24,7 @@ namespace SettlersOfCatan
             for (int inx = source.Count - 1; inx > 0; --inx)
             {
                 int position = rnd.Next(inx);
-                var temp = source[inx];
+                object temp = source[inx];
                 source[inx] = source[position];
                 source[position] = temp;
             }

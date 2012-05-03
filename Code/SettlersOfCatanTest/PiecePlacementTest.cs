@@ -50,7 +50,7 @@ namespace SettlersOfCatanTest
         public void TestThatCityIsPlacedAtCorrectVertexWhenSettingUp()
         {
             _testBoard.PlacePieceSetup(_city, 0);
-            var targetVertex = (Vertex) _testBoard.Vertices[0];
+            Vertex targetVertex = _testBoard.Vertices[0];
             Assert.AreEqual(_city, targetVertex.Settlement);
         }
 
@@ -153,9 +153,9 @@ namespace SettlersOfCatanTest
         {
             _testBoard.PlacePieceSetup(_city, 0);
             _testBoard.PlacePieceSetup(_road, 0, 0);
-            var targetVertex = (Vertex) _testBoard.Vertices[0];
+            Vertex targetVertex = _testBoard.Vertices[0];
             Assert.AreEqual(_road, targetVertex.Roads[0]);
-            var neighborVertex = (Vertex) targetVertex.Neighbors[0];
+            Vertex neighborVertex = targetVertex.Neighbors[0];
             Assert.AreEqual(_road, neighborVertex.Roads[2]);
         }
 
@@ -181,7 +181,7 @@ namespace SettlersOfCatanTest
         public void TestThatVillageIsPlacedAtCorrectVertexWhenSettingUp()
         {
             _testBoard.PlacePieceSetup(_village, 1);
-            var targetVertex = (Vertex) _testBoard.Vertices[1];
+            Vertex targetVertex = _testBoard.Vertices[1];
             Assert.AreEqual(_village, targetVertex.Settlement);
         }
     }

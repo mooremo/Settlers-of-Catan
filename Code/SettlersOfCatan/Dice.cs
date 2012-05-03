@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
@@ -9,9 +8,10 @@ namespace SettlersOfCatan
     public class Dice : ISerializable
     {
         public List<int> Two6Sided =
-            new List<int>(new int[]
+            new List<int>(new[]
                               {
-                                  2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9,
+                                  2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9,
+                                  9,
                                   10, 10, 10, 11, 11, 12
                               });
 
@@ -42,7 +42,7 @@ namespace SettlersOfCatan
         public int Roll()
         {
             Shuffler.Shuffle(Two6Sided);
-            Value = (int) Two6Sided[0];
+            Value = Two6Sided[0];
             return Value;
         }
     }

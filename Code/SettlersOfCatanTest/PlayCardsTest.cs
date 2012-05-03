@@ -1,67 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace SettlersOfCatanTest
 {
     [TestFixture]
     [Ignore]
-    class PlayCardsTest
+    internal class PlayCardsTest
     {
-        [Test]
-        public void TestPlayKnight()
-        {
-            
-        }
-
-        [Test]
-        public void TestPlayVictoryCard()
-        {
-            
-        }
-
-        [Test]
-        public void TestPlayYearsOfPlenty()
-        {
-            
-        }
-
-        [Test]
-        public void TestPlayRoadBuilding()
-        {
-            
-        }
-
-        [Test]
-        public void TestPlayMonopoly()
-        {
-            
-        }
-
-        [Test]
-        public void TestBuyVillage()
-        {
-            
-        }
-
         [Test]
         public void TestBuyCity()
         {
-            
-        }
-
-        [Test]
-        public void TestBuyRoad()
-        {
-            
         }
 
         [Test]
         public void TestBuyDevelopmentCard()
         {
-            
+        }
+
+        [Test]
+        public void TestBuyRoad()
+        {
+        }
+
+        [Test]
+        public void TestBuyVillage()
+        {
+        }
+
+        [Test]
+        public void TestPlayKnight()
+        {
+        }
+
+        [Test]
+        public void TestPlayMonopoly()
+        {
+        }
+
+        [Test]
+        public void TestPlayRoadBuilding()
+        {
+        }
+
+        [Test]
+        public void TestPlayVictoryCard()
+        {
+        }
+
+        [Test]
+        public void TestPlayYearsOfPlenty()
+        {
         }
     }
 }

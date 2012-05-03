@@ -11,16 +11,14 @@ namespace SettlersOfCatan
             type = settlementType;
         }
 
-        public SettlementType type { get; set; }
-        public Player player { get; set; }
-
-         #region ISerializable Members
-
         public Settlement(SerializationInfo info, StreamingContext ctxt)
         {
             player = (Player) info.GetValue("player", typeof (Player));
-            type = (SettlementType)info.GetValue("type", typeof(SettlementType));
+            type = (SettlementType) info.GetValue("type", typeof (SettlementType));
         }
+
+        public SettlementType type { get; set; }
+        public Player player { get; set; }
 
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
@@ -28,7 +26,5 @@ namespace SettlersOfCatan
             info.AddValue("player", player);
             info.AddValue("type", type);
         }
-
-        #endregion
     }
 }

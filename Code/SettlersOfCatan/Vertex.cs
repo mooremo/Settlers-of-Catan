@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace SettlersOfCatan
@@ -14,21 +13,18 @@ namespace SettlersOfCatan
             Roads = new List<Road>(3);
         }
 
-        public int Index { get; set; }
-        public List<Vertex> Neighbors { get; set; }
-        public List<Road> Roads { get; set; }
-        public Settlement Settlement { get; set; }
-
-        
-        #region ISerializable Members
-
         public Vertex(SerializationInfo info, StreamingContext ctxt)
         {
             Index = (int) info.GetValue("Index", typeof (int));
             Neighbors = (List<Vertex>) info.GetValue("Neighbors", typeof (List<Vertex>));
-            Roads = (List<Road>)info.GetValue("Roads", typeof(List<Road>));
+            Roads = (List<Road>) info.GetValue("Roads", typeof (List<Road>));
             Settlement = (Settlement) info.GetValue("Robber", typeof (Settlement));
         }
+
+        public int Index { get; set; }
+        public List<Vertex> Neighbors { get; set; }
+        public List<Road> Roads { get; set; }
+        public Settlement Settlement { get; set; }
 
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
@@ -36,9 +32,8 @@ namespace SettlersOfCatan
             info.AddValue("Index", Index);
             info.AddValue("Roads", Roads);
             info.AddValue("Neighbors", Neighbors);
-            info.AddValue("Settlement", Settlement);        }
-
-        #endregion
+            info.AddValue("Settlement", Settlement);
+        }
 
         public bool PlayerCanBuildSettlement(Player player)
         {
@@ -54,7 +49,7 @@ namespace SettlersOfCatan
                 {
                     continue;
                 }
-                checkRoad = (Road) Roads[i];
+                checkRoad = Roads[i];
                 if (checkRoad.player == player)
                 {
                     return true;
@@ -73,7 +68,7 @@ namespace SettlersOfCatan
             {
                 if (Roads[i] != null)
                 {
-                    checkRoad = (Road) Roads[i];
+                    checkRoad = Roads[i];
                     if (checkRoad.player == player)
                     {
                         flag = true;

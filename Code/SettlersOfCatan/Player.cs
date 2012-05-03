@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
@@ -23,7 +22,7 @@ namespace SettlersOfCatan
         {
             Name = (String) info.GetValue("Name", typeof (String));
             Color = (int) info.GetValue("Color", typeof (int));
-            ResourceHand = (List<CardType>)info.GetValue("ResourceHand", typeof(List<CardType>));
+            ResourceHand = (List<CardType>) info.GetValue("ResourceHand", typeof (List<CardType>));
             DevelopmentHand = (List<CardType>) info.GetValue("DevelopmentHand", typeof (List<CardType>));
             PlayedDevelopmentCards = (List<CardType>) info.GetValue("PlayedDevelopmentCards", typeof (List<CardType>));
             RoadsRemaining = (int) info.GetValue("RoadsRemaining", typeof (int));

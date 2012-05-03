@@ -13,18 +13,16 @@ namespace SettlersOfCatan
             Marked = false;
         }
 
-        public Player player { get; set; }
-        public int[] Indices { get; set; }
-        public bool Marked { get; set; }
-
-         #region ISerializable Members
-
         public Road(SerializationInfo info, StreamingContext ctxt)
         {
             player = (Player) info.GetValue("TerrainTiles", typeof (Player));
             Indices = (int[]) info.GetValue("PortTiles", typeof (int[]));
             Marked = (bool) info.GetValue("Vertices", typeof (bool));
         }
+
+        public Player player { get; set; }
+        public int[] Indices { get; set; }
+        public bool Marked { get; set; }
 
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
@@ -33,8 +31,6 @@ namespace SettlersOfCatan
             info.AddValue("Indices", Indices);
             info.AddValue("Marked", Marked);
         }
-
-        #endregion
 
         public void SetIndices(int x, int y)
         {
