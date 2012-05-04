@@ -117,43 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="color" xml:space="preserve">
-    <value>Color:</value>
-  </data>
   <data name="exit" xml:space="preserve">
     <value>Exit</value>
-  </data>
-  <data name="gameSetup" xml:space="preserve">
-    <value>Game Setup</value>
-  </data>
-  <data name="loadGame" xml:space="preserve">
-    <value>Load Game</value>
-  </data>
-  <data name="name" xml:space="preserve">
-    <value>Name:</value>
-  </data>
-  <data name="newGame" xml:space="preserve">
-    <value>New Game</value>
-  </data>
-  <data name="numberOfPlayers" xml:space="preserve">
-    <value>Number of Players:</value>
-  </data>
-  <data name="OK" xml:space="preserve">
-    <value>OK</value>
   </data>
   <data name="options" xml:space="preserve">
     <value>Options</value>
   </data>
-  <data name="player" xml:space="preserve">
-    <value>Player</value>
+  <data name="name" xml:space="preserve">
+    <value>Name:</value>
   </data>
   <data name="selectLanguage" xml:space="preserve">
     <value>Choose a language:</value>
   </data>
+  <data name="numberOfPlayers" xml:space="preserve">
+    <value>Number of Players:</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="german" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\german.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="color" xml:space="preserve">
+    <value>Color:</value>
+  </data>
+  <data name="english" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\english.GIF;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="startTitle" xml:space="preserve">
     <value>Settlers of C#tan</value>
+  </data>
+  <data name="gameSetup" xml:space="preserve">
+    <value>Game Setup</value>
+  </data>
+  <data name="player" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="loadGame" xml:space="preserve">
+    <value>Load Game</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="newGame" xml:space="preserve">
+    <value>New Game</value>
+  </data>
+  <data name="startBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\startBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
