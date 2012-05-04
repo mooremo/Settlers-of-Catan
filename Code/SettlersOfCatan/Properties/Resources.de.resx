@@ -156,4 +156,28 @@
   <data name="startTitle" xml:space="preserve">
     <value>Die Siedler von C#tan</value>
   </data>
+  <data name="city" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="knight" xml:space="preserve">
+    <value>Ritter</value>
+  </data>
+  <data name="largestArmy" xml:space="preserve">
+    <value>Groste Rittermacht</value>
+  </data>
+  <data name="longestRoad" xml:space="preserve">
+    <value>Langste Handelsstrasse</value>
+  </data>
+  <data name="road" xml:space="preserve">
+    <value>Strasse</value>
+  </data>
+  <data name="settlements" xml:space="preserve">
+    <value>Siedlung</value>
+  </data>
+  <data name="victoryPoint" xml:space="preserve">
+    <value>Siegpunkte</value>
+  </data>
+  <data name="village" xml:space="preserve">
+    <value>Dorf</value>
+  </data>
 </root>

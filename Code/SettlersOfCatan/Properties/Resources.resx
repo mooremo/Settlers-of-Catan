@@ -166,4 +166,28 @@
   <data name="startBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\startBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="city" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="knight" xml:space="preserve">
+    <value>Knight</value>
+  </data>
+  <data name="largestArmy" xml:space="preserve">
+    <value>Largest Army</value>
+  </data>
+  <data name="longestRoad" xml:space="preserve">
+    <value>Longest Road</value>
+  </data>
+  <data name="road" xml:space="preserve">
+    <value>Road</value>
+  </data>
+  <data name="settlements" xml:space="preserve">
+    <value>Settlements</value>
+  </data>
+  <data name="victoryPoint" xml:space="preserve">
+    <value>Victory point</value>
+  </data>
+  <data name="village" xml:space="preserve">
+    <value>Village</value>
+  </data>
 </root>
