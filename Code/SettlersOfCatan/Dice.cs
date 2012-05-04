@@ -26,6 +26,7 @@ namespace SettlersOfCatan
 
         public Dice()
         {
+            Value = 0;
             Roll();
         }
 

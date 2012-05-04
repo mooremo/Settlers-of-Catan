@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using SettlersOfCatan.Properties;
 
 namespace SettlersOfCatan
 {
@@ -10,6 +11,7 @@ namespace SettlersOfCatan
         public OptionsDialog()
         {
             InitializeComponent();
+            UpdateUILangauge();
         }
 
         private void rbtn_English_CheckedChanged(object sender, EventArgs e)
@@ -20,6 +22,28 @@ namespace SettlersOfCatan
         private void rbtn_Deutsch_CheckedChanged(object sender, EventArgs e)
         {
             SelectedLanguage = Language.Deutsch;
+        }
+
+        public void SetLanguage(Language lang)
+        {
+            if(lang == Language.English)
+            {
+                rbtn_English.Checked = true;
+            }
+            else
+            {
+                rbtn_Deutsch.Checked = true;
+            }
+            UpdateUILangauge();
+        }
+
+        private void UpdateUILangauge()
+        {
+            this.Text = Resources.options;
+            grp_Language.Text = Resources.selectLanguage;
+            btn_Ok.Text = Resources.OK;
+            btn_Cancel.Text = Resources.Cancel;
+
         }
     }
 }
