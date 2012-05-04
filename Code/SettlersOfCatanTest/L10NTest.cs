@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Threading;
 using NUnit.Framework;
-using SettlersOfCatan;
 using SettlersOfCatan.Properties;
 
 namespace SettlersOfCatanTest
@@ -10,13 +8,14 @@ namespace SettlersOfCatanTest
     [TestFixture]
     internal class L10NTest
     {
-        
+        #region Setup/Teardown
+
         [SetUp]
         public void SetUp()
         {
-            
         }
-        
+
+        #endregion
 
         [Test]
         public void TestEnglishResourcesLoadAndAreCorrect()

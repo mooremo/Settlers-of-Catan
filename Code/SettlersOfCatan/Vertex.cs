@@ -10,7 +10,7 @@ namespace SettlersOfCatan
         {
             Index = i;
             Neighbors = new List<Vertex>(new Vertex[] {null, null, null});
-            Roads = new List<Road>(new Road[] { null, null, null });
+            Roads = new List<Road>(new Road[] {null, null, null});
         }
 
         public Vertex(SerializationInfo info, StreamingContext ctxt)

@@ -39,7 +39,7 @@ namespace SettlersOfCatanTest
         public void TestThatTheCurrentPlayerCanTradeWithBank()
         {
             _controller.CurrentPlayer.ResourceHand =
-                new List<CardType>(new[] { CardType.Grain, CardType.Grain, CardType.Grain, CardType.Grain });
+                new List<CardType>(new[] {CardType.Grain, CardType.Grain, CardType.Grain, CardType.Grain});
             var cardTypeToTrade = (int) CardType.Grain;
             var cardTypeToGet = (int) CardType.Brick;
             bool result = _controller.TradeWithBank(cardTypeToTrade, cardTypeToGet);

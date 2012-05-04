@@ -463,7 +463,7 @@ namespace SettlersOfCatan
         {
             foreach (Tile tile in Board.TerrainTiles)
             {
-                if (tile.Type != (int)TileType.Desert)
+                if (tile.Type != (int) TileType.Desert)
                 {
                     if (tile.Number == Dice.Value)
                     {

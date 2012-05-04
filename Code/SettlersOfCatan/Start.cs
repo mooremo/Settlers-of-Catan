@@ -10,8 +10,6 @@ namespace SettlersOfCatan
 {
     public partial class frm_Start : Form
     {
-        public Language SelectedLanguage { get; set; }
-
         public frm_Start()
         {
             InitializeComponent();
@@ -31,6 +29,8 @@ namespace SettlersOfCatan
             UpdateUILangauge();
         }
 
+        public Language SelectedLanguage { get; set; }
+
         private void btn_Options_Click(object sender, EventArgs e)
         {
             var options = new OptionsDialog();
@@ -39,7 +39,8 @@ namespace SettlersOfCatan
             if (options.DialogResult == DialogResult.OK)
             {
                 SelectedLanguage = options.SelectedLanguage;
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(SelectedLanguage == Language.English ? "en-US" : "de-DE");
+                Thread.CurrentThread.CurrentUICulture =
+                    CultureInfo.GetCultureInfo(SelectedLanguage == Language.English ? "en-US" : "de-DE");
                 UpdateUILangauge();
             }
         }
@@ -63,7 +64,7 @@ namespace SettlersOfCatan
 
         private void UpdateUILangauge()
         {
-            this.Text = Resources.startTitle;
+            Text = Resources.startTitle;
             lbl_Title.Text = Resources.startTitle;
             btn_NewGame.Text = Resources.newGame;
             btn_LoadGame.Text = Resources.loadGame;

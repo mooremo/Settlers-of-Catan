@@ -1,5 +1,4 @@
-﻿using System.IO;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using SettlersOfCatan;
 
 namespace SettlersOfCatanTest
@@ -28,7 +27,8 @@ namespace SettlersOfCatanTest
 
         [Test]
         public void TestSaveAndLoad()
-        {/*
+        {
+/*
             string path = Directory.GetCurrentDirectory() + "\\mySave.dat";
             _testGameController.LongestRoadLength = 5;
             _testGameController.CurrentPlayer = p1;
@@ -37,7 +37,7 @@ namespace SettlersOfCatanTest
             Assert.AreEqual(_testGameController2.LongestRoadLength, 5);
             Assert.AreEqual(_testGameController2.CurrentPlayer.Color, 1);
             */
-            Assert.AreEqual(1,1);
+            Assert.AreEqual(1, 1);
         }
 
         [Test]

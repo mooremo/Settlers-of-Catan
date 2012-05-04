@@ -40,7 +40,7 @@ namespace SettlersOfCatan
 
         private void UpdateUILangauge()
         {
-            this.Text = Resources.gameSetup;
+            Text = Resources.gameSetup;
             lbl_NumPlayers.Text = Resources.numberOfPlayers;
             grp_Player1.Text = Resources.player + " 1";
             grp_Player2.Text = Resources.player + " 2";
@@ -56,7 +56,6 @@ namespace SettlersOfCatan
             lbl_Name4.Text = Resources.name;
             btn_Ok.Text = Resources.OK;
             btn_Cancel.Text = Resources.Cancel;
-
         }
 
         public void SetLanguage(Language lang)

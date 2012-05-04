@@ -576,7 +576,7 @@ namespace SettlersOfCatan
             while (tileCount < 19)
             {
                 tempNeighbors = _neighborDictionary[tileCount];
-                tempTileNeighbors = new ArrayList( new Tile[] {null, null, null, null, null, null});
+                tempTileNeighbors = new ArrayList(new Tile[] {null, null, null, null, null, null});
                 while (neighborCount < 6)
                 {
                     tempNeighbor = (int) tempNeighbors[neighborCount];
@@ -598,7 +598,6 @@ namespace SettlersOfCatan
                 tempTile.Neighbors = ToList<Tile>(tempTileNeighbors);
                 TerrainTiles[tileCount] = tempTile;
                 tileCount++;
-                
             }
 
             //Generate the vertices

@@ -26,7 +26,7 @@ namespace SettlersOfCatan
 
         public void SetLanguage(Language lang)
         {
-            if(lang == Language.English)
+            if (lang == Language.English)
             {
                 rbtn_English.Checked = true;
             }
@@ -39,11 +39,10 @@ namespace SettlersOfCatan
 
         private void UpdateUILangauge()
         {
-            this.Text = Resources.options;
+            Text = Resources.options;
             grp_Language.Text = Resources.selectLanguage;
             btn_Ok.Text = Resources.OK;
             btn_Cancel.Text = Resources.Cancel;
-
         }
     }
 }
