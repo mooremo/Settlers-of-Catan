@@ -552,8 +552,7 @@ namespace SettlersOfCatan
                 {
                     tempTile = new Tile(tempType);
                 }
-                TerrainTiles.Insert(0, tempTile);
-                TerrainTiles.Insert((int) (_tileOrder[tileCount]), tempTile);
+                TerrainTiles[(int) (_tileOrder[tileCount])] = tempTile;
                 tileCount++;
             }
 
@@ -599,7 +598,7 @@ namespace SettlersOfCatan
                 tempTile.Neighbors = ToList<Tile>(tempTileNeighbors);
                 TerrainTiles[tileCount] = tempTile;
                 tileCount++;
-                neighborCount = 0;
+                
             }
 
             //Generate the vertices

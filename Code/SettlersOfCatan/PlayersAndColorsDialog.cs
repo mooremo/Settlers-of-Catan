@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using SettlersOfCatan.Properties;
 
 namespace SettlersOfCatan
 {
@@ -35,6 +36,32 @@ namespace SettlersOfCatan
                     grp_Player4.Enabled = true;
                     break;
             }
+        }
+
+        private void UpdateUILangauge()
+        {
+            this.Text = Resources.gameSetup;
+            lbl_NumPlayers.Text = Resources.numberOfPlayers;
+            grp_Player1.Text = Resources.player + " 1";
+            grp_Player2.Text = Resources.player + " 2";
+            grp_Player3.Text = Resources.player + " 3";
+            grp_Player4.Text = Resources.player + " 4";
+            lbl_Color1.Text = Resources.color;
+            lbl_Color2.Text = Resources.color;
+            lbl_Color3.Text = Resources.color;
+            lbl_Color4.Text = Resources.color;
+            lbl_Name1.Text = Resources.name;
+            lbl_Name2.Text = Resources.name;
+            lbl_Name3.Text = Resources.name;
+            lbl_Name4.Text = Resources.name;
+            btn_Ok.Text = Resources.OK;
+            btn_Cancel.Text = Resources.Cancel;
+
+        }
+
+        public void SetLanguage(Language lang)
+        {
+            UpdateUILangauge();
         }
 
         private void btn_Ok_Click(object sender, EventArgs e)

@@ -40,12 +40,10 @@
             // rbtn_English
             // 
             this.rbtn_English.AutoSize = true;
-            this.rbtn_English.Checked = true;
             this.rbtn_English.Location = new System.Drawing.Point(6, 29);
             this.rbtn_English.Name = "rbtn_English";
             this.rbtn_English.Size = new System.Drawing.Size(59, 17);
             this.rbtn_English.TabIndex = 1;
-            this.rbtn_English.TabStop = true;
             this.rbtn_English.Text = "English";
             this.rbtn_English.UseVisualStyleBackColor = true;
             this.rbtn_English.CheckedChanged += new System.EventHandler(this.rbtn_English_CheckedChanged);
@@ -57,7 +55,6 @@
             this.rbtn_Deutsch.Name = "rbtn_Deutsch";
             this.rbtn_Deutsch.Size = new System.Drawing.Size(65, 17);
             this.rbtn_Deutsch.TabIndex = 2;
-            this.rbtn_Deutsch.TabStop = true;
             this.rbtn_Deutsch.Text = "Deutsch";
             this.rbtn_Deutsch.UseVisualStyleBackColor = true;
             this.rbtn_Deutsch.CheckedChanged += new System.EventHandler(this.rbtn_Deutsch_CheckedChanged);

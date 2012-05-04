@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoardTest.cs" />
+    <Compile Include="L10NTest.cs" />
     <Compile Include="DrawCardTest.cs" />
     <Compile Include="PiecePlacementTest.cs" />
     <Compile Include="PlayCardsTest.cs" />
