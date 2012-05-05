@@ -180,4 +180,16 @@
   <data name="village" xml:space="preserve">
     <value>Dorf</value>
   </data>
+  <data name="Blue" xml:space="preserve">
+    <value>Blau</value>
+  </data>
+  <data name="Orange" xml:space="preserve">
+    <value>Orange</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Rot</value>
+  </data>
+  <data name="White" xml:space="preserve">
+    <value>Weiss</value>
+  </data>
 </root>
