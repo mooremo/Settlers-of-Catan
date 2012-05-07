@@ -76,7 +76,7 @@
             "3",
             "4"});
             this.cbox_NumPlayers.Location = new System.Drawing.Point(207, 20);
-            this.cbox_NumPlayers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbox_NumPlayers.Margin = new System.Windows.Forms.Padding(2);
             this.cbox_NumPlayers.Name = "cbox_NumPlayers";
             this.cbox_NumPlayers.Size = new System.Drawing.Size(37, 21);
             this.cbox_NumPlayers.TabIndex = 1;
@@ -89,9 +89,9 @@
             this.grp_Player1.Controls.Add(this.cbox_Color1);
             this.grp_Player1.Controls.Add(this.txt_Name1);
             this.grp_Player1.Location = new System.Drawing.Point(31, 56);
-            this.grp_Player1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grp_Player1.Margin = new System.Windows.Forms.Padding(2);
             this.grp_Player1.Name = "grp_Player1";
-            this.grp_Player1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grp_Player1.Padding = new System.Windows.Forms.Padding(2);
             this.grp_Player1.Size = new System.Drawing.Size(340, 60);
             this.grp_Player1.TabIndex = 2;
             this.grp_Player1.TabStop = false;
@@ -119,6 +119,7 @@
             // 
             // cbox_Color1
             // 
+            this.cbox_Color1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_Color1.FormattingEnabled = true;
             this.cbox_Color1.Items.AddRange(new object[] {
             "Red",
@@ -126,15 +127,16 @@
             "White",
             "Orange"});
             this.cbox_Color1.Location = new System.Drawing.Point(230, 28);
-            this.cbox_Color1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbox_Color1.Margin = new System.Windows.Forms.Padding(2);
             this.cbox_Color1.Name = "cbox_Color1";
             this.cbox_Color1.Size = new System.Drawing.Size(84, 21);
             this.cbox_Color1.TabIndex = 1;
+            this.cbox_Color1.SelectedIndexChanged += new System.EventHandler(this.cbox_Color1_SelectedIndexChanged);
             // 
             // txt_Name1
             // 
             this.txt_Name1.Location = new System.Drawing.Point(56, 28);
-            this.txt_Name1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Name1.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Name1.Name = "txt_Name1";
             this.txt_Name1.Size = new System.Drawing.Size(125, 20);
             this.txt_Name1.TabIndex = 0;
@@ -146,9 +148,9 @@
             this.grp_Player2.Controls.Add(this.cbox_Color2);
             this.grp_Player2.Controls.Add(this.txt_Name2);
             this.grp_Player2.Location = new System.Drawing.Point(31, 121);
-            this.grp_Player2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grp_Player2.Margin = new System.Windows.Forms.Padding(2);
             this.grp_Player2.Name = "grp_Player2";
-            this.grp_Player2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grp_Player2.Padding = new System.Windows.Forms.Padding(2);
             this.grp_Player2.Size = new System.Drawing.Size(340, 60);
             this.grp_Player2.TabIndex = 3;
             this.grp_Player2.TabStop = false;
@@ -176,6 +178,7 @@
             // 
             // cbox_Color2
             // 
+            this.cbox_Color2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_Color2.FormattingEnabled = true;
             this.cbox_Color2.Items.AddRange(new object[] {
             "Red",
@@ -183,15 +186,16 @@
             "White",
             "Orange"});
             this.cbox_Color2.Location = new System.Drawing.Point(230, 28);
-            this.cbox_Color2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbox_Color2.Margin = new System.Windows.Forms.Padding(2);
             this.cbox_Color2.Name = "cbox_Color2";
             this.cbox_Color2.Size = new System.Drawing.Size(84, 21);
             this.cbox_Color2.TabIndex = 1;
+            this.cbox_Color2.SelectedIndexChanged += new System.EventHandler(this.cbox_Color2_SelectedIndexChanged);
             // 
             // txt_Name2
             // 
             this.txt_Name2.Location = new System.Drawing.Point(56, 28);
-            this.txt_Name2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Name2.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Name2.Name = "txt_Name2";
             this.txt_Name2.Size = new System.Drawing.Size(125, 20);
             this.txt_Name2.TabIndex = 0;
@@ -203,9 +207,9 @@
             this.grp_Player3.Controls.Add(this.cbox_Color3);
             this.grp_Player3.Controls.Add(this.txt_Name3);
             this.grp_Player3.Location = new System.Drawing.Point(31, 186);
-            this.grp_Player3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grp_Player3.Margin = new System.Windows.Forms.Padding(2);
             this.grp_Player3.Name = "grp_Player3";
-            this.grp_Player3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grp_Player3.Padding = new System.Windows.Forms.Padding(2);
             this.grp_Player3.Size = new System.Drawing.Size(340, 60);
             this.grp_Player3.TabIndex = 4;
             this.grp_Player3.TabStop = false;
@@ -233,6 +237,7 @@
             // 
             // cbox_Color3
             // 
+            this.cbox_Color3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_Color3.FormattingEnabled = true;
             this.cbox_Color3.Items.AddRange(new object[] {
             "Red",
@@ -240,15 +245,16 @@
             "White",
             "Orange"});
             this.cbox_Color3.Location = new System.Drawing.Point(230, 28);
-            this.cbox_Color3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbox_Color3.Margin = new System.Windows.Forms.Padding(2);
             this.cbox_Color3.Name = "cbox_Color3";
             this.cbox_Color3.Size = new System.Drawing.Size(84, 21);
             this.cbox_Color3.TabIndex = 1;
+            this.cbox_Color3.SelectedIndexChanged += new System.EventHandler(this.cbox_Color3_SelectedIndexChanged);
             // 
             // txt_Name3
             // 
             this.txt_Name3.Location = new System.Drawing.Point(56, 28);
-            this.txt_Name3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Name3.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Name3.Name = "txt_Name3";
             this.txt_Name3.Size = new System.Drawing.Size(125, 20);
             this.txt_Name3.TabIndex = 0;
@@ -261,9 +267,9 @@
             this.grp_Player4.Controls.Add(this.txt_Name4);
             this.grp_Player4.Enabled = false;
             this.grp_Player4.Location = new System.Drawing.Point(31, 251);
-            this.grp_Player4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grp_Player4.Margin = new System.Windows.Forms.Padding(2);
             this.grp_Player4.Name = "grp_Player4";
-            this.grp_Player4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grp_Player4.Padding = new System.Windows.Forms.Padding(2);
             this.grp_Player4.Size = new System.Drawing.Size(340, 60);
             this.grp_Player4.TabIndex = 4;
             this.grp_Player4.TabStop = false;
@@ -291,6 +297,7 @@
             // 
             // cbox_Color4
             // 
+            this.cbox_Color4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_Color4.FormattingEnabled = true;
             this.cbox_Color4.Items.AddRange(new object[] {
             "Red",
@@ -298,15 +305,16 @@
             "White",
             "Orange"});
             this.cbox_Color4.Location = new System.Drawing.Point(230, 28);
-            this.cbox_Color4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbox_Color4.Margin = new System.Windows.Forms.Padding(2);
             this.cbox_Color4.Name = "cbox_Color4";
             this.cbox_Color4.Size = new System.Drawing.Size(84, 21);
             this.cbox_Color4.TabIndex = 1;
+            this.cbox_Color4.SelectedIndexChanged += new System.EventHandler(this.cbox_Color4_SelectedIndexChanged);
             // 
             // txt_Name4
             // 
             this.txt_Name4.Location = new System.Drawing.Point(56, 28);
-            this.txt_Name4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Name4.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Name4.Name = "txt_Name4";
             this.txt_Name4.Size = new System.Drawing.Size(125, 20);
             this.txt_Name4.TabIndex = 0;
@@ -314,7 +322,7 @@
             // btn_Ok
             // 
             this.btn_Ok.Location = new System.Drawing.Point(243, 329);
-            this.btn_Ok.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Ok.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Ok.Name = "btn_Ok";
             this.btn_Ok.Size = new System.Drawing.Size(56, 19);
             this.btn_Ok.TabIndex = 5;
@@ -326,7 +334,7 @@
             // 
             this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Cancel.Location = new System.Drawing.Point(315, 329);
-            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Cancel.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(56, 19);
             this.btn_Cancel.TabIndex = 6;
@@ -347,7 +355,7 @@
             this.Controls.Add(this.cbox_NumPlayers);
             this.Controls.Add(this.lbl_NumPlayers);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PlayersAndColorsDialog";
             this.Text = "Game Setup";
             this.grp_Player1.ResumeLayout(false);

@@ -53,7 +53,6 @@ namespace SettlersOfCatan
         private void btn_NewGame_Click(object sender, EventArgs e)
         {
             var players = new PlayersAndColorsDialog();
-            players.SetLanguage(SelectedLanguage);
             players.ShowDialog();
         }
 
