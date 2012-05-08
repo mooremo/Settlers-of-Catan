@@ -62,6 +62,16 @@
     <Compile Include="PlayersAndColorsDialog.Designer.cs">
       <DependentUpon>PlayersAndColorsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.de2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.de.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Start.cs">
       <SubType>Form</SubType>
     </Compile>

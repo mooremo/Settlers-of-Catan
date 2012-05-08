@@ -9,10 +9,7 @@ namespace SettlersOfCatan
     {
         public int NumPlayers = 3;
 
-        public List<String> AvailibleColors1;
-        public List<String> AvailibleColors2;
-        public List<String> AvailibleColors3;
-        public List<String> AvailibleColors4;
+        public List<String> AvailibleColors;
 
         public String Player1ColorTemp;
         public String Player2ColorTemp;
@@ -43,6 +40,7 @@ namespace SettlersOfCatan
             {
                 case 3:
                     grp_Player4.Enabled = false;
+                    cbox_Color4.SelectedItem = null;
                     break;
                 case 4:
                     grp_Player4.Enabled = true;
@@ -52,10 +50,7 @@ namespace SettlersOfCatan
 
         private void UpdateUILangauge()
         {
-            AvailibleColors1 = new List<String>(new String[] { Resources.Red, Resources.Orange, Resources.Blue, Resources.White, null, });
-            AvailibleColors2 = new List<String>(new String[] { Resources.Red, Resources.Orange, Resources.Blue, Resources.White, null, });
-            AvailibleColors3 = new List<String>(new String[] { Resources.Red, Resources.Orange, Resources.Blue, Resources.White, null, });
-            AvailibleColors4 = new List<String>(new String[] { Resources.Red, Resources.Orange, Resources.Blue, Resources.White, null, });
+            AvailibleColors = new List<String>(new String[] { Resources.Red, Resources.Orange, Resources.Blue, Resources.White, null, });
             Text = Resources.gameSetup;
             lbl_NumPlayers.Text = Resources.numberOfPlayers;
             grp_Player1.Text = Resources.player + " 1";
@@ -70,10 +65,7 @@ namespace SettlersOfCatan
             lbl_Name2.Text = Resources.name;
             lbl_Name3.Text = Resources.name;
             lbl_Name4.Text = Resources.name;
-            cbox_Color1.DataSource = AvailibleColors1;
-            cbox_Color2.DataSource = AvailibleColors2;
-            cbox_Color3.DataSource = AvailibleColors3;
-            cbox_Color4.DataSource = AvailibleColors4;
+           
             cbox_Color1.SelectedItem = null;
             cbox_Color2.SelectedItem = null;
             cbox_Color3.SelectedItem = null;
@@ -148,59 +140,56 @@ namespace SettlersOfCatan
         {
             if(Player1ColorTemp != null)
             {
-                AvailibleColors2.Add(Player1ColorTemp);
-                AvailibleColors3.Add(Player1ColorTemp);
-                AvailibleColors4.Add(Player1ColorTemp);
+                cbox_Color2.Items.Add(Player1ColorTemp);
+                cbox_Color3.Items.Add(Player1ColorTemp);
+                cbox_Color4.Items.Add(Player1ColorTemp);
             }
             Player1ColorTemp = ((String)cbox_Color1.SelectedItem);
-            AvailibleColors2.Remove(Player1ColorTemp);
-            AvailibleColors3.Remove(Player1ColorTemp);
-            AvailibleColors4.Remove(Player1ColorTemp);
+            cbox_Color2.Items.Remove(Player1ColorTemp);
+            cbox_Color3.Items.Remove(Player1ColorTemp);
+            cbox_Color4.Items.Remove(Player1ColorTemp);
         }
 
         private void cbox_Color2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Player2ColorTemp != null)
             {
-                AvailibleColors1.Add(Player2ColorTemp);
-                AvailibleColors3.Add(Player2ColorTemp);
-                AvailibleColors4.Add(Player2ColorTemp);
+                cbox_Color1.Items.Add(Player2ColorTemp);
+                cbox_Color3.Items.Add(Player2ColorTemp);
+                cbox_Color4.Items.Add(Player2ColorTemp);
             }
             Player2ColorTemp = ((String)cbox_Color2.SelectedItem);
-            AvailibleColors1.Remove(Player2ColorTemp);
-            AvailibleColors3.Remove(Player2ColorTemp);
-            AvailibleColors4.Remove(Player2ColorTemp);
-            cbox_Color1.Refresh();
-            cbox_Color1.Refresh();
-            cbox_Color1.Refresh();
+            cbox_Color1.Items.Remove(Player2ColorTemp);
+            cbox_Color3.Items.Remove(Player2ColorTemp);
+            cbox_Color4.Items.Remove(Player2ColorTemp);
         }
 
         private void cbox_Color3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Player3ColorTemp != null)
             {
-                AvailibleColors2.Add(Player3ColorTemp);
-                AvailibleColors1.Add(Player3ColorTemp);
-                AvailibleColors4.Add(Player3ColorTemp);
+                cbox_Color2.Items.Add(Player3ColorTemp);
+                cbox_Color1.Items.Add(Player3ColorTemp);
+                cbox_Color4.Items.Add(Player3ColorTemp);
             }
             Player3ColorTemp = ((String)cbox_Color3.SelectedItem);
-            AvailibleColors2.Remove(Player3ColorTemp);
-            AvailibleColors1.Remove(Player3ColorTemp);
-            AvailibleColors4.Remove(Player3ColorTemp);
+            cbox_Color2.Items.Remove(Player3ColorTemp);
+            cbox_Color1.Items.Remove(Player3ColorTemp);
+            cbox_Color4.Items.Remove(Player3ColorTemp);
         }
 
         private void cbox_Color4_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Player4ColorTemp != null)
             {
-                AvailibleColors2.Add(Player4ColorTemp);
-                AvailibleColors3.Add(Player4ColorTemp);
-                AvailibleColors1.Add(Player4ColorTemp);
+                cbox_Color2.Items.Add(Player4ColorTemp);
+                cbox_Color3.Items.Add(Player4ColorTemp);
+                cbox_Color1.Items.Add(Player4ColorTemp);
             }
             Player4ColorTemp = ((String)cbox_Color4.SelectedItem);
-            AvailibleColors2.Remove(Player4ColorTemp);
-            AvailibleColors3.Remove(Player4ColorTemp);
-            AvailibleColors1.Remove(Player4ColorTemp);
+            cbox_Color2.Items.Remove(Player4ColorTemp);
+            cbox_Color3.Items.Remove(Player4ColorTemp);
+            cbox_Color1.Items.Remove(Player4ColorTemp);
         }
     }
 }
