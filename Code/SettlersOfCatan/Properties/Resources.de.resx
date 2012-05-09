@@ -192,4 +192,7 @@
   <data name="White" xml:space="preserve">
     <value>Weiss</value>
   </data>
+  <data name="None" xml:space="preserve">
+    <value>Keiner</value>
+  </data>
 </root>

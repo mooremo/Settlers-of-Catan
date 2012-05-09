@@ -202,4 +202,7 @@
   <data name="White" xml:space="preserve">
     <value>White</value>
   </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
 </root>

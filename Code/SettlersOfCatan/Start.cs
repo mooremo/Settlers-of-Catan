@@ -76,5 +76,11 @@ namespace SettlersOfCatan
             btn_Options.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*5);
             btn_Exit.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*6);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var gameBoard = new frm_gameBoard();
+            gameBoard.Show();
+        }
     }
 }
