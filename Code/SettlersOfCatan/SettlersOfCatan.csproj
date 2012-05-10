@@ -68,12 +68,13 @@
     <Compile Include="PlayersAndColorsDialog.Designer.cs">
       <DependentUpon>PlayersAndColorsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.de1.Designer.cs" />
     <Compile Include="Properties\Resources.de2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.de.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resources1.Designer.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -119,9 +120,12 @@
       <LastGenOutput>Resources.de2.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
@@ -135,6 +139,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\startBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\startBackground.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\english.bmp.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\desert_texture.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\english.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\field_texture.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\german.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hills_texture.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mountains_texture.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pasture_texture.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sea_texture.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\woods_texture.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
