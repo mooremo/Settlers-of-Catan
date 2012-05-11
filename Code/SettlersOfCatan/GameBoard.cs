@@ -176,9 +176,10 @@ namespace SettlersOfCatan
             return image;
         }
 
-        private Button GetButton(Bitmap image, PointF point)
+        private ButtonWithIndex GetButton(Bitmap image, PointF point)
         {
-            Button b = new Button();
+            ButtonWithIndex b = new ButtonWithIndex();
+            b.Click += new EventHandler(OnTileButtonClick);
             b.Font = new Font(FontFamily.GenericSerif, 8, FontStyle.Bold);
             if (seaTileIndices.Contains(_tileCount))
             {
@@ -211,6 +212,7 @@ namespace SettlersOfCatan
                         b.Text = "DEFAULT";
                         break;
                 }
+                b._index = _portCount - 1;
                 b.Name = "btn_Port" + b.Text;
             }
             else
@@ -243,6 +245,7 @@ namespace SettlersOfCatan
                         b.Text = "DEFAULT";
                         break;
                 }
+                b._index = _terrainCount - 1;
                 b.Name = "btn_Tile" + (_terrainCount-1);
             }
             _tileCount++;
@@ -273,11 +276,13 @@ namespace SettlersOfCatan
                     continue;
                 }
 
-                var b = new Button();
+                var b = new ButtonWithIndex();
                 b.Width = 15;
                 b.Height = 15;
                 b.Location = new Point((int)location.X - b.Width/2, (int)location.Y - b.Height/2);
                 b.Name = "btn_Vertex" + vertex.Index;
+                b._index = vertex.Index;
+                b.Click += new EventHandler(OnVertexClick);
                 b.TabStop = false;
                 //b.Text = vertex.Index.ToString();
                 b.BackColor = Color.Transparent;
@@ -363,6 +368,16 @@ namespace SettlersOfCatan
             lbl_playerVictoryPoint.Text = roadBuilding.ToString();
             lbl_playerYearOfPlenty.Text = yearOfPlenty.ToString();
             lbl_playerRoadBuilding.Text = roadBuilding.ToString();
+        }
+
+        private void OnTileButtonClick(object sender, EventArgs e)
+        {
+            Console.WriteLine("Tile #" + ((ButtonWithIndex) sender)._index);
+        }
+
+        private void OnVertexClick(object sender, EventArgs e)
+        {
+            Console.WriteLine("Vertex #" + ((ButtonWithIndex)sender)._index);
         }
     }
 }
