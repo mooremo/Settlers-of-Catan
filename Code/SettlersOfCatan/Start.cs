@@ -53,7 +53,12 @@ namespace SettlersOfCatan
         private void btn_NewGame_Click(object sender, EventArgs e)
         {
             var players = new PlayersAndColorsDialog();
+            this.Hide();
             players.ShowDialog();
+            if (players.DialogResult == DialogResult.Cancel)
+            {
+                this.Show();
+            }
         }
 
         private void btn_LoadGame_Click(object sender, EventArgs e)
@@ -80,6 +85,7 @@ namespace SettlersOfCatan
         private void button1_Click(object sender, EventArgs e)
         {
             var gameBoard = new frm_gameBoard();
+            this.Hide();
             gameBoard.Show();
         }
     }
