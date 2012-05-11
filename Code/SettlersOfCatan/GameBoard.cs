@@ -22,6 +22,8 @@ namespace SettlersOfCatan
         private int _portCount = 0;
         private int _terrainCount = 0;
         private Board _board;
+        private List<Vertex> _doIAddAShittyButtonHere = new List<Vertex>();
+
 
         public frm_gameBoard()
         {
@@ -42,10 +44,10 @@ namespace SettlersOfCatan
         private PointF[] GetHexagonPoints(PointF center, float radius)
         {
             var ret = new PointF[6];
-
-            for (var i = 0; i < 6; i++)
+            var count = 0;
+            for (var i = 1; i > -5; i--)
             {
-                ret[i] = new PointF((float) (center.X + radius * Math.Cos(2 * Math.PI * i / 6)), (float) (center.Y + radius * Math.Sin(2 * Math.PI * i / 6)));
+                ret[count++] = new PointF((float) (center.X + radius * Math.Cos(Math.PI * i / 3)), (float) (center.Y - radius * Math.Sin(Math.PI * i / 3)));
             }
 
             return ret;
@@ -78,7 +80,8 @@ namespace SettlersOfCatan
                 var hexagonPoints = GetHexagonPoints(point, _radius);
                 CreateGraphics().DrawPolygon(_pen, hexagonPoints);
                 image = GetImage();
-                Button b = GetButton(image, new PointF(hexagonPoints[4].X, hexagonPoints[5].Y));
+                Button b = GetButton(image, new PointF(hexagonPoints[5].X, hexagonPoints[0].Y));
+                DrawVertexButtons(hexagonPoints);
                 if (b != null)
                 {
                     this.Controls.Add(b);
@@ -209,6 +212,7 @@ namespace SettlersOfCatan
                         b.Text = "DEFAULT";
                         break;
                 }
+                b.Name = "btn_Port" + b.Text;
             }
             else
             {
@@ -240,13 +244,47 @@ namespace SettlersOfCatan
                         b.Text = "DEFAULT";
                         break;
                 }
+                b.Name = "btn_Tile" + (_terrainCount-1);
             }
             _tileCount++;
             b.Location = new Point((int)point.X, (int)point.Y+20);
             b.Width = 50;
             b.Height = 47;
+            
             //b.BackgroundImage = image;
             return b;
+        }
+
+        private void DrawVertexButtons(PointF[] points) 
+        {
+            if (seaTileIndices.Contains(_tileCount-1) || portTileIndices.Contains(_tileCount-1))
+            {
+                return;
+            }
+
+            var vertices = _board.TerrainTiles[_terrainCount - 1].Vertices;
+
+            for (var i = 0; i < points.Length; i++ )
+            {
+                var vertex = vertices[i];
+                var location = points[i];
+
+                if (_doIAddAShittyButtonHere.Contains(vertex))
+                {
+                    continue;
+                }
+
+                var b = new Button();
+                b.Location = new Point((int)location.X - 10, (int)location.Y - 10);
+                b.Width = 20;
+                b.Height = 20;
+                b.AutoSize = true;
+                b.Name = "btn_Vertex" + vertex.Index;
+                b.Text = vertex.Index.ToString();
+
+                Controls.Add(b);
+                _doIAddAShittyButtonHere.Add(vertex);
+            }
         }
     }
 }

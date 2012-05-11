@@ -609,27 +609,26 @@ namespace SettlersOfCatan
 
             //Fill tile's vertices
             var category = new ArrayList(new[] {0, 2, 15, 17, 18});
-            var offset1 = new ArrayList(new[] {3, 5, 6, 6, 5});
-            var offset2 = new ArrayList(new[] {8, 11, 12, 11, 8});
-
+            var indexToRow = new Dictionary<int, int>{{0, 0}, {1, 1}, {2, 1}, {3, 2}, {4, 2}, {5, 2}, {6, 3}, {7, 3}, 
+            {8, 4}, {9, 4}, {10, 4}, {11, 5}, {12, 5}, {13, 6}, {14, 6}, {15, 6}, {16, 7}, {17,7}, {18, 8}};
+            var offset0 = new[] {1, 1, 1, 2, 3, 4, 5, 6, 9};
+            var offset1 = new[] {4, 6, 7, 8, 9, 10, 11, 12, 14};
+            var offset2 = new[] {9, 12, 13, 14, 15, 16, 17, 17, 17};
+            
             ArrayList tempList;
-            int j;
             for (int i = 0; i < 19; i++)
             {
-                j = 0;
-                while ((int) category[j] < i)
-                {
-                    j++;
-                }
+
+                var row = indexToRow[i];
 
                 tempTile = TerrainTiles[i];
                 tempList = new ArrayList();
-                tempList.Insert(0, Vertices[(2*i) + 1]);
-                tempList.Insert(1, Vertices[(2*1) + (int) offset1[j] + 1]);
-                tempList.Insert(2, Vertices[(2*1) + (int) offset2[j] + 1]);
-                tempList.Insert(3, Vertices[(2*1) + (int) offset2[j]]);
-                tempList.Insert(4, Vertices[(2*1) + (int) offset1[j]]);
-                tempList.Insert(5, Vertices[(2*i)]);
+                tempList.Insert(0, Vertices[(2*i) + offset0[row]]);
+                tempList.Insert(1, Vertices[(2*i) + offset1[row]]);
+                tempList.Insert(2, Vertices[(2*i) + offset2[row]]);
+                tempList.Insert(3, Vertices[(2*i) + offset2[row]-1]);
+                tempList.Insert(4, Vertices[(2*i) + offset1[row]-1]);
+                tempList.Insert(5, Vertices[(2*i) + offset0[row]-1]);
                 tempTile.Vertices = ToList<Vertex>(tempList);
                 TerrainTiles[i] = tempTile;
             }
