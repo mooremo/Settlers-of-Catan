@@ -217,7 +217,7 @@ namespace SettlersOfCatan
             {
                 if ((_board.TerrainTiles[_terrainCount - 1]).Robber)
                 {
-                    //b.BackgroundImage = new Bitmap(Resources.);
+                    //b.BackgroundImage = new Bitmap(Resources.robber);
                     b.Text = "Robber";
                 }
                 switch ((_board.TerrainTiles[_terrainCount-1]).Type)
@@ -289,7 +289,7 @@ namespace SettlersOfCatan
 
         private void frm_gameBoard_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+             Application.Exit(); 
         }
 
         private void frm_gameBoard_Paint(object sender, PaintEventArgs e)
