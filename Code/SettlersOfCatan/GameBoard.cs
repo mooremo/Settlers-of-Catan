@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
@@ -28,17 +29,13 @@ namespace SettlersOfCatan
         public frm_gameBoard()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             _board = new Board();
-        }
-
-        private void frm_gameBoard_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void frm_gameBoard_Shown(object sender, EventArgs e)
         {
-            DrawRowOne(new PointF((float)(Width / 2.0), (float)((Height - (14 * _radius)) / 2.0) + _radius), 1);
+            DrawRowOne(new PointF((float)(Width / 2.0), (float)((Height - (14 * _radius)) / 4.0) + _radius), 1);
         }
 
         private PointF[] GetHexagonPoints(PointF center, float radius)
@@ -275,16 +272,22 @@ namespace SettlersOfCatan
                 }
 
                 var b = new Button();
-                b.Location = new Point((int)location.X - 10, (int)location.Y - 10);
-                b.Width = 20;
-                b.Height = 20;
-                b.AutoSize = true;
+                b.Width = 15;
+                b.Height = 15;
+                b.Location = new Point((int)location.X - b.Width/2, (int)location.Y - b.Height/2);
                 b.Name = "btn_Vertex" + vertex.Index;
-                b.Text = vertex.Index.ToString();
+                b.TabStop = false;
+                //b.Text = vertex.Index.ToString();
+                b.BackColor = Color.Transparent;
 
                 Controls.Add(b);
                 _doIAddAShittyButtonHere.Add(vertex);
             }
+        }
+
+        private void frm_gameBoard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }

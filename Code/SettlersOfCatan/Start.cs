@@ -59,6 +59,12 @@ namespace SettlersOfCatan
             {
                 this.Show();
             }
+            else if (players.DialogResult == DialogResult.OK)
+            {
+                var gameBoard = new frm_gameBoard();
+                this.Hide();
+                gameBoard.Show();
+            }
         }
 
         private void btn_LoadGame_Click(object sender, EventArgs e)
