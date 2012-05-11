@@ -29,13 +29,12 @@ namespace SettlersOfCatan
         public frm_gameBoard()
         {
             InitializeComponent();
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             _board = new Board();
         }
 
         private void frm_gameBoard_Shown(object sender, EventArgs e)
         {
-            DrawRowOne(new PointF((float)(Width / 2.0), (float)((Height - (14 * _radius)) / 4.0) + _radius), 1);
+            DrawRowOne(new PointF((float)(Width / 2.0), (float)((Height - (14 * _radius)) / 8.0) + _radius), 1);
         }
 
         private PointF[] GetHexagonPoints(PointF center, float radius)
@@ -178,6 +177,7 @@ namespace SettlersOfCatan
         private Button GetButton(Bitmap image, PointF point)
         {
             Button b = new Button();
+            b.Font = new Font(FontFamily.GenericSansSerif, 6);
             if (seaTileIndices.Contains(_tileCount))
             {
                 _tileCount++;
