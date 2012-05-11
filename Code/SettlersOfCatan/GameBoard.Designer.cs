@@ -43,7 +43,7 @@
             this.Name = "frm_gameBoard";
             this.Text = "Settlers of C#tan";
             this.Load += new System.EventHandler(this.frm_gameBoard_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.frm_gameBoard_Paint);
+            this.Shown += new System.EventHandler(this.frm_gameBoard_Shown);
             this.ResumeLayout(false);
 
         }

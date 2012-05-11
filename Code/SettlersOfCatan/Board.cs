@@ -551,6 +551,7 @@ namespace SettlersOfCatan
                 else
                 {
                     tempTile = new Tile(tempType);
+                    tempTile.Robber = true;
                 }
                 TerrainTiles[(int) (_tileOrder[tileCount])] = tempTile;
                 tileCount++;

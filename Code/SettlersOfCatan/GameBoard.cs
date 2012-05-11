@@ -26,14 +26,17 @@ namespace SettlersOfCatan
         public frm_gameBoard()
         {
             InitializeComponent();
-            //this.DoubleBuffered = true;
             _board = new Board();
         }
 
-        private void DrawButton()
+        private void frm_gameBoard_Load(object sender, EventArgs e)
         {
-            Button b = new Button();
-            this.Controls.Add(b);
+
+        }
+
+        private void frm_gameBoard_Shown(object sender, EventArgs e)
+        {
+            DrawRowOne(new PointF((float)(Width / 2.0), (float)((Height - (14 * _radius)) / 2.0) + _radius), 1);
         }
 
         private PointF[] GetHexagonPoints(PointF center, float radius)
@@ -75,14 +78,11 @@ namespace SettlersOfCatan
                 var hexagonPoints = GetHexagonPoints(point, _radius);
                 CreateGraphics().DrawPolygon(_pen, hexagonPoints);
                 image = GetImage();
-                //Button b = new Button();
-                //b.Text = "IM HERE";
-                //b.Location = new Point((int)hexagonPoints[4].X, (int)hexagonPoints[5].Y);
-                //b.Width = 50;
-                //b.Height = 50;
-               
-                //b.DrawToBitmap(image, b.Bounds);
-                //this.Controls.Add(b);
+                Button b = GetButton(image, new PointF(hexagonPoints[4].X, hexagonPoints[5].Y));
+                if (b != null)
+                {
+                    this.Controls.Add(b);
+                }
                 brush = new TextureBrush(image);
                 CreateGraphics().FillPolygon(brush, hexagonPoints, FillMode.Alternate);
                 point = ShiftRight(point);
@@ -131,19 +131,6 @@ namespace SettlersOfCatan
             DrawHexesOnRow(seed, 4);
             DrawRowThree(ShiftDownRight(seed), row+1);
         }
-
-        private void frm_gameBoard_Paint(object sender, PaintEventArgs e)
-        {
-            _tileCount = 0;
-            _portCount = 0;
-            _terrainCount = 0;
-            DrawRowOne(new PointF((float) (Width/2.0), (float) ((Height - (14*_radius))/2.0) + _radius), 1);
-        }
-
-        private void frm_gameBoard_Load(object sender, EventArgs e)
-        {
-
-        }
         
         private Bitmap GetImage()
         {
@@ -185,8 +172,81 @@ namespace SettlersOfCatan
                 }
                 _terrainCount++;
             }
-            _tileCount++;
             return image;
+        }
+
+        private Button GetButton(Bitmap image, PointF point)
+        {
+            Button b = new Button();
+            if (seaTileIndices.Contains(_tileCount))
+            {
+                _tileCount++;
+                return null;
+            }
+            else if (portTileIndices.Contains(_tileCount))
+            {
+                switch((_board.PortTiles[_portCount-1]).Type)
+                {
+                    case (int)TileType.Port2Brick:
+                        b.Text = "2:1 Brick";
+                        break;
+                    case (int) TileType.Port2Grain:
+                        b.Text = "2:1 Grain";
+                        break;
+                    case (int) TileType.Port2Lumber:
+                        b.Text = "2:1 Lumber";
+                        break;
+                    case (int) TileType.Port2Ore:
+                        b.Text = "2:1 Ore";
+                        break;
+                    case (int) TileType.Port2Wool:
+                        b.Text = "2:1 Wool";
+                        break;
+                    case (int)TileType.Port3:
+                        b.Text = "3:1";
+                        break;
+                    default:
+                        b.Text = "DEFAULT";
+                        break;
+                }
+            }
+            else
+            {
+                if ((_board.TerrainTiles[_terrainCount - 1]).Robber)
+                {
+                    //b.BackgroundImage = new Bitmap(Resources.s);
+                    b.Text = "Robber";
+                }
+                switch ((_board.TerrainTiles[_terrainCount-1]).Type)
+                {
+                    case (int)TileType.Desert:
+                        break;
+                    case (int)TileType.Fields:
+                        b.Text = (_board.TerrainTiles[_terrainCount - 1]).Number.ToString();
+                        break;
+                    case (int)TileType.Hills:
+                        b.Text = (_board.TerrainTiles[_terrainCount - 1]).Number.ToString();
+                        break;
+                    case (int)TileType.Mountains:
+                        b.Text = (_board.TerrainTiles[_terrainCount - 1]).Number.ToString();
+                        break;
+                    case (int)TileType.Pasture:
+                        b.Text = (_board.TerrainTiles[_terrainCount - 1]).Number.ToString();
+                        break;
+                    case (int)TileType.Woods:
+                        b.Text = (_board.TerrainTiles[_terrainCount - 1]).Number.ToString();
+                        break;
+                    default:
+                        b.Text = "DEFAULT";
+                        break;
+                }
+            }
+            _tileCount++;
+            b.Location = new Point((int)point.X, (int)point.Y+20);
+            b.Width = 50;
+            b.Height = 47;
+            //b.BackgroundImage = image;
+            return b;
         }
     }
 }
