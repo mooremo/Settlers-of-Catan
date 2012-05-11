@@ -25,6 +25,7 @@ namespace SettlersOfCatan
         private Board _board;
         private GameController _gameController;
         private List<Vertex> _doIAddAShittyButtonHere = new List<Vertex>();
+        private Context _context = Context.None;
 
 
         public frm_gameBoard()
@@ -180,7 +181,7 @@ namespace SettlersOfCatan
         {
             ButtonWithIndex b = new ButtonWithIndex();
             b.Click += new EventHandler(OnTileButtonClick);
-            b.Font = new Font(FontFamily.GenericSerif, 8, FontStyle.Bold);
+            b.Font = new Font(FontFamily.GenericSerif, 7, FontStyle.Bold);
             if (seaTileIndices.Contains(_tileCount))
             {
                 _tileCount++;
@@ -373,11 +374,71 @@ namespace SettlersOfCatan
         private void OnTileButtonClick(object sender, EventArgs e)
         {
             Console.WriteLine("Tile #" + ((ButtonWithIndex) sender)._index);
+            switch(_context)
+            {
+                case Context.None:
+                    break;
+                case Context.MoveRobber:
+                    Console.WriteLine("<-- MoveRobber Code Here --> ");
+                    _context = Context.None;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void OnVertexClick(object sender, EventArgs e)
         {
             Console.WriteLine("Vertex #" + ((ButtonWithIndex)sender)._index);
+            switch(_context)
+            {
+                case Context.None:
+                    break;
+                case Context.PlaceCity:
+                    Console.WriteLine("<-- PlaceCity Code Here --> ");
+                    _context = Context.None;
+                    break;
+                case Context.PlaceRoad:
+                    Console.WriteLine("<-- PlaceRoad Code Here --> ");
+                    _context = Context.None;
+                    break;
+                case Context.PlaceVillage:
+                    Console.WriteLine("<-- PlaceVillage Code Here --> ");
+                    _context = Context.None;
+                    break;
+                 case Context.Trade:
+                    Console.WriteLine("<-- Trade Code Here --> ");
+                    _context = Context.None;
+                    break;
+                default:
+                    break;
+            }
         }
+
+        private void btn_placeVillage_Click(object sender, EventArgs e)
+        {
+            _context = Context.PlaceVillage;
+        }
+
+        private void btn_placeCity_Click(object sender, EventArgs e)
+        {
+            _context = Context.PlaceCity;
+        }
+
+        private void btn_moveRobber_Click(object sender, EventArgs e)
+        {
+            _context = Context.MoveRobber;
+        }
+
+        private void btn_placeRoad_Click(object sender, EventArgs e)
+        {
+            _context = Context.PlaceRoad;
+        }
+
+        private void btn_trade_Click(object sender, EventArgs e)
+        {
+            _context = Context.Trade;
+        }
+
     }
 }

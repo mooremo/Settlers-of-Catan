@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_gameBoard));
             this.pnl_playerData = new System.Windows.Forms.Panel();
+            this.btn_trade = new System.Windows.Forms.Button();
             this.lbl_playerMonopoly = new System.Windows.Forms.Label();
             this.lbl_playerYearOfPlenty = new System.Windows.Forms.Label();
             this.lbl_playerRoadBuilding = new System.Windows.Forms.Label();
@@ -40,6 +41,10 @@
             this.lbl_playerBrick = new System.Windows.Forms.Label();
             this.lbl_playerWood = new System.Windows.Forms.Label();
             this.lbl_playerWool = new System.Windows.Forms.Label();
+            this.btn_placeCity = new System.Windows.Forms.Button();
+            this.btn_placeVillage = new System.Windows.Forms.Button();
+            this.btn_placeRoad = new System.Windows.Forms.Button();
+            this.btn_moveRobber = new System.Windows.Forms.Button();
             this.lbl_monopoly = new System.Windows.Forms.Label();
             this.lbl_yearOfPlenty = new System.Windows.Forms.Label();
             this.lbl_roadBuilding = new System.Windows.Forms.Label();
@@ -50,11 +55,6 @@
             this.lbl_brick = new System.Windows.Forms.Label();
             this.lbl_wood = new System.Windows.Forms.Label();
             this.lbl_wool = new System.Windows.Forms.Label();
-            this.btn_placeVillage = new System.Windows.Forms.Button();
-            this.btn_moveRobber = new System.Windows.Forms.Button();
-            this.btn_placeCity = new System.Windows.Forms.Button();
-            this.btn_placeRoad = new System.Windows.Forms.Button();
-            this.btn_trade = new System.Windows.Forms.Button();
             this.pnl_playerData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,6 +92,16 @@
             this.pnl_playerData.Name = "pnl_playerData";
             this.pnl_playerData.Size = new System.Drawing.Size(996, 97);
             this.pnl_playerData.TabIndex = 0;
+            // 
+            // btn_trade
+            // 
+            this.btn_trade.Location = new System.Drawing.Point(728, 32);
+            this.btn_trade.Name = "btn_trade";
+            this.btn_trade.Size = new System.Drawing.Size(101, 27);
+            this.btn_trade.TabIndex = 24;
+            this.btn_trade.Text = "Trade";
+            this.btn_trade.UseVisualStyleBackColor = true;
+            this.btn_trade.Click += new System.EventHandler(this.btn_trade_Click);
             // 
             // lbl_playerMonopoly
             // 
@@ -182,6 +192,51 @@
             this.lbl_playerWool.Name = "lbl_playerWool";
             this.lbl_playerWool.Size = new System.Drawing.Size(30, 17);
             this.lbl_playerWool.TabIndex = 14;
+            // 
+            // btn_placeCity
+            // 
+            this.btn_placeCity.Location = new System.Drawing.Point(486, 55);
+            this.btn_placeCity.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_placeCity.Name = "btn_placeCity";
+            this.btn_placeCity.Size = new System.Drawing.Size(101, 27);
+            this.btn_placeCity.TabIndex = 13;
+            this.btn_placeCity.Text = "Place City";
+            this.btn_placeCity.UseVisualStyleBackColor = true;
+            this.btn_placeCity.Click += new System.EventHandler(this.btn_placeCity_Click);
+            // 
+            // btn_placeVillage
+            // 
+            this.btn_placeVillage.Location = new System.Drawing.Point(486, 11);
+            this.btn_placeVillage.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_placeVillage.Name = "btn_placeVillage";
+            this.btn_placeVillage.Size = new System.Drawing.Size(101, 27);
+            this.btn_placeVillage.TabIndex = 12;
+            this.btn_placeVillage.Text = "Place Village";
+            this.btn_placeVillage.UseVisualStyleBackColor = true;
+            this.btn_placeVillage.Click += new System.EventHandler(this.btn_placeVillage_Click);
+            // 
+            // btn_placeRoad
+            // 
+            this.btn_placeRoad.Location = new System.Drawing.Point(605, 55);
+            this.btn_placeRoad.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_placeRoad.Name = "btn_placeRoad";
+            this.btn_placeRoad.Size = new System.Drawing.Size(101, 27);
+            this.btn_placeRoad.TabIndex = 11;
+            this.btn_placeRoad.Text = "Place Road";
+            this.btn_placeRoad.UseVisualStyleBackColor = true;
+            this.btn_placeRoad.Click += new System.EventHandler(this.btn_placeRoad_Click);
+            // 
+            // btn_moveRobber
+            // 
+            this.btn_moveRobber.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_moveRobber.Location = new System.Drawing.Point(605, 11);
+            this.btn_moveRobber.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_moveRobber.Name = "btn_moveRobber";
+            this.btn_moveRobber.Size = new System.Drawing.Size(101, 27);
+            this.btn_moveRobber.TabIndex = 10;
+            this.btn_moveRobber.Text = "Move Robber";
+            this.btn_moveRobber.UseVisualStyleBackColor = true;
+            this.btn_moveRobber.Click += new System.EventHandler(this.btn_moveRobber_Click);
             // 
             // lbl_monopoly
             // 
@@ -282,56 +337,6 @@
             this.lbl_wool.Size = new System.Drawing.Size(35, 13);
             this.lbl_wool.TabIndex = 0;
             this.lbl_wool.Text = "Wool:";
-            // 
-            // btn_placeVillage
-            // 
-            this.btn_placeVillage.Location = new System.Drawing.Point(486, 11);
-            this.btn_placeVillage.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_placeVillage.Name = "btn_placeVillage";
-            this.btn_placeVillage.Size = new System.Drawing.Size(101, 27);
-            this.btn_placeVillage.TabIndex = 12;
-            this.btn_placeVillage.Text = "Place Village";
-            this.btn_placeVillage.UseVisualStyleBackColor = true;
-            // 
-            // btn_moveRobber
-            // 
-            this.btn_moveRobber.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_moveRobber.Location = new System.Drawing.Point(605, 11);
-            this.btn_moveRobber.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_moveRobber.Name = "btn_moveRobber";
-            this.btn_moveRobber.Size = new System.Drawing.Size(101, 27);
-            this.btn_moveRobber.TabIndex = 10;
-            this.btn_moveRobber.Text = "Move Robber";
-            this.btn_moveRobber.UseVisualStyleBackColor = true;
-            // 
-            // btn_placeCity
-            // 
-            this.btn_placeCity.Location = new System.Drawing.Point(486, 55);
-            this.btn_placeCity.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_placeCity.Name = "btn_placeCity";
-            this.btn_placeCity.Size = new System.Drawing.Size(101, 27);
-            this.btn_placeCity.TabIndex = 13;
-            this.btn_placeCity.Text = "Place City";
-            this.btn_placeCity.UseVisualStyleBackColor = true;
-            // 
-            // btn_placeRoad
-            // 
-            this.btn_placeRoad.Location = new System.Drawing.Point(605, 55);
-            this.btn_placeRoad.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_placeRoad.Name = "btn_placeRoad";
-            this.btn_placeRoad.Size = new System.Drawing.Size(101, 27);
-            this.btn_placeRoad.TabIndex = 11;
-            this.btn_placeRoad.Text = "Place Road";
-            this.btn_placeRoad.UseVisualStyleBackColor = true;
-            // 
-            // btn_trade
-            // 
-            this.btn_trade.Location = new System.Drawing.Point(728, 32);
-            this.btn_trade.Name = "btn_trade";
-            this.btn_trade.Size = new System.Drawing.Size(101, 27);
-            this.btn_trade.TabIndex = 24;
-            this.btn_trade.Text = "Trade";
-            this.btn_trade.UseVisualStyleBackColor = true;
             // 
             // frm_gameBoard
             // 
