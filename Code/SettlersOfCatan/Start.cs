@@ -61,7 +61,7 @@ namespace SettlersOfCatan
             }
             else if (players.DialogResult == DialogResult.OK)
             {
-                var gameBoard = new frm_gameBoard();
+                var gameBoard = new frm_gameBoard(players.Controller);
                 this.Hide();
                 gameBoard.Show();
             }

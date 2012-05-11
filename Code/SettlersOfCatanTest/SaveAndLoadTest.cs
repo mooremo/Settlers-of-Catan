@@ -15,7 +15,7 @@ namespace SettlersOfCatanTest
             _testGameController2 = new GameController();
             _mySerializer = new Serializer();
             p1 = new Player();
-            p1.Color = 1;
+            p1.Color = Colors.Red;
         }
 
         #endregion

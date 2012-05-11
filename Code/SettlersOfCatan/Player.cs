@@ -9,11 +9,12 @@ namespace SettlersOfCatan
     {
         public Player()
         {
+            DevelopmentHand = new List<CardType>();
             PlayedDevelopmentCards = new List<CardType>();
             ResourceHand = new List<CardType>();
         }
 
-        public Player(String name)
+        public Player(String name) : this()
         {
             Name = name;
         }
@@ -21,7 +22,7 @@ namespace SettlersOfCatan
         public Player(SerializationInfo info, StreamingContext ctxt)
         {
             Name = (String) info.GetValue("Name", typeof (String));
-            Color = (int) info.GetValue("Color", typeof (int));
+            Color = (Colors) info.GetValue("Color", typeof (Colors));
             ResourceHand = (List<CardType>) info.GetValue("ResourceHand", typeof (List<CardType>));
             DevelopmentHand = (List<CardType>) info.GetValue("DevelopmentHand", typeof (List<CardType>));
             PlayedDevelopmentCards = (List<CardType>) info.GetValue("PlayedDevelopmentCards", typeof (List<CardType>));
@@ -32,7 +33,7 @@ namespace SettlersOfCatan
         }
 
         public String Name { get; set; }
-        public int Color { get; set; }
+        public Colors Color { get; set; }
         public List<CardType> ResourceHand { get; set; }
         public List<CardType> DevelopmentHand { get; set; }
         public List<CardType> PlayedDevelopmentCards { get; set; }

@@ -34,6 +34,13 @@ namespace SettlersOfCatan
             _board = _gameController.Board;
         }
 
+        public frm_gameBoard(GameController controller)
+        {
+            InitializeComponent();
+            _gameController = controller;
+            _board = _gameController.Board;
+        }
+
         private void frm_gameBoard_Shown(object sender, EventArgs e)
         {
             DrawRowOne(new PointF((float)(Width / 2.0), (float)((Height - (14 * _radius)) / 8.0) + _radius), 1);
@@ -225,17 +232,9 @@ namespace SettlersOfCatan
                     case (int)TileType.Desert:
                         break;
                     case (int)TileType.Fields:
-                        b.Text = (_board.TerrainTiles[_terrainCount - 1]).Number.ToString();
-                        break;
                     case (int)TileType.Hills:
-                        b.Text = (_board.TerrainTiles[_terrainCount - 1]).Number.ToString();
-                        break;
                     case (int)TileType.Mountains:
-                        b.Text = (_board.TerrainTiles[_terrainCount - 1]).Number.ToString();
-                        break;
                     case (int)TileType.Pasture:
-                        b.Text = (_board.TerrainTiles[_terrainCount - 1]).Number.ToString();
-                        break;
                     case (int)TileType.Woods:
                         b.Text = (_board.TerrainTiles[_terrainCount - 1]).Number.ToString();
                         break;
