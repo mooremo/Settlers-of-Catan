@@ -215,7 +215,7 @@ namespace SettlersOfCatan
             {
                 if ((_board.TerrainTiles[_terrainCount - 1]).Robber)
                 {
-                    //b.BackgroundImage = new Bitmap(Resources.s);
+                    //b.BackgroundImage = new Bitmap(Resources.);
                     b.Text = "Robber";
                 }
                 switch ((_board.TerrainTiles[_terrainCount-1]).Type)
@@ -248,7 +248,7 @@ namespace SettlersOfCatan
             b.Width = 50;
             b.Height = 47;
             
-            //b.BackgroundImage = image;
+            b.BackgroundImage = image;
             return b;
         }
 
