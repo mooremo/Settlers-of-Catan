@@ -30,30 +30,30 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_gameBoard));
             this.pnl_playerData = new System.Windows.Forms.Panel();
-            this.lbl_wool = new System.Windows.Forms.Label();
-            this.lbl_wood = new System.Windows.Forms.Label();
-            this.lbl_brick = new System.Windows.Forms.Label();
-            this.lbl_victoryPoint = new System.Windows.Forms.Label();
-            this.lbl_grain = new System.Windows.Forms.Label();
-            this.lbl_ore = new System.Windows.Forms.Label();
-            this.lbl_yearOfPlenty = new System.Windows.Forms.Label();
-            this.lbl_roadBuilding = new System.Windows.Forms.Label();
-            this.lbl_soldier = new System.Windows.Forms.Label();
-            this.lbl_monopoly = new System.Windows.Forms.Label();
-            this.btn_moveRobber = new System.Windows.Forms.Button();
-            this.btn_placeRoad = new System.Windows.Forms.Button();
-            this.btn_placeVillage = new System.Windows.Forms.Button();
-            this.btn_placeCity = new System.Windows.Forms.Button();
-            this.lbl_playerBrick = new System.Windows.Forms.Label();
-            this.lbl_playerWood = new System.Windows.Forms.Label();
-            this.lbl_playerWool = new System.Windows.Forms.Label();
-            this.lbl_playerVictoryPoint = new System.Windows.Forms.Label();
-            this.lbl_playerGrain = new System.Windows.Forms.Label();
-            this.lbl_playerOre = new System.Windows.Forms.Label();
+            this.lbl_playerMonopoly = new System.Windows.Forms.Label();
             this.lbl_playerYearOfPlenty = new System.Windows.Forms.Label();
             this.lbl_playerRoadBuilding = new System.Windows.Forms.Label();
             this.lbl_playerSoldier = new System.Windows.Forms.Label();
-            this.lbl_playerMonopoly = new System.Windows.Forms.Label();
+            this.lbl_playerVictoryPoint = new System.Windows.Forms.Label();
+            this.lbl_playerGrain = new System.Windows.Forms.Label();
+            this.lbl_playerOre = new System.Windows.Forms.Label();
+            this.lbl_playerBrick = new System.Windows.Forms.Label();
+            this.lbl_playerWood = new System.Windows.Forms.Label();
+            this.lbl_playerWool = new System.Windows.Forms.Label();
+            this.btn_placeCity = new System.Windows.Forms.Button();
+            this.btn_placeVillage = new System.Windows.Forms.Button();
+            this.btn_placeRoad = new System.Windows.Forms.Button();
+            this.btn_moveRobber = new System.Windows.Forms.Button();
+            this.lbl_monopoly = new System.Windows.Forms.Label();
+            this.lbl_yearOfPlenty = new System.Windows.Forms.Label();
+            this.lbl_roadBuilding = new System.Windows.Forms.Label();
+            this.lbl_soldier = new System.Windows.Forms.Label();
+            this.lbl_victoryPoint = new System.Windows.Forms.Label();
+            this.lbl_grain = new System.Windows.Forms.Label();
+            this.lbl_ore = new System.Windows.Forms.Label();
+            this.lbl_brick = new System.Windows.Forms.Label();
+            this.lbl_wood = new System.Windows.Forms.Label();
+            this.lbl_wool = new System.Windows.Forms.Label();
             this.pnl_playerData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,234 +85,260 @@
             this.pnl_playerData.Controls.Add(this.lbl_brick);
             this.pnl_playerData.Controls.Add(this.lbl_wood);
             this.pnl_playerData.Controls.Add(this.lbl_wool);
-            this.pnl_playerData.Location = new System.Drawing.Point(12, 633);
+            this.pnl_playerData.Location = new System.Drawing.Point(11, 655);
+            this.pnl_playerData.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_playerData.Name = "pnl_playerData";
-            this.pnl_playerData.Size = new System.Drawing.Size(994, 90);
+            this.pnl_playerData.Size = new System.Drawing.Size(674, 74);
             this.pnl_playerData.TabIndex = 0;
             // 
-            // lbl_wool
+            // lbl_playerMonopoly
             // 
-            this.lbl_wool.AutoSize = true;
-            this.lbl_wool.Location = new System.Drawing.Point(3, 3);
-            this.lbl_wool.Name = "lbl_wool";
-            this.lbl_wool.Size = new System.Drawing.Size(44, 17);
-            this.lbl_wool.TabIndex = 0;
-            this.lbl_wool.Text = "Wool:";
+            this.lbl_playerMonopoly.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_playerMonopoly.Location = new System.Drawing.Point(403, 10);
+            this.lbl_playerMonopoly.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_playerMonopoly.Name = "lbl_playerMonopoly";
+            this.lbl_playerMonopoly.Size = new System.Drawing.Size(23, 14);
+            this.lbl_playerMonopoly.TabIndex = 23;
             // 
-            // lbl_wood
+            // lbl_playerYearOfPlenty
             // 
-            this.lbl_wood.AutoSize = true;
-            this.lbl_wood.Location = new System.Drawing.Point(3, 32);
-            this.lbl_wood.Name = "lbl_wood";
-            this.lbl_wood.Size = new System.Drawing.Size(49, 17);
-            this.lbl_wood.TabIndex = 1;
-            this.lbl_wood.Text = "Wood:";
+            this.lbl_playerYearOfPlenty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_playerYearOfPlenty.Location = new System.Drawing.Point(292, 52);
+            this.lbl_playerYearOfPlenty.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_playerYearOfPlenty.Name = "lbl_playerYearOfPlenty";
+            this.lbl_playerYearOfPlenty.Size = new System.Drawing.Size(23, 14);
+            this.lbl_playerYearOfPlenty.TabIndex = 22;
             // 
-            // lbl_brick
+            // lbl_playerRoadBuilding
             // 
-            this.lbl_brick.AutoSize = true;
-            this.lbl_brick.Location = new System.Drawing.Point(3, 60);
-            this.lbl_brick.Name = "lbl_brick";
-            this.lbl_brick.Size = new System.Drawing.Size(43, 17);
-            this.lbl_brick.TabIndex = 2;
-            this.lbl_brick.Text = "Brick:";
+            this.lbl_playerRoadBuilding.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_playerRoadBuilding.Location = new System.Drawing.Point(292, 29);
+            this.lbl_playerRoadBuilding.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_playerRoadBuilding.Name = "lbl_playerRoadBuilding";
+            this.lbl_playerRoadBuilding.Size = new System.Drawing.Size(23, 14);
+            this.lbl_playerRoadBuilding.TabIndex = 21;
             // 
-            // lbl_victoryPoint
+            // lbl_playerSoldier
             // 
-            this.lbl_victoryPoint.AutoSize = true;
-            this.lbl_victoryPoint.Location = new System.Drawing.Point(120, 64);
-            this.lbl_victoryPoint.Name = "lbl_victoryPoint";
-            this.lbl_victoryPoint.Size = new System.Drawing.Size(91, 17);
-            this.lbl_victoryPoint.TabIndex = 5;
-            this.lbl_victoryPoint.Text = "Victory Point:";
+            this.lbl_playerSoldier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_playerSoldier.Location = new System.Drawing.Point(292, 6);
+            this.lbl_playerSoldier.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_playerSoldier.Name = "lbl_playerSoldier";
+            this.lbl_playerSoldier.Size = new System.Drawing.Size(23, 14);
+            this.lbl_playerSoldier.TabIndex = 20;
             // 
-            // lbl_grain
+            // lbl_playerVictoryPoint
             // 
-            this.lbl_grain.AutoSize = true;
-            this.lbl_grain.Location = new System.Drawing.Point(120, 36);
-            this.lbl_grain.Name = "lbl_grain";
-            this.lbl_grain.Size = new System.Drawing.Size(47, 17);
-            this.lbl_grain.TabIndex = 4;
-            this.lbl_grain.Text = "Grain:";
+            this.lbl_playerVictoryPoint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_playerVictoryPoint.Location = new System.Drawing.Point(164, 52);
+            this.lbl_playerVictoryPoint.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_playerVictoryPoint.Name = "lbl_playerVictoryPoint";
+            this.lbl_playerVictoryPoint.Size = new System.Drawing.Size(23, 14);
+            this.lbl_playerVictoryPoint.TabIndex = 19;
             // 
-            // lbl_ore
+            // lbl_playerGrain
             // 
-            this.lbl_ore.AutoSize = true;
-            this.lbl_ore.Location = new System.Drawing.Point(120, 7);
-            this.lbl_ore.Name = "lbl_ore";
-            this.lbl_ore.Size = new System.Drawing.Size(36, 17);
-            this.lbl_ore.TabIndex = 3;
-            this.lbl_ore.Text = "Ore:";
+            this.lbl_playerGrain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_playerGrain.Location = new System.Drawing.Point(164, 29);
+            this.lbl_playerGrain.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_playerGrain.Name = "lbl_playerGrain";
+            this.lbl_playerGrain.Size = new System.Drawing.Size(23, 14);
+            this.lbl_playerGrain.TabIndex = 18;
+            // 
+            // lbl_playerOre
+            // 
+            this.lbl_playerOre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_playerOre.Location = new System.Drawing.Point(164, 6);
+            this.lbl_playerOre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_playerOre.Name = "lbl_playerOre";
+            this.lbl_playerOre.Size = new System.Drawing.Size(23, 14);
+            this.lbl_playerOre.TabIndex = 17;
+            // 
+            // lbl_playerBrick
+            // 
+            this.lbl_playerBrick.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_playerBrick.Location = new System.Drawing.Point(44, 53);
+            this.lbl_playerBrick.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_playerBrick.Name = "lbl_playerBrick";
+            this.lbl_playerBrick.Size = new System.Drawing.Size(23, 14);
+            this.lbl_playerBrick.TabIndex = 16;
+            // 
+            // lbl_playerWood
+            // 
+            this.lbl_playerWood.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_playerWood.Location = new System.Drawing.Point(44, 30);
+            this.lbl_playerWood.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_playerWood.Name = "lbl_playerWood";
+            this.lbl_playerWood.Size = new System.Drawing.Size(23, 14);
+            this.lbl_playerWood.TabIndex = 15;
+            // 
+            // lbl_playerWool
+            // 
+            this.lbl_playerWool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_playerWool.Location = new System.Drawing.Point(44, 6);
+            this.lbl_playerWool.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_playerWool.Name = "lbl_playerWool";
+            this.lbl_playerWool.Size = new System.Drawing.Size(23, 16);
+            this.lbl_playerWool.TabIndex = 14;
+            // 
+            // btn_placeCity
+            // 
+            this.btn_placeCity.Location = new System.Drawing.Point(477, 42);
+            this.btn_placeCity.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_placeCity.Name = "btn_placeCity";
+            this.btn_placeCity.Size = new System.Drawing.Size(76, 22);
+            this.btn_placeCity.TabIndex = 13;
+            this.btn_placeCity.Text = "Place City";
+            this.btn_placeCity.UseVisualStyleBackColor = true;
+            // 
+            // btn_placeVillage
+            // 
+            this.btn_placeVillage.Location = new System.Drawing.Point(477, 11);
+            this.btn_placeVillage.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_placeVillage.Name = "btn_placeVillage";
+            this.btn_placeVillage.Size = new System.Drawing.Size(76, 22);
+            this.btn_placeVillage.TabIndex = 12;
+            this.btn_placeVillage.Text = "Place Village";
+            this.btn_placeVillage.UseVisualStyleBackColor = true;
+            // 
+            // btn_placeRoad
+            // 
+            this.btn_placeRoad.Location = new System.Drawing.Point(578, 42);
+            this.btn_placeRoad.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_placeRoad.Name = "btn_placeRoad";
+            this.btn_placeRoad.Size = new System.Drawing.Size(76, 22);
+            this.btn_placeRoad.TabIndex = 11;
+            this.btn_placeRoad.Text = "Place Road";
+            this.btn_placeRoad.UseVisualStyleBackColor = true;
+            // 
+            // btn_moveRobber
+            // 
+            this.btn_moveRobber.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_moveRobber.Location = new System.Drawing.Point(578, 11);
+            this.btn_moveRobber.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_moveRobber.Name = "btn_moveRobber";
+            this.btn_moveRobber.Size = new System.Drawing.Size(76, 22);
+            this.btn_moveRobber.TabIndex = 10;
+            this.btn_moveRobber.Text = "Move Robber";
+            this.btn_moveRobber.UseVisualStyleBackColor = true;
+            // 
+            // lbl_monopoly
+            // 
+            this.lbl_monopoly.AutoSize = true;
+            this.lbl_monopoly.Location = new System.Drawing.Point(344, 10);
+            this.lbl_monopoly.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_monopoly.Name = "lbl_monopoly";
+            this.lbl_monopoly.Size = new System.Drawing.Size(56, 13);
+            this.lbl_monopoly.TabIndex = 9;
+            this.lbl_monopoly.Text = "Monopoly:";
             // 
             // lbl_yearOfPlenty
             // 
             this.lbl_yearOfPlenty.AutoSize = true;
-            this.lbl_yearOfPlenty.Location = new System.Drawing.Point(283, 64);
+            this.lbl_yearOfPlenty.Location = new System.Drawing.Point(212, 52);
+            this.lbl_yearOfPlenty.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_yearOfPlenty.Name = "lbl_yearOfPlenty";
-            this.lbl_yearOfPlenty.Size = new System.Drawing.Size(101, 17);
+            this.lbl_yearOfPlenty.Size = new System.Drawing.Size(76, 13);
             this.lbl_yearOfPlenty.TabIndex = 8;
             this.lbl_yearOfPlenty.Text = "Year of Plenty:";
             // 
             // lbl_roadBuilding
             // 
             this.lbl_roadBuilding.AutoSize = true;
-            this.lbl_roadBuilding.Location = new System.Drawing.Point(283, 36);
+            this.lbl_roadBuilding.Location = new System.Drawing.Point(212, 29);
+            this.lbl_roadBuilding.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_roadBuilding.Name = "lbl_roadBuilding";
-            this.lbl_roadBuilding.Size = new System.Drawing.Size(100, 17);
+            this.lbl_roadBuilding.Size = new System.Drawing.Size(76, 13);
             this.lbl_roadBuilding.TabIndex = 7;
             this.lbl_roadBuilding.Text = "Road Building:";
             // 
             // lbl_soldier
             // 
             this.lbl_soldier.AutoSize = true;
-            this.lbl_soldier.Location = new System.Drawing.Point(283, 7);
+            this.lbl_soldier.Location = new System.Drawing.Point(212, 6);
+            this.lbl_soldier.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_soldier.Name = "lbl_soldier";
-            this.lbl_soldier.Size = new System.Drawing.Size(56, 17);
+            this.lbl_soldier.Size = new System.Drawing.Size(42, 13);
             this.lbl_soldier.TabIndex = 6;
             this.lbl_soldier.Text = "Soldier:";
             // 
-            // lbl_monopoly
+            // lbl_victoryPoint
             // 
-            this.lbl_monopoly.AutoSize = true;
-            this.lbl_monopoly.Location = new System.Drawing.Point(458, 12);
-            this.lbl_monopoly.Name = "lbl_monopoly";
-            this.lbl_monopoly.Size = new System.Drawing.Size(73, 17);
-            this.lbl_monopoly.TabIndex = 9;
-            this.lbl_monopoly.Text = "Monopoly:";
+            this.lbl_victoryPoint.AutoSize = true;
+            this.lbl_victoryPoint.Location = new System.Drawing.Point(90, 52);
+            this.lbl_victoryPoint.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_victoryPoint.Name = "lbl_victoryPoint";
+            this.lbl_victoryPoint.Size = new System.Drawing.Size(69, 13);
+            this.lbl_victoryPoint.TabIndex = 5;
+            this.lbl_victoryPoint.Text = "Victory Point:";
             // 
-            // btn_moveRobber
+            // lbl_grain
             // 
-            this.btn_moveRobber.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_moveRobber.Location = new System.Drawing.Point(770, 14);
-            this.btn_moveRobber.Name = "btn_moveRobber";
-            this.btn_moveRobber.Size = new System.Drawing.Size(101, 27);
-            this.btn_moveRobber.TabIndex = 10;
-            this.btn_moveRobber.Text = "Move Robber";
-            this.btn_moveRobber.UseVisualStyleBackColor = true;
+            this.lbl_grain.AutoSize = true;
+            this.lbl_grain.Location = new System.Drawing.Point(90, 29);
+            this.lbl_grain.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_grain.Name = "lbl_grain";
+            this.lbl_grain.Size = new System.Drawing.Size(35, 13);
+            this.lbl_grain.TabIndex = 4;
+            this.lbl_grain.Text = "Grain:";
             // 
-            // btn_placeRoad
+            // lbl_ore
             // 
-            this.btn_placeRoad.Location = new System.Drawing.Point(770, 52);
-            this.btn_placeRoad.Name = "btn_placeRoad";
-            this.btn_placeRoad.Size = new System.Drawing.Size(101, 27);
-            this.btn_placeRoad.TabIndex = 11;
-            this.btn_placeRoad.Text = "Place Road";
-            this.btn_placeRoad.UseVisualStyleBackColor = true;
+            this.lbl_ore.AutoSize = true;
+            this.lbl_ore.Location = new System.Drawing.Point(90, 6);
+            this.lbl_ore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_ore.Name = "lbl_ore";
+            this.lbl_ore.Size = new System.Drawing.Size(27, 13);
+            this.lbl_ore.TabIndex = 3;
+            this.lbl_ore.Text = "Ore:";
             // 
-            // btn_placeVillage
+            // lbl_brick
             // 
-            this.btn_placeVillage.Location = new System.Drawing.Point(636, 14);
-            this.btn_placeVillage.Name = "btn_placeVillage";
-            this.btn_placeVillage.Size = new System.Drawing.Size(101, 27);
-            this.btn_placeVillage.TabIndex = 12;
-            this.btn_placeVillage.Text = "Place Village";
-            this.btn_placeVillage.UseVisualStyleBackColor = true;
+            this.lbl_brick.AutoSize = true;
+            this.lbl_brick.Location = new System.Drawing.Point(6, 53);
+            this.lbl_brick.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_brick.Name = "lbl_brick";
+            this.lbl_brick.Size = new System.Drawing.Size(34, 13);
+            this.lbl_brick.TabIndex = 2;
+            this.lbl_brick.Text = "Brick:";
             // 
-            // btn_placeCity
+            // lbl_wood
             // 
-            this.btn_placeCity.Location = new System.Drawing.Point(636, 52);
-            this.btn_placeCity.Name = "btn_placeCity";
-            this.btn_placeCity.Size = new System.Drawing.Size(101, 27);
-            this.btn_placeCity.TabIndex = 13;
-            this.btn_placeCity.Text = "Place City";
-            this.btn_placeCity.UseVisualStyleBackColor = true;
+            this.lbl_wood.AutoSize = true;
+            this.lbl_wood.Location = new System.Drawing.Point(6, 30);
+            this.lbl_wood.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_wood.Name = "lbl_wood";
+            this.lbl_wood.Size = new System.Drawing.Size(39, 13);
+            this.lbl_wood.TabIndex = 1;
+            this.lbl_wood.Text = "Wood:";
             // 
-            // lbl_playerBrick
+            // lbl_wool
             // 
-            this.lbl_playerBrick.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_playerBrick.Location = new System.Drawing.Point(54, 60);
-            this.lbl_playerBrick.Name = "lbl_playerBrick";
-            this.lbl_playerBrick.Size = new System.Drawing.Size(30, 17);
-            this.lbl_playerBrick.TabIndex = 16;
-            // 
-            // lbl_playerWood
-            // 
-            this.lbl_playerWood.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_playerWood.Location = new System.Drawing.Point(54, 32);
-            this.lbl_playerWood.Name = "lbl_playerWood";
-            this.lbl_playerWood.Size = new System.Drawing.Size(30, 17);
-            this.lbl_playerWood.TabIndex = 15;
-            // 
-            // lbl_playerWool
-            // 
-            this.lbl_playerWool.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_playerWool.Location = new System.Drawing.Point(54, 3);
-            this.lbl_playerWool.Name = "lbl_playerWool";
-            this.lbl_playerWool.Size = new System.Drawing.Size(30, 19);
-            this.lbl_playerWool.TabIndex = 14;
-            // 
-            // lbl_playerVictoryPoint
-            // 
-            this.lbl_playerVictoryPoint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_playerVictoryPoint.Location = new System.Drawing.Point(218, 64);
-            this.lbl_playerVictoryPoint.Name = "lbl_playerVictoryPoint";
-            this.lbl_playerVictoryPoint.Size = new System.Drawing.Size(30, 17);
-            this.lbl_playerVictoryPoint.TabIndex = 19;
-            // 
-            // lbl_playerGrain
-            // 
-            this.lbl_playerGrain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_playerGrain.Location = new System.Drawing.Point(218, 36);
-            this.lbl_playerGrain.Name = "lbl_playerGrain";
-            this.lbl_playerGrain.Size = new System.Drawing.Size(30, 17);
-            this.lbl_playerGrain.TabIndex = 18;
-            // 
-            // lbl_playerOre
-            // 
-            this.lbl_playerOre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_playerOre.Location = new System.Drawing.Point(218, 7);
-            this.lbl_playerOre.Name = "lbl_playerOre";
-            this.lbl_playerOre.Size = new System.Drawing.Size(30, 17);
-            this.lbl_playerOre.TabIndex = 17;
-            // 
-            // lbl_playerYearOfPlenty
-            // 
-            this.lbl_playerYearOfPlenty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_playerYearOfPlenty.Location = new System.Drawing.Point(389, 64);
-            this.lbl_playerYearOfPlenty.Name = "lbl_playerYearOfPlenty";
-            this.lbl_playerYearOfPlenty.Size = new System.Drawing.Size(30, 17);
-            this.lbl_playerYearOfPlenty.TabIndex = 22;
-            // 
-            // lbl_playerRoadBuilding
-            // 
-            this.lbl_playerRoadBuilding.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_playerRoadBuilding.Location = new System.Drawing.Point(389, 36);
-            this.lbl_playerRoadBuilding.Name = "lbl_playerRoadBuilding";
-            this.lbl_playerRoadBuilding.Size = new System.Drawing.Size(30, 17);
-            this.lbl_playerRoadBuilding.TabIndex = 21;
-            // 
-            // lbl_playerSoldier
-            // 
-            this.lbl_playerSoldier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_playerSoldier.Location = new System.Drawing.Point(389, 7);
-            this.lbl_playerSoldier.Name = "lbl_playerSoldier";
-            this.lbl_playerSoldier.Size = new System.Drawing.Size(30, 17);
-            this.lbl_playerSoldier.TabIndex = 20;
-            // 
-            // lbl_playerMonopoly
-            // 
-            this.lbl_playerMonopoly.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_playerMonopoly.Location = new System.Drawing.Point(537, 12);
-            this.lbl_playerMonopoly.Name = "lbl_playerMonopoly";
-            this.lbl_playerMonopoly.Size = new System.Drawing.Size(30, 17);
-            this.lbl_playerMonopoly.TabIndex = 23;
+            this.lbl_wool.AutoSize = true;
+            this.lbl_wool.Location = new System.Drawing.Point(6, 6);
+            this.lbl_wool.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_wool.Name = "lbl_wool";
+            this.lbl_wool.Size = new System.Drawing.Size(35, 13);
+            this.lbl_wool.TabIndex = 0;
+            this.lbl_wool.Text = "Wool:";
             // 
             // frm_gameBoard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SettlersOfCatan.Properties.Resources.sea_texture;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1018, 735);
+            this.ClientSize = new System.Drawing.Size(1018, 740);
             this.Controls.Add(this.pnl_playerData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frm_gameBoard";
             this.Text = "Settlers of C#tan";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_gameBoard_FormClosed);
             this.Shown += new System.EventHandler(this.frm_gameBoard_Shown);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.frm_gameBoard_Paint);
             this.pnl_playerData.ResumeLayout(false);
             this.pnl_playerData.PerformLayout();
             this.ResumeLayout(false);

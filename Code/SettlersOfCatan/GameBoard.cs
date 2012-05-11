@@ -23,13 +23,15 @@ namespace SettlersOfCatan
         private int _portCount = 0;
         private int _terrainCount = 0;
         private Board _board;
+        private GameController _gameController;
         private List<Vertex> _doIAddAShittyButtonHere = new List<Vertex>();
 
 
         public frm_gameBoard()
         {
             InitializeComponent();
-            _board = new Board();
+            _gameController = new GameController();
+            _board = _gameController.Board;
         }
 
         private void frm_gameBoard_Shown(object sender, EventArgs e)
@@ -177,7 +179,7 @@ namespace SettlersOfCatan
         private Button GetButton(Bitmap image, PointF point)
         {
             Button b = new Button();
-            b.Font = new Font(FontFamily.GenericSansSerif, 6);
+            b.Font = new Font(FontFamily.GenericSerif, 8, FontStyle.Bold);
             if (seaTileIndices.Contains(_tileCount))
             {
                 _tileCount++;
@@ -248,7 +250,7 @@ namespace SettlersOfCatan
             b.Width = 50;
             b.Height = 47;
             
-            b.BackgroundImage = image;
+            //b.BackgroundImage = image;
             return b;
         }
 
@@ -288,6 +290,79 @@ namespace SettlersOfCatan
         private void frm_gameBoard_FormClosed(object sender, FormClosedEventArgs e)
         {
             
+        }
+
+        private void frm_gameBoard_Paint(object sender, PaintEventArgs e)
+        {
+            int wool = 0;
+            int brick = 0;
+            int wood = 0;
+            int ore = 0;
+            int grain = 0;
+            int yearOfPlenty = 0;
+            int monopoly = 0;
+            int roadBuilding = 0;
+            int soldier = 0;
+            int victoryPoint = 0;
+            if (_gameController.CurrentPlayer != null)
+            {
+                foreach (CardType t in _gameController.CurrentPlayer.ResourceHand)
+                {
+                    switch (t)
+                    {
+                        case CardType.Grain:
+                            grain++;
+                            break;
+                        case CardType.Wool:
+                            wool++;
+                            break;
+                        case CardType.Brick:
+                            brick++;
+                            break;
+                        case CardType.Ore:
+                            ore++;
+                            break;
+                        case CardType.Lumber:
+                            wood++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                foreach (CardType c in _gameController.CurrentPlayer.DevelopmentHand)
+                {
+                    switch (c)
+                    {
+                        case CardType.Soldier:
+                            soldier++;
+                            break;
+                        case CardType.Monopoly:
+                            monopoly++;
+                            break;
+                        case CardType.VictoryPoint:
+                            victoryPoint++;
+                            break;
+                        case CardType.RoadBuilding:
+                            roadBuilding++;
+                            break;
+                        case CardType.YearOfPlenty:
+                            yearOfPlenty++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            lbl_playerBrick.Text = brick.ToString();
+            lbl_playerWool.Text = wool.ToString();
+            lbl_playerWood.Text = wood.ToString();
+            lbl_playerGrain.Text = grain.ToString();
+            lbl_playerOre.Text = ore.ToString();
+            lbl_playerSoldier.Text = soldier.ToString();
+            lbl_playerMonopoly.Text = monopoly.ToString();
+            lbl_playerVictoryPoint.Text = roadBuilding.ToString();
+            lbl_playerYearOfPlenty.Text = yearOfPlenty.ToString();
+            lbl_playerRoadBuilding.Text = roadBuilding.ToString();
         }
     }
 }
