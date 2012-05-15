@@ -47,7 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board.cs" />
-    <Compile Include="ButtonWithIndex.cs">
+    <Compile Include="ButtonWithTile.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ButtonWithVertex.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="GameBoard.cs">

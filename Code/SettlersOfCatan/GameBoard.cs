@@ -157,22 +157,22 @@ namespace SettlersOfCatan
             {
                 switch ((_board.TerrainTiles[_terrainCount]).Type)
                 {
-                    case (int)TileType.Desert:
+                    case TileType.Desert:
                         image = new Bitmap(Resources.desert_texture);
                         break;
-                    case (int)TileType.Fields:
+                    case TileType.Fields:
                         image = new Bitmap(Resources.field_texture);
                         break;
-                    case (int)TileType.Hills:
+                    case TileType.Hills:
                         image = new Bitmap(Resources.hills_texture);
                         break;
-                    case (int)TileType.Mountains:
+                    case TileType.Mountains:
                         image = new Bitmap(Resources.mountains_texture);
                         break;
-                    case (int)TileType.Pasture:
+                    case TileType.Pasture:
                         image = new Bitmap(Resources.pasture_texture);
                         break;
-                    case (int)TileType.Woods:
+                    case TileType.Woods:
                         image = new Bitmap(Resources.woods_texture);
                         break;
                     default:
@@ -184,11 +184,11 @@ namespace SettlersOfCatan
             return image;
         }
 
-        private ButtonWithIndex GetButton(Bitmap image, PointF point)
+        private ButtonWithTile GetButton(Bitmap image, PointF point)
         {
-            ButtonWithIndex b = new ButtonWithIndex();
+            ButtonWithTile b = new ButtonWithTile();
             b.Click += new EventHandler(OnTileButtonClick);
-            b.Font = new Font(FontFamily.GenericSerif, 7, FontStyle.Bold);
+            b.Font = new Font(FontFamily.GenericSerif, 6, FontStyle.Bold);
             if (seaTileIndices.Contains(_tileCount))
             {
                 _tileCount++;
@@ -198,29 +198,29 @@ namespace SettlersOfCatan
             {
                 switch((_board.PortTiles[_portCount-1]).Type)
                 {
-                    case (int)TileType.Port2Brick:
+                    case TileType.Port2Brick:
                         b.Text = "2:1 Brick";
                         break;
-                    case (int) TileType.Port2Grain:
+                    case  TileType.Port2Grain:
                         b.Text = "2:1 Grain";
                         break;
-                    case (int) TileType.Port2Lumber:
+                    case  TileType.Port2Lumber:
                         b.Text = "2:1 Lumber";
                         break;
-                    case (int) TileType.Port2Ore:
+                    case  TileType.Port2Ore:
                         b.Text = "2:1 Ore";
                         break;
-                    case (int) TileType.Port2Wool:
+                    case TileType.Port2Wool:
                         b.Text = "2:1 Wool";
                         break;
-                    case (int)TileType.Port3:
+                    case TileType.Port3:
                         b.Text = "3:1";
                         break;
                     default:
                         b.Text = "DEFAULT";
                         break;
                 }
-                b._index = _portCount - 1;
+                b._tile = _board.PortTiles[_portCount-1];
                 b.Name = "btn_Port" + b.Text;
             }
             else
@@ -232,20 +232,20 @@ namespace SettlersOfCatan
                 }
                 switch ((_board.TerrainTiles[_terrainCount-1]).Type)
                 {
-                    case (int)TileType.Desert:
+                    case TileType.Desert:
                         break;
-                    case (int)TileType.Fields:
-                    case (int)TileType.Hills:
-                    case (int)TileType.Mountains:
-                    case (int)TileType.Pasture:
-                    case (int)TileType.Woods:
+                    case TileType.Fields:
+                    case TileType.Hills:
+                    case TileType.Mountains:
+                    case TileType.Pasture:
+                    case TileType.Woods:
                         b.Text = (_board.TerrainTiles[_terrainCount - 1]).Number.ToString();
                         break;
                     default:
                         b.Text = "DEFAULT";
                         break;
                 }
-                b._index = _terrainCount - 1;
+                b._tile = _board.TerrainTiles[_terrainCount-1];
                 b.Name = "btn_Tile" + (_terrainCount-1);
             }
             _tileCount++;
@@ -276,12 +276,12 @@ namespace SettlersOfCatan
                     continue;
                 }
 
-                var b = new ButtonWithIndex();
+                var b = new ButtonWithVertex();
                 b.Width = 15;
                 b.Height = 15;
                 b.Location = new Point((int)location.X - b.Width/2, (int)location.Y - b.Height/2);
                 b.Name = "btn_Vertex" + vertex.Index;
-                b._index = vertex.Index;
+                b._vertex = vertex;
                 b.Click += new EventHandler(OnVertexClick);
                 b.TabStop = false;
                 //b.Text = vertex.Index.ToString();
@@ -372,7 +372,7 @@ namespace SettlersOfCatan
 
         private void OnTileButtonClick(object sender, EventArgs e)
         {
-            Console.WriteLine("Tile #" + ((ButtonWithIndex) sender)._index);
+            Console.WriteLine("Tile #" + ((ButtonWithTile) sender)._tile.Type);
             switch(_context)
             {
                 case Context.None:
@@ -388,7 +388,7 @@ namespace SettlersOfCatan
 
         private void OnVertexClick(object sender, EventArgs e)
         {
-            Console.WriteLine("Vertex #" + ((ButtonWithIndex)sender)._index);
+            Console.WriteLine("Vertex #" + ((ButtonWithVertex)sender)._vertex.Index);
             switch(_context)
             {
                 case Context.None:
@@ -416,6 +416,7 @@ namespace SettlersOfCatan
 
         private void btn_placeVillage_Click(object sender, EventArgs e)
         {
+            var currentPlayer = _gameController.CurrentPlayer;
             _context = Context.PlaceVillage;
         }
 

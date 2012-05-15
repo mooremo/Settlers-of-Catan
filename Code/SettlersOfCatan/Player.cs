@@ -69,5 +69,18 @@ namespace SettlersOfCatan
             Shuffler.Shuffle(ResourceHand);
             ResourceHand.RemoveAt(index);
         }
+
+//        public bool CanBuildVillage()
+//        {
+//            var brickCount = 0;
+//            var woodCount = 0;
+//            var wheatCount = 0;
+//            var sheepCount = 0;
+//
+//            foreach (var card in ResourceHand)
+//            {
+//                
+//            }
+//        }
     }
 }

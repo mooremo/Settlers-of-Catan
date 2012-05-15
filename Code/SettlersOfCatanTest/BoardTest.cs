@@ -24,7 +24,7 @@ namespace SettlersOfCatanTest
             int count = 0;
             foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int) TileType.Fields)
+                if (t.Type == TileType.Fields)
                 {
                     count++;
                 }
@@ -38,7 +38,7 @@ namespace SettlersOfCatanTest
             int count = 0;
             foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int) TileType.Woods)
+                if (t.Type == TileType.Woods)
                 {
                     count++;
                 }
@@ -52,7 +52,7 @@ namespace SettlersOfCatanTest
             int count = 0;
             foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int) TileType.Pasture)
+                if (t.Type == TileType.Pasture)
                 {
                     count++;
                 }
@@ -66,7 +66,7 @@ namespace SettlersOfCatanTest
             int count = 0;
             foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int) TileType.Desert)
+                if (t.Type == TileType.Desert)
                 {
                     count++;
                 }
@@ -80,7 +80,7 @@ namespace SettlersOfCatanTest
             int count = 0;
             foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int) TileType.Hills)
+                if (t.Type == TileType.Hills)
                 {
                     count++;
                 }
@@ -94,7 +94,7 @@ namespace SettlersOfCatanTest
             int count = 0;
             foreach (Tile t in TestBoard.TerrainTiles)
             {
-                if (t.Type == (int) TileType.Mountains)
+                if (t.Type == TileType.Mountains)
                 {
                     count++;
                 }

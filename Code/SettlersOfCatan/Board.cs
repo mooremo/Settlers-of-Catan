@@ -536,14 +536,14 @@ namespace SettlersOfCatan
             Shuffler.Shuffle(AllTerrainTiles);
             int tileCount = 0;
             int numCount = 0;
-            int tempType;
+            TileType tempType;
             int tempNum;
             Tile tempTile;
             while (tileCount < 19)
             {
-                tempType = (int) AllTerrainTiles[tileCount];
+                tempType = (TileType)AllTerrainTiles[tileCount];
                 tempNum = (int) _tileNumberOrder[numCount];
-                if (tempType != (int) TileType.Desert)
+                if (tempType != TileType.Desert)
                 {
                     tempTile = new Tile(tempType, tempNum);
                     numCount++;
@@ -562,7 +562,7 @@ namespace SettlersOfCatan
             tileCount = 0;
             while (tileCount < 9)
             {
-                tempType = (int) AllPortTiles[tileCount];
+                tempType = (TileType)AllPortTiles[tileCount];
                 tempTile = new Tile(tempType);
                 PortTiles[tileCount] = tempTile;
                 tileCount++;

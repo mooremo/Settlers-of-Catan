@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -82,7 +83,11 @@ namespace SettlersOfCatan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var gameBoard = new frm_gameBoard();
+            var players = new List<Player> {new Player("Barry") {Color = Colors.Orange},
+                                            new Player("Alice") {Color = Colors.Blue},
+                                            new Player("Pat") {Color = Colors.White}};
+            var controller = new GameController(players);
+            var gameBoard = new frm_gameBoard(controller);
             this.Hide();
             gameBoard.Show();
         }
