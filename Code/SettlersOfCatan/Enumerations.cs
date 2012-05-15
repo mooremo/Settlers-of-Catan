@@ -37,6 +37,16 @@
         VictoryPoint,
     }
 
+    public enum Context
+    {
+        None,
+        PlaceVillage,
+        PlaceCity,
+        PlaceRoad,
+        MoveRobber,
+        Trade,
+    }
+
     public enum Colors
     {
         Red,
