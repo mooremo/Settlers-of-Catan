@@ -51,7 +51,6 @@
     <Compile Include="PiecePlacementTest.cs" />
     <Compile Include="PlayCardsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaveAndLoadTest.cs" />
     <Compile Include="ScoringTest.cs" />
     <Compile Include="TradeCardTest.cs" />
     <Compile Include="TurnTest.cs" />

@@ -19,9 +19,8 @@ namespace SettlersOfCatan
             lbl_Title.Location = new Point(Width/2 - lbl_Title.Width/2, Height/10);
 
             btn_NewGame.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*3);
-            btn_LoadGame.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*4);
-            btn_Options.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*5);
-            btn_Exit.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*6);
+            btn_Options.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*4);
+            btn_Exit.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*5);
             ofd_LoadGame.InitialDirectory = Directory.GetCurrentDirectory();
             ofd_LoadGame.Filter = "Saved Games (.dat)|*.dat|All Files (*.*)|*.*";
             ofd_LoadGame.FilterIndex = 1;
@@ -67,25 +66,18 @@ namespace SettlersOfCatan
             }
         }
 
-        private void btn_LoadGame_Click(object sender, EventArgs e)
-        {
-            ofd_LoadGame.ShowDialog();
-        }
-
         private void UpdateUILangauge()
         {
             Text = Resources.startTitle;
             lbl_Title.Text = Resources.startTitle;
             btn_NewGame.Text = Resources.newGame;
-            btn_LoadGame.Text = Resources.loadGame;
             btn_Options.Text = Resources.options;
             btn_Exit.Text = Resources.exit;
 
             lbl_Title.Location = new Point(Width/2 - lbl_Title.Width/2, Height/10);
             btn_NewGame.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*3);
-            btn_LoadGame.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*4);
-            btn_Options.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*5);
-            btn_Exit.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*6);
+            btn_Options.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*4);
+            btn_Exit.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*5);
         }
 
         private void button1_Click(object sender, EventArgs e)

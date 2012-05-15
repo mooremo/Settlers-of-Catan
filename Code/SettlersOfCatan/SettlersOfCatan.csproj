@@ -71,8 +71,7 @@
     <Compile Include="PlayersAndColorsDialog.Designer.cs">
       <DependentUpon>PlayersAndColorsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resources.de1.Designer.cs" />
-    <Compile Include="Properties\Resources.de2.Designer.cs">
+    <Compile Include="Resources.de2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.de.resx</DependentUpon>
@@ -123,7 +122,7 @@
     <EmbeddedResource Include="PlayersAndColorsDialog.resx">
       <DependentUpon>PlayersAndColorsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.de.resx">
+    <EmbeddedResource Include="Resources.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.de2.Designer.cs</LastGenOutput>
     </EmbeddedResource>
