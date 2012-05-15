@@ -227,8 +227,7 @@ namespace SettlersOfCatan
             {
                 if ((_board.TerrainTiles[_terrainCount - 1]).Robber)
                 {
-                    //b.BackgroundImage = new Bitmap(Resources.robber);
-                    b.Text = "Robber";
+                    b.BackgroundImage = Resources.robber;
                 }
                 switch ((_board.TerrainTiles[_terrainCount-1]).Type)
                 {
@@ -373,13 +372,38 @@ namespace SettlersOfCatan
         private void OnTileButtonClick(object sender, EventArgs e)
         {
             Console.WriteLine("Tile #" + ((ButtonWithTile) sender)._tile.Type);
+            Tile tile;
             switch(_context)
             {
                 case Context.None:
                     break;
-                case Context.MoveRobber:
-                    Console.WriteLine("<-- MoveRobber Code Here --> ");
-                    _context = Context.None;
+                case Context.PickUpRobber:
+                    Console.WriteLine("<-- PickUpRobber Code Here --> ");
+
+                    tile = ((ButtonWithTile) sender)._tile;
+                    if (tile.Robber)
+                    {
+                        tile.Robber = false;
+                        ((ButtonWithTile) sender).BackgroundImage = null;
+                        ((ButtonWithTile) sender).Text = tile.Number.ToString();
+                    } 
+                    else
+                    {
+                        MessageBox.Show(
+                            "Must click on the robber",
+                            "Invalid location",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation,
+                            MessageBoxDefaultButton.Button1);
+                        return;
+                    }
+
+                    _context = Context.PlaceRobber;
+                    break;
+                case Context.PlaceRobber:
+                    tile = ((ButtonWithTile)sender)._tile;
+                    tile.Robber = true;
+                    ((ButtonWithTile) sender).BackgroundImage = Resources.robber;
                     break;
                 default:
                     break;
@@ -395,13 +419,14 @@ namespace SettlersOfCatan
                 case Context.None:
                     break;
                 case Context.PlaceCity:
-                    Console.WriteLine("<-- PlaceCity Code Here --> ");
+                    var settlement = new Settlement(currentPlayer, SettlementType.City);
 
                     try
                     {
-                        _board.PlacePiece(new Settlement(currentPlayer, SettlementType.City),
+                        _board.PlacePiece(settlement,
                                           ((ButtonWithVertex) sender)._vertex.Index);
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show(
                             "Cannot place settlement here",
@@ -411,6 +436,8 @@ namespace SettlersOfCatan
                             MessageBoxDefaultButton.Button1);
                         return;
                     }
+
+                    currentPlayer.Buy(settlement);
 
                     ((Button) sender).BackColor = currentPlayer.GetDrawColor();
                     ((Button) sender).Text = Resources.C;
@@ -422,11 +449,13 @@ namespace SettlersOfCatan
                     _context = Context.None;
                     break;
                 case Context.PlaceVillage:
-                    Console.WriteLine("<-- PlaceVillage Code Here --> ");
+                    var piece = new Settlement(currentPlayer, SettlementType.Village);
 
-                    try {
-                        _board.PlacePieceSetup(new Settlement(currentPlayer, SettlementType.Village), ((ButtonWithVertex)sender)._vertex.Index);
-                    } catch (Exception ex)
+                    try
+                    {
+                        _board.PlacePieceSetup(piece, ((ButtonWithVertex)sender)._vertex.Index);
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show(
                             "Cannot place settlement here",
@@ -436,6 +465,8 @@ namespace SettlersOfCatan
                             MessageBoxDefaultButton.Button1);
                         return;
                     }
+
+                    currentPlayer.Buy(piece);
 
                     ((Button) sender).BackColor = currentPlayer.GetDrawColor();
                     ((Button) sender).Text = Resources.V;
@@ -454,7 +485,7 @@ namespace SettlersOfCatan
         private void btn_placeVillage_Click(object sender, EventArgs e)
         {
             var currentPlayer = _gameController.CurrentPlayer;
-            if (currentPlayer.CanBuildVillage() || Program.debug)
+            if (currentPlayer.CanBuildVillage() || Program.Debug)
             {
                 _context = Context.PlaceVillage;
             }
@@ -472,7 +503,7 @@ namespace SettlersOfCatan
         private void btn_placeCity_Click(object sender, EventArgs e)
         {
             var currentPlayer = _gameController.CurrentPlayer;
-            if (currentPlayer.CanBuildCity() || Program.debug)
+            if (currentPlayer.CanBuildCity() || Program.Debug)
             {
                 _context = Context.PlaceCity;
             } 
@@ -489,7 +520,11 @@ namespace SettlersOfCatan
 
         private void btn_moveRobber_Click(object sender, EventArgs e)
         {
-            _context = Context.MoveRobber;
+            var currentPlayer = _gameController.CurrentPlayer;
+            if (currentPlayer.DevelopmentHand.Contains(CardType.Soldier) || Program.Debug)
+            {
+                _context = Context.PickUpRobber;
+            }
         }
 
         private void btn_placeRoad_Click(object sender, EventArgs e)

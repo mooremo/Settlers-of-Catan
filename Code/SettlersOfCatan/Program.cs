@@ -6,9 +6,9 @@ namespace SettlersOfCatan
     internal static class Program
     {
 #if DEBUG
-        public const bool debug = true;
+        public const bool Debug = true;
 #else
-        public const bool debug = false;
+        public const bool Debug = false;
 #endif
 
         /// <summary>

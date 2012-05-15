@@ -788,5 +788,24 @@ namespace SettlersOfCatan
                     "Neighbor Vertex");
             }
         }
+
+        public Tile GetRobbedTile()
+        {
+            Tile result = null;
+            foreach (var tile in TerrainTiles)
+            {
+                if (tile.Robber)
+                {
+                    result = tile;
+                    break;
+                }
+            }
+
+            if (result != null)
+            {
+                return result;
+            }
+            throw new Exception("There is no robber");
+        }
     }
 }

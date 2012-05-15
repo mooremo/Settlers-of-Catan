@@ -43,7 +43,8 @@
         PlaceVillage,
         PlaceCity,
         PlaceRoad,
-        MoveRobber,
+        PickUpRobber,
+        PlaceRobber,
         Trade,
     }
 
