@@ -24,7 +24,7 @@ namespace SettlersOfCatan
         private int _terrainCount = 0;
         private Board _board;
         private GameController _gameController;
-        private List<Vertex> _doIAddAShittyButtonHere = new List<Vertex>();
+        private List<Vertex> _alreadyDrawnButtons = new List<Vertex>();
         private Context _context = Context.None;
 
 
@@ -271,14 +271,14 @@ namespace SettlersOfCatan
                 var vertex = vertices[i];
                 var location = points[i];
 
-                if (_doIAddAShittyButtonHere.Contains(vertex))
+                if (_alreadyDrawnButtons.Contains(vertex))
                 {
                     continue;
                 }
 
                 var b = new ButtonWithVertex();
-                b.Width = 15;
-                b.Height = 15;
+                b.Width = 25;
+                b.Height = 25;
                 b.Location = new Point((int)location.X - b.Width/2, (int)location.Y - b.Height/2);
                 b.Name = "btn_Vertex" + vertex.Index;
                 b._vertex = vertex;
@@ -288,7 +288,7 @@ namespace SettlersOfCatan
                 b.BackColor = Color.Transparent;
 
                 Controls.Add(b);
-                _doIAddAShittyButtonHere.Add(vertex);
+                _alreadyDrawnButtons.Add(vertex);
             }
         }
 
@@ -389,12 +389,32 @@ namespace SettlersOfCatan
         private void OnVertexClick(object sender, EventArgs e)
         {
             Console.WriteLine("Vertex #" + ((ButtonWithVertex)sender)._vertex.Index);
+            var currentPlayer = _gameController.CurrentPlayer;
             switch(_context)
             {
                 case Context.None:
                     break;
                 case Context.PlaceCity:
                     Console.WriteLine("<-- PlaceCity Code Here --> ");
+
+                    try
+                    {
+                        _board.PlacePiece(new Settlement(currentPlayer, SettlementType.City),
+                                          ((ButtonWithVertex) sender)._vertex.Index);
+                    } catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "Cannot place settlement here",
+                            "Invalid location",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation,
+                            MessageBoxDefaultButton.Button1);
+                        return;
+                    }
+
+                    ((Button) sender).BackColor = currentPlayer.GetDrawColor();
+                    ((Button) sender).Text = Resources.C;
+
                     _context = Context.None;
                     break;
                 case Context.PlaceRoad:
@@ -403,6 +423,23 @@ namespace SettlersOfCatan
                     break;
                 case Context.PlaceVillage:
                     Console.WriteLine("<-- PlaceVillage Code Here --> ");
+
+                    try {
+                        _board.PlacePieceSetup(new Settlement(currentPlayer, SettlementType.Village), ((ButtonWithVertex)sender)._vertex.Index);
+                    } catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "Cannot place settlement here",
+                            "Invalid location",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation,
+                            MessageBoxDefaultButton.Button1);
+                        return;
+                    }
+
+                    ((Button) sender).BackColor = currentPlayer.GetDrawColor();
+                    ((Button) sender).Text = Resources.V;
+
                     _context = Context.None;
                     break;
                  case Context.Trade:
@@ -417,12 +454,37 @@ namespace SettlersOfCatan
         private void btn_placeVillage_Click(object sender, EventArgs e)
         {
             var currentPlayer = _gameController.CurrentPlayer;
-            _context = Context.PlaceVillage;
+            if (currentPlayer.CanBuildVillage() || Program.debug)
+            {
+                _context = Context.PlaceVillage;
+            }
+            else
+            {
+                MessageBox.Show(
+                    "You do not have enough resources",
+                    "Insufficient Resources",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void btn_placeCity_Click(object sender, EventArgs e)
         {
-            _context = Context.PlaceCity;
+            var currentPlayer = _gameController.CurrentPlayer;
+            if (currentPlayer.CanBuildCity() || Program.debug)
+            {
+                _context = Context.PlaceCity;
+            } 
+            else
+            {
+                MessageBox.Show(
+                    "You do not have enough resources",
+                    "Insufficient Resources",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void btn_moveRobber_Click(object sender, EventArgs e)

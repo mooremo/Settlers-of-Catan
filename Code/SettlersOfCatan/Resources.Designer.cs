@@ -77,6 +77,15 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C.
+        /// </summary>
+        internal static string C {
+            get {
+                return ResourceManager.GetString("C", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Cancel {
@@ -359,6 +368,15 @@ namespace SettlersOfCatan {
         internal static string startTitle {
             get {
                 return ResourceManager.GetString("startTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V.
+        /// </summary>
+        internal static string V {
+            get {
+                return ResourceManager.GetString("V", resourceCulture);
             }
         }
         

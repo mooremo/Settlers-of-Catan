@@ -13,27 +13,10 @@ namespace SettlersOfCatan
             Roads = new List<Road>(new Road[] {null, null, null});
         }
 
-        public Vertex(SerializationInfo info, StreamingContext ctxt)
-        {
-            Index = (int) info.GetValue("Index", typeof (int));
-            Neighbors = (List<Vertex>) info.GetValue("Neighbors", typeof (List<Vertex>));
-            Roads = (List<Road>) info.GetValue("Roads", typeof (List<Road>));
-            Settlement = (Settlement) info.GetValue("Robber", typeof (Settlement));
-        }
-
         public int Index { get; set; }
         public List<Vertex> Neighbors { get; set; }
         public List<Road> Roads { get; set; }
         public Settlement Settlement { get; set; }
-
-
-        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
-        {
-            info.AddValue("Index", Index);
-            info.AddValue("Roads", Roads);
-            info.AddValue("Neighbors", Neighbors);
-            info.AddValue("Settlement", Settlement);
-        }
 
         public bool PlayerCanBuildSettlement(Player player)
         {

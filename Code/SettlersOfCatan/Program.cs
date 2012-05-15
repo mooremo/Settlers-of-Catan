@@ -5,6 +5,12 @@ namespace SettlersOfCatan
 {
     internal static class Program
     {
+#if DEBUG
+        public const bool debug = true;
+#else
+        public const bool debug = false;
+#endif
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

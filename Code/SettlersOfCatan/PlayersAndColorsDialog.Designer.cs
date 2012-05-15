@@ -105,7 +105,7 @@
             this.lbl_Color1.Name = "lbl_Color1";
             this.lbl_Color1.Size = new System.Drawing.Size(34, 13);
             this.lbl_Color1.TabIndex = 3;
-            this.lbl_Color1.Text = "Color:";
+            this.lbl_Color1.Text = "PlayerColor:";
             // 
             // lbl_Name1
             // 
@@ -164,7 +164,7 @@
             this.lbl_Color2.Name = "lbl_Color2";
             this.lbl_Color2.Size = new System.Drawing.Size(34, 13);
             this.lbl_Color2.TabIndex = 3;
-            this.lbl_Color2.Text = "Color:";
+            this.lbl_Color2.Text = "PlayerColor:";
             // 
             // lbl_Name2
             // 
@@ -223,7 +223,7 @@
             this.lbl_Color3.Name = "lbl_Color3";
             this.lbl_Color3.Size = new System.Drawing.Size(34, 13);
             this.lbl_Color3.TabIndex = 3;
-            this.lbl_Color3.Text = "Color:";
+            this.lbl_Color3.Text = "PlayerColor:";
             // 
             // lbl_Name3
             // 
@@ -283,7 +283,7 @@
             this.lbl_Color4.Name = "lbl_Color4";
             this.lbl_Color4.Size = new System.Drawing.Size(34, 13);
             this.lbl_Color4.TabIndex = 3;
-            this.lbl_Color4.Text = "Color:";
+            this.lbl_Color4.Text = "PlayerColor:";
             // 
             // lbl_Name4
             // 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Runtime.Serialization;
 
 namespace SettlersOfCatan
@@ -22,7 +23,7 @@ namespace SettlersOfCatan
         public Player(SerializationInfo info, StreamingContext ctxt)
         {
             Name = (String) info.GetValue("Name", typeof (String));
-            Color = (Colors) info.GetValue("Color", typeof (Colors));
+            PlayerColor = (Colors) info.GetValue("PlayerColor", typeof (Colors));
             ResourceHand = (List<CardType>) info.GetValue("ResourceHand", typeof (List<CardType>));
             DevelopmentHand = (List<CardType>) info.GetValue("DevelopmentHand", typeof (List<CardType>));
             PlayedDevelopmentCards = (List<CardType>) info.GetValue("PlayedDevelopmentCards", typeof (List<CardType>));
@@ -33,7 +34,7 @@ namespace SettlersOfCatan
         }
 
         public String Name { get; set; }
-        public Colors Color { get; set; }
+        public Colors PlayerColor { get; set; }
         public List<CardType> ResourceHand { get; set; }
         public List<CardType> DevelopmentHand { get; set; }
         public List<CardType> PlayedDevelopmentCards { get; set; }
@@ -47,7 +48,7 @@ namespace SettlersOfCatan
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("Name", Name);
-            info.AddValue("Color", Color);
+            info.AddValue("PlayerColor", PlayerColor);
             info.AddValue("ResourceHand", ResourceHand);
             info.AddValue("DevelopmentHand", DevelopmentHand);
             info.AddValue("PlayedDevelopmentCards", PlayedDevelopmentCards);
@@ -70,17 +71,64 @@ namespace SettlersOfCatan
             ResourceHand.RemoveAt(index);
         }
 
-//        public bool CanBuildVillage()
-//        {
-//            var brickCount = 0;
-//            var woodCount = 0;
-//            var wheatCount = 0;
-//            var sheepCount = 0;
-//
-//            foreach (var card in ResourceHand)
-//            {
-//                
-//            }
-//        }
+        public bool CanBuildRoad()
+        {
+            return ResourceHand.Contains(CardType.Brick) && ResourceHand.Contains(CardType.Lumber) && RoadsRemaining > 0;
+        }
+
+        public bool CanBuildVillage()
+        {
+            var brickCount = 0;
+            var woodCount = 0;
+            var wheatCount = 0;
+            var sheepCount = 0;
+
+            foreach (var card in ResourceHand)
+            {
+                if (card == CardType.Brick) brickCount++;
+                if (card == CardType.Lumber) woodCount++;
+                if (card == CardType.Grain) wheatCount++;
+                if (card == CardType.Wool) sheepCount++;
+            }
+
+            return brickCount > 0 && woodCount > 0 && wheatCount > 0 && sheepCount > 0 && VillagesRemaining > 0;
+        }
+
+        public bool CanBuildCity()
+        {
+            var wheatCount = 0;
+            var oreCount = 0;
+
+            foreach(var card in ResourceHand)
+            {
+                if (card == CardType.Grain) wheatCount++;
+                if (card == CardType.Ore) oreCount++;
+            }
+
+            return wheatCount > 1 && oreCount > 2 && CitiesRemaining > 0;
+        }
+
+        public bool CanBuyDevelopmentCard()
+        {
+            return ResourceHand.Contains(CardType.Wool) && ResourceHand.Contains(CardType.Grain) &&
+                   ResourceHand.Contains(CardType.Ore);
+        }
+
+        public Color GetDrawColor()
+        {
+            switch (PlayerColor)
+            {
+                case Colors.Blue:
+                    return Color.Blue;
+                case Colors.Red:
+                    return Color.Red;
+                case Colors.Orange:
+                    return Color.Orange;
+                case Colors.White:
+                    return Color.White;
+                default:
+                    throw new Exception("What");
+            }
+        }
     }
 }

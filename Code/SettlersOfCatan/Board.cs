@@ -709,7 +709,12 @@ namespace SettlersOfCatan
             {
                 throw new ArgumentException("This vertex doesn't exist.", "Bad Vertex");
             }
-            if (targetVertex.PlayerCanBuildSettlement(piece.player))
+            
+            if (piece.type == SettlementType.City && targetVertex.Settlement != null && targetVertex.Settlement.type == SettlementType.Village && targetVertex.Settlement.player == piece.player)
+            {
+                targetVertex.Settlement = piece;  
+            }
+            else if (targetVertex.PlayerCanBuildSettlement(piece.player))
             {
                 //place the settlement at the vertex
                 targetVertex.Settlement = piece;

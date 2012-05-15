@@ -116,15 +116,15 @@ namespace SettlersOfCatan
             {
                 Player1Name = txt_Name1.Text;
                 Player1Color = (Colors)Enum.Parse(typeof(Colors), getColor(cbox_Color1.SelectedItem.ToString()));
-                var player1 = new Player(Player1Name) {Color = Player1Color};
+                var player1 = new Player(Player1Name) {PlayerColor = Player1Color};
 
                 Player2Name = txt_Name2.Text;
                 Player2Color = (Colors) Enum.Parse(typeof (Colors), getColor(cbox_Color2.SelectedItem.ToString()));
-                var player2 = new Player(Player2Name) { Color = Player2Color };
+                var player2 = new Player(Player2Name) { PlayerColor = Player2Color };
 
                 Player3Name = txt_Name3.Text;
                 Player3Color = (Colors) Enum.Parse(typeof (Colors), getColor(cbox_Color3.SelectedItem.ToString()));
-                var player3 = new Player(Player3Name) { Color = Player3Color };
+                var player3 = new Player(Player3Name) { PlayerColor = Player3Color };
 
                 var players = new List<Player> { player1, player2, player3 };
 
@@ -132,7 +132,7 @@ namespace SettlersOfCatan
                 {
                     Player4Name = txt_Name4.Text;
                     Player4Color = (Colors) Enum.Parse(typeof (Colors), getColor(cbox_Color4.SelectedItem.ToString()));
-                    players.Add(new Player(Player4Name) { Color = Player4Color });
+                    players.Add(new Player(Player4Name) { PlayerColor = Player4Color });
                 }
 
                 Controller = new GameController(players);
