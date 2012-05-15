@@ -396,6 +396,25 @@ namespace SettlersOfCatan
                     break;
                 case Context.PlaceCity:
                     Console.WriteLine("<-- PlaceCity Code Here --> ");
+
+                    try
+                    {
+                        _board.PlacePiece(new Settlement(currentPlayer, SettlementType.City),
+                                          ((ButtonWithVertex) sender)._vertex.Index);
+                    } catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "Cannot place settlement here",
+                            "Invalid location",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation,
+                            MessageBoxDefaultButton.Button1);
+                        return;
+                    }
+
+                    ((Button) sender).BackColor = currentPlayer.GetDrawColor();
+                    ((Button) sender).Text = Resources.C;
+
                     _context = Context.None;
                     break;
                 case Context.PlaceRoad:
@@ -405,7 +424,18 @@ namespace SettlersOfCatan
                 case Context.PlaceVillage:
                     Console.WriteLine("<-- PlaceVillage Code Here --> ");
 
-                    _board.PlacePieceSetup(new Settlement(currentPlayer, SettlementType.Village), ((ButtonWithVertex)sender)._vertex.Index);
+                    try {
+                        _board.PlacePieceSetup(new Settlement(currentPlayer, SettlementType.Village), ((ButtonWithVertex)sender)._vertex.Index);
+                    } catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "Cannot place settlement here",
+                            "Invalid location",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation,
+                            MessageBoxDefaultButton.Button1);
+                        return;
+                    }
 
                     ((Button) sender).BackColor = currentPlayer.GetDrawColor();
                     ((Button) sender).Text = Resources.V;
@@ -441,7 +471,20 @@ namespace SettlersOfCatan
 
         private void btn_placeCity_Click(object sender, EventArgs e)
         {
-            _context = Context.PlaceCity;
+            var currentPlayer = _gameController.CurrentPlayer;
+            if (currentPlayer.CanBuildCity() || Program.debug)
+            {
+                _context = Context.PlaceCity;
+            } 
+            else
+            {
+                MessageBox.Show(
+                    "You do not have enough resources",
+                    "Insufficient Resources",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void btn_moveRobber_Click(object sender, EventArgs e)
