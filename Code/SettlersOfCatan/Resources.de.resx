@@ -195,4 +195,10 @@
   <data name="None" xml:space="preserve">
     <value>Keiner</value>
   </data>
+  <data name="C" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="V" xml:space="preserve">
+    <value>D</value>
+  </data>
 </root>

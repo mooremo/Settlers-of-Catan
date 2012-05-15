@@ -83,9 +83,9 @@ namespace SettlersOfCatan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var players = new List<Player> {new Player("Barry") {Color = Colors.Orange},
-                                            new Player("Alice") {Color = Colors.Blue},
-                                            new Player("Pat") {Color = Colors.White}};
+            var players = new List<Player> {new Player("Barry") {PlayerColor = Colors.Orange},
+                                            new Player("Alice") {PlayerColor = Colors.Blue},
+                                            new Player("Pat") {PlayerColor = Colors.White}};
             var controller = new GameController(players);
             var gameBoard = new frm_gameBoard(controller);
             this.Hide();
