@@ -55,6 +55,7 @@
             this.lbl_brick = new System.Windows.Forms.Label();
             this.lbl_wood = new System.Windows.Forms.Label();
             this.lbl_wool = new System.Windows.Forms.Label();
+            this.btn_rules = new System.Windows.Forms.Button();
             this.pnl_playerData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +63,7 @@
             // 
             this.pnl_playerData.BackColor = System.Drawing.SystemColors.Control;
             this.pnl_playerData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_playerData.Controls.Add(this.btn_rules);
             this.pnl_playerData.Controls.Add(this.btn_trade);
             this.pnl_playerData.Controls.Add(this.lbl_playerMonopoly);
             this.pnl_playerData.Controls.Add(this.lbl_playerYearOfPlenty);
@@ -95,7 +97,7 @@
             // 
             // btn_trade
             // 
-            this.btn_trade.Location = new System.Drawing.Point(728, 32);
+            this.btn_trade.Location = new System.Drawing.Point(726, 11);
             this.btn_trade.Name = "btn_trade";
             this.btn_trade.Size = new System.Drawing.Size(101, 27);
             this.btn_trade.TabIndex = 24;
@@ -338,6 +340,15 @@
             this.lbl_wool.TabIndex = 0;
             this.lbl_wool.Text = "Wool:";
             // 
+            // btn_rules
+            // 
+            this.btn_rules.Location = new System.Drawing.Point(726, 55);
+            this.btn_rules.Name = "btn_rules";
+            this.btn_rules.Size = new System.Drawing.Size(101, 27);
+            this.btn_rules.TabIndex = 25;
+            this.btn_rules.Text = "Rules";
+            this.btn_rules.UseVisualStyleBackColor = true;
+            // 
             // frm_gameBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -389,5 +400,6 @@
         private System.Windows.Forms.Button btn_placeVillage;
         private System.Windows.Forms.Button btn_placeRoad;
         private System.Windows.Forms.Button btn_moveRobber;
+        private System.Windows.Forms.Button btn_rules;
     }
 }

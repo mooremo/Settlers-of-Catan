@@ -195,4 +195,10 @@
   <data name="None" xml:space="preserve">
     <value>Keiner</value>
   </data>
+  <data name="rules" xml:space="preserve">
+    <value>Regeln</value>
+  </data>
+  <data name="rulesPDF" xml:space="preserve">
+    <value>Resources\rules.de.pdf</value>
+  </data>
 </root>
