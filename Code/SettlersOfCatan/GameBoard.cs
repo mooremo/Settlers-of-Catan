@@ -26,6 +26,7 @@ namespace SettlersOfCatan
         private GameController _gameController;
         private List<Vertex> _alreadyDrawnButtons = new List<Vertex>();
         private Context _context = Context.None;
+        private ButtonWithVertex _roadFirstVertex;
 
 
         public frm_gameBoard()
@@ -404,6 +405,7 @@ namespace SettlersOfCatan
                     tile = ((ButtonWithTile)sender)._tile;
                     tile.Robber = true;
                     ((ButtonWithTile) sender).BackgroundImage = Resources.robber;
+                    _context = Context.None;
                     break;
                 default:
                     break;
@@ -444,8 +446,52 @@ namespace SettlersOfCatan
 
                     _context = Context.None;
                     break;
-                case Context.PlaceRoad:
+                case Context.PlaceRoadFirstVertex:
                     Console.WriteLine("<-- PlaceRoad Code Here --> ");
+
+                    _roadFirstVertex = sender as ButtonWithVertex;
+                    _roadFirstVertex.BackColor = Color.Yellow;
+
+                    _context = Context.PlaceRoadSecondVertex;
+                    break;
+                case Context.PlaceRoadSecondVertex:
+
+                    var curVertex = sender as ButtonWithVertex;
+
+                    if (!curVertex._vertex.Neighbors.Contains(_roadFirstVertex._vertex))
+                    {
+                        MessageBox.Show(
+                            "Must click neighboring vertex!",
+                            "Invalid location",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation,
+                            MessageBoxDefaultButton.Button1);
+                        return;
+                    }
+
+                    if (curVertex._vertex.HasRoad(_roadFirstVertex._vertex))
+                    {
+                        MessageBox.Show(
+                            "Road already exists here!",
+                            "Invalid location",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation,
+                            MessageBoxDefaultButton.Button1);
+                        return;
+                    }
+
+                    _roadFirstVertex.BackColor = SystemColors.Control;
+
+                    var road = new Road(currentPlayer);
+
+                    //TODO
+                    _board.PlacePieceSetup(road, curVertex._vertex, _roadFirstVertex._vertex);
+
+                    currentPlayer.Buy(road);
+
+                    var pen = new Pen(currentPlayer.GetDrawColor(), 10);
+                    CreateGraphics().DrawLine(pen, curVertex.Location.X + 10, curVertex.Location.Y + 10, _roadFirstVertex.Location.X + 10, _roadFirstVertex.Location.Y + 10);
+
                     _context = Context.None;
                     break;
                 case Context.PlaceVillage:
@@ -453,6 +499,7 @@ namespace SettlersOfCatan
 
                     try
                     {
+                        //TODO
                         _board.PlacePieceSetup(piece, ((ButtonWithVertex)sender)._vertex.Index);
                     }
                     catch (Exception ex)
@@ -529,7 +576,20 @@ namespace SettlersOfCatan
 
         private void btn_placeRoad_Click(object sender, EventArgs e)
         {
-            _context = Context.PlaceRoad;
+            var currentPlayer = _gameController.CurrentPlayer;
+            if (currentPlayer.CanBuildRoad() || Program.Debug)
+            {
+                _context = Context.PlaceRoadFirstVertex;
+            }
+            else
+            {
+                MessageBox.Show(
+                    "You do not have enough resources",
+                    "Insufficient Resources",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void btn_trade_Click(object sender, EventArgs e)

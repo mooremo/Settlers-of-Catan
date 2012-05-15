@@ -696,6 +696,12 @@ namespace SettlersOfCatan
             PlacePiece(piece, location, direction);
         }
 
+        public void PlacePieceSetup(Road piece, Vertex v1, Vertex v2)
+        {
+            var direction = v1.Neighbors.IndexOf(v2);
+            PlacePieceSetup(piece, v1.Index, direction);
+        }
+
         public void PlacePiece(Settlement piece, int location)
         {
             Vertex targetVertex;
@@ -758,28 +764,6 @@ namespace SettlersOfCatan
                 temp2.Roads[firstIndex] = piece;
 
                 piece.SetIndices(targetVertex.Index, temp2.Index);
-
-                // use the difference between the vertices to determine which direction the road should go from the other vertex.
-//                int difference = location - index;
-//                if (difference > 1)
-//                {
-//                    // The neighbor node is in the preceding row
-//                    temp2.Roads[1] = piece;
-//                }
-//                else
-//                {
-//                    //the neighbor node is in the same or next row
-//                    if (location%2 == 0)
-//                    {
-//                        //and to the right of its neighbor node
-//                        temp2.Roads[2] = piece;
-//                    }
-//                    else
-//                    {
-//                        //and to the left of its neighbor node
-//                        temp2.Roads[0] = piece;
-//                    }
-//                }
             }
             else
             {
@@ -787,6 +771,12 @@ namespace SettlersOfCatan
                     "This vertex has no neighbor vertex in the specified direction, all road spots at this vertex are taken, or player does not have a road touching this vertex.",
                     "Neighbor Vertex");
             }
+        }
+
+        public void PlacePiece(Road piece, Vertex v1, Vertex v2)
+        {
+            var direction = v1.Neighbors.IndexOf(v2);
+            PlacePiece(piece, v1.Index, direction);
         }
 
         public Tile GetRobbedTile()

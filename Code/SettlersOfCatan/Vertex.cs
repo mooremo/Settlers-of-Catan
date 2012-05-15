@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace SettlersOfCatan
@@ -60,6 +61,18 @@ namespace SettlersOfCatan
                 }
             }
             return ((roadCount < 3) && (flag || (Settlement != null && Settlement.player == player)));
+        }
+
+        public bool HasRoad(Vertex other)
+        {
+            var index = Neighbors.IndexOf(other);
+
+            if (index < 0)
+            {
+                throw new Exception("Given vertex is not a neighbor of this vertex");
+            }
+
+            return Roads[index] != null;
         }
     }
 }
