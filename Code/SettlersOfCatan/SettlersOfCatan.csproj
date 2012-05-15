@@ -156,6 +156,8 @@
     <None Include="Resources\AppIcon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\rules.de.pdf" />
+    <None Include="Resources\rules.pdf" />
     <None Include="Resources\startBackground.bmp" />
   </ItemGroup>
   <ItemGroup>

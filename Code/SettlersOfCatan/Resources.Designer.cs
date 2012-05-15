@@ -312,6 +312,24 @@ namespace SettlersOfCatan {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Rules.
+        /// </summary>
+        internal static string rules {
+            get {
+                return ResourceManager.GetString("rules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resources\rules.pdf.
+        /// </summary>
+        internal static string rulesPDF {
+            get {
+                return ResourceManager.GetString("rulesPDF", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap sea_texture {
             get {
                 object obj = ResourceManager.GetObject("sea_texture", resourceCulture);
