@@ -33,7 +33,6 @@
             this.btn_NewGame = new System.Windows.Forms.Button();
             this.btn_Options = new System.Windows.Forms.Button();
             this.btn_Exit = new System.Windows.Forms.Button();
-            this.ofd_LoadGame = new System.Windows.Forms.OpenFileDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_Rules = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -82,12 +81,6 @@
             this.btn_Exit.Text = "Exit";
             this.btn_Exit.UseVisualStyleBackColor = true;
             this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
-            // 
-            // ofd_LoadGame
-            // 
-            this.ofd_LoadGame.DefaultExt = "dat";
-            this.ofd_LoadGame.FileName = "Load Game";
-            this.ofd_LoadGame.InitialDirectory = ".";
             // 
             // button1
             // 
@@ -140,7 +133,6 @@
         private System.Windows.Forms.Button btn_NewGame;
         private System.Windows.Forms.Button btn_Options;
         private System.Windows.Forms.Button btn_Exit;
-        private System.Windows.Forms.OpenFileDialog ofd_LoadGame;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_Rules;
     }

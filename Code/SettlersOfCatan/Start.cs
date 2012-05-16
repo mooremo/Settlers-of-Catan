@@ -14,19 +14,7 @@ namespace SettlersOfCatan
         public frm_Start()
         {
             InitializeComponent();
-
             SelectedLanguage = Language.English;
-
-            lbl_Title.Location = new Point(Width/2 - lbl_Title.Width/2, Height/10);
-
-            //btn_NewGame.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*3);
-            //btn_Rules.Location = new Point(Width / 2 - btn_NewGame.Width / 2, (Height / 10) * 4);
-            //btn_Options.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*5);
-            //btn_Exit.Location = new Point(Width/2 - btn_NewGame.Width/2, (Height/10)*6);
-            ofd_LoadGame.InitialDirectory = Directory.GetCurrentDirectory();
-            ofd_LoadGame.Filter = "Saved Games (.dat)|*.dat|All Files (*.*)|*.*";
-            ofd_LoadGame.FilterIndex = 1;
-
             UpdateUILangauge();
         }
 

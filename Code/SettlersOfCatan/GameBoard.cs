@@ -191,7 +191,7 @@ namespace SettlersOfCatan
         {
             ButtonWithTile b = new ButtonWithTile();
             b.Click += new EventHandler(OnTileButtonClick);
-            b.Font = new Font(FontFamily.GenericSerif, 10, FontStyle.Bold);
+            b.Font = new Font(FontFamily.GenericSerif, 6, FontStyle.Bold);
             if (seaTileIndices.Contains(_tileCount))
             {
                 _tileCount++;
