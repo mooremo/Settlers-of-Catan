@@ -42,8 +42,10 @@
         None,
         PlaceVillage,
         PlaceCity,
-        PlaceRoad,
-        MoveRobber,
+        PlaceRoadFirstVertex,
+        PlaceRoadSecondVertex,
+        PickUpRobber,
+        PlaceRobber,
         Trade,
     }
 

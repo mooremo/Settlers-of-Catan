@@ -130,5 +130,43 @@ namespace SettlersOfCatan
                     throw new Exception("What");
             }
         }
+
+        public void Buy(object toBuy)
+        {
+            if (toBuy is Settlement)
+            {
+                var settlement = toBuy as Settlement;
+                if (settlement.type == SettlementType.Village)
+                {
+                    ResourceHand.Remove(CardType.Brick);
+                    ResourceHand.Remove(CardType.Lumber);
+                    ResourceHand.Remove(CardType.Grain);
+                    ResourceHand.Remove(CardType.Wool);
+                }
+                else
+                {
+                    ResourceHand.Remove(CardType.Grain);
+                    ResourceHand.Remove(CardType.Grain);
+                    ResourceHand.Remove(CardType.Ore);
+                    ResourceHand.Remove(CardType.Ore);
+                    ResourceHand.Remove(CardType.Ore);
+                }
+            }
+            else if (toBuy is Road)
+            {
+                ResourceHand.Remove(CardType.Brick);
+                ResourceHand.Remove(CardType.Lumber);
+            }
+            else if (toBuy is CardType)
+            {
+                ResourceHand.Remove(CardType.Wool);
+                ResourceHand.Remove(CardType.Grain);
+                ResourceHand.Remove(CardType.Ore);
+            }
+            else
+            {
+                throw new Exception("Unable to buy type given");
+            }
+        }
     }
 }
