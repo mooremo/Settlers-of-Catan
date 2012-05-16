@@ -33,6 +33,7 @@ namespace SettlersOfCatan
             InitializeComponent();
             _gameController = new GameController();
             _board = _gameController.Board;
+            UpdateUILanguage();
         }
 
         public frm_gameBoard(GameController controller)
@@ -40,6 +41,7 @@ namespace SettlersOfCatan
             InitializeComponent();
             _gameController = controller;
             _board = _gameController.Board;
+            UpdateUILanguage();
         }
 
         private void frm_gameBoard_Shown(object sender, EventArgs e)
@@ -188,7 +190,7 @@ namespace SettlersOfCatan
         {
             ButtonWithTile b = new ButtonWithTile();
             b.Click += new EventHandler(OnTileButtonClick);
-            b.Font = new Font(FontFamily.GenericSerif, 6, FontStyle.Bold);
+            b.Font = new Font(FontFamily.GenericSerif, 10, FontStyle.Bold);
             if (seaTileIndices.Contains(_tileCount))
             {
                 _tileCount++;
@@ -199,19 +201,19 @@ namespace SettlersOfCatan
                 switch((_board.PortTiles[_portCount-1]).Type)
                 {
                     case TileType.Port2Brick:
-                        b.Text = "2:1 Brick";
+                        b.Text = "2:1 " + Resources.brick;
                         break;
                     case  TileType.Port2Grain:
-                        b.Text = "2:1 Grain";
+                        b.Text = "2:1 " + Resources.grain;
                         break;
                     case  TileType.Port2Lumber:
-                        b.Text = "2:1 Lumber";
+                        b.Text = "2:1 " + Resources.wood;
                         break;
                     case  TileType.Port2Ore:
-                        b.Text = "2:1 Ore";
+                        b.Text = "2:1 " + Resources.ore;
                         break;
                     case TileType.Port2Wool:
-                        b.Text = "2:1 Wool";
+                        b.Text = "2:1 " + Resources.wool;
                         break;
                     case TileType.Port3:
                         b.Text = "3:1";
@@ -228,7 +230,7 @@ namespace SettlersOfCatan
                 if ((_board.TerrainTiles[_terrainCount - 1]).Robber)
                 {
                     //b.BackgroundImage = new Bitmap(Resources.robber);
-                    b.Text = "Robber";
+                    b.Text = Resources.robberString;
                 }
                 switch ((_board.TerrainTiles[_terrainCount-1]).Type)
                 {
@@ -502,5 +504,42 @@ namespace SettlersOfCatan
             _context = Context.Trade;
         }
 
+        private void UpdateUILanguage()
+        {
+            lbl_wool.Text = Resources.wool;
+            lbl_wood.Text = Resources.wood;
+            lbl_brick.Text = Resources.brick;
+            lbl_ore.Text = Resources.ore;
+            lbl_grain.Text = Resources.grain;
+            lbl_victoryPoint.Text = Resources.victoryPoint;
+            lbl_soldier.Text = Resources.soldier;
+            lbl_roadBuilding.Text = Resources.roadBuilding;
+            lbl_yearOfPlenty.Text = Resources.yearOfPlenty;
+            lbl_monopoly.Text = Resources.monopoly;
+
+            btn_placeVillage.Text = Resources.placeVillage;
+            btn_placeCity.Text = Resources.placeCity;
+            btn_moveRobber.Text = Resources.moveRobber;
+            btn_placeRoad.Text = Resources.placeRoad;
+            btn_trade.Text = Resources.trade;
+            btn_rules.Text = Resources.rules;
+
+            
+        }
+
+        private void btn_rules_Click(object sender, EventArgs e)
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+# if DEBUG
+            path = path.Remove(path.LastIndexOf('\\'));
+            path = path.Remove(path.LastIndexOf('\\'));
+            path = path.Remove(path.LastIndexOf('\\'));
+            path = Path.Combine(path, Resources.rulesPDF);
+            System.Diagnostics.Process.Start(path);
+#else
+            path = Path.Combine(path, Resources.rulesPDF);
+            System.Diagnostics.Process.Start(path);
+#endif
+        }
     }
 }

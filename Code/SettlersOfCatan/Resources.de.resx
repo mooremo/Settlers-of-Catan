@@ -207,4 +207,64 @@
   <data name="V" xml:space="preserve">
     <value>D</value>
   </data>
+  <data name="brick" xml:space="preserve">
+    <value>Backstein</value>
+  </data>
+  <data name="grain" xml:space="preserve">
+    <value>Korn</value>
+  </data>
+  <data name="monopoly" xml:space="preserve">
+    <value>Monopol</value>
+  </data>
+  <data name="moveRobber" xml:space="preserve">
+    <value>Bewegen Räuber</value>
+  </data>
+  <data name="ore" xml:space="preserve">
+    <value>Stunden</value>
+  </data>
+  <data name="placeCity" xml:space="preserve">
+    <value>Lage Ort</value>
+  </data>
+  <data name="placeRoad" xml:space="preserve">
+    <value>Ort Strasse</value>
+  </data>
+  <data name="placeVillage" xml:space="preserve">
+    <value>Ort Dorf</value>
+  </data>
+  <data name="roadBuilding" xml:space="preserve">
+    <value>Strassenbau</value>
+  </data>
+  <data name="soldier" xml:space="preserve">
+    <value>Soldat</value>
+  </data>
+  <data name="trade" xml:space="preserve">
+    <value>Handel</value>
+  </data>
+  <data name="wood" xml:space="preserve">
+    <value>Holz</value>
+  </data>
+  <data name="wool" xml:space="preserve">
+    <value>Wolle</value>
+  </data>
+  <data name="yearOfPlenty" xml:space="preserve">
+    <value>Jahre des Überflusses</value>
+  </data>
+  <data name="fields" xml:space="preserve">
+    <value>Felder</value>
+  </data>
+  <data name="forests" xml:space="preserve">
+    <value>Walder</value>
+  </data>
+  <data name="hills" xml:space="preserve">
+    <value>Hügel</value>
+  </data>
+  <data name="mountains" xml:space="preserve">
+    <value>Gebirge</value>
+  </data>
+  <data name="pastures" xml:space="preserve">
+    <value>Weiden</value>
+  </data>
+  <data name="robberString" xml:space="preserve">
+    <value>Räuber</value>
+  </data>
 </root>

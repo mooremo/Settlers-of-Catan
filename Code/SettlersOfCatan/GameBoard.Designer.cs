@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_gameBoard));
             this.pnl_playerData = new System.Windows.Forms.Panel();
+            this.btn_rules = new System.Windows.Forms.Button();
             this.btn_trade = new System.Windows.Forms.Button();
             this.lbl_playerMonopoly = new System.Windows.Forms.Label();
             this.lbl_playerYearOfPlenty = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@
             this.lbl_brick = new System.Windows.Forms.Label();
             this.lbl_wood = new System.Windows.Forms.Label();
             this.lbl_wool = new System.Windows.Forms.Label();
-            this.btn_rules = new System.Windows.Forms.Button();
             this.pnl_playerData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,6 +94,16 @@
             this.pnl_playerData.Name = "pnl_playerData";
             this.pnl_playerData.Size = new System.Drawing.Size(996, 97);
             this.pnl_playerData.TabIndex = 0;
+            // 
+            // btn_rules
+            // 
+            this.btn_rules.Location = new System.Drawing.Point(726, 55);
+            this.btn_rules.Name = "btn_rules";
+            this.btn_rules.Size = new System.Drawing.Size(101, 27);
+            this.btn_rules.TabIndex = 25;
+            this.btn_rules.Text = "Rules";
+            this.btn_rules.UseVisualStyleBackColor = true;
+            this.btn_rules.Click += new System.EventHandler(this.btn_rules_Click);
             // 
             // btn_trade
             // 
@@ -339,15 +349,6 @@
             this.lbl_wool.Size = new System.Drawing.Size(35, 13);
             this.lbl_wool.TabIndex = 0;
             this.lbl_wool.Text = "Wool:";
-            // 
-            // btn_rules
-            // 
-            this.btn_rules.Location = new System.Drawing.Point(726, 55);
-            this.btn_rules.Name = "btn_rules";
-            this.btn_rules.Size = new System.Drawing.Size(101, 27);
-            this.btn_rules.TabIndex = 25;
-            this.btn_rules.Text = "Rules";
-            this.btn_rules.UseVisualStyleBackColor = true;
             // 
             // frm_gameBoard
             // 

@@ -244,4 +244,64 @@
   <data name="V" xml:space="preserve">
     <value>V</value>
   </data>
+  <data name="brick" xml:space="preserve">
+    <value>Brick</value>
+  </data>
+  <data name="grain" xml:space="preserve">
+    <value>Grain</value>
+  </data>
+  <data name="monopoly" xml:space="preserve">
+    <value>Monopoly</value>
+  </data>
+  <data name="moveRobber" xml:space="preserve">
+    <value>Move Robber</value>
+  </data>
+  <data name="ore" xml:space="preserve">
+    <value>Ore</value>
+  </data>
+  <data name="placeCity" xml:space="preserve">
+    <value>Place City</value>
+  </data>
+  <data name="placeRoad" xml:space="preserve">
+    <value>Place Road</value>
+  </data>
+  <data name="placeVillage" xml:space="preserve">
+    <value>Place Village</value>
+  </data>
+  <data name="roadBuilding" xml:space="preserve">
+    <value>Road Building</value>
+  </data>
+  <data name="soldier" xml:space="preserve">
+    <value>Soldier</value>
+  </data>
+  <data name="trade" xml:space="preserve">
+    <value>Trade</value>
+  </data>
+  <data name="wood" xml:space="preserve">
+    <value>Wood</value>
+  </data>
+  <data name="wool" xml:space="preserve">
+    <value>Wool</value>
+  </data>
+  <data name="yearOfPlenty" xml:space="preserve">
+    <value>Year of Plenty</value>
+  </data>
+  <data name="fields" xml:space="preserve">
+    <value>Fields</value>
+  </data>
+  <data name="forests" xml:space="preserve">
+    <value>Forests</value>
+  </data>
+  <data name="hills" xml:space="preserve">
+    <value>Hills</value>
+  </data>
+  <data name="mountains" xml:space="preserve">
+    <value>Mountains</value>
+  </data>
+  <data name="pastures" xml:space="preserve">
+    <value>Pastures</value>
+  </data>
+  <data name="robberString" xml:space="preserve">
+    <value>Robber</value>
+  </data>
 </root>

@@ -77,6 +77,15 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Brick.
+        /// </summary>
+        internal static string brick {
+            get {
+                return ResourceManager.GetString("brick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to C.
         /// </summary>
         internal static string C {
@@ -143,6 +152,24 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fields.
+        /// </summary>
+        internal static string fields {
+            get {
+                return ResourceManager.GetString("fields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forests.
+        /// </summary>
+        internal static string forests {
+            get {
+                return ResourceManager.GetString("forests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game Setup.
         /// </summary>
         internal static string gameSetup {
@@ -155,6 +182,24 @@ namespace SettlersOfCatan {
             get {
                 object obj = ResourceManager.GetObject("german", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grain.
+        /// </summary>
+        internal static string grain {
+            get {
+                return ResourceManager.GetString("grain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hills.
+        /// </summary>
+        internal static string hills {
+            get {
+                return ResourceManager.GetString("hills", resourceCulture);
             }
         }
         
@@ -201,10 +246,37 @@ namespace SettlersOfCatan {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Monopoly.
+        /// </summary>
+        internal static string monopoly {
+            get {
+                return ResourceManager.GetString("monopoly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mountains.
+        /// </summary>
+        internal static string mountains {
+            get {
+                return ResourceManager.GetString("mountains", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap mountains_texture {
             get {
                 object obj = ResourceManager.GetObject("mountains_texture", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move Robber.
+        /// </summary>
+        internal static string moveRobber {
+            get {
+                return ResourceManager.GetString("moveRobber", resourceCulture);
             }
         }
         
@@ -271,10 +343,55 @@ namespace SettlersOfCatan {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Ore.
+        /// </summary>
+        internal static string ore {
+            get {
+                return ResourceManager.GetString("ore", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap pasture_texture {
             get {
                 object obj = ResourceManager.GetObject("pasture_texture", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pastures.
+        /// </summary>
+        internal static string pastures {
+            get {
+                return ResourceManager.GetString("pastures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Place City.
+        /// </summary>
+        internal static string placeCity {
+            get {
+                return ResourceManager.GetString("placeCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Place Road.
+        /// </summary>
+        internal static string placeRoad {
+            get {
+                return ResourceManager.GetString("placeRoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Place Village.
+        /// </summary>
+        internal static string placeVillage {
+            get {
+                return ResourceManager.GetString("placeVillage", resourceCulture);
             }
         }
         
@@ -305,10 +422,28 @@ namespace SettlersOfCatan {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Road Building.
+        /// </summary>
+        internal static string roadBuilding {
+            get {
+                return ResourceManager.GetString("roadBuilding", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap robber {
             get {
                 object obj = ResourceManager.GetObject("robber", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Robber.
+        /// </summary>
+        internal static string robberString {
+            get {
+                return ResourceManager.GetString("robberString", resourceCulture);
             }
         }
         
@@ -355,6 +490,15 @@ namespace SettlersOfCatan {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Soldier.
+        /// </summary>
+        internal static string soldier {
+            get {
+                return ResourceManager.GetString("soldier", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap startBackground {
             get {
                 object obj = ResourceManager.GetObject("startBackground", resourceCulture);
@@ -368,6 +512,15 @@ namespace SettlersOfCatan {
         internal static string startTitle {
             get {
                 return ResourceManager.GetString("startTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trade.
+        /// </summary>
+        internal static string trade {
+            get {
+                return ResourceManager.GetString("trade", resourceCulture);
             }
         }
         
@@ -407,10 +560,37 @@ namespace SettlersOfCatan {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Wood.
+        /// </summary>
+        internal static string wood {
+            get {
+                return ResourceManager.GetString("wood", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap woods_texture {
             get {
                 object obj = ResourceManager.GetObject("woods_texture", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wool.
+        /// </summary>
+        internal static string wool {
+            get {
+                return ResourceManager.GetString("wool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year of Plenty.
+        /// </summary>
+        internal static string yearOfPlenty {
+            get {
+                return ResourceManager.GetString("yearOfPlenty", resourceCulture);
             }
         }
     }
