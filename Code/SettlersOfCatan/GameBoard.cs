@@ -43,6 +43,8 @@ namespace SettlersOfCatan
             _gameController = controller;
             _board = _gameController.Board;
             UpdateUILanguage();
+            sp_PlayerScores.gc = controller;
+            sp_PlayerScores.UpdateScores();
         }
 
         private void frm_gameBoard_Shown(object sender, EventArgs e)
@@ -380,8 +382,6 @@ namespace SettlersOfCatan
                 case Context.None:
                     break;
                 case Context.PickUpRobber:
-                    Console.WriteLine("<-- PickUpRobber Code Here --> ");
-
                     tile = ((ButtonWithTile) sender)._tile;
                     if (tile.Robber)
                     {
@@ -617,8 +617,9 @@ namespace SettlersOfCatan
             btn_placeRoad.Text = Resources.placeRoad;
             btn_trade.Text = Resources.trade;
             btn_rules.Text = Resources.rules;
+            btn_EndTurn.Text = Resources.endTurn;
 
-            
+
         }
 
         private void btn_rules_Click(object sender, EventArgs e)
@@ -634,6 +635,13 @@ namespace SettlersOfCatan
             path = Path.Combine(path, Resources.rulesPDF);
             System.Diagnostics.Process.Start(path);
 #endif
+        }
+
+        private void btn_EndTurn_Click(object sender, EventArgs e)
+        {
+            _gameController.ChangeCurrentPlayer();
+            _gameController.ScorePlayers();
+            sp_PlayerScores.UpdateScores();
         }
     }
 }

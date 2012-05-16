@@ -128,6 +128,15 @@ namespace SettlersOfCatan {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to End Turn.
+        /// </summary>
+        internal static string endTurn {
+            get {
+                return ResourceManager.GetString("endTurn", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap english {
             get {
                 object obj = ResourceManager.GetObject("english", resourceCulture);

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_gameBoard));
             this.pnl_playerData = new System.Windows.Forms.Panel();
+            this.btn_EndTurn = new System.Windows.Forms.Button();
             this.btn_rules = new System.Windows.Forms.Button();
             this.btn_trade = new System.Windows.Forms.Button();
             this.lbl_playerMonopoly = new System.Windows.Forms.Label();
@@ -56,6 +57,7 @@
             this.lbl_brick = new System.Windows.Forms.Label();
             this.lbl_wood = new System.Windows.Forms.Label();
             this.lbl_wool = new System.Windows.Forms.Label();
+            this.sp_PlayerScores = new SettlersOfCatan.ScorePanel();
             this.pnl_playerData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +65,7 @@
             // 
             this.pnl_playerData.BackColor = System.Drawing.SystemColors.Control;
             this.pnl_playerData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_playerData.Controls.Add(this.btn_EndTurn);
             this.pnl_playerData.Controls.Add(this.btn_rules);
             this.pnl_playerData.Controls.Add(this.btn_trade);
             this.pnl_playerData.Controls.Add(this.lbl_playerMonopoly);
@@ -94,6 +97,18 @@
             this.pnl_playerData.Name = "pnl_playerData";
             this.pnl_playerData.Size = new System.Drawing.Size(996, 97);
             this.pnl_playerData.TabIndex = 0;
+            // 
+            // btn_EndTurn
+            // 
+            this.btn_EndTurn.BackColor = System.Drawing.Color.Firebrick;
+            this.btn_EndTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_EndTurn.Location = new System.Drawing.Point(843, 11);
+            this.btn_EndTurn.Name = "btn_EndTurn";
+            this.btn_EndTurn.Size = new System.Drawing.Size(137, 70);
+            this.btn_EndTurn.TabIndex = 26;
+            this.btn_EndTurn.Text = "End Turn";
+            this.btn_EndTurn.UseVisualStyleBackColor = false;
+            this.btn_EndTurn.Click += new System.EventHandler(this.btn_EndTurn_Click);
             // 
             // btn_rules
             // 
@@ -350,6 +365,15 @@
             this.lbl_wool.TabIndex = 0;
             this.lbl_wool.Text = "Wool:";
             // 
+            // sp_PlayerScores
+            // 
+            this.sp_PlayerScores.AutoSize = true;
+            this.sp_PlayerScores.gc = null;
+            this.sp_PlayerScores.Location = new System.Drawing.Point(20, 9);
+            this.sp_PlayerScores.Name = "sp_PlayerScores";
+            this.sp_PlayerScores.Size = new System.Drawing.Size(0, 13);
+            this.sp_PlayerScores.TabIndex = 26;
+            // 
             // frm_gameBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -357,6 +381,7 @@
             this.BackgroundImage = global::SettlersOfCatan.Properties.Resources.sea_texture;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1018, 740);
+            this.Controls.Add(this.sp_PlayerScores);
             this.Controls.Add(this.pnl_playerData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -370,6 +395,7 @@
             this.pnl_playerData.ResumeLayout(false);
             this.pnl_playerData.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -402,5 +428,7 @@
         private System.Windows.Forms.Button btn_placeRoad;
         private System.Windows.Forms.Button btn_moveRobber;
         private System.Windows.Forms.Button btn_rules;
+        private ScorePanel sp_PlayerScores;
+        private System.Windows.Forms.Button btn_EndTurn;
     }
 }

@@ -89,6 +89,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ScorePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Start.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +107,12 @@
     <Compile Include="Settlement.cs" />
     <Compile Include="Shuffler.cs" />
     <Compile Include="Tile.cs" />
+    <Compile Include="Trade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trade.Designer.cs">
+      <DependentUpon>Trade.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vertex.cs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -139,8 +148,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ScorePanel.resx">
+      <DependentUpon>ScorePanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trade.resx">
+      <DependentUpon>Trade.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -159,9 +174,6 @@
     <None Include="Resources\rules.de.pdf" />
     <None Include="Resources\rules.pdf" />
     <None Include="Resources\startBackground.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\english.bmp.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\desert_texture.bmp" />
@@ -189,12 +201,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\woods_texture.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\desert.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\images.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\robber.bmp" />

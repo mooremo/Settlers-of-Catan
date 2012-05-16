@@ -304,4 +304,7 @@
   <data name="robberString" xml:space="preserve">
     <value>Robber</value>
   </data>
+  <data name="endTurn" xml:space="preserve">
+    <value>End Turn</value>
+  </data>
 </root>
