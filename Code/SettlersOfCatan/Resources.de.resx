@@ -267,8 +267,14 @@
   <data name="robberString" xml:space="preserve">
     <value>Räuber</value>
   </data>
+  <data name="buyCard" xml:space="preserve">
+    <value>Buy-Karte</value>
+  </data>
   <data name="endTurn" xml:space="preserve">
     <value>Runde Beenden</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value />
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="victory" type="System.Resources.ResXFileRef, System.Windows.Forms">

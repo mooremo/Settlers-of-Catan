@@ -533,7 +533,7 @@ namespace SettlersOfCatan
         private void btn_placeVillage_Click(object sender, EventArgs e)
         {
             var currentPlayer = _gameController.CurrentPlayer;
-            if (currentPlayer.CanBuildVillage() || Program.Debug)
+            if ((currentPlayer.CanBuildVillage() && (_context != Context.PickUpRobber && _context != Context.PlaceRobber)) || Program.Debug)
             {
                 _context = Context.PlaceVillage;
             }
@@ -551,7 +551,7 @@ namespace SettlersOfCatan
         private void btn_placeCity_Click(object sender, EventArgs e)
         {
             var currentPlayer = _gameController.CurrentPlayer;
-            if (currentPlayer.CanBuildCity() || Program.Debug)
+            if ((currentPlayer.CanBuildCity() && (_context != Context.PickUpRobber && _context != Context.PlaceRobber)) || Program.Debug)
             {
                 _context = Context.PlaceCity;
             } 
@@ -569,7 +569,7 @@ namespace SettlersOfCatan
         private void btn_moveRobber_Click(object sender, EventArgs e)
         {
             var currentPlayer = _gameController.CurrentPlayer;
-            if (currentPlayer.DevelopmentHand.Contains(CardType.Soldier) || Program.Debug)
+            if ((currentPlayer.DevelopmentHand.Contains(CardType.Soldier) && (_context != Context.PickUpRobber && _context != Context.PlaceRobber)) || Program.Debug)
             {
                 _context = Context.PickUpRobber;
             }
@@ -578,7 +578,7 @@ namespace SettlersOfCatan
         private void btn_placeRoad_Click(object sender, EventArgs e)
         {
             var currentPlayer = _gameController.CurrentPlayer;
-            if (currentPlayer.CanBuildRoad() || Program.Debug)
+            if ((currentPlayer.CanBuildRoad() && (_context != Context.PickUpRobber && _context != Context.PlaceRobber)) || Program.Debug)
             {
                 _context = Context.PlaceRoadFirstVertex;
             }
@@ -595,7 +595,10 @@ namespace SettlersOfCatan
 
         private void btn_trade_Click(object sender, EventArgs e)
         {
-            _context = Context.Trade;
+            if (_context != Context.PickUpRobber && _context != Context.PlaceRobber)
+            {
+                _context = Context.Trade;
+            }
         }
 
         private void UpdateUILanguage()
@@ -618,8 +621,7 @@ namespace SettlersOfCatan
             btn_trade.Text = Resources.trade;
             btn_rules.Text = Resources.rules;
             btn_EndTurn.Text = Resources.endTurn;
-
-
+            btn_Buy.Text = Resources.buyCard;
         }
 
         private void btn_rules_Click(object sender, EventArgs e)
@@ -639,17 +641,55 @@ namespace SettlersOfCatan
 
         private void btn_EndTurn_Click(object sender, EventArgs e)
         {
-            _gameController.ChangeCurrentPlayer();
-            _gameController.ScorePlayers();
-            sp_PlayerScores.UpdateScores();
-            foreach (Player p in _gameController.Players)
+            if (_context != Context.PickUpRobber && _context != Context.PlaceRobber)
             {
-                if(p.Score >= 10)
+                _gameController.ChangeCurrentPlayer();
+                _gameController.ScorePlayers();
+                sp_PlayerScores.UpdateScores();
+                foreach (Player p in _gameController.Players)
                 {
-                    this.Hide();
-                    new Victory().Show();
-                }
+                    if (p.Score >= 10)
+                    {
+                        this.Hide();
+                        new Victory(("Congratulations " + p.Name + "!")).Show();
+                    }
 
+                }
+                _gameController.RollDice();
+                lbl_DiceDisplay.Text = _gameController.Dice.Value.ToString();
+                if (_gameController.Dice.Value == 7)
+                {
+                    _context = Context.PickUpRobber;
+                }
+            }
+            else
+            {
+                MessageBox.Show(
+                    "You must move the robber before you can end your turn",
+                    "Move Robber",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void btn_Buy_Click(object sender, EventArgs e)
+        {
+            var curPlayer = _gameController.CurrentPlayer;
+            if (curPlayer.CanBuyDevelopmentCard())
+            {
+                var devCard = _gameController.DrawDevelopment();
+                curPlayer.DevelopmentHand.Add(devCard);
+                curPlayer.Buy(devCard);
+            } else
+            {
+                //TODO
+                MessageBox.Show(
+                    "You do not have enough resources",
+                    "Insufficient Resources",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
             }
         }
     }

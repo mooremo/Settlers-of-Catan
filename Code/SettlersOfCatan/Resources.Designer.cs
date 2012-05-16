@@ -86,6 +86,15 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buy Card.
+        /// </summary>
+        internal static string buyCard {
+            get {
+                return ResourceManager.GetString("buyCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to C.
         /// </summary>
         internal static string C {

@@ -58,6 +58,8 @@
             this.lbl_wood = new System.Windows.Forms.Label();
             this.lbl_wool = new System.Windows.Forms.Label();
             this.sp_PlayerScores = new SettlersOfCatan.ScorePanel();
+            this.btn_Buy = new System.Windows.Forms.Button();
+            this.lbl_DiceDisplay = new System.Windows.Forms.Label();
             this.pnl_playerData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +67,7 @@
             // 
             this.pnl_playerData.BackColor = System.Drawing.SystemColors.Control;
             this.pnl_playerData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_playerData.Controls.Add(this.btn_Buy);
             this.pnl_playerData.Controls.Add(this.btn_EndTurn);
             this.pnl_playerData.Controls.Add(this.btn_rules);
             this.pnl_playerData.Controls.Add(this.btn_trade);
@@ -374,6 +377,27 @@
             this.sp_PlayerScores.Size = new System.Drawing.Size(0, 13);
             this.sp_PlayerScores.TabIndex = 26;
             // 
+            // btn_Buy
+            // 
+            this.btn_Buy.Location = new System.Drawing.Point(349, 54);
+            this.btn_Buy.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Buy.Name = "btn_Buy";
+            this.btn_Buy.Size = new System.Drawing.Size(101, 27);
+            this.btn_Buy.TabIndex = 27;
+            this.btn_Buy.Text = "Buy Card";
+            this.btn_Buy.UseVisualStyleBackColor = true;
+            this.btn_Buy.Click += new System.EventHandler(this.btn_Buy_Click);
+            // 
+            // lbl_DiceDisplay
+            // 
+            this.lbl_DiceDisplay.AutoSize = true;
+            this.lbl_DiceDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_DiceDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_DiceDisplay.Location = new System.Drawing.Point(895, 20);
+            this.lbl_DiceDisplay.Name = "lbl_DiceDisplay";
+            this.lbl_DiceDisplay.Size = new System.Drawing.Size(2, 33);
+            this.lbl_DiceDisplay.TabIndex = 27;
+            // 
             // frm_gameBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,6 +405,7 @@
             this.BackgroundImage = global::SettlersOfCatan.Properties.Resources.sea_texture;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1018, 740);
+            this.Controls.Add(this.lbl_DiceDisplay);
             this.Controls.Add(this.sp_PlayerScores);
             this.Controls.Add(this.pnl_playerData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -388,6 +413,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frm_gameBoard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settlers of C#tan";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_gameBoard_FormClosed);
             this.Shown += new System.EventHandler(this.frm_gameBoard_Shown);
@@ -430,5 +456,7 @@
         private System.Windows.Forms.Button btn_rules;
         private ScorePanel sp_PlayerScores;
         private System.Windows.Forms.Button btn_EndTurn;
+        private System.Windows.Forms.Button btn_Buy;
+        private System.Windows.Forms.Label lbl_DiceDisplay;
     }
 }

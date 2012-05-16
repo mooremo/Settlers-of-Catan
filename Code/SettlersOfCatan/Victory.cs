@@ -11,9 +11,16 @@ namespace SettlersOfCatan
 {
     public partial class Victory : Form
     {
-        public Victory()
+        public Victory(string title)
         {
             InitializeComponent();
+            Text = title;
+        }
+
+        public override sealed string Text
+        {
+            get { return base.Text; }
+            set { base.Text = value; }
         }
 
         private void Victory_Load(object sender, EventArgs e)
