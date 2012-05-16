@@ -542,6 +542,13 @@ namespace SettlersOfCatan {
             }
         }
         
+        internal static System.Drawing.Bitmap victory {
+            get {
+                object obj = ResourceManager.GetObject("victory", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Victory point.
         /// </summary>

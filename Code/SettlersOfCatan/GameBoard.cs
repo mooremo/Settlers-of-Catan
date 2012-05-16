@@ -642,6 +642,15 @@ namespace SettlersOfCatan
             _gameController.ChangeCurrentPlayer();
             _gameController.ScorePlayers();
             sp_PlayerScores.UpdateScores();
+            foreach (Player p in _gameController.Players)
+            {
+                if(p.Score >= 10)
+                {
+                    this.Hide();
+                    new Victory().Show();
+                }
+
+            }
         }
     }
 }

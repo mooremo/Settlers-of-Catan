@@ -114,6 +114,12 @@
       <DependentUpon>Trade.cs</DependentUpon>
     </Compile>
     <Compile Include="Vertex.cs" />
+    <Compile Include="Victory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Victory.Designer.cs">
+      <DependentUpon>Victory.cs</DependentUpon>
+    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Trade.resx">
       <DependentUpon>Trade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Victory.resx">
+      <DependentUpon>Victory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +213,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\robber.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\victory.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\victory.de.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
