@@ -575,7 +575,7 @@ namespace SettlersOfCatan
 
         public Player PickFirstPlayer()
         {
-            var rng = new Random(new System.DateTime().Millisecond).Next(Players.Count);
+            var rng = new Random().Next(Players.Count);
             return Players[rng];
         }
     }
