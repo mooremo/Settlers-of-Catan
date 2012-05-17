@@ -32,6 +32,7 @@
             this.btn_Monopoly = new System.Windows.Forms.Button();
             this.btn_YOP = new System.Windows.Forms.Button();
             this.btn_RoadBuilding = new System.Windows.Forms.Button();
+            this.btn_playVictoryCard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Monopoly
@@ -56,7 +57,7 @@
             // 
             // btn_RoadBuilding
             // 
-            this.btn_RoadBuilding.Location = new System.Drawing.Point(236, 12);
+            this.btn_RoadBuilding.Location = new System.Drawing.Point(12, 50);
             this.btn_RoadBuilding.Name = "btn_RoadBuilding";
             this.btn_RoadBuilding.Size = new System.Drawing.Size(106, 32);
             this.btn_RoadBuilding.TabIndex = 2;
@@ -64,11 +65,22 @@
             this.btn_RoadBuilding.UseVisualStyleBackColor = true;
             this.btn_RoadBuilding.Click += new System.EventHandler(this.btn_RoadBuilding_Click);
             // 
+            // btn_playVictoryCard
+            // 
+            this.btn_playVictoryCard.Location = new System.Drawing.Point(124, 48);
+            this.btn_playVictoryCard.Name = "btn_playVictoryCard";
+            this.btn_playVictoryCard.Size = new System.Drawing.Size(106, 32);
+            this.btn_playVictoryCard.TabIndex = 3;
+            this.btn_playVictoryCard.Text = "Play Victory Card";
+            this.btn_playVictoryCard.UseVisualStyleBackColor = true;
+            this.btn_playVictoryCard.Click += new System.EventHandler(this.btn_playVictoryCard_Click);
+            // 
             // PlayCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 60);
+            this.ClientSize = new System.Drawing.Size(250, 97);
+            this.Controls.Add(this.btn_playVictoryCard);
             this.Controls.Add(this.btn_RoadBuilding);
             this.Controls.Add(this.btn_YOP);
             this.Controls.Add(this.btn_Monopoly);
@@ -84,5 +96,6 @@
         private System.Windows.Forms.Button btn_Monopoly;
         private System.Windows.Forms.Button btn_YOP;
         private System.Windows.Forms.Button btn_RoadBuilding;
+        private System.Windows.Forms.Button btn_playVictoryCard;
     }
 }

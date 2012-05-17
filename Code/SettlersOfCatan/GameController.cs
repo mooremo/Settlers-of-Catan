@@ -478,28 +478,22 @@ namespace SettlersOfCatan
         {
             foreach (Tile tile in Board.TerrainTiles)
             {
-                if (tile.Type == TileType.Desert)
+                if (tile.Type == TileType.Desert) continue;
+                if (tile.Number != Dice.Value) continue;
+                foreach (Vertex vertex in tile.Vertices)
                 {
-                    if (tile.Number == Dice.Value)
+                    if (vertex.Settlement == null) continue;
+                    if (vertex.Settlement.type == SettlementType.Village)
                     {
-                        foreach (Vertex vertex in tile.Vertices)
-                        {
-                            if (vertex.Settlement != null)
-                            {
-                                if (vertex.Settlement.type == SettlementType.Village)
-                                {
-                                    vertex.Settlement.player.ResourceHand.Add(
-                                        DrawResource((TileType) tile.Type));
-                                }
-                                else if (vertex.Settlement.type == SettlementType.City)
-                                {
-                                    vertex.Settlement.player.ResourceHand.Add(
-                                        DrawResource((TileType) tile.Type));
-                                    vertex.Settlement.player.ResourceHand.Add(
-                                        DrawResource((TileType) tile.Type));
-                                }
-                            }
-                        }
+                        vertex.Settlement.player.ResourceHand.Add(
+                            DrawResource((TileType) tile.Type));
+                    }
+                    else if (vertex.Settlement.type == SettlementType.City)
+                    {
+                        vertex.Settlement.player.ResourceHand.Add(
+                            DrawResource((TileType) tile.Type));
+                        vertex.Settlement.player.ResourceHand.Add(
+                            DrawResource((TileType) tile.Type));
                     }
                 }
             }

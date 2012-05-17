@@ -893,6 +893,9 @@ namespace SettlersOfCatan
                     case CardType.YearOfPlenty:
                         temp.EnableYOP();
                         break;
+                    case CardType.VictoryPoint:
+                        temp.EnableVictoryCard();
+                        break;
                 }
             }
 
@@ -903,6 +906,44 @@ namespace SettlersOfCatan
                     _context = Context.RoadBuildingFirstVertex;
                     _roadBuildingFirst = false;
                     break;
+                case CardType.Monopoly:
+                    Monopoly();
+                    break;
+                case CardType.YearOfPlenty:
+                    break;
+                case CardType.VictoryPoint:
+                    curPlayer.DevelopmentHand.Remove(CardType.VictoryPoint);
+                    curPlayer.PlayedDevelopmentCards.Add(CardType.VictoryPoint);
+                    break;
+            }
+        }
+
+        private void Monopoly()
+        {
+            var curPlayer = _gameController.CurrentPlayer;
+            var monopoly = new Monopoly();
+            monopoly.ShowDialog();
+
+            var choice = monopoly.Result;
+            var count = 0;
+            foreach(var player in _gameController.Players)
+            {
+                if (player == curPlayer) continue;
+                for (var i=0; i<player.ResourceHand.Count; i++)
+                {
+                    var card = player.ResourceHand[i];
+                    if (card == choice)
+                    {
+                        count++;
+                    }
+                }
+
+                player.ResourceHand.RemoveAll(card => card == choice);
+            }
+
+            for (var i=0; i<count; i++)
+            {
+                curPlayer.ResourceHand.Add(choice);
             }
         }
     }

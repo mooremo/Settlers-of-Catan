@@ -20,6 +20,7 @@ namespace SettlersOfCatan
             btn_Monopoly.Enabled = false;
             btn_RoadBuilding.Enabled = false;
             btn_YOP.Enabled = false;
+            btn_playVictoryCard.Enabled = false;
         }
 
         private void UpdateUILanguage()
@@ -48,6 +49,12 @@ namespace SettlersOfCatan
             DialogResult = DialogResult.OK;
         }
 
+        private void btn_playVictoryCard_Click(object sender, EventArgs e)
+        {
+            Choice = CardType.VictoryPoint;
+            DialogResult = DialogResult.OK;
+        }
+
         public void EnableMonopoly()
         {
             btn_Monopoly.Enabled = true;
@@ -62,5 +69,11 @@ namespace SettlersOfCatan
         {
             btn_YOP.Enabled = true;
         }
+
+        public void EnableVictoryCard()
+        {
+            btn_playVictoryCard.Enabled = true;
+        }
+       
     }
 }
