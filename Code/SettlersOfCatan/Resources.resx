@@ -325,4 +325,40 @@
   <data name="resourceSelect" xml:space="preserve">
     <value>wählen Sie Ressource</value>
   </data>
+  <data name="victoryCard" xml:space="preserve">
+    <value>Victory Point</value>
+  </data>
+  <data name="clickRobberError">
+    <value xml:space="preserve">Must click on the robber</value>
+  </data>
+  <data name="invalidLocation">
+    <value xml:space="preserve">Invalid location</value>
+  </data>
+  <data name="settlementPlacementError">
+    <value xml:space="preserve">Cannot place settlement here</value>
+  </data>
+  <data name="neighboringVertexError">
+    <value xml:space="preserve">Must click neighboring vertex!</value>
+  </data>
+  <data name="roadExistsError">
+    <value xml:space="preserve">Road already exists here!</value>
+  </data>
+  <data name="roadPlacementError">
+    <value xml:space="preserve">Cannot place road here</value>
+  </data>
+  <data name="insufficientResourcesError">
+    <value xml:space="preserve">You do not have enough resources</value>
+  </data>
+  <data name="insufficentResources">
+    <value xml:space="preserve">Insufficient Resources</value>
+  </data>
+  <data name="moveRobberError">
+    <value xml:space="preserve">You must move the robber before you can end your turn</value>
+  </data>
+  <data name="pleaseVillage">
+    <value xml:space="preserve">, please place your Village.</value>
+  </data>
+  <data name="pleaseRoad">
+    <value xml:space="preserve">, please place your Road.</value>
+  </data>
 </root>

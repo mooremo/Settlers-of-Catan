@@ -385,7 +385,6 @@ namespace SettlersOfCatan
 
         private void OnTileButtonClick(object sender, EventArgs e)
         {
-            Console.WriteLine("Tile #" + ((ButtonWithTile) sender)._tile.Type);
             Tile tile;
             switch(_context)
             {
@@ -402,8 +401,8 @@ namespace SettlersOfCatan
                     else
                     {
                         MessageBox.Show(
-                            "Must click on the robber",
-                            "Invalid location",
+                            Resources.clickRobberError,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -425,7 +424,6 @@ namespace SettlersOfCatan
 
         private void OnVertexClick(object sender, EventArgs e)
         {
-            Console.WriteLine("Vertex #" + ((ButtonWithVertex)sender)._vertex.Index);
             var currentPlayer = _gameController.CurrentPlayer;
             ButtonWithVertex curVertex;
             Pen pen;
@@ -446,8 +444,8 @@ namespace SettlersOfCatan
                     catch (Exception ex)
                     {
                         MessageBox.Show(
-                            "Cannot place settlement here",
-                            "Invalid location",
+                            Resources.settlementPlacementError,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -463,8 +461,6 @@ namespace SettlersOfCatan
                     break;
                 case Context.RoadBuildingFirstVertex:
                 case Context.PlaceRoadFirstVertex:
-                    Console.WriteLine("<-- PlaceRoad Code Here --> ");
-
                     _roadFirstVertex = sender as ButtonWithVertex;
                     _vertexOriginalColor = _roadFirstVertex.BackColor;
                     _roadFirstVertex.BackColor = Color.Yellow;
@@ -486,8 +482,8 @@ namespace SettlersOfCatan
                     if (!curVertex._vertex.Neighbors.Contains(_roadFirstVertex._vertex))
                     {
                         MessageBox.Show(
-                            "Must click neighboring vertex!",
-                            "Invalid location",
+                            Resources.neighboringVertexError,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -497,8 +493,8 @@ namespace SettlersOfCatan
                     if (curVertex._vertex.HasRoad(_roadFirstVertex._vertex))
                     {
                         MessageBox.Show(
-                            "Road already exists here!",
-                            "Invalid location",
+                            Resources.roadExistsError,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -515,8 +511,8 @@ namespace SettlersOfCatan
                     } catch (Exception ex)
                     {
                         MessageBox.Show(
-                            "Cannot place road here",
-                            "Invalid location",
+                            Resources.roadPlacementError,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -552,8 +548,8 @@ namespace SettlersOfCatan
                     catch (Exception ex)
                     {
                         MessageBox.Show(
-                            "Cannot place settlement here",
-                            "Invalid location",
+                            Resources.settlementPlacementError,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -569,7 +565,6 @@ namespace SettlersOfCatan
                     break;
 
                  case Context.Trade:
-                    Console.WriteLine("<-- Trade Code Here --> ");
                     _context = Context.None;
                     break;
 
@@ -583,8 +578,8 @@ namespace SettlersOfCatan
                     catch (Exception ex)
                     {
                         MessageBox.Show(
-                            "Cannot place settlement here",
-                            "Invalid location",
+                            Resources.settlementPlacementError,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -606,8 +601,8 @@ namespace SettlersOfCatan
                     if (!curVertex._vertex.Neighbors.Contains(_roadFirstVertex._vertex))
                     {
                         MessageBox.Show(
-                            "Must click neighboring vertex!",
-                            "Invalid location",
+                            Resources.neighboringVertexError,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -617,8 +612,8 @@ namespace SettlersOfCatan
                     if (curVertex._vertex.HasRoad(_roadFirstVertex._vertex))
                     {
                         MessageBox.Show(
-                            "Road already exists here!",
-                            "Invalid location",
+                            Resources.roadExistsError,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -633,8 +628,8 @@ namespace SettlersOfCatan
                     } catch (Exception ex)
                     {
                         MessageBox.Show(
-                            "Cannot place road here",
-                            "Invalid location",
+                            Resources.roadPlacementError,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -664,8 +659,8 @@ namespace SettlersOfCatan
             else
             {
                 MessageBox.Show(
-                    "You do not have enough resources",
-                    "Insufficient Resources",
+                    Resources.insufficientResourcesError,
+                    Resources.insufficentResources,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -682,8 +677,8 @@ namespace SettlersOfCatan
             else
             {
                 MessageBox.Show(
-                    "You do not have enough resources",
-                    "Insufficient Resources",
+                    Resources.insufficientResourcesError,
+                    Resources.insufficentResources,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -709,8 +704,8 @@ namespace SettlersOfCatan
             else
             {
                 MessageBox.Show(
-                    "You do not have enough resources",
-                    "Insufficient Resources",
+                    Resources.insufficientResourcesError,
+                    Resources.insufficentResources,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -785,8 +780,8 @@ namespace SettlersOfCatan
             else
             {
                 MessageBox.Show(
-                    "You must move the robber before you can end your turn",
-                    "Move Robber",
+                    Resources.moveRobberError,
+                    Resources.moveRobber,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -814,10 +809,9 @@ namespace SettlersOfCatan
                 pnl_playerData.Update();
             } else
             {
-                //TODO
                 MessageBox.Show(
-                    "You do not have enough resources",
-                    "Insufficient Resources",
+                    Resources.insufficientResourcesError,
+                    Resources.insufficentResources,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -858,16 +852,16 @@ namespace SettlersOfCatan
             if (_context == Context.PlaceVillageSetup)
             {
                 MessageBox.Show(
-                    _gameController.CurrentPlayer.Name + ", please place your Village.",
-                    "Game Setup",
+                    _gameController.CurrentPlayer.Name + Resources.pleaseVillage,
+                    Resources.gameSetup,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information,
                     MessageBoxDefaultButton.Button1);
             } else if (_context == Context.PlaceRoadSetup)
             {
                 MessageBox.Show(
-                    _gameController.CurrentPlayer.Name + ", please place your Road.",
-                    "Game Setup",
+                    _gameController.CurrentPlayer.Name + Resources.pleaseRoad,
+                    Resources.gameSetup,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information,
                     MessageBoxDefaultButton.Button1);

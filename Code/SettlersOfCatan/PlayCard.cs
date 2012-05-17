@@ -29,6 +29,7 @@ namespace SettlersOfCatan
             btn_Monopoly.Text = Resources.monopoly;
             btn_RoadBuilding.Text = Resources.roadBuilding;
             btn_YOP.Text = Resources.yearOfPlenty;
+            btn_playVictoryCard.Text = Resources.victoryCard;
         }
 
         private void btn_Monopoly_Click(object sender, EventArgs e)

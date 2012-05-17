@@ -47,9 +47,9 @@
             // 
             // btn_YOP
             // 
-            this.btn_YOP.Location = new System.Drawing.Point(124, 12);
+            this.btn_YOP.Location = new System.Drawing.Point(124, 11);
             this.btn_YOP.Name = "btn_YOP";
-            this.btn_YOP.Size = new System.Drawing.Size(106, 32);
+            this.btn_YOP.Size = new System.Drawing.Size(106, 33);
             this.btn_YOP.TabIndex = 1;
             this.btn_YOP.Text = "Years of Plenty";
             this.btn_YOP.UseVisualStyleBackColor = true;
@@ -57,9 +57,9 @@
             // 
             // btn_RoadBuilding
             // 
-            this.btn_RoadBuilding.Location = new System.Drawing.Point(12, 50);
+            this.btn_RoadBuilding.Location = new System.Drawing.Point(12, 49);
             this.btn_RoadBuilding.Name = "btn_RoadBuilding";
-            this.btn_RoadBuilding.Size = new System.Drawing.Size(106, 32);
+            this.btn_RoadBuilding.Size = new System.Drawing.Size(106, 33);
             this.btn_RoadBuilding.TabIndex = 2;
             this.btn_RoadBuilding.Text = "Road Building";
             this.btn_RoadBuilding.UseVisualStyleBackColor = true;
@@ -67,11 +67,11 @@
             // 
             // btn_playVictoryCard
             // 
-            this.btn_playVictoryCard.Location = new System.Drawing.Point(124, 48);
+            this.btn_playVictoryCard.Location = new System.Drawing.Point(124, 49);
             this.btn_playVictoryCard.Name = "btn_playVictoryCard";
-            this.btn_playVictoryCard.Size = new System.Drawing.Size(106, 32);
+            this.btn_playVictoryCard.Size = new System.Drawing.Size(106, 33);
             this.btn_playVictoryCard.TabIndex = 3;
-            this.btn_playVictoryCard.Text = "Play Victory Card";
+            this.btn_playVictoryCard.Text = "Victory Point";
             this.btn_playVictoryCard.UseVisualStyleBackColor = true;
             this.btn_playVictoryCard.Click += new System.EventHandler(this.btn_playVictoryCard_Click);
             // 
