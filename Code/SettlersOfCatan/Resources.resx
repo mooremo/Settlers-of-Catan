@@ -367,37 +367,49 @@
   <data name="victoryCard" xml:space="preserve">
     <value>Victory Point</value>
   </data>
-  <data name="clickRobberError">
-    <value xml:space="preserve">Must click on the robber</value>
+  <data name="clickRobberError" xml:space="preserve">
+    <value>Must click on the robber</value>
   </data>
-  <data name="invalidLocation">
-    <value xml:space="preserve">Invalid location</value>
+  <data name="settlementPlacementError" xml:space="preserve">
+    <value>Cannot place settlement here</value>
   </data>
-  <data name="settlementPlacementError">
-    <value xml:space="preserve">Cannot place settlement here</value>
+  <data name="neighboringVertexError" xml:space="preserve">
+    <value>Must click neighboring vertex!</value>
   </data>
-  <data name="neighboringVertexError">
-    <value xml:space="preserve">Must click neighboring vertex!</value>
+  <data name="roadExistsError" xml:space="preserve">
+    <value>Road already exists here!</value>
   </data>
-  <data name="roadExistsError">
-    <value xml:space="preserve">Road already exists here!</value>
+  <data name="roadPlacementError" xml:space="preserve">
+    <value>Cannot place road here</value>
   </data>
-  <data name="roadPlacementError">
-    <value xml:space="preserve">Cannot place road here</value>
+  <data name="insufficientResourcesError" xml:space="preserve">
+    <value>You do not have enough resources</value>
   </data>
-  <data name="insufficientResourcesError">
-    <value xml:space="preserve">You do not have enough resources</value>
+  <data name="insufficentResources" xml:space="preserve">
+    <value>Insufficient Resources</value>
   </data>
-  <data name="insufficentResources">
-    <value xml:space="preserve">Insufficient Resources</value>
+  <data name="moveRobberError" xml:space="preserve">
+    <value>You must move the robber before you can end your turn</value>
   </data>
-  <data name="moveRobberError">
-    <value xml:space="preserve">You must move the robber before you can end your turn</value>
+  <data name="pleaseVillage" xml:space="preserve">
+    <value>, please place your Village.</value>
   </data>
-  <data name="pleaseVillage">
-    <value xml:space="preserve">, please place your Village.</value>
+  <data name="pleaseRoad" xml:space="preserve">
+    <value>, please place your Road.</value>
   </data>
-  <data name="pleaseRoad">
-    <value xml:space="preserve">, please place your Road.</value>
+  <data name="insufficentTrade" xml:space="preserve">
+    <value>Insufficent Trade</value>
+  </data>
+  <data name="ofResource" xml:space="preserve">
+    <value>of 1 resource.</value>
+  </data>
+  <data name="settlementAtPort" xml:space="preserve">
+    <value>You must have a settlement at this port.</value>
+  </data>
+  <data name="trade4to1" xml:space="preserve">
+    <value>You must trade at least 4 of 1 resource.</value>
+  </data>
+  <data name="tradeAtLeast" xml:space="preserve">
+    <value>You must trade at least</value>
   </data>
 </root>
