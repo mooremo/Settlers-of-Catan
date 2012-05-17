@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace SettlersOfCatan
 {
     [Serializable]
-    public class GameController : ISerializable
+    public class GameController
     {
         public Player CurrentPlayer;
 
@@ -59,29 +59,6 @@ namespace SettlersOfCatan
         public int LongestRoadLength { get; set; }
         public Player LargestArmy { get; set; }
 
-        #region ISerializable Members
-
-        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
-        {
-            info.AddValue("CurrentPlayer", CurrentPlayer);
-            info.AddValue("Board", Board);
-            info.AddValue("Dice", Dice);
-            info.AddValue("Players", Players);
-            info.AddValue("ResourceDeck", ResourceDeck);
-            info.AddValue("ResourceLookup", ResourceLookup);
-            info.AddValue("DevelopmentDeck", DevelopmentDeck);
-            info.AddValue("LongestRoad", LongestRoad);
-            info.AddValue("LargestArmy", LargestArmy);
-            info.AddValue("LongestRoadLength", LongestRoadLength);
-        }
-
-        #endregion
-
-        public void Save(string fileName)
-        {
-            var temp = new Serializer();
-            temp.Save(this, fileName);
-        }
 
         private void InitializeResourceLookup()
         {
@@ -136,8 +113,6 @@ namespace SettlersOfCatan
             {
                 throw new EmptyDeckException();
             }
-
-            ResourceDeck[tile] -= 1;
             return ResourceLookup[tile];
         }
 
@@ -530,7 +505,7 @@ namespace SettlersOfCatan
         {
             foreach (Player player in Players)
             {
-                if (player.ResourceHand.Count > 6)
+                if (player.ResourceHand.Count > 7)
                 {
                     int count = player.ResourceHand.Count;
                     int numberToRemove = (count%2 == 0) ? count/2 : (count - 1)/2;

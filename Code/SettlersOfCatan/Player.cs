@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace SettlersOfCatan
 {
     [Serializable]
-    public class Player : ISerializable
+    public class Player
     {
         public Player()
         {
@@ -21,19 +21,6 @@ namespace SettlersOfCatan
             Name = name;
         }
 
-        public Player(SerializationInfo info, StreamingContext ctxt)
-        {
-            Name = (String) info.GetValue("Name", typeof (String));
-            PlayerColor = (Colors) info.GetValue("PlayerColor", typeof (Colors));
-            ResourceHand = (List<CardType>) info.GetValue("ResourceHand", typeof (List<CardType>));
-            DevelopmentHand = (List<CardType>) info.GetValue("DevelopmentHand", typeof (List<CardType>));
-            PlayedDevelopmentCards = (List<CardType>) info.GetValue("PlayedDevelopmentCards", typeof (List<CardType>));
-            RoadsRemaining = (int) info.GetValue("RoadsRemaining", typeof (int));
-            VillagesRemaining = (int) info.GetValue("VillagesRemaining", typeof (int));
-            CitiesRemaining = (int) info.GetValue("CitiesRemaining", typeof (int));
-            Score = (int) info.GetValue("Score", typeof (int));
-        }
-
         public String Name { get; set; }
         public Colors PlayerColor { get; set; }
         public List<CardType> ResourceHand { get; set; }
@@ -44,28 +31,6 @@ namespace SettlersOfCatan
         public int CitiesRemaining { get; set; }
         public int Score { get; set; }
 
-        #region ISerializable Members
-
-        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
-        {
-            info.AddValue("Name", Name);
-            info.AddValue("PlayerColor", PlayerColor);
-            info.AddValue("ResourceHand", ResourceHand);
-            info.AddValue("DevelopmentHand", DevelopmentHand);
-            info.AddValue("PlayedDevelopmentCards", PlayedDevelopmentCards);
-            info.AddValue("RoadsRemaining", RoadsRemaining);
-            info.AddValue("VillagesRemaining", VillagesRemaining);
-            info.AddValue("CitiesRemaining", CitiesRemaining);
-            info.AddValue("Score", Score);
-        }
-
-        #endregion
-
-        //player calls this to end thier turn
-        public void EndTurn()
-        {
-        }
-
         public void Discard(int index)
         {
             Shuffler.Shuffle(ResourceHand);
@@ -74,7 +39,7 @@ namespace SettlersOfCatan
 
         public bool CanBuildRoad()
         {
-            return ResourceHand.Contains(CardType.Brick) && ResourceHand.Contains(CardType.Lumber) && RoadsRemaining > 0;
+            return ResourceHand.Contains(CardType.Brick) && ResourceHand.Contains(CardType.Lumber);
         }
 
         public bool CanBuildVillage()
@@ -92,7 +57,7 @@ namespace SettlersOfCatan
                 if (card == CardType.Wool) sheepCount++;
             }
 
-            return brickCount > 0 && woodCount > 0 && wheatCount > 0 && sheepCount > 0 && VillagesRemaining > 0;
+            return brickCount > 0 && woodCount > 0 && wheatCount > 0 && sheepCount > 0;
         }
 
         public bool CanBuildCity()
@@ -106,7 +71,7 @@ namespace SettlersOfCatan
                 if (card == CardType.Ore) oreCount++;
             }
 
-            return wheatCount > 1 && oreCount > 2 && CitiesRemaining > 0;
+            return wheatCount > 1 && oreCount > 2;
         }
 
         public bool CanBuyDevelopmentCard()
