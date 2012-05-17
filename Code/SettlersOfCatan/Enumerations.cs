@@ -40,6 +40,8 @@
     public enum Context
     {
         None,
+        PlaceVillageSetup,
+        PlaceRoadSetup,
         PlaceVillage,
         PlaceCity,
         PlaceRoadFirstVertex,

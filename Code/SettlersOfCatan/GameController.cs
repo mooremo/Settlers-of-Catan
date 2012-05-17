@@ -45,6 +45,8 @@ namespace SettlersOfCatan
             InitializeResourceLookup();
             InitializeResourceDeck();
             InitializeDevelopmentDeck();
+
+            CurrentPlayer = PickFirstPlayer();
         }
 
         public Board Board { get; set; }
@@ -457,6 +459,19 @@ namespace SettlersOfCatan
             }
         }
 
+        public void ChangeCurrentPlayerReverse()
+        {
+            int index = Players.IndexOf(CurrentPlayer);
+            if (index - 1 >= 0 )
+            {
+                CurrentPlayer = Players[index - 1];
+            }
+            else
+            {
+                CurrentPlayer = Players[Players.Count - 1];
+            }
+        }
+
         //Grants a resource for each settlement adjacent
         //to the hex with the number rolled
         public void AwardResourceForSettlementAdjacentToRolledHex()
@@ -537,6 +552,12 @@ namespace SettlersOfCatan
                                            int numberToGet)
         {
             return false;
+        }
+
+        public Player PickFirstPlayer()
+        {
+            var rng = new Random(new System.DateTime().Millisecond).Next(Players.Count);
+            return Players[rng];
         }
     }
 

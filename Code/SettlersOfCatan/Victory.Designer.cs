@@ -41,6 +41,7 @@
             this.Name = "Victory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Victory";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Victory_FormClosed);
             this.Load += new System.EventHandler(this.Victory_Load);
             this.Click += new System.EventHandler(this.Victory_Click);
             this.ResumeLayout(false);

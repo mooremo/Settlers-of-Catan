@@ -27,6 +27,8 @@ namespace SettlersOfCatan
         private List<Vertex> _alreadyDrawnButtons = new List<Vertex>();
         private Context _context = Context.None;
         private ButtonWithVertex _roadFirstVertex;
+        private Player _firstPlayer;
+        private bool _firstTimeFlag = true;
 
 
         public frm_gameBoard()
@@ -45,6 +47,13 @@ namespace SettlersOfCatan
             UpdateUILanguage();
             sp_PlayerScores.gc = controller;
             sp_PlayerScores.UpdateScores();
+
+            _context = Context.PlaceVillageSetup;
+
+            pnl_playerData.Enabled = false;
+            _firstPlayer = _gameController.CurrentPlayer;
+
+            GameSetup();
         }
 
         private void frm_gameBoard_Shown(object sender, EventArgs e)
@@ -417,6 +426,10 @@ namespace SettlersOfCatan
         {
             Console.WriteLine("Vertex #" + ((ButtonWithVertex)sender)._vertex.Index);
             var currentPlayer = _gameController.CurrentPlayer;
+            ButtonWithVertex curVertex;
+            Pen pen;
+            Road road;
+            Settlement piece;
             switch(_context)
             {
                 case Context.None:
@@ -457,7 +470,7 @@ namespace SettlersOfCatan
                     break;
                 case Context.PlaceRoadSecondVertex:
 
-                    var curVertex = sender as ButtonWithVertex;
+                    curVertex = sender as ButtonWithVertex;
 
                     if (!curVertex._vertex.Neighbors.Contains(_roadFirstVertex._vertex))
                     {
@@ -481,27 +494,28 @@ namespace SettlersOfCatan
                         return;
                     }
 
+                    //TODO Change back to player's color if applicable
                     _roadFirstVertex.BackColor = SystemColors.Control;
 
-                    var road = new Road(currentPlayer);
+                    road = new Road(currentPlayer);
 
                     //TODO
                     _board.PlacePieceSetup(road, curVertex._vertex, _roadFirstVertex._vertex);
 
                     currentPlayer.Buy(road);
 
-                    var pen = new Pen(currentPlayer.GetDrawColor(), 10);
+                    pen = new Pen(currentPlayer.GetDrawColor(), 10);
                     CreateGraphics().DrawLine(pen, curVertex.Location.X + 10, curVertex.Location.Y + 10, _roadFirstVertex.Location.X + 10, _roadFirstVertex.Location.Y + 10);
 
                     _context = Context.None;
                     break;
+
                 case Context.PlaceVillage:
-                    var piece = new Settlement(currentPlayer, SettlementType.Village);
+                    piece = new Settlement(currentPlayer, SettlementType.Village);
 
                     try
                     {
-                        //TODO
-                        _board.PlacePieceSetup(piece, ((ButtonWithVertex)sender)._vertex.Index);
+                        _board.PlacePiece(piece, ((ButtonWithVertex)sender)._vertex.Index);
                     }
                     catch (Exception ex)
                     {
@@ -521,14 +535,82 @@ namespace SettlersOfCatan
 
                     _context = Context.None;
                     break;
+
                  case Context.Trade:
                     Console.WriteLine("<-- Trade Code Here --> ");
                     _context = Context.None;
                     break;
+
+                case Context.PlaceVillageSetup:
+                    piece = new Settlement(currentPlayer, SettlementType.Village);
+
+                    try
+                    {
+                        _board.PlacePieceSetup(piece, ((ButtonWithVertex)sender)._vertex.Index);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "Cannot place settlement here",
+                            "Invalid location",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation,
+                            MessageBoxDefaultButton.Button1);
+                        return;
+                    }
+
+                    ((Button) sender).BackColor = currentPlayer.GetDrawColor();
+                    ((Button) sender).Text = Resources.V;
+
+                    _roadFirstVertex = sender as ButtonWithVertex;
+
+                    _context = Context.PlaceRoadSetup;
+                    GameSetup();
+                    break;
+
+                case Context.PlaceRoadSetup:
+                    curVertex = sender as ButtonWithVertex;
+
+                    if (!curVertex._vertex.Neighbors.Contains(_roadFirstVertex._vertex))
+                    {
+                        MessageBox.Show(
+                            "Must click neighboring vertex!",
+                            "Invalid location",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation,
+                            MessageBoxDefaultButton.Button1);
+                        return;
+                    }
+
+                    if (curVertex._vertex.HasRoad(_roadFirstVertex._vertex))
+                    {
+                        MessageBox.Show(
+                            "Road already exists here!",
+                            "Invalid location",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Exclamation,
+                            MessageBoxDefaultButton.Button1);
+                        return;
+                    }
+
+                    road = new Road(currentPlayer);
+
+                    _board.PlacePieceSetup(road, curVertex._vertex, _roadFirstVertex._vertex);
+
+                    pen = new Pen(currentPlayer.GetDrawColor(), 10);
+                    CreateGraphics().DrawLine(pen, curVertex.Location.X + 10, curVertex.Location.Y + 10, _roadFirstVertex.Location.X + 10, _roadFirstVertex.Location.Y + 10);
+
+                    _context = Context.PlaceVillageSetup;
+                    NextPlayerSetup();
+                    GameSetup();
+                    break;
+
                 default:
                     break;
             }
         }
+
+        
 
         private void btn_placeVillage_Click(object sender, EventArgs e)
         {
@@ -655,12 +737,7 @@ namespace SettlersOfCatan
                     }
 
                 }
-                _gameController.RollDice();
-                lbl_DiceDisplay.Text = _gameController.Dice.Value.ToString();
-                if (_gameController.Dice.Value == 7)
-                {
-                    _context = Context.PickUpRobber;
-                }
+                UpdateDiceRoll();
             }
             else
             {
@@ -670,6 +747,16 @@ namespace SettlersOfCatan
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void UpdateDiceRoll()
+        {
+            _gameController.RollDice();
+            lbl_DiceDisplay.Text = _gameController.Dice.Value.ToString();
+            if (_gameController.Dice.Value == 7)
+            {
+                _context = Context.PickUpRobber;
             }
         }
 
@@ -689,6 +776,50 @@ namespace SettlersOfCatan
                     "Insufficient Resources",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void NextPlayerSetup()
+        {
+            if (_firstTimeFlag)
+            {
+                _gameController.ChangeCurrentPlayer();
+                if (_gameController.CurrentPlayer == _firstPlayer)
+                {
+                    _firstTimeFlag = false;
+                    _gameController.ChangeCurrentPlayerReverse();
+                }
+            } else
+            {
+                _gameController.ChangeCurrentPlayerReverse();
+                if (_gameController.CurrentPlayer == _firstPlayer)
+                {
+                    _context = Context.None;
+                    pnl_playerData.Enabled = true;
+                    UpdateDiceRoll();
+                }
+            }
+            sp_PlayerScores.UpdateScores();
+        }
+
+        private void GameSetup()
+        {
+            if (_context == Context.PlaceVillageSetup)
+            {
+                MessageBox.Show(
+                    _gameController.CurrentPlayer.Name + ", please place your Village.",
+                    "Game Setup",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1);
+            } else if (_context == Context.PlaceRoadSetup)
+            {
+                MessageBox.Show(
+                    _gameController.CurrentPlayer.Name + ", please place your Road.",
+                    "Game Setup",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
                     MessageBoxDefaultButton.Button1);
             }
         }
