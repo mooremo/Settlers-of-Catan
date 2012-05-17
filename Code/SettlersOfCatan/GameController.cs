@@ -45,6 +45,8 @@ namespace SettlersOfCatan
             InitializeResourceLookup();
             InitializeResourceDeck();
             InitializeDevelopmentDeck();
+
+            CurrentPlayer = PickFirstPlayer();
         }
 
         public Board Board { get; set; }
@@ -457,34 +459,66 @@ namespace SettlersOfCatan
             }
         }
 
+        public void ChangeCurrentPlayerReverse()
+        {
+            int index = Players.IndexOf(CurrentPlayer);
+            if (index - 1 >= 0 )
+            {
+                CurrentPlayer = Players[index - 1];
+            }
+            else
+            {
+                CurrentPlayer = Players[Players.Count - 1];
+            }
+        }
+
         //Grants a resource for each settlement adjacent
         //to the hex with the number rolled
         public void AwardResourceForSettlementAdjacentToRolledHex()
         {
             foreach (Tile tile in Board.TerrainTiles)
             {
-                if (tile.Type != TileType.Desert)
+                if (tile.Type == TileType.Desert) continue;
+                if (tile.Number != Dice.Value) continue;
+                foreach (Vertex vertex in tile.Vertices)
                 {
-                    if (tile.Number == Dice.Value)
+                    if (vertex.Settlement == null) continue;
+                    if (vertex.Settlement.type == SettlementType.Village)
                     {
-                        foreach (Vertex vertex in tile.Vertices)
-                        {
-                            if (vertex.Settlement != null)
-                            {
-                                if (vertex.Settlement.type == SettlementType.Village)
-                                {
-                                    vertex.Settlement.player.ResourceHand.Add(
-                                        DrawResource((TileType) tile.Type));
-                                }
-                                else if (vertex.Settlement.type == SettlementType.City)
-                                {
-                                    vertex.Settlement.player.ResourceHand.Add(
-                                        DrawResource((TileType) tile.Type));
-                                    vertex.Settlement.player.ResourceHand.Add(
-                                        DrawResource((TileType) tile.Type));
-                                }
-                            }
-                        }
+                        vertex.Settlement.player.ResourceHand.Add(
+                            DrawResource((TileType) tile.Type));
+                    }
+                    else if (vertex.Settlement.type == SettlementType.City)
+                    {
+                        vertex.Settlement.player.ResourceHand.Add(
+                            DrawResource((TileType) tile.Type));
+                        vertex.Settlement.player.ResourceHand.Add(
+                            DrawResource((TileType) tile.Type));
+                    }
+                }
+            }
+        }
+
+        public void AwardResourceForSettlementAdjacentToHex(int value)
+        {
+            foreach (Tile tile in Board.TerrainTiles)
+            {
+                if (tile.Type == TileType.Desert) continue;
+                if (tile.Number != value) continue;
+                foreach (Vertex vertex in tile.Vertices)
+                {
+                    if (vertex.Settlement == null) continue;
+                    if (vertex.Settlement.type == SettlementType.Village)
+                    {
+                        vertex.Settlement.player.ResourceHand.Add(
+                            DrawResource(tile.Type));
+                    }
+                    else if (vertex.Settlement.type == SettlementType.City)
+                    {
+                        vertex.Settlement.player.ResourceHand.Add(
+                            DrawResource(tile.Type));
+                        vertex.Settlement.player.ResourceHand.Add(
+                            DrawResource(tile.Type));
                     }
                 }
             }
@@ -537,6 +571,12 @@ namespace SettlersOfCatan
                                            int numberToGet)
         {
             return false;
+        }
+
+        public Player PickFirstPlayer()
+        {
+            var rng = new Random(new System.DateTime().Millisecond).Next(Players.Count);
+            return Players[rng];
         }
     }
 

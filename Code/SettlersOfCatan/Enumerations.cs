@@ -40,6 +40,8 @@
     public enum Context
     {
         None,
+        PlaceVillageSetup,
+        PlaceRoadSetup,
         PlaceVillage,
         PlaceCity,
         PlaceRoadFirstVertex,
@@ -47,6 +49,8 @@
         PickUpRobber,
         PlaceRobber,
         Trade,
+        RoadBuildingFirstVertex,
+        RoadBuildingSecondVertex,
     }
 
     public enum Colors

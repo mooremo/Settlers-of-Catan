@@ -25,6 +25,7 @@ namespace SettlersOfCatan
             {
                 return false;
             }
+            if (!CheckNeighboringSettlements()) return false;
             int size = Roads.Count;
             Road checkRoad;
             for (int i = 0; i < size; i++)
@@ -40,6 +41,18 @@ namespace SettlersOfCatan
                 }
             }
             return false;
+        }
+
+        public bool CheckNeighboringSettlements()
+        {
+            foreach (Vertex v in Neighbors)
+            {
+                if (v != null && v.Settlement != null)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public bool PlayerCanBuildRoad(Player player)

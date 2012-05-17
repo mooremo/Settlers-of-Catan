@@ -33,5 +33,12 @@ namespace SettlersOfCatan
         {
             Application.Exit();
         }
+
+        private void Victory_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+
     }
 }

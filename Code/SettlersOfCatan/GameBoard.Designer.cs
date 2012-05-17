@@ -30,8 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_gameBoard));
             this.pnl_playerData = new System.Windows.Forms.Panel();
+            this.btn_PlayCard = new System.Windows.Forms.Button();
+            this.btn_Buy = new System.Windows.Forms.Button();
             this.btn_EndTurn = new System.Windows.Forms.Button();
-            this.btn_rules = new System.Windows.Forms.Button();
             this.btn_trade = new System.Windows.Forms.Button();
             this.lbl_playerMonopoly = new System.Windows.Forms.Label();
             this.lbl_playerYearOfPlenty = new System.Windows.Forms.Label();
@@ -57,9 +58,9 @@
             this.lbl_brick = new System.Windows.Forms.Label();
             this.lbl_wood = new System.Windows.Forms.Label();
             this.lbl_wool = new System.Windows.Forms.Label();
-            this.sp_PlayerScores = new SettlersOfCatan.ScorePanel();
-            this.btn_Buy = new System.Windows.Forms.Button();
+            this.btn_rules = new System.Windows.Forms.Button();
             this.lbl_DiceDisplay = new System.Windows.Forms.Label();
+            this.sp_PlayerScores = new SettlersOfCatan.ScorePanel();
             this.pnl_playerData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,9 +68,9 @@
             // 
             this.pnl_playerData.BackColor = System.Drawing.SystemColors.Control;
             this.pnl_playerData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_playerData.Controls.Add(this.btn_PlayCard);
             this.pnl_playerData.Controls.Add(this.btn_Buy);
             this.pnl_playerData.Controls.Add(this.btn_EndTurn);
-            this.pnl_playerData.Controls.Add(this.btn_rules);
             this.pnl_playerData.Controls.Add(this.btn_trade);
             this.pnl_playerData.Controls.Add(this.lbl_playerMonopoly);
             this.pnl_playerData.Controls.Add(this.lbl_playerYearOfPlenty);
@@ -101,6 +102,28 @@
             this.pnl_playerData.Size = new System.Drawing.Size(996, 97);
             this.pnl_playerData.TabIndex = 0;
             // 
+            // btn_PlayCard
+            // 
+            this.btn_PlayCard.Location = new System.Drawing.Point(726, 55);
+            this.btn_PlayCard.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_PlayCard.Name = "btn_PlayCard";
+            this.btn_PlayCard.Size = new System.Drawing.Size(101, 27);
+            this.btn_PlayCard.TabIndex = 28;
+            this.btn_PlayCard.Text = "Play Card";
+            this.btn_PlayCard.UseVisualStyleBackColor = true;
+            this.btn_PlayCard.Click += new System.EventHandler(this.btn_PlayCard_Click);
+            // 
+            // btn_Buy
+            // 
+            this.btn_Buy.Location = new System.Drawing.Point(349, 54);
+            this.btn_Buy.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Buy.Name = "btn_Buy";
+            this.btn_Buy.Size = new System.Drawing.Size(101, 27);
+            this.btn_Buy.TabIndex = 27;
+            this.btn_Buy.Text = "Buy Card";
+            this.btn_Buy.UseVisualStyleBackColor = true;
+            this.btn_Buy.Click += new System.EventHandler(this.btn_Buy_Click);
+            // 
             // btn_EndTurn
             // 
             this.btn_EndTurn.BackColor = System.Drawing.Color.Firebrick;
@@ -112,16 +135,6 @@
             this.btn_EndTurn.Text = "End Turn";
             this.btn_EndTurn.UseVisualStyleBackColor = false;
             this.btn_EndTurn.Click += new System.EventHandler(this.btn_EndTurn_Click);
-            // 
-            // btn_rules
-            // 
-            this.btn_rules.Location = new System.Drawing.Point(726, 55);
-            this.btn_rules.Name = "btn_rules";
-            this.btn_rules.Size = new System.Drawing.Size(101, 27);
-            this.btn_rules.TabIndex = 25;
-            this.btn_rules.Text = "Rules";
-            this.btn_rules.UseVisualStyleBackColor = true;
-            this.btn_rules.Click += new System.EventHandler(this.btn_rules_Click);
             // 
             // btn_trade
             // 
@@ -368,25 +381,16 @@
             this.lbl_wool.TabIndex = 0;
             this.lbl_wool.Text = "Wool:";
             // 
-            // sp_PlayerScores
+            // btn_rules
             // 
-            this.sp_PlayerScores.AutoSize = true;
-            this.sp_PlayerScores.gc = null;
-            this.sp_PlayerScores.Location = new System.Drawing.Point(20, 9);
-            this.sp_PlayerScores.Name = "sp_PlayerScores";
-            this.sp_PlayerScores.Size = new System.Drawing.Size(0, 13);
-            this.sp_PlayerScores.TabIndex = 26;
-            // 
-            // btn_Buy
-            // 
-            this.btn_Buy.Location = new System.Drawing.Point(349, 54);
-            this.btn_Buy.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_Buy.Name = "btn_Buy";
-            this.btn_Buy.Size = new System.Drawing.Size(101, 27);
-            this.btn_Buy.TabIndex = 27;
-            this.btn_Buy.Text = "Buy Card";
-            this.btn_Buy.UseVisualStyleBackColor = true;
-            this.btn_Buy.Click += new System.EventHandler(this.btn_Buy_Click);
+            this.btn_rules.BackgroundImage = global::SettlersOfCatan.Resources.question;
+            this.btn_rules.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_rules.Location = new System.Drawing.Point(959, 580);
+            this.btn_rules.Name = "btn_rules";
+            this.btn_rules.Size = new System.Drawing.Size(48, 47);
+            this.btn_rules.TabIndex = 25;
+            this.btn_rules.UseVisualStyleBackColor = true;
+            this.btn_rules.Click += new System.EventHandler(this.btn_rules_Click);
             // 
             // lbl_DiceDisplay
             // 
@@ -398,6 +402,15 @@
             this.lbl_DiceDisplay.Size = new System.Drawing.Size(2, 33);
             this.lbl_DiceDisplay.TabIndex = 27;
             // 
+            // sp_PlayerScores
+            // 
+            this.sp_PlayerScores.AutoSize = true;
+            this.sp_PlayerScores.gc = null;
+            this.sp_PlayerScores.Location = new System.Drawing.Point(20, 9);
+            this.sp_PlayerScores.Name = "sp_PlayerScores";
+            this.sp_PlayerScores.Size = new System.Drawing.Size(0, 13);
+            this.sp_PlayerScores.TabIndex = 26;
+            // 
             // frm_gameBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -407,6 +420,7 @@
             this.ClientSize = new System.Drawing.Size(1018, 740);
             this.Controls.Add(this.lbl_DiceDisplay);
             this.Controls.Add(this.sp_PlayerScores);
+            this.Controls.Add(this.btn_rules);
             this.Controls.Add(this.pnl_playerData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -458,5 +472,6 @@
         private System.Windows.Forms.Button btn_EndTurn;
         private System.Windows.Forms.Button btn_Buy;
         private System.Windows.Forms.Label lbl_DiceDisplay;
+        private System.Windows.Forms.Button btn_PlayCard;
     }
 }
