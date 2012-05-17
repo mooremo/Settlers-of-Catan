@@ -60,6 +60,7 @@
             this.lbl_wool = new System.Windows.Forms.Label();
             this.btn_rules = new System.Windows.Forms.Button();
             this.lbl_DiceDisplay = new System.Windows.Forms.Label();
+            this.cp_PlayerColors = new SettlersOfCatan.ColorPanel();
             this.sp_PlayerScores = new SettlersOfCatan.ScorePanel();
             this.pnl_playerData.SuspendLayout();
             this.SuspendLayout();
@@ -383,7 +384,7 @@
             // 
             // btn_rules
             // 
-            this.btn_rules.BackgroundImage = global::SettlersOfCatan.Resources.question;
+            this.btn_rules.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_rules.BackgroundImage")));
             this.btn_rules.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_rules.Location = new System.Drawing.Point(959, 580);
             this.btn_rules.Name = "btn_rules";
@@ -402,6 +403,14 @@
             this.lbl_DiceDisplay.Size = new System.Drawing.Size(2, 33);
             this.lbl_DiceDisplay.TabIndex = 27;
             // 
+            // cp_PlayerColors
+            // 
+            this.cp_PlayerColors.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.cp_PlayerColors.Location = new System.Drawing.Point(58, 38);
+            this.cp_PlayerColors.Name = "cp_PlayerColors";
+            this.cp_PlayerColors.Size = new System.Drawing.Size(10, 10);
+            this.cp_PlayerColors.TabIndex = 28;
+            // 
             // sp_PlayerScores
             // 
             this.sp_PlayerScores.AutoSize = true;
@@ -418,6 +427,7 @@
             this.BackgroundImage = global::SettlersOfCatan.Properties.Resources.sea_texture;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1018, 740);
+            this.Controls.Add(this.cp_PlayerColors);
             this.Controls.Add(this.lbl_DiceDisplay);
             this.Controls.Add(this.sp_PlayerScores);
             this.Controls.Add(this.btn_rules);
@@ -473,5 +483,6 @@
         private System.Windows.Forms.Button btn_Buy;
         private System.Windows.Forms.Label lbl_DiceDisplay;
         private System.Windows.Forms.Button btn_PlayCard;
+        private ColorPanel cp_PlayerColors;
     }
 }

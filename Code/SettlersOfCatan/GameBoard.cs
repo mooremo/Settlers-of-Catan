@@ -49,6 +49,8 @@ namespace SettlersOfCatan
             UpdateUILanguage();
             sp_PlayerScores.gc = controller;
             sp_PlayerScores.UpdateScores();
+            cp_PlayerColors.Location = new Point(sp_PlayerScores.Location.X + sp_PlayerScores.Width, sp_PlayerScores.Location.Y+1);
+            cp_PlayerColors.setColors(_gameController,sp_PlayerScores.Height);
 
             _context = Context.PlaceVillageSetup;
 
@@ -701,6 +703,8 @@ namespace SettlersOfCatan
                 _gameController.ChangeCurrentPlayer();
                 _gameController.ScorePlayers();
                 sp_PlayerScores.UpdateScores();
+                cp_PlayerColors.Location = new Point(sp_PlayerScores.Location.X + sp_PlayerScores.Width,sp_PlayerScores.Location.Y+1);
+                cp_PlayerColors.setColors(_gameController,sp_PlayerScores.Height);
                 foreach (Player p in _gameController.Players)
                 {
                     if (p.Score >= 10)
