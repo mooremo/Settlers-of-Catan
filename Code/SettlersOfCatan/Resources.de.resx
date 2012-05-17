@@ -328,14 +328,8 @@
   <data name="clickRobberError" xml:space="preserve">
     <value>Muss auf dem Räuber klicken</value>
   </data>
-  <data name="insufficientResources" xml:space="preserve">
-    <value>Unzureichende Ressourcen</value>
-  </data>
   <data name="insufficientResourcesError" xml:space="preserve">
     <value>Sie verfügen nicht über genügend Ressourcen</value>
-  </data>
-  <data name="invalidLocation" xml:space="preserve">
-    <value>Ungültige Lage</value>
   </data>
   <data name="moveRobberError" xml:space="preserve">
     <value>Sie müssen sich bewegen, den Räuber, bevor Sie Ihr wiederum kann am Ende</value>
@@ -360,5 +354,8 @@
   </data>
   <data name="victoryCard" xml:space="preserve">
     <value>Siegpunkt</value>
+  </data>
+  <data name="moveRobberAlert" xml:space="preserve">
+    <value>Sie müssen sich bewegen, den Räuber!</value>
   </data>
 </root>

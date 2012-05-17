@@ -397,6 +397,8 @@
   <data name="pleaseRoad" xml:space="preserve">
     <value>, please place your Road.</value>
   </data>
+  <data name="moveRobberAlert" xml:space="preserve">
+    <value>You must move the robber!</value>
   <data name="insufficentTrade" xml:space="preserve">
     <value>Insufficent Trade</value>
   </data>

@@ -398,6 +398,15 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must move the robber!.
+        /// </summary>
+        internal static string moveRobberAlert {
+            get {
+                return ResourceManager.GetString("moveRobberAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You must move the robber before you can end your turn.
         /// </summary>
         internal static string moveRobberError {
