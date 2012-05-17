@@ -188,6 +188,15 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Game Board.
+        /// </summary>
+        internal static string gameBoard {
+            get {
+                return ResourceManager.GetString("gameBoard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game Setup.
         /// </summary>
         internal static string gameSetup {
@@ -414,11 +423,27 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Play Card.
+        /// </summary>
+        internal static string playCard {
+            get {
+                return ResourceManager.GetString("playCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Player.
         /// </summary>
         internal static string player {
             get {
                 return ResourceManager.GetString("player", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap question {
+            get {
+                object obj = ResourceManager.GetObject("question", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

@@ -68,6 +68,12 @@
     <Compile Include="OptionsDialog.Designer.cs">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlayCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayCard.Designer.cs">
+      <DependentUpon>PlayCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlayersAndColorsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OptionsDialog.resx">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayCard.resx">
+      <DependentUpon>PlayCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayersAndColorsDialog.resx">
       <DependentUpon>PlayersAndColorsDialog.cs</DependentUpon>
@@ -219,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\victory.de.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -49,6 +49,8 @@
         PickUpRobber,
         PlaceRobber,
         Trade,
+        RoadBuildingFirstVertex,
+        RoadBuildingSecondVertex,
     }
 
     public enum Colors
