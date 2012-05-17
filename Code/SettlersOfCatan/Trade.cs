@@ -269,8 +269,8 @@ namespace SettlersOfCatan
             if(flag)
             {
                 MessageBox.Show(
-                    "You must trade at least 4 of 1 resource.",
-                    "Insufficent Trade",
+                    Resources.trade4to1,
+                    Resources.insufficentTrade,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -296,8 +296,8 @@ namespace SettlersOfCatan
             if(flag)
             {
                 MessageBox.Show(
-                    "You must trade at least 4 of 1 resource.",
-                    "Insufficent Trade",
+                    Resources.trade4to1,
+                    Resources.insufficentTrade,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -323,8 +323,8 @@ namespace SettlersOfCatan
             if (flag)
             {
                 MessageBox.Show(
-                    "You must trade at least 4 of 1 resource.",
-                    "Insufficent Trade",
+                    Resources.trade4to1,
+                    Resources.insufficentTrade,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -350,8 +350,8 @@ namespace SettlersOfCatan
             if (flag)
             {
                 MessageBox.Show(
-                    "You must trade at least 4 of 1 resource.",
-                    "Insufficent Trade",
+                    Resources.trade4to1,
+                    Resources.insufficentTrade,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -377,8 +377,8 @@ namespace SettlersOfCatan
             if (flag)
             {
                 MessageBox.Show(
-                    "You must trade at least 4 of 1 resource.",
-                    "Insufficent Trade",
+                    Resources.trade4to1,
+                    Resources.insufficentTrade,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -494,8 +494,8 @@ namespace SettlersOfCatan
             if (flag)
             {
                 MessageBox.Show(
-                    "You must trade at least " + numberOfPort + " of 1 resource.",
-                    "Insufficent Trade",
+                    Resources.tradeAtLeast + numberOfPort + Resources.ofResource,
+                    Resources.insufficentTrade,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -526,8 +526,8 @@ namespace SettlersOfCatan
             if (flag)
             {
                 MessageBox.Show(
-                    "You must trade at least " + numberOfPort + " of 1 resource.",
-                    "Insufficent Trade",
+                    Resources.tradeAtLeast + numberOfPort + Resources.ofResource,
+                    Resources.insufficentTrade,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -558,8 +558,8 @@ namespace SettlersOfCatan
             if (flag)
             {
                 MessageBox.Show(
-                    "You must trade at least " + numberOfPort + " of 1 resource.",
-                    "Insufficent Trade",
+                    Resources.tradeAtLeast + numberOfPort + Resources.ofResource,
+                    Resources.insufficentTrade,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -590,8 +590,8 @@ namespace SettlersOfCatan
             if (flag)
             {
                 MessageBox.Show(
-                    "You must trade at least " + numberOfPort + " of 1 resource.",
-                    "Insufficent Trade",
+                    Resources.tradeAtLeast + numberOfPort + Resources.ofResource,
+                    Resources.insufficentTrade,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -622,8 +622,8 @@ namespace SettlersOfCatan
             if (flag)
             {
                 MessageBox.Show(
-                    "You must trade at least " + numberOfPort +" of 1 resource.",
-                    "Insufficent Trade",
+                    Resources.tradeAtLeast + numberOfPort + Resources.ofResource,
+                    Resources.insufficentTrade,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -643,8 +643,8 @@ namespace SettlersOfCatan
                         }
                     }
                     MessageBox.Show(
-                    "You must have a settlement at this port.",
-                    "No Port Access",
+                    Resources.settlementAtPort,
+                    Resources.noPortAccess,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -658,8 +658,8 @@ namespace SettlersOfCatan
                         }
                     }
                     MessageBox.Show(
-                    "You must have a settlement at this port.",
-                    "No Port Access",
+                    Resources.settlementAtPort,
+                    Resources.noPortAccess,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -673,8 +673,8 @@ namespace SettlersOfCatan
                         }
                     }
                     MessageBox.Show(
-                    "You must have a settlement at this port.",
-                    "No Port Access",
+                    Resources.settlementAtPort,
+                    Resources.noPortAccess,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -688,8 +688,8 @@ namespace SettlersOfCatan
                         }
                     }
                     MessageBox.Show(
-                    "You must have a settlement at this port.",
-                    "No Port Access",
+                    Resources.settlementAtPort,
+                    Resources.noPortAccess,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -703,8 +703,8 @@ namespace SettlersOfCatan
                         }
                     }
                     MessageBox.Show(
-                    "You must have a settlement at this port.",
-                    "No Port Access",
+                    Resources.settlementAtPort,
+                    Resources.noPortAccess,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -718,8 +718,8 @@ namespace SettlersOfCatan
                         }
                     }
                     MessageBox.Show(
-                    "You must have a settlement at this port.",
-                    "No Port Access",
+                    Resources.settlementAtPort,
+                    Resources.noPortAccess,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -783,8 +783,8 @@ namespace SettlersOfCatan
                 if (brick > resources[CardType.Brick] || grain > resources[CardType.Grain] || lumber > resources[CardType.Lumber] || ore > resources[CardType.Ore] || wool > resources[CardType.Wool])
                 {
                     MessageBox.Show(
-                    "Player has insufficient resources",
-                    "Insufficent Resources",
+                    Resources.playerHasInsufficientResources,
+                    Resources.insufficientResources,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);

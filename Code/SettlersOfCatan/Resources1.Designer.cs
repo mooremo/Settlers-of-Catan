@@ -292,6 +292,15 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Insufficent Trade.
+        /// </summary>
+        internal static string insufficentTrade {
+            get {
+                return ResourceManager.GetString("insufficentTrade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Insufficient Resources.
         /// </summary>
         internal static string insufficientResources {
@@ -452,6 +461,15 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Insufficient Port Access.
+        /// </summary>
+        internal static string noPortAccess {
+            get {
+                return ResourceManager.GetString("noPortAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You do not have enough resources.
         /// </summary>
         internal static string notEnoughResources {
@@ -466,6 +484,15 @@ namespace SettlersOfCatan {
         internal static string numberOfPlayers {
             get {
                 return ResourceManager.GetString("numberOfPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to of 1 resource..
+        /// </summary>
+        internal static string ofResource {
+            get {
+                return ResourceManager.GetString("ofResource", resourceCulture);
             }
         }
         
@@ -572,6 +599,15 @@ namespace SettlersOfCatan {
         internal static string player {
             get {
                 return ResourceManager.GetString("player", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player has insufficien resources.
+        /// </summary>
+        internal static string playerHasInsufficientResources {
+            get {
+                return ResourceManager.GetString("playerHasInsufficientResources", resourceCulture);
             }
         }
         
@@ -714,6 +750,15 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must have a settlement at this port..
+        /// </summary>
+        internal static string settlementAtPort {
+            get {
+                return ResourceManager.GetString("settlementAtPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot place settlement here.
         /// </summary>
         internal static string settlementPlacementError {
@@ -771,6 +816,24 @@ namespace SettlersOfCatan {
         internal static string trade {
             get {
                 return ResourceManager.GetString("trade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must trade at least 4 of 1 resource..
+        /// </summary>
+        internal static string trade4to1 {
+            get {
+                return ResourceManager.GetString("trade4to1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must trade at least.
+        /// </summary>
+        internal static string tradeAtLeast {
+            get {
+                return ResourceManager.GetString("tradeAtLeast", resourceCulture);
             }
         }
         

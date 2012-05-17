@@ -400,4 +400,25 @@
   <data name="moveRobberAlert" xml:space="preserve">
     <value>You must move the robber!</value>
   </data>
+  <data name="insufficentTrade" xml:space="preserve">
+    <value>Insufficent Trade</value>
+  </data>
+  <data name="ofResource" xml:space="preserve">
+    <value>of 1 resource.</value>
+  </data>
+  <data name="settlementAtPort" xml:space="preserve">
+    <value>You must have a settlement at this port.</value>
+  </data>
+  <data name="trade4to1" xml:space="preserve">
+    <value>You must trade at least 4 of 1 resource.</value>
+  </data>
+  <data name="tradeAtLeast" xml:space="preserve">
+    <value>You must trade at least</value>
+  </data>
+  <data name="noPortAccess" xml:space="preserve">
+    <value>Insufficient Port Access</value>
+  </data>
+  <data name="playerHasInsufficientResources" xml:space="preserve">
+    <value>Player has insufficien resources</value>
+  </data>
 </root>
