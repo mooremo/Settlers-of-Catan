@@ -1,6 +1,6 @@
 ﻿namespace SettlersOfCatan
 {
-    partial class Monopoly
+    partial class ResourceSelect
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResourceSelect));
             this.btn_Brick = new System.Windows.Forms.Button();
             this.btn_lumber = new System.Windows.Forms.Button();
             this.btn_ore = new System.Windows.Forms.Button();
@@ -95,8 +96,9 @@
             this.Controls.Add(this.btn_ore);
             this.Controls.Add(this.btn_lumber);
             this.Controls.Add(this.btn_Brick);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Monopoly";
-            this.Text = "Monopoly";
+            this.Text = "Select a Resource";
             this.ResumeLayout(false);
 
         }

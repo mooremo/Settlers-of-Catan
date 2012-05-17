@@ -811,6 +811,7 @@ namespace SettlersOfCatan
                 var devCard = _gameController.DrawDevelopment();
                 curPlayer.DevelopmentHand.Add(devCard);
                 curPlayer.Buy(devCard);
+                pnl_playerData.Update();
             } else
             {
                 //TODO
@@ -910,6 +911,7 @@ namespace SettlersOfCatan
                     Monopoly();
                     break;
                 case CardType.YearOfPlenty:
+                    YearOfPlenty();
                     break;
                 case CardType.VictoryPoint:
                     curPlayer.DevelopmentHand.Remove(CardType.VictoryPoint);
@@ -918,10 +920,23 @@ namespace SettlersOfCatan
             }
         }
 
+        private void YearOfPlenty()
+        {
+            var curPlayer = _gameController.CurrentPlayer;
+            var yop = new ResourceSelect();
+            yop.ShowDialog();
+
+            var choice1 = yop.Result;
+            var choice2 = yop.OtherResult;
+
+            curPlayer.ResourceHand.Add(choice1);
+            curPlayer.ResourceHand.Add(choice2);
+        }
+
         private void Monopoly()
         {
             var curPlayer = _gameController.CurrentPlayer;
-            var monopoly = new Monopoly();
+            var monopoly = new ResourceSelect();
             monopoly.ShowDialog();
 
             var choice = monopoly.Result;
