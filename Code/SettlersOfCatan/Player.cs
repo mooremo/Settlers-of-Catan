@@ -211,5 +211,19 @@ namespace SettlersOfCatan
                                                  };
             return temp;
         }
+
+        public void SetHand(Dictionary<CardType, int> resources)
+        {
+            var tempHand = new List<CardType>();
+
+            foreach (var type in resources.Keys)
+            {
+                for (var i=0; i<resources[type]; i++)
+                {
+                    tempHand.Add(type);
+                }
+            }
+            ResourceHand = tempHand;
+        }
     }
 }

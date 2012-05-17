@@ -312,49 +312,7 @@ namespace SettlersOfCatan
 
         private void frm_gameBoard_Paint(object sender, PaintEventArgs e)
         {
-            Dictionary<CardType, int> resources = new Dictionary<CardType, int>();
-            int yearOfPlenty = 0;
-            int monopoly = 0;
-            int roadBuilding = 0;
-            int soldier = 0;
-            int victoryPoint = 0;
-            if (_gameController.CurrentPlayer != null)
-            {
-                resources = _gameController.CurrentPlayer.GetNumberOfResources();
-                foreach (CardType c in _gameController.CurrentPlayer.DevelopmentHand)
-                {
-                    switch (c)
-                    {
-                        case CardType.Soldier:
-                            soldier++;
-                            break;
-                        case CardType.Monopoly:
-                            monopoly++;
-                            break;
-                        case CardType.VictoryPoint:
-                            victoryPoint++;
-                            break;
-                        case CardType.RoadBuilding:
-                            roadBuilding++;
-                            break;
-                        case CardType.YearOfPlenty:
-                            yearOfPlenty++;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-            lbl_playerBrick.Text = resources[CardType.Brick].ToString();
-            lbl_playerWool.Text = resources[CardType.Wool].ToString();
-            lbl_playerWood.Text = resources[CardType.Lumber].ToString();
-            lbl_playerGrain.Text = resources[CardType.Grain].ToString();
-            lbl_playerOre.Text = resources[CardType.Ore].ToString();
-            lbl_playerSoldier.Text = soldier.ToString();
-            lbl_playerMonopoly.Text = monopoly.ToString();
-            lbl_playerVictoryPoint.Text = roadBuilding.ToString();
-            lbl_playerYearOfPlenty.Text = yearOfPlenty.ToString();
-            lbl_playerRoadBuilding.Text = roadBuilding.ToString();
+            UpdatePanel();
         }
 
         private void OnTileButtonClick(object sender, EventArgs e)
@@ -693,15 +651,7 @@ namespace SettlersOfCatan
                 _context = Context.Trade;
                 var tradeWindow = new frm_Trade(_gameController);
                 tradeWindow.ShowDialog();
-
-                if (tradeWindow.DialogResult == DialogResult.Cancel || tradeWindow.DialogResult == DialogResult.Abort)
-                {
-                    this.Show();
-                }
-                else if (tradeWindow.DialogResult == DialogResult.OK)
-                {
-                    this.Show();
-                }
+                UpdatePanel();
             }
         }
 
@@ -939,6 +889,53 @@ namespace SettlersOfCatan
             {
                 curPlayer.ResourceHand.Add(choice);
             }
+        }
+
+        private void UpdatePanel()
+        {
+            Dictionary<CardType, int> resources = new Dictionary<CardType, int>();
+            int yearOfPlenty = 0;
+            int monopoly = 0;
+            int roadBuilding = 0;
+            int soldier = 0;
+            int victoryPoint = 0;
+            if (_gameController.CurrentPlayer != null)
+            {
+                resources = _gameController.CurrentPlayer.GetNumberOfResources();
+                foreach (CardType c in _gameController.CurrentPlayer.DevelopmentHand)
+                {
+                    switch (c)
+                    {
+                        case CardType.Soldier:
+                            soldier++;
+                            break;
+                        case CardType.Monopoly:
+                            monopoly++;
+                            break;
+                        case CardType.VictoryPoint:
+                            victoryPoint++;
+                            break;
+                        case CardType.RoadBuilding:
+                            roadBuilding++;
+                            break;
+                        case CardType.YearOfPlenty:
+                            yearOfPlenty++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            lbl_playerBrick.Text = resources[CardType.Brick].ToString();
+            lbl_playerWool.Text = resources[CardType.Wool].ToString();
+            lbl_playerWood.Text = resources[CardType.Lumber].ToString();
+            lbl_playerGrain.Text = resources[CardType.Grain].ToString();
+            lbl_playerOre.Text = resources[CardType.Ore].ToString();
+            lbl_playerSoldier.Text = soldier.ToString();
+            lbl_playerMonopoly.Text = monopoly.ToString();
+            lbl_playerVictoryPoint.Text = roadBuilding.ToString();
+            lbl_playerYearOfPlenty.Text = yearOfPlenty.ToString();
+            lbl_playerRoadBuilding.Text = roadBuilding.ToString();
         }
     }
 }
