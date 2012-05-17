@@ -586,7 +586,7 @@ namespace SettlersOfCatan
         private void btn_placeVillage_Click(object sender, EventArgs e)
         {
             var currentPlayer = _gameController.CurrentPlayer;
-            if ((currentPlayer.CanBuildVillage() && (_context != Context.PickUpRobber && _context != Context.PlaceRobber)) || Program.Debug)
+            if ((currentPlayer.CanBuildVillage() && (_context != Context.PickUpRobber && _context != Context.PlaceRobber)))
             {
                 _context = Context.PlaceVillage;
             }
@@ -604,7 +604,7 @@ namespace SettlersOfCatan
         private void btn_placeCity_Click(object sender, EventArgs e)
         {
             var currentPlayer = _gameController.CurrentPlayer;
-            if ((currentPlayer.CanBuildCity() && (_context != Context.PickUpRobber && _context != Context.PlaceRobber)) || Program.Debug)
+            if ((currentPlayer.CanBuildCity() && (_context != Context.PickUpRobber && _context != Context.PlaceRobber)))
             {
                 _context = Context.PlaceCity;
             } 
@@ -622,7 +622,7 @@ namespace SettlersOfCatan
         private void btn_moveRobber_Click(object sender, EventArgs e)
         {
             var currentPlayer = _gameController.CurrentPlayer;
-            if ((currentPlayer.DevelopmentHand.Contains(CardType.Soldier) && (_context != Context.PickUpRobber && _context != Context.PlaceRobber)) || Program.Debug)
+            if ((currentPlayer.DevelopmentHand.Contains(CardType.Soldier) && (_context != Context.PickUpRobber && _context != Context.PlaceRobber)))
             {
                 _context = Context.PickUpRobber;
             }
@@ -631,7 +631,7 @@ namespace SettlersOfCatan
         private void btn_placeRoad_Click(object sender, EventArgs e)
         {
             var currentPlayer = _gameController.CurrentPlayer;
-            if ((currentPlayer.CanBuildRoad() && (_context != Context.PickUpRobber && _context != Context.PlaceRobber)) || Program.Debug)
+            if ((currentPlayer.CanBuildRoad() && (_context != Context.PickUpRobber && _context != Context.PlaceRobber)))
             {
                 _context = Context.PlaceRoadFirstVertex;
             }
