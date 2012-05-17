@@ -27,6 +27,7 @@ namespace SettlersOfCatan
 
         private void UpdateUILanguage()
         {
+            Text = Resources.resourceSelect;
             btn_Brick.Text = Resources.brick;
             btn_grain.Text = Resources.grain;
             btn_lumber.Text = Resources.wood;

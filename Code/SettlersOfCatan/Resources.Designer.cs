@@ -457,6 +457,15 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to wählen Sie Ressource.
+        /// </summary>
+        internal static string resourceSelect {
+            get {
+                return ResourceManager.GetString("resourceSelect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Road.
         /// </summary>
         internal static string road {

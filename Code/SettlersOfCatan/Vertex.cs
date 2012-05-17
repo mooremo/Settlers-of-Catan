@@ -47,7 +47,7 @@ namespace SettlersOfCatan
         {
             foreach (Vertex v in Neighbors)
             {
-                if (v.Settlement != null)
+                if (v != null && v.Settlement != null)
                 {
                     return false;
                 }

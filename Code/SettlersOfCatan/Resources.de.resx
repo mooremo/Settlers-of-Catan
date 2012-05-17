@@ -286,4 +286,7 @@
   <data name="playCard" xml:space="preserve">
     <value>Play-Karte</value>
   </data>
+  <data name="resourceSelect" xml:space="preserve">
+    <value>wählen Sie Ressource</value>
+  </data>
 </root>
