@@ -149,6 +149,15 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Must click on the robber.
+        /// </summary>
+        internal static string clickRobberError {
+            get {
+                return ResourceManager.GetString("clickRobberError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Color:.
         /// </summary>
         internal static string color {
@@ -224,6 +233,15 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Game Board.
+        /// </summary>
+        internal static string gameBoard {
+            get {
+                return ResourceManager.GetString("gameBoard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game Setup.
         /// </summary>
         internal static string gameSetup {
@@ -267,9 +285,27 @@ namespace SettlersOfCatan {
         /// <summary>
         ///   Looks up a localized string similar to Insufficient Resources.
         /// </summary>
+        internal static string insufficentResources {
+            get {
+                return ResourceManager.GetString("insufficentResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insufficient Resources.
+        /// </summary>
         internal static string insufficientResources {
             get {
                 return ResourceManager.GetString("insufficientResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You do not have enough resources.
+        /// </summary>
+        internal static string insufficientResourcesError {
+            get {
+                return ResourceManager.GetString("insufficientResourcesError", resourceCulture);
             }
         }
         
@@ -355,6 +391,15 @@ namespace SettlersOfCatan {
         /// <summary>
         ///   Looks up a localized string similar to You must move the robber before you can end your turn.
         /// </summary>
+        internal static string moveRobberError {
+            get {
+                return ResourceManager.GetString("moveRobberError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must move the robber before you can end your turn.
+        /// </summary>
         internal static string mustMoveRobber {
             get {
                 return ResourceManager.GetString("mustMoveRobber", resourceCulture);
@@ -367,6 +412,15 @@ namespace SettlersOfCatan {
         internal static string name {
             get {
                 return ResourceManager.GetString("name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must click neighboring vertex!.
+        /// </summary>
+        internal static string neighboringVertexError {
+            get {
+                return ResourceManager.GetString("neighboringVertexError", resourceCulture);
             }
         }
         
@@ -495,6 +549,15 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Play Card.
+        /// </summary>
+        internal static string playCard {
+            get {
+                return ResourceManager.GetString("playCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Player.
         /// </summary>
         internal static string player {
@@ -504,11 +567,45 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to , please place your Road..
+        /// </summary>
+        internal static string pleaseRoad {
+            get {
+                return ResourceManager.GetString("pleaseRoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to , please place your Village..
+        /// </summary>
+        internal static string pleaseVillage {
+            get {
+                return ResourceManager.GetString("pleaseVillage", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap question {
+            get {
+                object obj = ResourceManager.GetObject("question", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Red.
         /// </summary>
         internal static string Red {
             get {
                 return ResourceManager.GetString("Red", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to wählen Sie Ressource.
+        /// </summary>
+        internal static string resourceSelect {
+            get {
+                return ResourceManager.GetString("resourceSelect", resourceCulture);
             }
         }
         
@@ -536,6 +633,24 @@ namespace SettlersOfCatan {
         internal static string roadBuilding {
             get {
                 return ResourceManager.GetString("roadBuilding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Road already exists here!.
+        /// </summary>
+        internal static string roadExistsError {
+            get {
+                return ResourceManager.GetString("roadExistsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot place road here.
+        /// </summary>
+        internal static string roadPlacementError {
+            get {
+                return ResourceManager.GetString("roadPlacementError", resourceCulture);
             }
         }
         
@@ -586,6 +701,15 @@ namespace SettlersOfCatan {
         internal static string selectLanguage {
             get {
                 return ResourceManager.GetString("selectLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot place settlement here.
+        /// </summary>
+        internal static string settlementPlacementError {
+            get {
+                return ResourceManager.GetString("settlementPlacementError", resourceCulture);
             }
         }
         
@@ -672,6 +796,15 @@ namespace SettlersOfCatan {
             get {
                 object obj = ResourceManager.GetObject("victory", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Victory Point.
+        /// </summary>
+        internal static string victoryCard {
+            get {
+                return ResourceManager.GetString("victoryCard", resourceCulture);
             }
         }
         

@@ -64,6 +64,16 @@
     <Compile Include="GameController.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Enumerations.cs" />
+    <Compile Include="Resources.de.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.de.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ResourceSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,16 +99,6 @@
       <DependentUpon>PlayersAndColorsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources.de.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.de.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>

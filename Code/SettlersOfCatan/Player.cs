@@ -15,7 +15,8 @@ namespace SettlersOfCatan
             ResourceHand = new List<CardType>();
         }
 
-        public Player(String name) : this()
+        public Player(String name)
+            : this()
         {
             Name = name;
         }
@@ -99,7 +100,7 @@ namespace SettlersOfCatan
             var wheatCount = 0;
             var oreCount = 0;
 
-            foreach(var card in ResourceHand)
+            foreach (var card in ResourceHand)
             {
                 if (card == CardType.Grain) wheatCount++;
                 if (card == CardType.Ore) oreCount++;
@@ -167,6 +168,48 @@ namespace SettlersOfCatan
             {
                 throw new Exception("Unable to buy type given");
             }
+        }
+
+        public Dictionary<CardType, int> GetNumberOfResources()
+        {
+            int wool = 0;
+            int brick = 0;
+            int wood = 0;
+            int ore = 0;
+            int grain = 0;
+            foreach (CardType t in ResourceHand)
+            {
+                switch (t)
+                {
+                    case CardType.Grain:
+                        grain++;
+                        break;
+                    case CardType.Wool:
+                        wool++;
+                        break;
+                    case CardType.Brick:
+                        brick++;
+                        break;
+                    case CardType.Ore:
+                        ore++;
+                        break;
+                    case CardType.Lumber:
+                        wood++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            Dictionary<CardType, int> temp = new Dictionary<CardType, int>
+
+                                                 {
+                                                     {CardType.Brick, brick},
+                                                     {CardType.Ore, ore},
+                                                     {CardType.Grain, grain},
+                                                     {CardType.Lumber, wood},
+                                                     {CardType.Wool, wool}
+                                                 };
+            return temp;
         }
     }
 }

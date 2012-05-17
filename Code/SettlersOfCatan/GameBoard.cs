@@ -312,11 +312,7 @@ namespace SettlersOfCatan
 
         private void frm_gameBoard_Paint(object sender, PaintEventArgs e)
         {
-            int wool = 0;
-            int brick = 0;
-            int wood = 0;
-            int ore = 0;
-            int grain = 0;
+            Dictionary<CardType, int> resources = new Dictionary<CardType, int>();
             int yearOfPlenty = 0;
             int monopoly = 0;
             int roadBuilding = 0;
@@ -324,29 +320,7 @@ namespace SettlersOfCatan
             int victoryPoint = 0;
             if (_gameController.CurrentPlayer != null)
             {
-                foreach (CardType t in _gameController.CurrentPlayer.ResourceHand)
-                {
-                    switch (t)
-                    {
-                        case CardType.Grain:
-                            grain++;
-                            break;
-                        case CardType.Wool:
-                            wool++;
-                            break;
-                        case CardType.Brick:
-                            brick++;
-                            break;
-                        case CardType.Ore:
-                            ore++;
-                            break;
-                        case CardType.Lumber:
-                            wood++;
-                            break;
-                        default:
-                            break;
-                    }
-                }
+                resources = _gameController.CurrentPlayer.GetNumberOfResources();
                 foreach (CardType c in _gameController.CurrentPlayer.DevelopmentHand)
                 {
                     switch (c)
@@ -371,11 +345,11 @@ namespace SettlersOfCatan
                     }
                 }
             }
-            lbl_playerBrick.Text = brick.ToString();
-            lbl_playerWool.Text = wool.ToString();
-            lbl_playerWood.Text = wood.ToString();
-            lbl_playerGrain.Text = grain.ToString();
-            lbl_playerOre.Text = ore.ToString();
+            lbl_playerBrick.Text = resources[CardType.Brick].ToString();
+            lbl_playerWool.Text = resources[CardType.Wool].ToString();
+            lbl_playerWood.Text = resources[CardType.Lumber].ToString();
+            lbl_playerGrain.Text = resources[CardType.Grain].ToString();
+            lbl_playerOre.Text = resources[CardType.Ore].ToString();
             lbl_playerSoldier.Text = soldier.ToString();
             lbl_playerMonopoly.Text = monopoly.ToString();
             lbl_playerVictoryPoint.Text = roadBuilding.ToString();
@@ -718,7 +692,6 @@ namespace SettlersOfCatan
             {
                 _context = Context.Trade;
                 var tradeWindow = new frm_Trade(_gameController);
-                this.Hide();
                 tradeWindow.ShowDialog();
 
                 if (tradeWindow.DialogResult == DialogResult.Cancel || tradeWindow.DialogResult == DialogResult.Abort)
