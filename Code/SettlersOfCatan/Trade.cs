@@ -23,7 +23,10 @@ namespace SettlersOfCatan
             UpdateUILanguage();
             foreach (Player p in GameController.Players)
             {
-                cBox_tradePlayer.Items.Add(p.Name);
+                if (p != GameController.CurrentPlayer)
+                {
+                    cBox_tradePlayer.Items.Add(p.Name);
+                }
             }
             foreach (var t in _ports)
             {
@@ -80,7 +83,6 @@ namespace SettlersOfCatan
             cBox_tradePort.Text = Resources.tradePort;
 
             btn_cancel.Text = Resources.Cancel;
-            btn_trade.Text = Resources.trade;
 
             for (int i = 0; i < _ports.Count; i++ )
             {
@@ -727,11 +729,6 @@ namespace SettlersOfCatan
             }
         }
 
-        private void btn_trade_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             UpdatePlayersResources();
@@ -740,6 +737,72 @@ namespace SettlersOfCatan
 
         private void btn_done_Click(object sender, EventArgs e)
         {
+            if (tabControl1.SelectedTab == tab_player)
+            {
+                int brick;
+                int.TryParse(lbl_tradePlayerNumBrick.Text, out brick);
+                int grain;
+                int.TryParse(lbl_tradePlayerNumGrain.Text, out grain);
+                int lumber;
+                int.TryParse(lbl_tradePlayerNumLumber.Text, out lumber);
+                int ore;
+                int.TryParse(lbl_tradePlayerNumOre.Text, out ore);
+                int wool;
+                int.TryParse(lbl_tradePlayerNumWool.Text, out wool);
+                int brickHave;
+                int.TryParse(lbl_tradeBrickHave.Text, out brickHave);
+                int brickOffer;
+                int.TryParse(lbl_tradeBrickOffer.Text, out brickOffer);
+                int grainHave;
+                int.TryParse(lbl_tradeGrainHave.Text, out grainHave);
+                int grainOffer;
+                int.TryParse(lbl_tradeGrainOffer.Text, out grainOffer);
+                int lumberHave;
+                int.TryParse(lbl_tradeLumberHave.Text, out lumberHave);
+                int lumberOffer;
+                int.TryParse(lbl_tradeLumberOffer.Text, out lumberOffer);
+                int oreHave;
+                int.TryParse(lbl_tradeOreHave.Text, out oreHave);
+                int oreOffer;
+                int.TryParse(lbl_tradeOreOffer.Text, out oreOffer);
+                int woolHave;
+                int.TryParse(lbl_tradeWoolHave.Text, out woolHave);
+                int woolOffer;
+                int.TryParse(lbl_tradeWoolOffer.Text, out woolOffer);
+                Player tradePlayer = new Player();
+                string name = (string)cBox_tradePlayer.SelectedItem;
+                foreach (Player p in GameController.Players)
+                {
+                    if (name.Equals(p.Name))
+                    {
+                        tradePlayer = p;
+                        break;
+                    }
+                }
+                Dictionary<CardType, int> resources = tradePlayer.GetNumberOfResources();
+                if (brick > resources[CardType.Brick] || grain > resources[CardType.Grain] || lumber > resources[CardType.Lumber] || ore > resources[CardType.Ore] || wool > resources[CardType.Wool])
+                {
+                    MessageBox.Show(
+                    "Player has insufficient resources",
+                    "Insufficent Resources",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+                }
+
+                resources[CardType.Brick] += brickOffer - brick;
+                resources[CardType.Grain] += grainOffer - grain;
+                resources[CardType.Lumber] += lumberOffer - lumber;
+                resources[CardType.Ore] += oreOffer - ore;
+                resources[CardType.Wool] += woolOffer - wool;
+
+                tradePlayer.SetHand(resources);
+                lbl_tradeBrickHave.Text = (brick + brickHave - brickOffer).ToString();
+                lbl_tradeGrainHave.Text = (grain + grainHave - grainOffer).ToString();
+                lbl_tradeLumberHave.Text = (lumber + lumberHave - lumberOffer).ToString();
+                lbl_tradeOreHave.Text = (ore + oreHave - oreOffer).ToString();
+                lbl_tradeWoolHave.Text = (wool + woolHave - woolOffer).ToString();
+            }
             UpdatePlayersResources();
             this.DialogResult = DialogResult.OK;
         }

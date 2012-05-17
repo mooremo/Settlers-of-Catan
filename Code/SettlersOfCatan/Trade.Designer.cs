@@ -95,7 +95,6 @@
             this.btn_tradePortBrick = new System.Windows.Forms.Button();
             this.cBox_tradePort = new System.Windows.Forms.ComboBox();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_trade = new System.Windows.Forms.Button();
             this.btn_done = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tab_bank.SuspendLayout();
@@ -486,7 +485,6 @@
             // 
             // tab_player
             // 
-            this.tab_player.Controls.Add(this.btn_trade);
             this.tab_player.Controls.Add(this.cBox_tradePlayer);
             this.tab_player.Controls.Add(this.lbl_tradePlayerNumWool);
             this.tab_player.Controls.Add(this.btn_tradePlayerPlusWool);
@@ -529,7 +527,7 @@
             // 
             this.lbl_tradePlayerNumWool.AutoSize = true;
             this.lbl_tradePlayerNumWool.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tradePlayerNumWool.Location = new System.Drawing.Point(133, 256);
+            this.lbl_tradePlayerNumWool.Location = new System.Drawing.Point(175, 256);
             this.lbl_tradePlayerNumWool.Name = "lbl_tradePlayerNumWool";
             this.lbl_tradePlayerNumWool.Size = new System.Drawing.Size(18, 20);
             this.lbl_tradePlayerNumWool.TabIndex = 50;
@@ -538,7 +536,7 @@
             // btn_tradePlayerPlusWool
             // 
             this.btn_tradePlayerPlusWool.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tradePlayerPlusWool.Location = new System.Drawing.Point(160, 252);
+            this.btn_tradePlayerPlusWool.Location = new System.Drawing.Point(202, 252);
             this.btn_tradePlayerPlusWool.Name = "btn_tradePlayerPlusWool";
             this.btn_tradePlayerPlusWool.Size = new System.Drawing.Size(21, 29);
             this.btn_tradePlayerPlusWool.TabIndex = 49;
@@ -549,7 +547,7 @@
             // btn_tradePlayerMinusWool
             // 
             this.btn_tradePlayerMinusWool.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tradePlayerMinusWool.Location = new System.Drawing.Point(104, 252);
+            this.btn_tradePlayerMinusWool.Location = new System.Drawing.Point(146, 252);
             this.btn_tradePlayerMinusWool.Name = "btn_tradePlayerMinusWool";
             this.btn_tradePlayerMinusWool.Size = new System.Drawing.Size(21, 29);
             this.btn_tradePlayerMinusWool.TabIndex = 48;
@@ -561,7 +559,7 @@
             // 
             this.lbl_tradePlayerWool.AutoSize = true;
             this.lbl_tradePlayerWool.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tradePlayerWool.Location = new System.Drawing.Point(27, 256);
+            this.lbl_tradePlayerWool.Location = new System.Drawing.Point(69, 256);
             this.lbl_tradePlayerWool.Name = "lbl_tradePlayerWool";
             this.lbl_tradePlayerWool.Size = new System.Drawing.Size(45, 20);
             this.lbl_tradePlayerWool.TabIndex = 47;
@@ -571,7 +569,7 @@
             // 
             this.lbl_tradePlayerNumOre.AutoSize = true;
             this.lbl_tradePlayerNumOre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tradePlayerNumOre.Location = new System.Drawing.Point(133, 204);
+            this.lbl_tradePlayerNumOre.Location = new System.Drawing.Point(175, 204);
             this.lbl_tradePlayerNumOre.Name = "lbl_tradePlayerNumOre";
             this.lbl_tradePlayerNumOre.Size = new System.Drawing.Size(18, 20);
             this.lbl_tradePlayerNumOre.TabIndex = 46;
@@ -580,7 +578,7 @@
             // btn_tradePlayerPlusOre
             // 
             this.btn_tradePlayerPlusOre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tradePlayerPlusOre.Location = new System.Drawing.Point(160, 200);
+            this.btn_tradePlayerPlusOre.Location = new System.Drawing.Point(202, 200);
             this.btn_tradePlayerPlusOre.Name = "btn_tradePlayerPlusOre";
             this.btn_tradePlayerPlusOre.Size = new System.Drawing.Size(21, 29);
             this.btn_tradePlayerPlusOre.TabIndex = 45;
@@ -591,7 +589,7 @@
             // btn_tradePlayerMinusOre
             // 
             this.btn_tradePlayerMinusOre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tradePlayerMinusOre.Location = new System.Drawing.Point(104, 200);
+            this.btn_tradePlayerMinusOre.Location = new System.Drawing.Point(146, 200);
             this.btn_tradePlayerMinusOre.Name = "btn_tradePlayerMinusOre";
             this.btn_tradePlayerMinusOre.Size = new System.Drawing.Size(21, 29);
             this.btn_tradePlayerMinusOre.TabIndex = 44;
@@ -603,7 +601,7 @@
             // 
             this.lbl_tradePlayerOre.AutoSize = true;
             this.lbl_tradePlayerOre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tradePlayerOre.Location = new System.Drawing.Point(27, 204);
+            this.lbl_tradePlayerOre.Location = new System.Drawing.Point(69, 204);
             this.lbl_tradePlayerOre.Name = "lbl_tradePlayerOre";
             this.lbl_tradePlayerOre.Size = new System.Drawing.Size(35, 20);
             this.lbl_tradePlayerOre.TabIndex = 43;
@@ -613,7 +611,7 @@
             // 
             this.lbl_tradePlayerNumLumber.AutoSize = true;
             this.lbl_tradePlayerNumLumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tradePlayerNumLumber.Location = new System.Drawing.Point(133, 152);
+            this.lbl_tradePlayerNumLumber.Location = new System.Drawing.Point(175, 152);
             this.lbl_tradePlayerNumLumber.Name = "lbl_tradePlayerNumLumber";
             this.lbl_tradePlayerNumLumber.Size = new System.Drawing.Size(18, 20);
             this.lbl_tradePlayerNumLumber.TabIndex = 42;
@@ -622,7 +620,7 @@
             // btn_tradePlayerPlusLumber
             // 
             this.btn_tradePlayerPlusLumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tradePlayerPlusLumber.Location = new System.Drawing.Point(160, 148);
+            this.btn_tradePlayerPlusLumber.Location = new System.Drawing.Point(202, 148);
             this.btn_tradePlayerPlusLumber.Name = "btn_tradePlayerPlusLumber";
             this.btn_tradePlayerPlusLumber.Size = new System.Drawing.Size(21, 29);
             this.btn_tradePlayerPlusLumber.TabIndex = 41;
@@ -633,7 +631,7 @@
             // btn_tradePlayerMinusLumber
             // 
             this.btn_tradePlayerMinusLumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tradePlayerMinusLumber.Location = new System.Drawing.Point(104, 148);
+            this.btn_tradePlayerMinusLumber.Location = new System.Drawing.Point(146, 148);
             this.btn_tradePlayerMinusLumber.Name = "btn_tradePlayerMinusLumber";
             this.btn_tradePlayerMinusLumber.Size = new System.Drawing.Size(21, 29);
             this.btn_tradePlayerMinusLumber.TabIndex = 40;
@@ -645,7 +643,7 @@
             // 
             this.lbl_tradePlayerLumber.AutoSize = true;
             this.lbl_tradePlayerLumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tradePlayerLumber.Location = new System.Drawing.Point(27, 152);
+            this.lbl_tradePlayerLumber.Location = new System.Drawing.Point(69, 152);
             this.lbl_tradePlayerLumber.Name = "lbl_tradePlayerLumber";
             this.lbl_tradePlayerLumber.Size = new System.Drawing.Size(63, 20);
             this.lbl_tradePlayerLumber.TabIndex = 39;
@@ -655,7 +653,7 @@
             // 
             this.lbl_tradePlayerNumGrain.AutoSize = true;
             this.lbl_tradePlayerNumGrain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tradePlayerNumGrain.Location = new System.Drawing.Point(133, 105);
+            this.lbl_tradePlayerNumGrain.Location = new System.Drawing.Point(175, 105);
             this.lbl_tradePlayerNumGrain.Name = "lbl_tradePlayerNumGrain";
             this.lbl_tradePlayerNumGrain.Size = new System.Drawing.Size(18, 20);
             this.lbl_tradePlayerNumGrain.TabIndex = 38;
@@ -664,7 +662,7 @@
             // btn_tradePlayerPlusGrain
             // 
             this.btn_tradePlayerPlusGrain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tradePlayerPlusGrain.Location = new System.Drawing.Point(160, 101);
+            this.btn_tradePlayerPlusGrain.Location = new System.Drawing.Point(202, 101);
             this.btn_tradePlayerPlusGrain.Name = "btn_tradePlayerPlusGrain";
             this.btn_tradePlayerPlusGrain.Size = new System.Drawing.Size(21, 29);
             this.btn_tradePlayerPlusGrain.TabIndex = 37;
@@ -675,7 +673,7 @@
             // btn_tradePlayerMinusGrain
             // 
             this.btn_tradePlayerMinusGrain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tradePlayerMinusGrain.Location = new System.Drawing.Point(104, 101);
+            this.btn_tradePlayerMinusGrain.Location = new System.Drawing.Point(146, 101);
             this.btn_tradePlayerMinusGrain.Name = "btn_tradePlayerMinusGrain";
             this.btn_tradePlayerMinusGrain.Size = new System.Drawing.Size(21, 29);
             this.btn_tradePlayerMinusGrain.TabIndex = 36;
@@ -687,7 +685,7 @@
             // 
             this.lbl_tradePlayerGrain.AutoSize = true;
             this.lbl_tradePlayerGrain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tradePlayerGrain.Location = new System.Drawing.Point(27, 105);
+            this.lbl_tradePlayerGrain.Location = new System.Drawing.Point(69, 105);
             this.lbl_tradePlayerGrain.Name = "lbl_tradePlayerGrain";
             this.lbl_tradePlayerGrain.Size = new System.Drawing.Size(48, 20);
             this.lbl_tradePlayerGrain.TabIndex = 35;
@@ -697,7 +695,7 @@
             // 
             this.lbl_tradePlayerNumBrick.AutoSize = true;
             this.lbl_tradePlayerNumBrick.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tradePlayerNumBrick.Location = new System.Drawing.Point(133, 60);
+            this.lbl_tradePlayerNumBrick.Location = new System.Drawing.Point(175, 60);
             this.lbl_tradePlayerNumBrick.Name = "lbl_tradePlayerNumBrick";
             this.lbl_tradePlayerNumBrick.Size = new System.Drawing.Size(18, 20);
             this.lbl_tradePlayerNumBrick.TabIndex = 34;
@@ -706,7 +704,7 @@
             // btn_tradePlayerPlusBrick
             // 
             this.btn_tradePlayerPlusBrick.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tradePlayerPlusBrick.Location = new System.Drawing.Point(160, 56);
+            this.btn_tradePlayerPlusBrick.Location = new System.Drawing.Point(202, 56);
             this.btn_tradePlayerPlusBrick.Name = "btn_tradePlayerPlusBrick";
             this.btn_tradePlayerPlusBrick.Size = new System.Drawing.Size(21, 29);
             this.btn_tradePlayerPlusBrick.TabIndex = 33;
@@ -717,7 +715,7 @@
             // btn_tradePlayerMinusBrick
             // 
             this.btn_tradePlayerMinusBrick.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tradePlayerMinusBrick.Location = new System.Drawing.Point(104, 56);
+            this.btn_tradePlayerMinusBrick.Location = new System.Drawing.Point(146, 56);
             this.btn_tradePlayerMinusBrick.Name = "btn_tradePlayerMinusBrick";
             this.btn_tradePlayerMinusBrick.Size = new System.Drawing.Size(21, 29);
             this.btn_tradePlayerMinusBrick.TabIndex = 32;
@@ -729,7 +727,7 @@
             // 
             this.lbl_tradePlayerBrick.AutoSize = true;
             this.lbl_tradePlayerBrick.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tradePlayerBrick.Location = new System.Drawing.Point(27, 60);
+            this.lbl_tradePlayerBrick.Location = new System.Drawing.Point(69, 60);
             this.lbl_tradePlayerBrick.Name = "lbl_tradePlayerBrick";
             this.lbl_tradePlayerBrick.Size = new System.Drawing.Size(44, 20);
             this.lbl_tradePlayerBrick.TabIndex = 31;
@@ -825,17 +823,6 @@
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
-            // 
-            // btn_trade
-            // 
-            this.btn_trade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_trade.Location = new System.Drawing.Point(203, 253);
-            this.btn_trade.Name = "btn_trade";
-            this.btn_trade.Size = new System.Drawing.Size(90, 28);
-            this.btn_trade.TabIndex = 35;
-            this.btn_trade.Text = "Trade";
-            this.btn_trade.UseVisualStyleBackColor = true;
-            this.btn_trade.Click += new System.EventHandler(this.btn_trade_Click);
             // 
             // btn_done
             // 
@@ -966,7 +953,6 @@
         private System.Windows.Forms.Button btn_tradePortBrick;
         private System.Windows.Forms.ComboBox cBox_tradePort;
         private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.Button btn_trade;
         private System.Windows.Forms.Button btn_done;
 
     }
