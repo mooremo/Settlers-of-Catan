@@ -267,14 +267,50 @@
   <data name="robberString" xml:space="preserve">
     <value>Räuber</value>
   </data>
+  <data name="badSettlementLocation" xml:space="preserve">
+    <value>Kann nicht platziert Siedlung</value>
+  </data>
   <data name="buyCard" xml:space="preserve">
     <value>Buy-Karte</value>
+  </data>
+  <data name="clickNeighborVertex" xml:space="preserve">
+    <value>Müssen auf den benachbarten Scheitel!</value>
+  </data>
+  <data name="clickRobber" xml:space="preserve">
+    <value>Muss auf dem Räuber klicken</value>
+  </data>
+  <data name="congratulations" xml:space="preserve">
+    <value>Glückwünsche</value>
   </data>
   <data name="endTurn" xml:space="preserve">
     <value>Runde Beenden</value>
   </data>
-  <data name="String" xml:space="preserve">
-    <value />
+  <data name="insufficientResources" xml:space="preserve">
+    <value>Unzureichende Ressourcen</value>
+  </data>
+  <data name="invalidLocation" xml:space="preserve">
+    <value>Ungültige Lage</value>
+  </data>
+  <data name="mustMoveRobber" xml:space="preserve">
+    <value>Sie müssen sich bewegen, den Räuber, bevor Sie Ihr wiederum kann am Ende</value>
+  </data>
+  <data name="notEnoughResources" xml:space="preserve">
+    <value>Sie verfügen nicht über genügend Ressourcen</value>
+  </data>
+  <data name="owned" xml:space="preserve">
+    <value>Im Besitz</value>
+  </data>
+  <data name="roadAlreadyHere" xml:space="preserve">
+    <value>Straße existiert bereits hier!</value>
+  </data>
+  <data name="toTrade" xml:space="preserve">
+    <value>Af Trodden</value>
+  </data>
+  <data name="tradePlayer" xml:space="preserve">
+    <value>Wählen Sie einen Spieler</value>
+  </data>
+  <data name="tradePort" xml:space="preserve">
+    <value>Wählen Sie einen Hafen</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="victory" type="System.Resources.ResXFileRef, System.Windows.Forms">

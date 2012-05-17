@@ -278,7 +278,7 @@
     <value>Trade</value>
   </data>
   <data name="wood" xml:space="preserve">
-    <value>Wood</value>
+    <value>Lumber</value>
   </data>
   <data name="wool" xml:space="preserve">
     <value>Wool</value>
@@ -304,11 +304,50 @@
   <data name="robberString" xml:space="preserve">
     <value>Robber</value>
   </data>
+  <data name="badSettlementLocation" xml:space="preserve">
+    <value>Cannot place settlement here</value>
+  </data>
   <data name="buyCard" xml:space="preserve">
     <value>Buy Card</value>
   </data>
+  <data name="clickNeighborVertex" xml:space="preserve">
+    <value>Must click neighboring vertex!</value>
+  </data>
+  <data name="clickRobber" xml:space="preserve">
+    <value>Must click on the robber</value>
+  </data>
+  <data name="congratulations" xml:space="preserve">
+    <value>Congratulations</value>
+  </data>
   <data name="endTurn" xml:space="preserve">
     <value>End Turn</value>
+  </data>
+  <data name="insufficientResources" xml:space="preserve">
+    <value>Insufficient Resources</value>
+  </data>
+  <data name="invalidLocation" xml:space="preserve">
+    <value>Invalid location</value>
+  </data>
+  <data name="mustMoveRobber" xml:space="preserve">
+    <value>You must move the robber before you can end your turn</value>
+  </data>
+  <data name="notEnoughResources" xml:space="preserve">
+    <value>You do not have enough resources</value>
+  </data>
+  <data name="owned" xml:space="preserve">
+    <value>Owned</value>
+  </data>
+  <data name="roadAlreadyHere" xml:space="preserve">
+    <value>Road already exists here!</value>
+  </data>
+  <data name="toTrade" xml:space="preserve">
+    <value>To Trade</value>
+  </data>
+  <data name="tradePlayer" xml:space="preserve">
+    <value>Pick a Player</value>
+  </data>
+  <data name="tradePort" xml:space="preserve">
+    <value>Pick a Port</value>
   </data>
   <data name="victory" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\victory.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

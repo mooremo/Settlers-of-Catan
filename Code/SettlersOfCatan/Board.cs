@@ -457,6 +457,19 @@ namespace SettlersOfCatan
 
         #endregion
 
+        #region PortVerticesDictionary
+        private readonly Dictionary<int, ArrayList> _portVertices = new Dictionary<int, ArrayList>{
+                                                                                  {0, new ArrayList(new int[]{0,1})},
+                                                                                  {1, new ArrayList(new int[]{5,10,11})},
+                                                                                  {2, new ArrayList(new int[]{17,23,29})},
+                                                                                  {3, new ArrayList(new int[]{41,47})},
+                                                                                  {4, new ArrayList(new int[]{50,51,53})},
+                                                                                  {5, new ArrayList(new int[]{48,49,52})},
+                                                                                  {6, new ArrayList(new int[]{36,42})},
+                                                                                  {7, new ArrayList(new int[]{12,18,24})},
+                                                                                  {8, new ArrayList(new int[]{2,6,7})},};
+        #endregion
+
         #region TerrainTiles
 
         public ArrayList AllTerrainTiles =
@@ -607,7 +620,7 @@ namespace SettlersOfCatan
                 Vertices.Insert(i, new Vertex(i));
             }
 
-            //Fill tile's vertices
+            //Fill terrain tile's vertices
             var category = new ArrayList(new[] {0, 2, 15, 17, 18});
             var indexToRow = new Dictionary<int, int>{{0, 0}, {1, 1}, {2, 1}, {3, 2}, {4, 2}, {5, 2}, {6, 3}, {7, 3}, 
             {8, 4}, {9, 4}, {10, 4}, {11, 5}, {12, 5}, {13, 6}, {14, 6}, {15, 6}, {16, 7}, {17,7}, {18, 8}};
@@ -631,6 +644,19 @@ namespace SettlersOfCatan
                 tempList.Insert(5, Vertices[(2*i) + offset0[row]-1]);
                 tempTile.Vertices = ToList<Vertex>(tempList);
                 TerrainTiles[i] = tempTile;
+            }
+
+            //Fill port tile's vertices
+            ArrayList tempVertices = new ArrayList();
+            for (int i = 0; i < PortTiles.Count; i++)
+            {
+                foreach (int v in _portVertices[i])
+                {
+                    tempVertices.Add(Vertices[v]);
+                }
+                tempTile = PortTiles[i];
+                tempTile.Vertices = ToList<Vertex>(tempVertices);
+                PortTiles[i] = tempTile;
             }
 
             //Fill Vertice's neighbors
@@ -796,6 +822,18 @@ namespace SettlersOfCatan
                 return result;
             }
             throw new Exception("There is no robber");
+        }
+
+        public Tile getPortTile(TileType type)
+        {
+            foreach (Tile t in PortTiles)
+            {
+                if(t.Type == type)
+                {
+                    return t;
+                }
+            }
+            return null;
         }
     }
 }

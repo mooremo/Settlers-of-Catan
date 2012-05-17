@@ -392,8 +392,8 @@ namespace SettlersOfCatan
                     else
                     {
                         MessageBox.Show(
-                            "Must click on the robber",
-                            "Invalid location",
+                            Resources.clickRobber,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -432,8 +432,8 @@ namespace SettlersOfCatan
                     catch (Exception ex)
                     {
                         MessageBox.Show(
-                            "Cannot place settlement here",
-                            "Invalid location",
+                            Resources.badSettlementLocation,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -462,8 +462,8 @@ namespace SettlersOfCatan
                     if (!curVertex._vertex.Neighbors.Contains(_roadFirstVertex._vertex))
                     {
                         MessageBox.Show(
-                            "Must click neighboring vertex!",
-                            "Invalid location",
+                            Resources.clickNeighborVertex,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -473,8 +473,8 @@ namespace SettlersOfCatan
                     if (curVertex._vertex.HasRoad(_roadFirstVertex._vertex))
                     {
                         MessageBox.Show(
-                            "Road already exists here!",
-                            "Invalid location",
+                            Resources.roadAlreadyHere,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -506,8 +506,8 @@ namespace SettlersOfCatan
                     catch (Exception ex)
                     {
                         MessageBox.Show(
-                            "Cannot place settlement here",
-                            "Invalid location",
+                            Resources.badSettlementLocation,
+                            Resources.invalidLocation,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation,
                             MessageBoxDefaultButton.Button1);
@@ -540,8 +540,8 @@ namespace SettlersOfCatan
             else
             {
                 MessageBox.Show(
-                    "You do not have enough resources",
-                    "Insufficient Resources",
+                    Resources.notEnoughResources,
+                    Resources.insufficientResources,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -558,8 +558,8 @@ namespace SettlersOfCatan
             else
             {
                 MessageBox.Show(
-                    "You do not have enough resources",
-                    "Insufficient Resources",
+                    Resources.notEnoughResources,
+                    Resources.insufficientResources,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -585,8 +585,8 @@ namespace SettlersOfCatan
             else
             {
                 MessageBox.Show(
-                    "You do not have enough resources",
-                    "Insufficient Resources",
+                    Resources.notEnoughResources,
+                    Resources.insufficientResources,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -598,6 +598,18 @@ namespace SettlersOfCatan
             if (_context != Context.PickUpRobber && _context != Context.PlaceRobber)
             {
                 _context = Context.Trade;
+                var tradeWindow = new frm_Trade(_gameController);
+                this.Hide();
+                tradeWindow.ShowDialog();
+
+                if (tradeWindow.DialogResult == DialogResult.Cancel || tradeWindow.DialogResult == DialogResult.Abort)
+                {
+                    this.Show();
+                }
+                else if (tradeWindow.DialogResult == DialogResult.OK)
+                {
+                    this.Show();
+                }
             }
         }
 
@@ -651,7 +663,7 @@ namespace SettlersOfCatan
                     if (p.Score >= 10)
                     {
                         this.Hide();
-                        new Victory(("Congratulations " + p.Name + "!")).Show();
+                        new Victory((Resources.congratulations + " " + p.Name + "!")).Show();
                     }
 
                 }
@@ -665,8 +677,8 @@ namespace SettlersOfCatan
             else
             {
                 MessageBox.Show(
-                    "You must move the robber before you can end your turn",
-                    "Move Robber",
+                    Resources.mustMoveRobber,
+                    Resources.moveRobber,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
@@ -685,8 +697,8 @@ namespace SettlersOfCatan
             {
                 //TODO
                 MessageBox.Show(
-                    "You do not have enough resources",
-                    "Insufficient Resources",
+                    Resources.notEnoughResources,
+                    Resources.insufficientResources,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
                     MessageBoxDefaultButton.Button1);
