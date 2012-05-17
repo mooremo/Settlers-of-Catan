@@ -478,7 +478,7 @@ namespace SettlersOfCatan
         {
             foreach (Tile tile in Board.TerrainTiles)
             {
-                if (tile.Type != TileType.Desert)
+                if (tile.Type == TileType.Desert)
                 {
                     if (tile.Number == Dice.Value)
                     {
@@ -500,6 +500,31 @@ namespace SettlersOfCatan
                                 }
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        public void AwardResourceForSettlementAdjacentToHex(int value)
+        {
+            foreach (Tile tile in Board.TerrainTiles)
+            {
+                if (tile.Type == TileType.Desert) continue;
+                if (tile.Number != value) continue;
+                foreach (Vertex vertex in tile.Vertices)
+                {
+                    if (vertex.Settlement == null) continue;
+                    if (vertex.Settlement.type == SettlementType.Village)
+                    {
+                        vertex.Settlement.player.ResourceHand.Add(
+                            DrawResource(tile.Type));
+                    }
+                    else if (vertex.Settlement.type == SettlementType.City)
+                    {
+                        vertex.Settlement.player.ResourceHand.Add(
+                            DrawResource(tile.Type));
+                        vertex.Settlement.player.ResourceHand.Add(
+                            DrawResource(tile.Type));
                     }
                 }
             }

@@ -835,12 +835,18 @@ namespace SettlersOfCatan
                 }
             } else
             {
-                _gameController.ChangeCurrentPlayerReverse();
                 if (_gameController.CurrentPlayer == _firstPlayer)
                 {
+                    for (int i = 0; i < 13; i++ )
+                    {
+                        _gameController.AwardResourceForSettlementAdjacentToHex(i);
+                    }
                     _context = Context.None;
                     pnl_playerData.Enabled = true;
                     UpdateDiceRoll();
+                } else
+                {
+                    _gameController.ChangeCurrentPlayerReverse();
                 }
             }
             sp_PlayerScores.UpdateScores();
@@ -869,7 +875,9 @@ namespace SettlersOfCatan
 
         private void btn_PlayCard_Click(object sender, EventArgs e)
         {
-            PlayCard temp = new PlayCard();
+            if (_context == Context.PickUpRobber || _context == Context.PlaceRobber) return;
+
+            var temp = new PlayCard();
 
             var curPlayer = _gameController.CurrentPlayer;
             foreach (var card in curPlayer.DevelopmentHand)
