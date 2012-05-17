@@ -34,6 +34,17 @@ namespace SettlersOfCatan
             _labels.Add(lbl_tradeLumberOffer);
             _labels.Add(lbl_tradeOreOffer);
             _labels.Add(lbl_tradeWoolOffer);
+
+            Dictionary<CardType, int> resources = new Dictionary<CardType, int>();
+            if (GameController.CurrentPlayer != null)
+            {
+                resources = GameController.CurrentPlayer.GetNumberOfResources();
+            }
+            lbl_tradeBrickHave.Text = resources[CardType.Brick].ToString();
+            lbl_tradeWoolHave.Text = resources[CardType.Wool].ToString();
+            lbl_tradeLumberHave.Text = resources[CardType.Lumber].ToString();
+            lbl_tradeGrainHave.Text = resources[CardType.Grain].ToString();
+            lbl_tradeOreHave.Text = resources[CardType.Ore].ToString();
         }
 
         public void UpdateUILanguage()
