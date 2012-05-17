@@ -461,7 +461,7 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Port Access.
+        ///   Looks up a localized string similar to Insufficient Port Access.
         /// </summary>
         internal static string noPortAccess {
             get {
@@ -603,7 +603,7 @@ namespace SettlersOfCatan {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Player has insufficient resources.
+        ///   Looks up a localized string similar to Player has insufficien resources.
         /// </summary>
         internal static string playerHasInsufficientResources {
             get {

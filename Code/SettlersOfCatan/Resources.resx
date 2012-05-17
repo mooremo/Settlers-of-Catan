@@ -399,6 +399,7 @@
   </data>
   <data name="moveRobberAlert" xml:space="preserve">
     <value>You must move the robber!</value>
+  </data>
   <data name="insufficentTrade" xml:space="preserve">
     <value>Insufficent Trade</value>
   </data>
@@ -413,5 +414,11 @@
   </data>
   <data name="tradeAtLeast" xml:space="preserve">
     <value>You must trade at least</value>
+  </data>
+  <data name="noPortAccess" xml:space="preserve">
+    <value>Insufficient Port Access</value>
+  </data>
+  <data name="playerHasInsufficientResources" xml:space="preserve">
+    <value>Player has insufficien resources</value>
   </data>
 </root>

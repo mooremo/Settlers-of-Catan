@@ -358,4 +358,28 @@
   <data name="moveRobberAlert" xml:space="preserve">
     <value>Sie müssen sich bewegen, den Räuber!</value>
   </data>
+  <data name="insufficentResources" xml:space="preserve">
+    <value>Unzureichende Ressourcen</value>
+  </data>
+  <data name="insufficentTrade" xml:space="preserve">
+    <value>Zu wenig Handel</value>
+  </data>
+  <data name="noPortAccess" xml:space="preserve">
+    <value>Zu wenig Port Access</value>
+  </data>
+  <data name="ofResource" xml:space="preserve">
+    <value>von 1 Ressource.</value>
+  </data>
+  <data name="playerHasInsufficientResources" xml:space="preserve">
+    <value>Der Spieler hat nicht genügend Ressourcen</value>
+  </data>
+  <data name="settlementAtPort" xml:space="preserve">
+    <value>Sie müssen über eine Siedlung an diesem Port.</value>
+  </data>
+  <data name="trade4to1" xml:space="preserve">
+    <value>Sie müssen handeln mindestens 4 von 1 Ressource.</value>
+  </data>
+  <data name="tradeAtLeast" xml:space="preserve">
+    <value>Sie müssen mindestens den Handel</value>
+  </data>
 </root>
