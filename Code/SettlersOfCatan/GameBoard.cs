@@ -784,6 +784,12 @@ namespace SettlersOfCatan
             if (_gameController.Dice.Value == 7)
             {
                 _context = Context.PickUpRobber;
+                MessageBox.Show(
+                    Resources.moveRobberAlert,
+                    Resources.moveRobber,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
             }
         }
 

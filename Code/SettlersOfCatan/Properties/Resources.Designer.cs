@@ -200,6 +200,15 @@ namespace SettlersOfCatan.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must move the robber!.
+        /// </summary>
+        public static string moveRobberAlert {
+            get {
+                return ResourceManager.GetString("moveRobberAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name:.
         /// </summary>
         public static string name {
